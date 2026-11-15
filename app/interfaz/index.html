@@ -24,7 +24,7 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Sora:wght@400..700&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
 <!-- Modelos 3D de las plantas: Three.js r170 guardado en vendor/ (sin internet) y el adaptador smartseeds-plantas3d.js -->
 <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
@@ -35,7 +35,7 @@
   --papel: #F4F8FC; --azul: #1F5FA8; --ocre: #B98A00; --alerta: #F0603A; --tinta: #0A1420; --gris: #4A5A6A;
   --titulo: "Space Grotesk", "Trebuchet MS", sans-serif;
   --texto: "DM Sans", Verdana, sans-serif;
-  --estilo: "Fraunces", Georgia, "Times New Roman", serif;      /* tarjetas de datos del 3D */
+  --dato: "Sora", "Space Grotesk", "Trebuchet MS", sans-serif;      /* letrero de datos del 3D */
   --ancho-panel: 470px; --ancho-ficha: 500px;
 }
 * { box-sizing: border-box; }
@@ -219,39 +219,60 @@ body.con-ficha #panel-terreno { display: none; }
 #acciones { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
 #otros { color: var(--cielo); font-size: .9rem; margin-top: 10px; max-width: 62em; }
 /* En 3D la franja de abajo se reduce: título, qué planta proyectar y los botones */
-#elige-planta, #nota-3d { display: none; }
+#elige-planta { display: none; }
 body.en-3d #fila-resultados, body.en-3d #nota-terreno, body.en-3d #otros { display: none; }
-body.en-3d #resultados { background: linear-gradient(to top, rgba(4,6,15,.92) 46%, rgba(4,6,15,0)); pointer-events: none; }
+/* La sombra de abajo es suave: el mapa se sigue viendo detrás del título y de las barras */
+body.en-3d #resultados { background: linear-gradient(to top, rgba(4,6,15,.6) 0%, rgba(4,6,15,.34) 48%, rgba(4,6,15,0) 100%); pointer-events: none; }
+body.en-3d #titulo-resultados, body.en-3d #elige-planta span { text-shadow: 0 1px 10px rgba(4, 6, 15, .85), 0 0 2px rgba(4, 6, 15, .6); }
 body.en-3d #resultados > * { pointer-events: auto; }
-body.en-3d #elige-planta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
-body.en-3d #nota-3d { display: block; margin-top: 8px; font-size: .84rem; color: var(--cielo); max-width: 60em; }
+body.en-3d #elige-planta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
 #elige-planta span { color: #DCE8F5; font-size: .95rem; margin-right: 2px; }
-#elige-planta button { border: 1px solid rgba(156,203,255,.45); border-radius: 999px; padding: 7px 15px; background: rgba(8,14,28,.5);
-                       color: var(--papel); font-size: .93rem; }
-#elige-planta button[aria-pressed="true"] { background: var(--luz); border-color: var(--luz); color: var(--tinta); font-weight: 700; }
+/* Una sola barra con todas las opciones adentro (los cultivos, y aparte los botones): la elegida va en claro.
+   La barra es de "vidrio": casi transparente y sin filo, desenfoca el mapa que tiene detrás en lugar de taparlo. */
+#elige-planta .opciones, body.en-3d #acciones { display: inline-flex; flex-wrap: nowrap; align-items: stretch; gap: 2px; padding: 4px; max-width: 100%;
+    overflow-x: auto; scrollbar-width: none; border-radius: 999px; background: rgba(10, 18, 34, .24); box-shadow: none;
+    -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); }
+#elige-planta .opciones::-webkit-scrollbar, body.en-3d #acciones::-webkit-scrollbar { display: none; }
+#elige-planta button, body.en-3d #acciones .boton { flex: none; border: 0; border-radius: 999px; padding: 9px 20px; background: transparent; color: var(--papel);
+    font-size: .95rem; font-weight: 600; white-space: nowrap; box-shadow: none; transform: none; transition: background .15s ease, color .15s ease;
+    text-shadow: 0 1px 8px rgba(4, 6, 15, .75); }
+#elige-planta button:hover, body.en-3d #acciones .boton:hover { background: rgba(234, 244, 255, .2); box-shadow: none; transform: none; }
+#elige-planta button[aria-pressed="true"], body.en-3d #acciones #ver-3d { background: var(--luz); color: var(--tinta); font-weight: 700; text-shadow: none; }
+body.en-3d #acciones { margin-top: 12px; }
+/* Los botones de la pantalla de resultados (ver en 3D, analizar otro terreno, finalizar) van sin filo */
+#acciones .boton.suave, #acciones .boton.suave:hover { box-shadow: none; }
 
-/* --- Datos flotantes sobre el terreno en 3D ---
-   Cada tarjeta nace de un punto que está DENTRO del terreno y se aparta hacia afuera, unida por una línea fina.
-   El marcador mide cero: el punto queda justo en su centro y la tarjeta se coloca con --dx y --dy (acomodarTarjetas). */
-.flota { --ancho: 222px; --alto: 84px; position: relative; width: 0; height: 0; pointer-events: none; }
-.flota .base { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(13, 27, 46, .6); }
-.flota .linea { position: absolute; left: 0; top: -0.75px; height: 1.5px; width: var(--largo, 0px); transform-origin: 0 50%; transform: rotate(var(--giro, 0rad));
-                background: linear-gradient(to right, #fff, rgba(255, 255, 255, .45)); }
-.flota .tarjeta { position: absolute; left: calc(var(--dx, 0px) - var(--ancho) / 2); top: calc(var(--dy, -150px) - var(--alto) / 2);
-                  width: var(--ancho); height: var(--alto); padding: 10px 14px; border-radius: 14px; text-align: left; color: #fff; overflow: hidden;
-                  display: flex; flex-direction: column; justify-content: center;
-                  background: linear-gradient(180deg, rgba(8, 16, 32, .92), rgba(8, 16, 32, .78)); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-                  box-shadow: inset 0 0 0 1px rgba(156, 203, 255, .45), 0 10px 26px rgba(4, 6, 15, .45);
-                  animation: brotar .7s cubic-bezier(.2, 1.4, .4, 1) both; animation-delay: calc(var(--i, 0) * 150ms + 150ms); }
-.flota .tarjeta small { display: block; font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; color: var(--cielo); white-space: nowrap; }
-.flota .tarjeta b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.15; }
-.flota .tarjeta span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #DCE8F5; }
-/* Las tarjetas de datos llevan una letra más estilizada; la del cultivo, solo el nombre */
-.flota:not(.principal) .tarjeta b { font-family: var(--estilo); font-style: italic; font-weight: 600; font-size: 1.22rem; }
-.flota:not(.principal) .tarjeta span { font-family: var(--estilo); font-size: .86rem; }
-.flota.principal .tarjeta { background: linear-gradient(180deg, #FFFFFF, #DCEBFF); color: var(--tinta); box-shadow: 0 12px 30px rgba(4, 6, 15, .5); align-items: center; text-align: center; }
-.flota.principal .tarjeta b { font-family: var(--titulo); font-size: 1.55rem; }
-@keyframes brotar { from { opacity: 0; transform: scale(.35); } to { opacity: 1; transform: none; } }
+/* --- Letrero de datos del terreno en 3D ---
+   UN solo letrero, sujeto al centro del terreno por una línea fina: acompaña al terreno cuando la cámara se mueve.
+   El marcador mide cero (el punto queda en su centro) y el letrero se coloca con --x y --y (acomodarLetrero).
+   Es sencillo a propósito: arriba solo el nombre del cultivo y abajo cuatro círculos (relieve, agua, clima y
+   vegetación). Es de vidrio oscuro, igual que las barras de abajo: sin filo, oscuro arriba (detrás del nombre) y
+   cada vez más transparente hacia abajo, con el mapa difuminado detrás. Letra Sora. */
+.flota { position: relative; width: 0; height: 0; pointer-events: none; }
+.flota .base { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: #fff;
+               box-shadow: 0 0 0 3px rgba(156, 203, 255, .75), 0 0 0 4.5px rgba(13, 27, 46, .55); }
+.flota .base::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--cielo); animation: latir 2.6s ease-out infinite; }
+.flota .linea { position: absolute; left: 0; top: -1px; height: 2px; width: var(--largo, 0px); transform-origin: 0 50%; transform: rotate(var(--giro, 0rad));
+                background: linear-gradient(to right, #fff, var(--cielo)); border-radius: 2px; }
+.flota .letrero { position: absolute; left: var(--x, 60px); top: var(--y, -120px); width: max-content; min-width: 230px; max-width: calc(100vw - 24px);
+                  border-radius: 26px; overflow: hidden; font-family: var(--dato); color: var(--papel); text-align: center; pointer-events: auto;
+                  background: linear-gradient(180deg, rgba(4, 8, 18, .86) 0%, rgba(6, 12, 26, .62) 30%, rgba(10, 18, 34, .34) 62%, rgba(10, 18, 34, .24) 100%);
+                  box-shadow: 0 18px 44px rgba(4, 6, 15, .28);
+                  -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
+                  transform-origin: var(--ox, 0%) var(--oy, 50%); animation: brotar .7s cubic-bezier(.2, 1.3, .4, 1) .15s both; }
+/* arriba, solo el nombre del cultivo: centrado, claro y en negrilla */
+.flota .letrero header { padding: 15px 28px 9px; background: none; }
+.flota header b { display: block; font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--luz); text-shadow: 0 1px 10px rgba(4, 6, 15, .7); }
+/* abajo, un círculo por dato, con su nombre debajo */
+.flota ul { list-style: none; margin: 0; padding: 16px 20px 15px; display: flex; justify-content: center; gap: 14px; }
+.flota li { width: 86px; }
+.flota .circulo { width: 78px; height: 78px; margin: 0 auto; border-radius: 50%; display: grid; place-content: center; justify-items: center; gap: 3px;
+                  background: rgba(4, 8, 18, .42); color: var(--papel); box-shadow: none; }
+.flota .circulo b { font-size: 1.06rem; font-weight: 700; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; text-shadow: 0 1px 8px rgba(4, 6, 15, .75); }
+.flota li small { display: block; margin-top: 10px; font-size: .66rem; font-weight: 700; line-height: 1.2; letter-spacing: .08em; text-transform: uppercase; color: var(--luz);
+                  text-shadow: 0 1px 8px rgba(4, 6, 15, .85), 0 0 2px rgba(4, 6, 15, .6); }
+@keyframes brotar { from { opacity: 0; scale: .4; } to { opacity: 1; scale: 1; } }
+@keyframes latir { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(2.6); opacity: 0; } }
 
 /* --- Ficha del cultivo: hoja que entra por la derecha --- */
 #ficha { position: absolute; right: 0; top: 0; bottom: 0; width: var(--ancho-ficha); z-index: 7; background: var(--papel);
@@ -346,8 +367,14 @@ body.con-ficha #ficha { transform: none; }
   #guia { top: auto; bottom: 34px; left: 50%; width: max-content; max-width: 92vw; border-radius: 22px; }
   body.con-ficha #resultados { right: 0; }
   #fila-resultados { flex-direction: column; gap: 12px; } #panel-terreno { border-left: 0; padding-left: 0; align-self: stretch; }
+  /* teléfonos: el letrero se achica */
+  .flota .letrero { border-radius: 20px; } .flota header b { font-size: 1.12rem; } .flota .letrero header { padding: 9px 16px; }
+  .flota ul { gap: 8px; padding: 10px 12px 9px; } .flota li { width: 64px; } .flota .circulo { width: 58px; height: 58px; gap: 2px; }
+  .flota .circulo b { font-size: .8rem; } .flota li small { margin-top: 8px; font-size: .58rem; letter-spacing: .05em; }
 }
 @media (max-height: 780px) {      /* laptops bajitas: la fila de cultivos ocupa menos */
+  .flota header b { font-size: 1.28rem; } .flota .letrero header { padding: 10px 22px; } .flota ul { gap: 11px; padding: 12px 16px 11px; }
+  .flota li { width: 74px; } .flota .circulo { width: 68px; height: 68px; } .flota .circulo b { font-size: .94rem; } .flota li small { margin-top: 9px; }
   #resultados { padding-top: 14px; padding-bottom: 12px; }
   #titulo-resultados { font-size: 1.5rem; }
   .sobre .foto { height: 76px; }
@@ -358,7 +385,8 @@ body.con-ficha #ficha { transform: none; }
   .estudio .sello { width: 150px; } .estudio h2 { font-size: 1.45rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .flota .tarjeta, #guia.pulso { animation: none; }
+  .flota .letrero, .flota .base::after, #guia.pulso { animation: none; }
+  .flota .base::after { display: none; }
   #ficha, .sobre, .boton, #empezar { transition: none; }
 }
 </style>
@@ -459,7 +487,6 @@ body.con-ficha #ficha { transform: none; }
   <div id="fila-resultados"><div id="sobres" role="list"></div><div id="panel-terreno"></div></div>
   <p id="otros"></p>
   <div id="elige-planta"></div>
-  <p id="nota-3d">Las plantas son modelos para imaginar el terreno sembrado: están agrandadas y no muestran el tamaño ni la distancia real de siembra. Arrastra para mirar desde otro lado.</p>
   <div id="acciones">
     <button class="boton suave" id="ver-3d"><svg class="icono"><use id="icono-3d" href="#i-montana"/></svg><span>Ver mi terreno en 3D</span></button>
     <button class="boton suave" id="otro-terreno">Analizar otro terreno</button>
@@ -687,6 +714,7 @@ function dibujarEstrellas() {
 // es decir retrógrada) y por eso cruza en sentido contrario al giro, subiendo hacia el noroeste.
 const SEGUNDOS_POR_VUELTA = 150, SEGUNDOS_POR_ORBITA = 17;      // tiempos de dibujo, no reales
 const ORBITA = { radio: 1.2, abertura: 26 * Math.PI / 180, inclinacion: 8.4 * Math.PI / 180 };
+const ESCALA_SATELITE = 1 / 3;      // tamaño del dibujo del satélite respecto del original
 const giro = { activo: false, id: 0, antes: 0, lon: LON_PORTADA, lat: LAT_PORTADA, fase: 2.2, radio: 0, arrastrando: false };
 function iniciarGiro() {
   if (giro.activo || !mapa) return;
@@ -738,21 +766,37 @@ function dibujarOrbita() {
   }
   // el satélite avanza con el ángulo bajando: por delante del planeta sube (pasada ascendente)
   const angulo = -giro.fase;
-  for (let k = 26; k >= 1; k--) {                                        // estela
+  // qué tan cerca de quien mira está un punto de la órbita: 0 detrás del planeta, 1 al frente (con arranque y llegada suaves)
+  const cercania = (p) => { const u = (p.z / (ORBITA.radio * R) + 1) / 2; return u * u * (3 - 2 * u); };
+  for (let k = 26; k >= 1; k--) {                                        // estela: más fina y tenue cuanto más lejos
     const p = puntoDeOrbita(angulo + k * 0.022), q = puntoDeOrbita(angulo + (k - 1) * 0.022);
     if (tapado(p) || tapado(q)) continue;
-    c.strokeStyle = `rgba(200,228,255,${(0.55 * (1 - k / 26)).toFixed(3)})`; c.lineWidth = 2.2 * (1 - k / 30);
+    const cerca = cercania(q);
+    c.strokeStyle = `rgba(200,228,255,${(0.55 * (1 - k / 26) * (0.35 + 0.65 * cerca)).toFixed(3)})`; c.lineWidth = (1 + 1.1 * cerca) * (1 - k / 30);
     c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(q.x, q.y); c.stroke();
   }
   const s = puntoDeOrbita(angulo);
-  if (tapado(s) || !NISAR.lista) return;
-  const tamano = Math.max(0.32, R / 640) * (1 + 0.2 * s.z / (ORBITA.radio * R)), atras = s.z < 0 ? 0.6 : 1;
+  if (!NISAR.lista) return;
+  // Profundidad de -1 (lo más lejos, detrás del planeta) a +1 (lo más cerca de quien mira). Con ella cambian
+  // el tamaño y el brillo de forma continua: al irse hacia atrás el satélite se achica y se apaga, como
+  // alejándose, y al volver crece y se enciende, como acercándose. Nunca aparece ni desaparece de golpe.
+  const hondo = s.z / (ORBITA.radio * R), suave = cercania(s);
+  const tamano = ESCALA_SATELITE * Math.max(0.32, R / 640) * (0.45 + 0.75 * suave);      // de 0,45 (lejos) a 1,2 (cerca)
+  let luz = 0.38 + 0.62 * suave;
+  // Por detrás, además, se funde con el brillo de la atmósfera justo antes de que el borde del planeta lo tape
+  const distancia = Math.hypot(s.x, s.y), alto = NISAR.alto * tamano;
+  if (hondo < 0) luz *= Math.max(0, Math.min(1, (distancia - R * 0.99) / (alto * 0.55)));
+  if (luz <= 0.01) return;
+  c.save();
+  if (hondo < 0) {          // lo que cae sobre el disco del planeta queda oculto: el satélite pasa por DETRÁS
+    c.beginPath(); c.rect(-medio, -medio, 2 * medio, 2 * medio); c.arc(0, 0, R + 1, 0, 2 * Math.PI, true); c.clip("evenodd");
+  }
   const brillo = c.createRadialGradient(s.x, s.y, 0, s.x, s.y, 150 * tamano);
-  brillo.addColorStop(0, `rgba(170,215,255,${0.22 * atras})`); brillo.addColorStop(1, "rgba(170,215,255,0)");
+  brillo.addColorStop(0, `rgba(170,215,255,${(0.26 * luz).toFixed(3)})`); brillo.addColorStop(1, "rgba(170,215,255,0)");
   c.fillStyle = brillo; c.fillRect(s.x - 160 * tamano, s.y - 160 * tamano, 320 * tamano, 320 * tamano);
   // El dibujo tiene la antena hacia arriba. Se gira para que la antena quede del lado contrario a la Tierra
   // (en NISAR el alimentador mira hacia arriba, a la antena, y la antena devuelve la señal hacia el suelo).
-  c.save(); c.translate(s.x, s.y); c.rotate(Math.atan2(s.y, s.x) + Math.PI / 2); c.scale(tamano, tamano); c.globalAlpha = atras;
+  c.translate(s.x, s.y); c.rotate(Math.atan2(s.y, s.x) + Math.PI / 2); c.scale(tamano, tamano); c.globalAlpha = luz;
   c.drawImage(NISAR.imagen, -NISAR.cx, -NISAR.cy, NISAR.ancho, NISAR.alto);
   c.restore();
 }
@@ -863,12 +907,12 @@ function iniciarMapa() {
   }, 0));
   mapa.on("dragstart", () => { E.movidoAMano = true; giro.arrastrando = true; });       // si la persona ya movió el mapa, la ubicación automática no lo arrastra
   mapa.on("dragend", () => { const c = mapa.getCenter(); giro.lon = c.lng; giro.lat = c.lat; giro.arrastrando = false; });
+  mapa.on("move", acomodarLetrero);          // solo recoloca el letrero del 3D: no mueve la cámara
   mapa.on("wheel", () => { E.movidoAMano = true; pausarOrbita3D(); });
   mapa.on("mousedown", pausarOrbita3D);
   mapa.on("touchstart", pausarOrbita3D);
   mapa.on("click", alTocarElMapa);
   mapa.on("zoom", actualizarInstruccion);
-  mapa.on("move", acomodarTarjetas);          // solo recoloca las tarjetas del 3D: no mueve la cámara
   // Cada vez que la caja del mapa cambia de tamaño (Streamlit ajusta el alto después de abrir), el mapa se reacomoda
   let tamanoVisto = "";
   new ResizeObserver(() => {
@@ -1405,7 +1449,7 @@ const CIELO_GLOBO = { "atmosphere-blend": ["interpolate", ["linear"], ["zoom"], 
 const CIELO_3D = { "sky-color": "#7FB6F0", "horizon-color": "#EFE6FF", "fog-color": "#EFE6FF",
                    "sky-horizon-blend": 0.6, "horizon-fog-blend": 0.6, "fog-ground-blend": 0.3 };
 const orbita3D = { activa: false, id: 0, antes: 0, pausaHasta: 0 };
-let flotantes = [];
+let letrero3D = null;      // el letrero de datos: un marcador del mapa en el centro del terreno
 
 // Dibujos de las plantas (propios, hechos aquí): una mata para los cultivos de ciclo corto y un árbol para los de varios años
 function dibujarPlantas() {
@@ -1482,62 +1526,70 @@ function sembrarPlantas() {
   mapa.getSource("plantas").setData(datos);          // dibujos planos: respaldo mientras llega el modelo
   plantas3D.then((p) => p && p.setCultivo(c.clave, datos, { escalaVisual: escalaDePlanta(c.clave, paso) }));
 }
-// Tarjetas flotantes: los mismos datos de la ficha, resumidos, cada una con su fuente
+// Letrero del 3D: UN solo letrero, sujeto al centro del terreno por una línea (se mueve con el terreno).
+// Es sencillo a propósito: arriba el nombre del cultivo y abajo cuatro círculos con el dato principal de
+// relieve, agua, clima y vegetación. El detalle y las fuentes están en la ficha técnica (y al pasar el ratón).
 function soltarDatos() {
-  for (const f of flotantes) f.remove();
-  flotantes = [];
   const r = E.resultado, t = r.terreno, c = r.cultivos[E.planta3D], m = medidaDelTerreno();
-  const tarjetas = [];
-  if (t.altura != null) tarjetas.push(["Relieve · NASADEM", `${numero(t.altura)} m`, t.pendiente != null ? `inclinación de ${numero(t.pendiente)}°` : "de altura"]);
-  if (t.con_radar && t.encharcamiento != null) tarjetas.push(["Agua · radar NISAR",
-      t.encharcamiento >= 0.005 ? `${numero(t.encharcamiento * 100)} % de las pasadas` : "Sin agua acumulada",
-      t.humedad != null ? `suelo al ${numero(t.humedad * 100)} % de saturación` : "humedad del suelo: sin dato"]);
-  if (t.temp != null) tarjetas.push([t.detallado ? "Clima · POWER y CHELSA" : "Clima · NASA POWER", `${numero(t.temp, 1)} °C`, t.lluvia != null ? `${numero(t.lluvia)} mm de lluvia al año` : ""]);
-  if (t.con_radar && t.vegetacion != null) tarjetas.push(["Vegetación · radar NISAR", `Índice ${numero(t.vegetacion, 2)}`, "de 0 a 1"]);
-  else if (t.suelo) tarjetas.push(["Suelo · SoilGrids", t.suelo.replace(/^suelo /, ""), ""]);
-  // Cada tarjeta se ancla DENTRO del terreno: se camina desde el centro en su dirección hasta salir del
-  // contorno y se toma un punto a algo más de la mitad de ese camino.
-  const hastaElBorde = (angulo) => {
-    if (E.esquinas.length < 3) return m.radio;
-    const paso = Math.max(1, m.radio / 60);
-    let d = 0;
-    while (d < m.radio * 2 && dentroDelTerreno(m.lon + (d + paso) * Math.cos(angulo) / m.mLon, m.lat + (d + paso) * Math.sin(angulo) / m.mLat)) d += paso;
-    return d;
-  };
-  tarjetas.forEach(([fuente, valor, detalle], i) => {
-    const angulo = Math.PI / 4 + i * 2 * Math.PI / tarjetas.length, lejos = hastaElBorde(angulo) * 0.62;
-    const caja = document.createElement("div");
-    caja.className = "flota"; caja.style.setProperty("--i", i + 1);
-    caja.innerHTML = `<i class="linea"></i><i class="base"></i><div class="tarjeta"><small>${texto(fuente)}</small><b>${texto(valor)}</b>${detalle ? `<span>${texto(detalle)}</span>` : ""}</div>`;
-    flotantes.push(new maplibregl.Marker({ element: caja, anchor: "center" })
-      .setLngLat([m.lon + lejos * Math.cos(angulo) / m.mLon, m.lat + lejos * Math.sin(angulo) / m.mLat]).addTo(mapa));
-  });
-  if (c) {
-    const caja = document.createElement("div");
-    caja.className = "flota principal"; caja.style.setProperty("--i", 0);
-    caja.innerHTML = `<i class="linea"></i><i class="base"></i><div class="tarjeta"><b>${texto(c.nombre)}</b></div>`;      // solo el nombre: el detalle está en la ficha técnica
-    flotantes.push(new maplibregl.Marker({ element: caja, anchor: "center" }).setLngLat([m.lon, m.lat]).addTo(mapa));
+  // Cada dato: tipo, nombre, el valor corto que va dentro del círculo (sin ícono) y la explicación completa
+  const datos = [];
+  if (t.altura != null) datos.push({ tipo: "relieve", nombre: "Relieve", valor: `${numero(t.altura)} m`,
+      detalle: `${numero(t.altura)} m de altura${t.pendiente != null ? `, inclinación de ${numero(t.pendiente)}°` : ""} (NASADEM)` });
+  if (t.con_radar && t.humedad != null) datos.push({ tipo: "agua", nombre: "Agua", valor: `${numero(t.humedad * 100)} %`,
+      detalle: `Suelo al ${numero(t.humedad * 100)} % de saturación; `
+        + (t.encharcamiento >= 0.005 ? `agua acumulada en ${numero(t.encharcamiento * 100)} % de las pasadas` : "sin agua acumulada") + " (radar NISAR)" });
+  else if (t.con_radar && t.encharcamiento != null) datos.push({ tipo: "agua", nombre: "Agua", valor: `${numero(t.encharcamiento * 100)} %`,
+      detalle: `Agua acumulada en ${numero(t.encharcamiento * 100)} % de las pasadas (radar NISAR)` });
+  if (t.temp != null) datos.push({ tipo: "clima", nombre: "Clima", valor: `${numero(t.temp, 1)} °C`,
+      detalle: `${numero(t.temp, 1)} °C de temperatura media${t.lluvia != null ? `, ${numero(t.lluvia)} mm de lluvia al año` : ""} (${t.detallado ? "NASA POWER y CHELSA" : "NASA POWER"})` });
+  if (t.con_radar && t.vegetacion != null) datos.push({ tipo: "vegetacion", nombre: "Vegetación", valor: numero(t.vegetacion, 2),
+      detalle: `Índice de vegetación ${numero(t.vegetacion, 2)}, en una escala de 0 a 1 (radar NISAR)` });
+  // Mismo terreno y otra planta: solo cambia el nombre del cultivo (el letrero no vuelve a brotar)
+  if (letrero3D && letrero3D.pedido === r.pedido && c) {
+    letrero3D.getElement().querySelector("header b").textContent = c.nombre;
+    acomodarLetrero();
+    return;
   }
-  acomodarTarjetas();
+  quitarLetrero();
+  const circulos = datos.map((d) => `<li title="${texto(d.detalle)}"><div class="circulo"><b>${texto(d.valor)}</b></div><small>${texto(d.nombre)}</small></li>`).join("");
+  const cabecera = c ? `<header><b>${texto(c.nombre)}</b></header>` : "";
+  if (!cabecera && !circulos) return;
+  const caja = document.createElement("div");
+  caja.className = "flota";
+  caja.innerHTML = `<i class="linea"></i><i class="base"></i><div class="letrero">${cabecera}${circulos ? `<ul>${circulos}</ul>` : ""}</div>`;
+  letrero3D = new maplibregl.Marker({ element: caja, anchor: "center" }).setLngLat([m.lon, m.lat]).addTo(mapa);
+  letrero3D.pedido = r.pedido;
+  acomodarLetrero();
 }
-// Aparta cada tarjeta hacia afuera del terreno, en la misma dirección en que está su punto respecto del centro,
-// y ajusta su línea. Se repite al mover la cámara (solo cambia estilos: no mueve el mapa).
-function acomodarTarjetas() {
-  if (!flotantes.length || !E.tresD) return;
-  const [lon, lat] = centroDelTerreno(), centro = mapa.project([lon, lat]);
-  for (const f of flotantes) {
-    const caja = f.getElement(), principal = caja.classList.contains("principal"), p = mapa.project(f.getLngLat());
-    const rumbo = principal ? -Math.PI / 2 : Math.atan2(p.y - centro.y, p.x - centro.x);
-    // hacia los lados nunca menos de 200 px: así ninguna queda debajo de la tarjeta del cultivo, que va arriba al centro
-    const dx = principal ? 0 : (Math.cos(rumbo) < 0 ? -1 : 1) * Math.max(200, Math.abs(Math.cos(rumbo)) * 250), dy = principal ? -215 : Math.sin(rumbo) * 135 - 30;
-    caja.style.setProperty("--dx", dx.toFixed(0) + "px"); caja.style.setProperty("--dy", dy.toFixed(0) + "px");
-    caja.style.setProperty("--largo", Math.hypot(dx, dy).toFixed(0) + "px"); caja.style.setProperty("--giro", Math.atan2(dy, dx).toFixed(3) + "rad");
-  }
+function quitarLetrero() { if (letrero3D) letrero3D.remove(); letrero3D = null; }
+// Coloca el letrero al lado del terreno (a la derecha) y ajusta su línea. Se repite al mover la cámara: solo
+// cambia estilos, no mueve el mapa. Como la cámara gira alrededor del centro del terreno y la distancia depende
+// del acercamiento y no del giro, el letrero se queda quieto mientras la vista da la vuelta.
+function acomodarLetrero() {
+  if (!letrero3D || !E.tresD) return;
+  const caja = letrero3D.getElement(), cuadro = caja.querySelector(".letrero"), p = mapa.project(letrero3D.getLngLat());
+  const ancho = cuadro.offsetWidth, alto = cuadro.offsetHeight, anchoMapa = mapa.getContainer().clientWidth, m = medidaDelTerreno();
+  // el radio del terreno en pixeles, según el acercamiento actual
+  const metrosPorPixel = 40075016 * Math.cos(m.lat * Math.PI / 180) / (512 * Math.pow(2, mapa.getZoom()));
+  const aparte = Math.max(150, 0.62 * m.radio / metrosPorPixel + 40);
+  // límites de la pantalla: a los lados y arriba el borde (y el sitio de la marca), abajo la franja de botones
+  const piso = $("#titulo-resultados").getBoundingClientRect().top - 18;
+  let x = Math.min(p.x + aparte, anchoMapa - 12 - ancho);
+  x = Math.max(12, x);
+  const techo = x < 250 ? 76 : 14;
+  let y = Math.min(Math.max(p.y - alto * 0.62, techo), Math.max(techo, piso - alto));
+  // la línea va del punto al borde más cercano del letrero (un poco metida, para que no quede un hueco)
+  const hastaX = Math.max(x + 14, Math.min(p.x, x + ancho - 14)) - p.x, hastaY = Math.max(y + 14, Math.min(p.y, y + alto - 14)) - p.y;
+  caja.style.setProperty("--x", (x - p.x).toFixed(0) + "px"); caja.style.setProperty("--y", (y - p.y).toFixed(0) + "px");
+  caja.style.setProperty("--largo", Math.hypot(hastaX, hastaY).toFixed(0) + "px"); caja.style.setProperty("--giro", Math.atan2(hastaY, hastaX).toFixed(3) + "rad");
+  // el letrero brota desde el lado que mira al punto
+  caja.style.setProperty("--ox", (100 * Math.max(0, Math.min(1, (p.x - x) / ancho))).toFixed(0) + "%");
+  caja.style.setProperty("--oy", (100 * Math.max(0, Math.min(1, (p.y - y) / alto))).toFixed(0) + "%");
 }
 function elegirPlanta(i) {
   E.planta3D = i;
-  $("#elige-planta").innerHTML = "<span>Así se vería sembrado con:</span>" + E.resultado.cultivos.map((c, k) =>
-    `<button data-i="${k}" aria-pressed="${k === i}">${texto(c.nombre)}</button>`).join("");
+  $("#elige-planta").innerHTML = "<span>Así se vería sembrado con:</span><div class=\"opciones\" role=\"group\">" + E.resultado.cultivos.map((c, k) =>
+    `<button data-i="${k}" aria-pressed="${k === i}">${texto(c.nombre)}</button>`).join("") + "</div>";
   sembrarPlantas();
   soltarDatos();
 }
@@ -1550,10 +1602,9 @@ function cuadroDeOrbita3D(ahora) {
   orbita3D.id = requestAnimationFrame(cuadroDeOrbita3D);
 }
 function detenerOrbita3D() { orbita3D.activa = false; cancelAnimationFrame(orbita3D.id); }
-function limpiar3D() {          // deja el mapa plano y sin plantas ni tarjetas
+function limpiar3D() {          // deja el mapa plano, sin plantas y sin el letrero de datos
   detenerOrbita3D();
-  for (const f of flotantes) f.remove();
-  flotantes = [];
+  quitarLetrero();
   if (mapa.getSource("plantas")) mapa.getSource("plantas").setData(VACIO);
   plantas3D.then((p) => { if (p) { p.setVisible(false); p.setCultivo("maiz_suave", []); } });
   E.tresD = false;

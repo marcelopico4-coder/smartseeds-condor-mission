@@ -357,6 +357,69 @@ body.con-ficha #ficha { transform: none; }
 #ficha .boton.suave:hover { background: rgba(13, 27, 46, .08); }
 #ficha a { color: var(--azul); }
 
+/* --- Ficha de vidrio oscuro (15 nov, 07:00) ---
+   Va al final a propósito: cambia el aspecto de la ficha sin tocar su armado. La hoja entera es un vidrio oscuro que
+   deja ver el mapa difuminado; cada cuadro es oscuro arriba (detrás de su título) y se va aclarando hacia abajo,
+   igual que el letrero del 3D. Ya no hay letras pequeñas en azul: lo que eran van como pastillas de vidrio. */
+#ficha { background: rgba(5, 9, 19, .62); color: var(--papel);
+         -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35); }
+#ficha .cabeza::after { inset: 30% 0 0; background: linear-gradient(to top, rgba(5, 9, 19, .96), transparent); }
+#ficha .cabeza h2 { color: var(--luz); text-shadow: 0 1px 12px rgba(4, 6, 15, .7); }
+#ficha .cabeza i, .fuente header small, .cuenta small, #sello span { color: var(--luz); }
+#ficha .cabeza i { bottom: 66px; padding: 3px 12px; border-radius: 999px; background: rgba(4, 8, 18, .5);
+                   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-size: .82rem; }
+#sello { border: 0; background: rgba(4, 8, 18, .72); color: var(--luz); box-shadow: 0 10px 30px rgba(4, 6, 15, .4);
+         -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); }
+#cerrar-ficha { background: rgba(4, 8, 18, .55); color: var(--luz);
+                -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+#ficha h3 { color: var(--luz); font-weight: 700; }
+#ficha p { color: #DCE8F5; }
+#ficha .menor, #ficha .calculo, #ficha .avisos, #ficha .cifras span, .leyenda, .rango span, .cuenta span, .cuenta i,
+.nota-fila span small, .dato .cifra small, .dato .que em { color: rgba(234, 244, 255, .64); }
+#ficha a { color: var(--luz); }
+#ficha .orientacion { border-left-color: rgba(234, 244, 255, .4); }
+
+/* los cuadros: sin filo, oscuros arriba y cada vez más transparentes hacia abajo */
+#ficha .cifras, .fuente, .notas, .cuenta div { border: 0; border-radius: 22px;
+    background: linear-gradient(180deg, rgba(2, 5, 12, .74) 0%, rgba(6, 12, 26, .46) 34%, rgba(234, 244, 255, .05) 100%);
+    box-shadow: 0 14px 34px rgba(4, 6, 15, .22); }
+#ficha .cifras div + div { border-left-color: rgba(234, 244, 255, .1); }
+#ficha .cifras b, .cuenta b, .nota-fila b, .dato .cifra b, .dato.aviso .cifra b { color: #fff; }
+.cuenta div.total { background: var(--luz); color: var(--tinta); }
+.cuenta .total b { color: var(--tinta); } .cuenta .total small, .cuenta .total span { color: var(--gris); }
+.cuenta small { opacity: .8; }
+
+/* título de cada cuadro: el nombre a la izquierda y, en vez de la letra azul, una pastilla de vidrio */
+.fuente header { background: none; flex-wrap: wrap; align-items: center; padding: 16px 18px 8px; }
+.fuente header b { font-size: .92rem; color: var(--luz); }
+.fuente header small { padding: 4px 12px; border-radius: 999px; background: rgba(234, 244, 255, .12); font-size: .72rem; font-weight: 600; text-align: left; }
+.dato { padding: 13px 18px 14px; border-top-color: rgba(234, 244, 255, .08); }
+.dato .que strong { color: rgba(234, 244, 255, .82); }
+.dato.aviso { background: rgba(234, 244, 255, .035); }
+.notas { padding: 8px 18px; } .nota-fila { border-top-color: rgba(234, 244, 255, .08); }
+.medias > b { color: #F2C24B; } .contra > b { color: #FF8A68; }
+
+/* barras y rangos sobre oscuro */
+.barra, .rango .pista { background: rgba(234, 244, 255, .14); }
+.barra i { background: var(--luz); }
+.medias .barra i { background: #F2C24B; } .contra .barra i { background: #FF8A68; }
+.rango .ideal, .leyenda i { background: rgba(234, 244, 255, .46); }
+.rango .punto, .leyenda i.p { background: #fff; }
+.rango .punto { border-color: #0A1420; box-shadow: 0 0 0 1.5px #fff; }
+.medias .rango .punto { background: #F2C24B; box-shadow: 0 0 0 1.5px #F2C24B; } .contra .rango .punto { background: #FF8A68; box-shadow: 0 0 0 1.5px #FF8A68; }
+
+/* pestañas y botones: la misma barra de vidrio del 3D, con lo elegido en claro */
+.pestanas { border-radius: 999px; background: rgba(2, 5, 12, .5); }
+.pestanas button { border-radius: 999px; color: var(--papel); font-weight: 600; }
+.pestanas button[aria-selected="true"] { background: var(--luz); color: var(--tinta); font-weight: 700; }
+#ficha .boton { background: var(--luz); color: var(--tinta); box-shadow: none; border-radius: 999px; }
+#ficha .boton.suave { background: rgba(234, 244, 255, .12); color: var(--papel); box-shadow: none; }
+#ficha .boton.suave:hover { background: rgba(234, 244, 255, .22); }
+
+/* fuera de la ficha: las mismas letras pequeñas azules pasan a claro */
+#nota-terreno, #otros, #aviso, .campo small, #panel-terreno small, #portada .fuentes { color: var(--luz); }
+#otros, .campo small, #panel-terreno small { opacity: .78; }
+
 @media (max-width: 900px) {
   :root { --ancho-panel: 100vw; --ancho-ficha: 100vw; }
   #empezar { padding: 20px 26px 18px; border-radius: 30px; }

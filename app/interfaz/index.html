@@ -12,32 +12,38 @@
   Pasos (atributo data-paso del <body>):
     portada -> marcar -> opcionales -> cargando -> resultados (con la ficha de cada cultivo)
 
-  Colores (salen del logo del equipo: verde brote y blanco, sobre el azul del espacio):
-    noche  #04060F  fondo del espacio            panel  #0D1B2E  azul noche: paneles y texto
-    brote  #99D503  verde del logo: botones      hoja   #2E7D12  verde oscuro: aptitud sobre fondo claro
-    cielo  #9CCBFF  azul de la atmósfera: detalles   papel  #F7FBF2  fondo claro
-    alerta #F0603A  avisos
-  Letras: Bricolage Grotesque (títulos) y Atkinson Hyperlegible (texto; hecha para leerse fácil).
+  Colores (del sello del equipo: blanco y azul claro sobre el azul del espacio; sin verde):
+    noche  #04060F  fondo del espacio             panel  #0D1B2E  azul noche: textos y cabeceras
+    cielo  #9CCBFF  azul claro del sello          luz    #EAF4FF  blanco azulado: botones
+    papel  #F4F8FC  fondo claro de la ficha       azul   #1F5FA8  acento sobre fondo claro
+    ocre   #B98A00  "a medias"                    alerta #F0603A  avisos y "en contra"
+  Letras: Space Grotesk (títulos y cifras) y DM Sans (texto).
+
+  Regla del mapa (error del 14 nov): NUNCA lanzar easeTo, flyTo ni jumpTo desde un evento del propio
+  mapa ("moveend", "move", "zoom", "idle"). Las animaciones propias van con requestAnimationFrame.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<!-- Modelos 3D de las plantas: Three.js r170 guardado en vendor/ (sin internet) y el adaptador smartseeds-plantas3d.js -->
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
 <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js" crossorigin="anonymous"></script>
 <style>
 :root {
-  --noche: #04060F; --panel: #0D1B2E; --panel-claro: #1B3550; --brote: #99D503; --brote-sombra: #5F8A00;
-  --hoja: #2E7D12; --cielo: #9CCBFF; --papel: #F7FBF2; --alerta: #F0603A; --tinta: #0A1420;
-  --titulo: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
-  --texto: "Atkinson Hyperlegible", Verdana, sans-serif;
-  --ancho-panel: 392px; --ancho-ficha: 470px;
+  --noche: #04060F; --panel: #0D1B2E; --panel-claro: #1B3550; --cielo: #9CCBFF; --luz: #EAF4FF;
+  --papel: #F4F8FC; --azul: #1F5FA8; --ocre: #B98A00; --alerta: #F0603A; --tinta: #0A1420; --gris: #4A5A6A;
+  --titulo: "Space Grotesk", "Trebuchet MS", sans-serif;
+  --texto: "DM Sans", Verdana, sans-serif;
+  --estilo: "Fraunces", Georgia, "Times New Roman", serif;      /* tarjetas de datos del 3D */
+  --ancho-panel: 470px; --ancho-ficha: 500px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; overflow: hidden; background: var(--noche); color: var(--papel);
              font-family: var(--texto); font-size: 17px; line-height: 1.45; }
 button, input, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
-:focus-visible { outline: 3px solid var(--brote); outline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--cielo); outline-offset: 2px; }
 h1, h2, h3 { font-family: var(--titulo); margin: 0; line-height: 1.05; letter-spacing: -0.02em; }
 p { margin: 0; }
 svg.icono { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8;
@@ -47,10 +53,10 @@ svg.icono { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: curre
 .maplibregl-ctrl-attrib { font: 11px var(--texto); }
 
 /* --- Marca, arriba a la izquierda --- */
-#marca { position: absolute; left: 28px; top: 22px; z-index: 5; display: flex; align-items: center; gap: 10px;
+#marca { position: absolute; left: 28px; top: 20px; z-index: 5; display: flex; align-items: center; gap: 10px;
          font-family: var(--titulo); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.02em;
          color: var(--papel); text-shadow: 0 1px 12px rgba(4, 6, 15, .8); pointer-events: none; }
-#marca img { width: 46px; height: 46px; }
+#marca img { width: 46px; height: 46px; filter: brightness(0) invert(1); }      /* el logo de la plantita, todo en blanco */
 
 /* --- Cada paso se ve solo cuando toca --- */
 .paso { display: none; }
@@ -58,171 +64,302 @@ body[data-paso="portada"] #portada, body[data-paso="marcar"] #marcar,
 body[data-paso="opcionales"] #opcionales, body[data-paso="cargando"] #cargando,
 body[data-paso="resultados"] #resultados { display: block; }
 
-/* --- Portada: el mundo al centro, entre estrellas, y al frente el letrero que se toca --- */
-#estrellas, #halo { position: absolute; pointer-events: none; z-index: 1; opacity: 0; transition: opacity .9s ease; }
-#estrellas { inset: 0; width: 100%; height: 100%;
+/* --- Portada: el mundo girando entre estrellas, el satélite en su órbita y al frente el botón --- */
+#estrellas, #halo, #orbita { position: absolute; pointer-events: none; opacity: 0; transition: opacity .9s ease; }
+#estrellas { inset: 0; width: 100%; height: 100%; z-index: 1;
              -webkit-mask: radial-gradient(circle at var(--gx, 50%) var(--gy, 45%), transparent var(--gr, 30vh), #000 calc(var(--gr, 30vh) + 3px));
                      mask: radial-gradient(circle at var(--gx, 50%) var(--gy, 45%), transparent var(--gr, 30vh), #000 calc(var(--gr, 30vh) + 3px)); }
 /* Brillo azul de la atmósfera y sombra de la noche sobre el globo: lo vuelven una esfera con luz */
-#halo { left: var(--gx, 50%); top: var(--gy, 45%); width: calc(2 * var(--gr, 30vh)); height: calc(2 * var(--gr, 30vh));
+#halo { left: var(--gx, 50%); top: var(--gy, 45%); width: calc(2 * var(--gr, 30vh)); height: calc(2 * var(--gr, 30vh)); z-index: 1;
         transform: translate(-50%, -50%); border-radius: 50%;
         background: radial-gradient(circle at 30% 28%, rgba(255,255,255,.16), rgba(255,255,255,0) 46%),
                     linear-gradient(105deg, rgba(4,6,15,0) 58%, rgba(4,6,15,.5) 96%);
         box-shadow: 0 0 70px 14px rgba(96, 170, 255, .42), 0 0 6px 2px rgba(170, 215, 255, .75),
                     inset 0 0 46px 6px rgba(120, 190, 255, .38); }
-body[data-paso="portada"] #estrellas, body[data-paso="portada"] #halo { opacity: 1; }
-#portada { position: absolute; left: 50%; bottom: clamp(14px, 3.5vh, 40px); transform: translateX(-50%); z-index: 4;
-           width: min(700px, 92vw); text-align: center; }
-/* El letrero ES el botón: una etiqueta verde con una esquina cortada, como los paneles */
-#empezar { display: block; width: 100%; border: 0; text-align: left; cursor: pointer; color: var(--tinta); background: var(--brote);
-           padding: 22px 30px 20px; clip-path: polygon(0 0, calc(100% - 38px) 0, 100% 38px, 100% 100%, 0 100%);
-           transition: transform .14s ease, filter .14s ease; }
-#empezar:hover { transform: translateY(-3px); filter: brightness(1.06); }
-#empezar:active { transform: translateY(2px); }
-#empezar .pregunta { display: block; font-family: var(--titulo); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02;
-                     font-size: clamp(1.9rem, 3.5vw, 3rem); text-wrap: balance; padding-right: 30px; }
-#empezar .accion { display: inline-flex; align-items: center; gap: 9px; margin-top: 13px; font-weight: 700; font-size: 1.08rem;
-                   background: var(--tinta); color: var(--papel); border-radius: 999px; padding: 10px 20px; }
-#portada .apoyo { margin: 12px auto 0; max-width: 36em; font-size: 1.02rem; color: #DCE8F5; text-shadow: 0 1px 10px rgba(4,6,15,.9); }
-#portada .fuentes { margin: 8px auto 0; font-size: .8rem; color: var(--cielo); max-width: 46em; text-shadow: 0 1px 10px rgba(4,6,15,.9); }
-.boton { border: 0; border-radius: 999px; padding: 15px 26px; font-weight: 700; font-size: 1.05rem;
-         background: var(--brote); color: var(--tinta); display: inline-flex; align-items: center; gap: 10px;
-         transition: transform .12s ease, box-shadow .12s ease; box-shadow: 0 6px 0 var(--brote-sombra); }
-.boton:hover { transform: translateY(-1px); box-shadow: 0 7px 0 var(--brote-sombra); }
-.boton:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--brote-sombra); }
-.boton[disabled] { background: #51657A; color: #C4D0DC; box-shadow: none; cursor: not-allowed; transform: none; }
-.boton.suave { background: transparent; color: var(--papel); box-shadow: inset 0 0 0 2px var(--cielo); padding: 11px 18px;
-               font-size: .95rem; }
-.boton.suave:hover { background: rgba(156, 203, 255, .16); box-shadow: inset 0 0 0 2px var(--papel); transform: none; }
+#orbita { z-index: 2; left: var(--gx, 50%); top: var(--gy, 45%); transform: translate(-50%, -50%); }
+body[data-paso="portada"] #estrellas, body[data-paso="portada"] #halo, body[data-paso="portada"] #orbita { opacity: 1; }
+#portada { position: absolute; left: 50%; bottom: clamp(12px, 3vh, 36px); transform: translateX(-50%); z-index: 4;
+           width: min(760px, 94vw); text-align: center; }
+/* El botón de entrada: una sola pieza redondeada, con la pregunta en grande y la acción en negro */
+#empezar { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; border: 0; cursor: pointer;
+           color: var(--tinta); background: linear-gradient(180deg, #FFFFFF 0%, #D4E6FF 100%);
+           padding: 20px 44px 20px; border-radius: 40px; max-width: 100%;
+           box-shadow: 0 0 0 1px rgba(255,255,255,.7), 0 7px 0 #7FA6D8, 0 22px 60px rgba(96, 170, 255, .38);
+           transition: transform .16s ease, box-shadow .16s ease; }
+#empezar:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px #fff, 0 10px 0 #7FA6D8, 0 26px 70px rgba(96, 170, 255, .5); }
+#empezar:active { transform: translateY(5px); box-shadow: 0 0 0 1px #fff, 0 2px 0 #7FA6D8, 0 12px 30px rgba(96, 170, 255, .35); }
+#empezar .pregunta { font-family: var(--titulo); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02;
+                     font-size: clamp(1.45rem, 2.7vw, 2.25rem); }
+#empezar .accion { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.08rem;
+                   background: var(--noche); color: #fff; border-radius: 999px; padding: 11px 24px; }
+#portada .apoyo { margin: 18px auto 0; max-width: 36em; font-size: 1.02rem; color: #DCE8F5; text-shadow: 0 1px 10px rgba(4,6,15,.9); }
+#portada .fuentes { margin: 16px auto 0; font-size: .8rem; color: var(--cielo); max-width: 46em; text-shadow: 0 1px 10px rgba(4,6,15,.9); }
+
+.boton { border: 0; border-radius: 999px; padding: 14px 26px; font-weight: 700; font-size: 1.05rem;
+         background: var(--luz); color: var(--tinta); display: inline-flex; align-items: center; gap: 10px;
+         transition: transform .12s ease, box-shadow .12s ease; box-shadow: 0 5px 0 #7FA6D8; }
+.boton:hover { transform: translateY(-1px); box-shadow: 0 6px 0 #7FA6D8; }
+.boton:active { transform: translateY(4px); box-shadow: 0 1px 0 #7FA6D8; }
+.boton[disabled] { background: rgba(255,255,255,.14); color: #A9B8C8; box-shadow: none; cursor: not-allowed; transform: none; }
+.boton.suave { background: rgba(8, 14, 28, .45); color: var(--papel); box-shadow: inset 0 0 0 1.5px rgba(156, 203, 255, .55);
+               padding: 11px 18px; font-size: .95rem; }
+.boton.suave:hover { background: rgba(156, 203, 255, .18); box-shadow: inset 0 0 0 1.5px var(--papel); transform: none; }
 .boton.suave:active { transform: none; }
 .boton[hidden] { display: none; }
 
-/* --- Panel de la izquierda (marcar y preguntas): una etiqueta con una esquina cortada --- */
-.panel { position: absolute; left: 28px; top: 82px; width: var(--ancho-panel); z-index: 4; background: var(--panel);
-         padding: 24px 24px 22px; clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
-         max-height: calc(100% - 110px); overflow-y: auto; }
-.panel h2 { font-size: 1.85rem; font-weight: 800; padding-right: 26px; }
+/* --- Panel de la izquierda (marcar y preguntas): una bruma que se pierde hacia el mapa, sin recuadro --- */
+#bruma { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--ancho-panel) + 150px); z-index: 3; pointer-events: none;
+         opacity: 0; transition: opacity .5s ease;
+         background: linear-gradient(to right, rgba(4,8,18,.9) 0%, rgba(4,8,18,.78) 48%, rgba(4,8,18,.4) 76%, rgba(4,8,18,0) 100%);
+         -webkit-backdrop-filter: blur(9px); backdrop-filter: blur(9px);
+         -webkit-mask: linear-gradient(to right, #000 58%, transparent 100%); mask: linear-gradient(to right, #000 58%, transparent 100%); }
+body[data-paso="marcar"] #bruma, body[data-paso="opcionales"] #bruma { opacity: 1; }
+.panel { position: absolute; left: 0; top: 0; bottom: 0; width: var(--ancho-panel); z-index: 4;
+         padding: 96px 44px 28px 30px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(156,203,255,.35) transparent; }
+.panel h2 { font-size: 2.1rem; font-weight: 800; }
 .panel .explica { margin-top: 10px; color: #DCE8F5; }
 .panel .fila { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; align-items: center; }
-.buscar { display: flex; gap: 8px; margin-top: 18px; }
+.buscar { display: flex; gap: 8px; margin-top: 20px; }
 .campo select { width: 100%; }
-.buscar input, .campo select, .campo input { flex: 1; min-width: 0; background: var(--papel); color: var(--tinta); border: 0;
-                 border-radius: 10px; padding: 11px 13px; }
-.buscar button { border: 0; border-radius: 10px; background: var(--cielo); color: var(--tinta); font-weight: 700; padding: 0 14px; }
+.buscar input, .campo select, .campo input { flex: 1; min-width: 0; background: rgba(255,255,255,.09); color: #fff;
+                 border: 1px solid rgba(156, 203, 255, .38); border-radius: 14px; padding: 12px 14px; }
+.buscar input::placeholder, .campo input::placeholder { color: #A9BCD0; }
+.campo select option { color: var(--tinta); background: #fff; }
+.buscar button { border: 0; border-radius: 14px; background: var(--cielo); color: var(--tinta); font-weight: 700; padding: 0 18px; }
 .buscar button[disabled] { opacity: .55; cursor: progress; }
-#aviso { margin-top: 14px; min-height: 1.4em; color: var(--brote); font-weight: 700; }
-#esquinas { margin-top: 6px; color: var(--cielo); font-size: .95rem; }
+#aviso { margin-top: 14px; min-height: 1.4em; color: var(--cielo); font-weight: 700; }
+#esquinas { margin-top: 6px; color: #DCE8F5; font-size: .95rem; }
 .campo { margin-top: 18px; }
 .campo label, .campo .pregunta { display: block; font-weight: 700; margin-bottom: 7px; }
 .campo small { display: block; color: var(--cielo); margin-top: 5px; font-size: .86rem; }
 .dos { display: flex; gap: 8px; }
-.dos button { flex: 1; border: 0; border-radius: 10px; padding: 10px 8px; background: var(--panel-claro); color: var(--papel);
-              font-size: .98rem; }
-.dos button[aria-pressed="true"] { background: var(--brote); color: var(--tinta); font-weight: 700; }
-.campo input[type="number"] { width: 110px; flex: none; }
+.dos button { flex: 1; border: 1px solid rgba(156, 203, 255, .3); border-radius: 14px; padding: 10px 8px; background: rgba(255,255,255,.07);
+              color: var(--papel); font-size: .98rem; }
+.dos button[aria-pressed="true"] { background: var(--luz); border-color: var(--luz); color: var(--tinta); font-weight: 700; }
+.campo input[type="number"] { width: 120px; flex: none; }
+body[data-paso="marcar"] #marcar { display: flex; flex-direction: column; }
+.zoom-mapa { margin-top: auto; padding-top: 26px; }
+.zoom-mapa div { display: flex; flex-direction: column; gap: 8px; width: 190px; }
+.zoom-mapa .boton { justify-content: center; font-size: 1rem; padding: 12px 14px; }
 
-/* --- Cargando: el barrido del radar sobre el terreno --- */
-#cargando { position: absolute; inset: 0; z-index: 6; background: radial-gradient(circle at 50% 46%, rgba(4,6,15,.25), rgba(4,6,15,.9) 62%); }
+/* --- Instrucción flotante sobre el mapa mientras se marca --- */
+#guia { position: absolute; top: 20px; left: calc(50% + var(--ancho-panel) / 2); transform: translateX(-50%); z-index: 4; display: none;
+        align-items: center; gap: 10px; max-width: min(520px, calc(100vw - var(--ancho-panel) - 40px));
+        padding: 11px 20px; border-radius: 999px; font-weight: 700; color: #fff; text-align: left;
+        background: rgba(6, 12, 24, .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+        box-shadow: inset 0 0 0 1px rgba(156, 203, 255, .45), 0 8px 30px rgba(4, 6, 15, .5); pointer-events: none; }
+body[data-paso="marcar"] #guia { display: flex; }
+#guia .dedo { width: 30px; height: 30px; flex: none; border-radius: 50%; background: var(--cielo); color: var(--tinta);
+              display: grid; place-items: center; font-family: var(--titulo); font-weight: 800; font-size: .9rem; }
+#guia.pulso { animation: pulso .6s ease; }
+@keyframes pulso { 30% { transform: translateX(-50%) scale(1.08); box-shadow: inset 0 0 0 2px #fff, 0 8px 40px rgba(156, 203, 255, .6); } }
+
+/* --- El sello del equipo, animado: se usa cada vez que algo está cargando --- */
+.sello-svg { display: block; width: 100%; height: auto; overflow: visible; }
+#cargador { position: absolute; inset: 0; z-index: 30; display: grid; place-content: center; justify-items: center; gap: 6px;
+            text-align: center; padding: 24px; background: radial-gradient(circle at 50% 44%, #0B1730 0%, #04060F 68%);
+            opacity: 0; visibility: hidden; transition: opacity .42s ease, visibility 0s linear .42s; }
+#cargador.visible { opacity: 1; visibility: visible; transition: opacity .3s ease; }
+#cargador .sello { width: min(330px, 60vw); margin-bottom: -14px; }
+#cargador p, .estudio h2 { font-family: var(--titulo); font-weight: 700; letter-spacing: -0.01em; }
+#cargador p { font-size: 1.3rem; color: var(--papel); max-width: 22em; }
+.puntos::after { content: ""; animation: puntos 1.5s steps(4, end) infinite; }
+@keyframes puntos { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+
+/* --- Cargando el análisis: el sello, el mensaje y la lista de lo que se va leyendo --- */
+#cargando { position: absolute; inset: 0; z-index: 6; background: radial-gradient(circle at 50% 40%, rgba(8,16,34,.86), rgba(4,6,15,.97) 66%); }
 body[data-paso="cargando"] #cargando { display: grid; place-items: center; }
-.estudio { width: min(560px, 90vw); text-align: left; }
-.barrido { width: 150px; height: 150px; border-radius: 50%; margin: 0 0 26px; position: relative;
-           border: 2px solid rgba(153, 213, 3, .55); box-shadow: 0 0 0 26px rgba(153,213,3,.07), 0 0 0 54px rgba(153,213,3,.04); }
-.barrido::before { content: ""; position: absolute; inset: 0; border-radius: 50%;
-           background: conic-gradient(from 0deg, rgba(153,213,3,.75), rgba(153,213,3,0) 28%); animation: girar 1.6s linear infinite; }
-@keyframes girar { to { transform: rotate(360deg); } }
-.estudio h2 { font-size: 2.3rem; font-weight: 800; }
-.estudio ul { list-style: none; padding: 0; margin: 20px 0 0; }
-.estudio li { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; color: #8FA3B8; transition: color .3s; }
+.estudio { width: min(540px, 90vw); text-align: center; }
+.estudio .sello { width: min(250px, 48vw); margin: -20px auto -8px; }
+.estudio h2 { font-size: 1.75rem; line-height: 1.15; }
+.estudio ul { list-style: none; padding: 0; margin: 18px auto 0; text-align: left; width: fit-content; max-width: 100%; }
+.estudio li { display: flex; gap: 10px; align-items: flex-start; padding: 4px 0; color: #7F93A8; transition: color .3s; font-size: .98rem; }
 .estudio li.hecho { color: var(--papel); }
-.estudio li svg { color: #51657A; margin-top: 2px; }
-.estudio li.hecho svg { color: var(--brote); }
+.estudio li svg { color: #44566A; margin-top: 2px; }
+.estudio li.hecho svg { color: var(--cielo); }
 
 /* --- Resultados: una fila de "sobres de semillas" sobre el mapa --- */
 #resultados { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; padding: 22px 28px 20px;
               background: linear-gradient(to top, rgba(4,6,15,.96) 62%, rgba(4,6,15,0)); }
 body.con-ficha #resultados { right: var(--ancho-ficha); }
 #titulo-resultados { font-size: 1.9rem; font-weight: 800; max-width: 26em; }
-#resumen-terreno { margin-top: 6px; color: #DCE8F5; max-width: 62em; font-size: .98rem; }
-#nota-terreno { margin-top: 4px; font-size: .88rem; color: var(--cielo); max-width: 62em; }
+#nota-terreno { margin: 8px 0 0; font-size: 1.1rem; font-weight: 700; color: var(--cielo); max-width: 60em; text-align: left; }
+#fila-resultados { display: flex; gap: 26px; align-items: stretch; margin-top: 14px; }
+#sobres { flex: 0 1 auto; min-width: 0; }
+#panel-terreno { flex: 1 1 300px; min-width: 280px; max-width: 520px; align-self: center; padding: 4px 0 4px 26px; border-left: 1px solid rgba(156, 203, 255, .3); }
+#panel-terreno h3 { font-size: 1.15rem; font-weight: 700; }
+#panel-terreno .rejilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 18px; margin-top: 12px; }
+#panel-terreno small { display: block; font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; color: var(--cielo); }
+#panel-terreno b { display: block; font-family: var(--titulo); font-size: 1.3rem; font-weight: 700; line-height: 1.15; white-space: nowrap; }
+#panel-terreno p { margin-top: 12px; font-size: .82rem; color: #B9C8D8; }
+body.con-ficha #panel-terreno { display: none; }
 #nota-terreno.alerta { color: #FFB199; font-weight: 700; }
-#sobres { display: flex; gap: 16px; margin-top: 18px; padding: 10px 2px 6px; overflow-x: auto; align-items: flex-end; }
-.sobre { --diente: 7px; flex: none; width: 178px; padding: 0; border: 0; text-align: left; background: var(--papel); color: var(--tinta);
+#sobres { display: flex; gap: 16px; padding: 10px 2px 6px; overflow-x: auto; align-items: stretch; }
+.sobre { --diente: 7px; flex: none; width: 190px; padding: 0; border: 0; text-align: left; background: var(--papel); color: var(--tinta);
          position: relative; transition: transform .15s ease;
          -webkit-mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2 * var(--diente)) var(--diente) repeat-x,
                        linear-gradient(#000 0 0) bottom / 100% calc(100% - var(--diente)) no-repeat;
                  mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2 * var(--diente)) var(--diente) repeat-x,
                        linear-gradient(#000 0 0) bottom / 100% calc(100% - var(--diente)) no-repeat; }
-.sobre:first-child { width: 214px; }
 .sobre:hover, .sobre[aria-expanded="true"] { transform: translateY(-8px); }
-.sobre[aria-expanded="true"] { background: var(--brote); }
-.sobre .foto { height: 104px; margin: 15px 9px 0; background: var(--panel-claro) center / cover no-repeat; position: relative;
+.sobre[aria-expanded="true"] { background: var(--cielo); }
+.sobre .foto { height: 112px; margin: 15px 9px 0; background: var(--panel-claro) center / cover no-repeat; position: relative;
                display: grid; place-items: center; color: var(--cielo); font-family: var(--titulo); font-weight: 800; font-size: 2.6rem; }
-.sobre:first-child .foto { height: 128px; }
 .sobre .puesto { position: absolute; left: -4px; top: -6px; width: 34px; height: 34px; border-radius: 50%; background: var(--panel);
                  color: var(--papel); font-family: var(--titulo); font-weight: 800; font-size: 1.05rem; display: grid; place-items: center; }
 .sobre .datos { padding: 9px 11px 12px; }
 .sobre h3 { font-size: 1.22rem; font-weight: 800; }
 .sobre .aptitud { display: flex; align-items: baseline; gap: 5px; margin-top: 3px; }
-.sobre .aptitud b { font-family: var(--titulo); font-size: 1.5rem; color: var(--hoja); }
+.sobre .aptitud b { font-family: var(--titulo); font-size: 1.5rem; color: var(--azul); }
 .sobre[aria-expanded="true"] .aptitud b { color: var(--tinta); }
-.sobre .aptitud span, .sobre .linea { font-size: .82rem; color: #4A5A6A; }
+.sobre .aptitud span, .sobre .linea { font-size: .82rem; color: var(--gris); }
+.sobre[aria-expanded="true"] .aptitud span, .sobre[aria-expanded="true"] .linea { color: #22364C; }
 .sobre .linea { margin-top: 2px; display: flex; gap: 5px; align-items: center; }
 .sobre .linea svg { width: 1em; height: 1em; }
-body.en-3d #sobres, body.en-3d #resumen-terreno, body.en-3d #nota-terreno, body.en-3d #otros { display: none; }
-body.en-3d #resultados { background: linear-gradient(to top, rgba(4,6,15,.9) 40%, rgba(4,6,15,0)); }
 #acciones { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
 #otros { color: var(--cielo); font-size: .9rem; margin-top: 10px; max-width: 62em; }
+/* En 3D la franja de abajo se reduce: título, qué planta proyectar y los botones */
+#elige-planta, #nota-3d { display: none; }
+body.en-3d #fila-resultados, body.en-3d #nota-terreno, body.en-3d #otros { display: none; }
+body.en-3d #resultados { background: linear-gradient(to top, rgba(4,6,15,.92) 46%, rgba(4,6,15,0)); pointer-events: none; }
+body.en-3d #resultados > * { pointer-events: auto; }
+body.en-3d #elige-planta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+body.en-3d #nota-3d { display: block; margin-top: 8px; font-size: .84rem; color: var(--cielo); max-width: 60em; }
+#elige-planta span { color: #DCE8F5; font-size: .95rem; margin-right: 2px; }
+#elige-planta button { border: 1px solid rgba(156,203,255,.45); border-radius: 999px; padding: 7px 15px; background: rgba(8,14,28,.5);
+                       color: var(--papel); font-size: .93rem; }
+#elige-planta button[aria-pressed="true"] { background: var(--luz); border-color: var(--luz); color: var(--tinta); font-weight: 700; }
+
+/* --- Datos flotantes sobre el terreno en 3D ---
+   Cada tarjeta nace de un punto que está DENTRO del terreno y se aparta hacia afuera, unida por una línea fina.
+   El marcador mide cero: el punto queda justo en su centro y la tarjeta se coloca con --dx y --dy (acomodarTarjetas). */
+.flota { --ancho: 222px; --alto: 84px; position: relative; width: 0; height: 0; pointer-events: none; }
+.flota .base { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(13, 27, 46, .6); }
+.flota .linea { position: absolute; left: 0; top: -0.75px; height: 1.5px; width: var(--largo, 0px); transform-origin: 0 50%; transform: rotate(var(--giro, 0rad));
+                background: linear-gradient(to right, #fff, rgba(255, 255, 255, .45)); }
+.flota .tarjeta { position: absolute; left: calc(var(--dx, 0px) - var(--ancho) / 2); top: calc(var(--dy, -150px) - var(--alto) / 2);
+                  width: var(--ancho); height: var(--alto); padding: 10px 14px; border-radius: 14px; text-align: left; color: #fff; overflow: hidden;
+                  display: flex; flex-direction: column; justify-content: center;
+                  background: linear-gradient(180deg, rgba(8, 16, 32, .92), rgba(8, 16, 32, .78)); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+                  box-shadow: inset 0 0 0 1px rgba(156, 203, 255, .45), 0 10px 26px rgba(4, 6, 15, .45);
+                  animation: brotar .7s cubic-bezier(.2, 1.4, .4, 1) both; animation-delay: calc(var(--i, 0) * 150ms + 150ms); }
+.flota .tarjeta small { display: block; font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; color: var(--cielo); white-space: nowrap; }
+.flota .tarjeta b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.15; }
+.flota .tarjeta span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #DCE8F5; }
+/* Las tarjetas de datos llevan una letra más estilizada; la del cultivo, solo el nombre */
+.flota:not(.principal) .tarjeta b { font-family: var(--estilo); font-style: italic; font-weight: 600; font-size: 1.22rem; }
+.flota:not(.principal) .tarjeta span { font-family: var(--estilo); font-size: .86rem; }
+.flota.principal .tarjeta { background: linear-gradient(180deg, #FFFFFF, #DCEBFF); color: var(--tinta); box-shadow: 0 12px 30px rgba(4, 6, 15, .5); align-items: center; text-align: center; }
+.flota.principal .tarjeta b { font-family: var(--titulo); font-size: 1.55rem; }
+@keyframes brotar { from { opacity: 0; transform: scale(.35); } to { opacity: 1; transform: none; } }
 
 /* --- Ficha del cultivo: hoja que entra por la derecha --- */
 #ficha { position: absolute; right: 0; top: 0; bottom: 0; width: var(--ancho-ficha); z-index: 7; background: var(--papel);
          color: var(--tinta); overflow-y: auto; transform: translateX(102%); transition: transform .28s ease; }
 body.con-ficha #ficha { transform: none; }
-#ficha .cabeza { height: 236px; background: var(--panel) center / cover no-repeat; position: relative; }
+#ficha .cabeza { height: 216px; background: var(--panel) center / cover no-repeat; position: relative; }
 #ficha .cabeza::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(to top, rgba(10,20,32,.92), transparent); }
-#ficha .cabeza h2 { position: absolute; left: 26px; bottom: 16px; right: 110px; z-index: 1; color: var(--papel); font-size: 2.5rem; font-weight: 800; }
+#ficha .cabeza h2 { position: absolute; left: 26px; bottom: 16px; right: 120px; z-index: 1; color: var(--papel); font-size: 2.4rem; font-weight: 800; }
 #ficha .cabeza i { position: absolute; left: 26px; bottom: 62px; z-index: 1; color: var(--cielo); font-size: .9rem; }
-#sello { position: absolute; right: 22px; bottom: -34px; z-index: 2; width: 92px; height: 92px; border-radius: 50%; background: var(--hoja);
+#sello { position: absolute; right: 22px; bottom: -34px; z-index: 2; width: 92px; height: 92px; border-radius: 50%; background: var(--panel);
          color: var(--papel); display: grid; place-content: center; text-align: center; font-family: var(--titulo); border: 4px solid var(--papel); }
 #sello b { font-size: 2rem; font-weight: 800; line-height: 1; }
-#sello span { font: .68rem var(--texto); }
+#sello span { font: .68rem var(--texto); color: var(--cielo); }
 #cerrar-ficha { position: absolute; right: 14px; top: 14px; z-index: 3; width: 42px; height: 42px; border-radius: 50%; border: 0;
                 background: var(--papel); color: var(--tinta); display: grid; place-items: center; }
-#ficha .cuerpo { padding: 44px 26px 30px; }
-#ficha h3 { font-size: 1.42rem; font-weight: 800; margin: 26px 0 9px; color: var(--panel); }
-#ficha h3:first-child { margin-top: 0; }
-#ficha p { margin-top: 9px; max-width: 34em; }
-#ficha .cifras { display: flex; gap: 22px; margin-top: 4px; flex-wrap: wrap; }
-#ficha .cifras div { flex: 1; min-width: 150px; }
-#ficha .cifras div b { display: block; font-family: var(--titulo); font-size: 1.7rem; font-weight: 800; color: var(--panel); line-height: 1.1; }
-#ficha .cifras div span { font-size: .86rem; color: #4A5A6A; }
-#ficha ul { list-style: none; padding: 0; margin: 8px 0 0; }
-#ficha li { display: flex; gap: 10px; padding: 6px 0; align-items: flex-start; }
-#ficha li svg { margin-top: 3px; }
-#ficha li.favor svg { color: var(--hoja); } #ficha li.medias svg { color: #B98A00; }
-#ficha li.contra svg { color: var(--alerta); } #ficha li.aviso svg { color: #7A8A99; }
-#ficha .menor { font-size: .84rem; color: #4A5A6A; }
-#ficha .orientacion { border-left: 4px solid var(--cielo); padding-left: 12px; }
+#ficha .cuerpo { padding: 42px 26px 30px; }
+#ficha h3 { font-size: 1.36rem; font-weight: 800; margin: 28px 0 8px; color: var(--panel); }
+#ficha p { margin-top: 9px; max-width: 36em; }
+#ficha .cifras { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(13, 27, 46, .16); border-radius: 14px; background: #fff; }
+#ficha .cifras div { padding: 12px 16px 13px; }
+#ficha .cifras div + div { border-left: 1px solid rgba(13, 27, 46, .12); }
+#ficha .cifras b { display: block; font-family: var(--titulo); font-size: 1.75rem; font-weight: 700; color: var(--panel); line-height: 1.1; }
+#ficha .cifras span { font-size: .84rem; color: var(--gris); }
+#ficha .menor { font-size: .84rem; color: var(--gris); }
+/* Cómo sale el puntaje: promedio de las notas y peor nota, con su peso */
+.cuenta { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 8px; margin-top: 12px; }
+.cuenta div { border: 1px solid rgba(13, 27, 46, .16); border-radius: 12px; background: #fff; padding: 10px 12px; }
+.cuenta div.total { background: var(--panel); color: #fff; border-color: var(--panel); }
+.cuenta small { display: block; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gris); }
+.cuenta .total small { color: var(--cielo); }
+.cuenta b { display: block; font-family: var(--titulo); font-size: 1.7rem; font-weight: 700; line-height: 1.1; }
+.cuenta span { display: block; font-size: .76rem; color: var(--gris); } .cuenta .total span { color: #DCE8F5; }
+.cuenta i { align-self: center; font-style: normal; font-family: var(--titulo); font-size: 1.3rem; color: var(--gris); }
+/* Pestañas de la ficha: resumen, terreno y satélites, mercado y suelo */
+.pestanas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; margin-top: 18px; border-radius: 14px; background: rgba(13, 27, 46, .08); }
+.pestanas button { border: 0; border-radius: 10px; padding: 10px 6px; background: transparent; color: var(--gris); font-weight: 700; font-size: .9rem; line-height: 1.15; }
+.pestanas button[aria-selected="true"] { background: var(--panel); color: #fff; }
+.hoja[hidden] { display: none; }
+#ficha .hoja h3:first-child { margin-top: 20px; }
+/* Gráfico de notas: una barra por cada dato que cuenta, de la más baja a la más alta */
+.notas { margin-top: 12px; border: 1px solid rgba(13, 27, 46, .16); border-radius: 14px; background: #fff; padding: 6px 14px; }
+.nota-fila { display: grid; grid-template-columns: 42% 1fr 34px; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid rgba(13, 27, 46, .08); }
+.nota-fila:first-child { border-top: 0; }
+.nota-fila span { font-size: .88rem; line-height: 1.2; } .nota-fila span small { display: block; font-size: .7rem; color: var(--gris); }
+.nota-fila b { font-family: var(--titulo); font-size: 1.05rem; text-align: right; }
+.barra { height: 9px; border-radius: 5px; background: rgba(13, 27, 46, .1); overflow: hidden; }
+.barra i { display: block; height: 100%; border-radius: 5px; background: var(--azul); }
+.medias .barra i { background: var(--ocre); } .contra .barra i { background: var(--alerta); }
+.medias > b { color: var(--ocre); } .contra > b { color: var(--alerta); }
+.avisos { margin-top: 10px; font-size: .84rem; color: var(--gris); }
+/* Lectura del terreno: un bloque por fuente; cada dato en una fila con su cifra y su gráfico */
+.fuente { margin-top: 16px; border: 1px solid rgba(13, 27, 46, .16); border-radius: 14px; background: #fff; overflow: hidden; }
+.fuente header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 14px; background: var(--panel); color: #fff; }
+.fuente header b { font: 700 .8rem var(--titulo); letter-spacing: .1em; text-transform: uppercase; }
+.fuente header small { font-size: .74rem; color: var(--cielo); text-align: right; }
+.dato { display: grid; grid-template-columns: 118px 1fr; gap: 4px 14px; padding: 12px 14px 13px; border-top: 1px solid rgba(13, 27, 46, .1); align-items: start; }
+.fuente header + .dato { border-top: 0; }
+.dato .cifra b { display: block; font-family: var(--titulo); font-size: 1.45rem; font-weight: 700; line-height: 1.1; color: var(--panel); }
+.dato .cifra.frase b { font-size: 1rem; }
+.dato .cifra small { display: block; font-size: .72rem; color: var(--gris); line-height: 1.25; margin-top: 2px; }
+.dato .que { min-width: 0; }
+.dato .que strong { display: block; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gris); }
+.dato .que p { margin: 3px 0 0; font-size: .88rem; max-width: none; }
+.dato .que em { display: block; font-style: normal; font-size: .72rem; color: var(--gris); margin-top: 5px; }
+.dato.aviso { background: rgba(13, 27, 46, .03); } .dato.aviso .cifra b { color: #3B4B5C; }
+.dato.ancho { grid-template-columns: 1fr; }
+/* Gráfico de rango: la franja es lo que le va bien al cultivo; el punto, tu terreno */
+.rango { position: relative; height: 34px; margin: 8px 6px 0; }
+.rango .pista { position: absolute; left: 0; right: 0; top: 6px; height: 8px; border-radius: 4px; background: rgba(13, 27, 46, .1); }
+.rango .ideal { position: absolute; top: 0; bottom: 0; border-radius: 4px; background: #A9C8EE; }
+.rango .punto { position: absolute; top: 3px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--azul); border: 2.5px solid #fff; box-shadow: 0 0 0 1px var(--azul); }
+.medias .rango .punto { background: var(--ocre); box-shadow: 0 0 0 1px var(--ocre); } .contra .rango .punto { background: var(--alerta); box-shadow: 0 0 0 1px var(--alerta); }
+.rango span { position: absolute; top: 19px; font-size: .68rem; color: var(--gris); transform: translateX(-50%); white-space: nowrap; }
+.leyenda { display: flex; gap: 14px; margin-top: 10px; font-size: .74rem; color: var(--gris); flex-wrap: wrap; }
+.leyenda i { display: inline-block; width: 18px; height: 8px; border-radius: 4px; background: #A9C8EE; vertical-align: 0; margin-right: 5px; }
+.leyenda i.p { width: 10px; height: 10px; border-radius: 50%; background: var(--azul); vertical-align: -1px; }
+.calculo { margin-top: 10px; font-size: .86rem; color: var(--gris); }
+#ficha .orientacion { border-left: 3px solid var(--cielo); padding-left: 12px; }
 #ficha .pie { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
-#ficha .boton.suave { color: var(--tinta); box-shadow: inset 0 0 0 2px var(--panel); }
+#ficha .boton { background: var(--panel); color: #fff; box-shadow: 0 5px 0 #000814; }
+#ficha .boton.suave { background: transparent; color: var(--tinta); box-shadow: inset 0 0 0 1.5px var(--panel); }
 #ficha .boton.suave:hover { background: rgba(13, 27, 46, .08); }
-#ficha a { color: var(--panel); }
+#ficha a { color: var(--azul); }
 
 @media (max-width: 900px) {
-  :root { --ancho-panel: calc(100vw - 32px); --ancho-ficha: 100vw; }
-  #empezar { padding: 20px 22px 18px; }
-  .panel { left: 16px; top: 70px; } #marca { left: 16px; }
+  :root { --ancho-panel: 100vw; --ancho-ficha: 100vw; }
+  #empezar { padding: 20px 26px 18px; border-radius: 30px; }
+  #marca { left: 16px; }
+  .panel { bottom: auto; max-height: 66vh; padding: 78px 20px 30px; }
+  #bruma { width: 100%; bottom: auto; height: 74vh; background: linear-gradient(to bottom, rgba(4,8,18,.9) 0%, rgba(4,8,18,.76) 60%, rgba(4,8,18,0) 100%);
+           -webkit-mask: linear-gradient(to bottom, #000 62%, transparent 100%); mask: linear-gradient(to bottom, #000 62%, transparent 100%); }
+  #guia { top: auto; bottom: 34px; left: 50%; width: max-content; max-width: 92vw; border-radius: 22px; }
   body.con-ficha #resultados { right: 0; }
+  #fila-resultados { flex-direction: column; gap: 12px; } #panel-terreno { border-left: 0; padding-left: 0; align-self: stretch; }
 }
 @media (max-height: 780px) {      /* laptops bajitas: la fila de cultivos ocupa menos */
   #resultados { padding-top: 14px; padding-bottom: 12px; }
   #titulo-resultados { font-size: 1.5rem; }
-  .sobre .foto { height: 70px; } .sobre:first-child .foto { height: 86px; }
-  .sobre { width: 164px; } .sobre:first-child { width: 190px; }
-  #sobres { margin-top: 10px; } #acciones { margin-top: 8px; }
-  .panel { top: 70px; padding: 18px 20px; } .panel h2 { font-size: 1.5rem; } .campo { margin-top: 12px; }
+  .sobre .foto { height: 76px; }
+  .sobre { width: 172px; }
+  #fila-resultados { margin-top: 8px; } #acciones { margin-top: 8px; } #nota-terreno { margin-top: 6px; font-size: 1rem; }
+  .panel { padding-top: 80px; } .panel h2 { font-size: 1.6rem; } .campo { margin-top: 12px; }
+  #empezar { padding: 16px 36px 15px; gap: 10px; } #portada .apoyo { margin-top: 10px; font-size: .95rem; }
+  .estudio .sello { width: 150px; } .estudio h2 { font-size: 1.45rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .barrido::before { animation: none; } #ficha, .sobre, .boton { transition: none; }
+  .flota .tarjeta, #guia.pulso { animation: none; }
+  #ficha, .sobre, .boton, #empezar { transition: none; }
 }
 </style>
 </head>
@@ -230,8 +367,6 @@ body.con-ficha #ficha { transform: none; }
 
 <!-- Íconos propios (trazo redondo, todos del mismo grosor) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-semilla" viewBox="0 0 24 24"><path d="M12 21c-4.4 0-7-3.2-7-7.4C5 8.6 8.2 4.2 12 3c3.8 1.2 7 5.6 7 10.6 0 4.2-2.6 7.4-7 7.4z"/><path d="M12 21V10"/><path d="M12 14c-1.6-.4-2.8-1.4-3.4-3"/></symbol>
-  <symbol id="i-brote" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12c0-3.6-2.4-6-6.5-6C5.5 9.8 8 12 12 12z"/><path d="M12 15c0-3 2-5 6-5 0 3.2-2.2 5-6 5z"/><path d="M7 21h10"/></symbol>
   <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.7 2.7L16.2 9.4"/></symbol>
   <symbol id="i-medio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></symbol>
   <symbol id="i-no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
@@ -241,28 +376,34 @@ body.con-ficha #ficha { transform: none; }
   <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-montana" viewBox="0 0 24 24"><path d="M3 19l6.5-11 3.5 5.5 2-3L21 19z"/><path d="M8 10.5l1.5 1.6 1.4-1"/></symbol>
   <symbol id="i-ubicacion" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></symbol>
+  <symbol id="i-ficha" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.2 16.2L21 21M8 11h6M11 8v6"/></symbol>
+  <symbol id="i-menos" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.2 16.2L21 21M8 11h6"/></symbol>
 </svg>
 
 <div id="mapa" aria-label="Mapa para marcar tu terreno"></div>
 
 <div id="marca"><img src="logo.png" alt="" width="46" height="46">SmartSeeds</div>
 
-<!-- 1. Portada: estrellas y brillo alrededor del globo; al frente, el letrero que se toca -->
+<!-- 1. Portada: estrellas, brillo y la órbita del satélite alrededor del globo; al frente, el botón -->
 <canvas id="estrellas" aria-hidden="true"></canvas>
 <div id="halo" aria-hidden="true"></div>
+<canvas id="orbita" aria-hidden="true"></canvas>
 <section id="portada" class="paso">
   <button id="empezar">
     <span class="pregunta">¿Qué puedo sembrar en mi terreno?</span>
-    <span class="accion"><svg class="icono"><use href="#i-brote"/></svg>Toca aquí para buscar tu terreno</span>
+    <span class="accion">Toca aquí para buscar tu terreno</span>
   </button>
-  <p class="apoyo">Marca tu terreno en el mapa y mira qué cultivos le convienen, según lo que ve el radar NISAR de la NASA, el clima y cómo va el mercado.</p>
+  <p class="apoyo" hidden></p>
   <p class="fuentes">Equipo Condor Mission, NASA Space Apps 2026. Datos: NISAR, NASADEM, NASA POWER y Blue Marble; CHELSA y SoilGrids; INEC-ESPAC y MAG-SIPA; FAO EcoCrop.</p>
 </section>
 
 <!-- 2. Marcar el terreno -->
+<div id="bruma" aria-hidden="true"></div>
+<div id="guia" aria-live="polite"><span class="dedo" id="guia-numero">1</span><span id="guia-texto"></span></div>
 <section id="marcar" class="paso panel" aria-live="polite">
   <h2>Marca tu terreno</h2>
-  <p class="explica" id="instruccion">Acerca el mapa hasta ver tu terreno y toca sus esquinas, una por una.</p>
+  <p class="explica" id="instruccion">Acerca el mapa hasta ver tu terreno.</p>
   <form class="buscar" id="form-buscar">
     <input id="lugar" type="search" placeholder="Escribe tu pueblo o parroquia" aria-label="Buscar un lugar">
     <button type="submit">Buscar</button>
@@ -276,6 +417,10 @@ body.con-ficha #ficha { transform: none; }
     <button class="boton suave" id="deshacer" hidden>Quitar la última esquina</button>
     <button class="boton suave" id="borrar" hidden>Empezar de nuevo</button>
     <button class="boton suave" id="mi-ubicacion"><svg class="icono"><use href="#i-ubicacion"/></svg>Ir a donde estoy</button>
+  </div>
+  <div class="zoom-mapa">
+    <div><button class="boton suave" id="acercar" aria-label="Acercar el mapa"><svg class="icono"><use href="#i-mas"/></svg>Acercar</button>
+         <button class="boton suave" id="alejar" aria-label="Alejar el mapa"><svg class="icono"><use href="#i-menos"/></svg>Alejar</button></div>
   </div>
 </section>
 
@@ -298,11 +443,11 @@ body.con-ficha #ficha { transform: none; }
   </div>
 </section>
 
-<!-- 4. Cargando -->
+<!-- 4. Cargando el análisis -->
 <section id="cargando" class="paso" aria-live="polite">
   <div class="estudio">
-    <div class="barrido" aria-hidden="true"></div>
-    <h2>Listo. Estamos estudiando tu terreno.</h2>
+    <div class="sello" id="sello-estudio" aria-hidden="true"></div>
+    <h2>Obteniendo datos satelitales y datos del terreno<span class="puntos"></span></h2>
     <ul id="pasos-estudio"></ul>
   </div>
 </section>
@@ -310,12 +455,13 @@ body.con-ficha #ficha { transform: none; }
 <!-- 5. Resultados -->
 <section id="resultados" class="paso">
   <h2 id="titulo-resultados"></h2>
-  <p id="resumen-terreno"></p>
   <p id="nota-terreno"></p>
-  <div id="sobres" role="list"></div>
+  <div id="fila-resultados"><div id="sobres" role="list"></div><div id="panel-terreno"></div></div>
   <p id="otros"></p>
+  <div id="elige-planta"></div>
+  <p id="nota-3d">Las plantas son modelos para imaginar el terreno sembrado: están agrandadas y no muestran el tamaño ni la distancia real de siembra. Arrastra para mirar desde otro lado.</p>
   <div id="acciones">
-    <button class="boton suave" id="ver-3d"><svg class="icono"><use href="#i-montana"/></svg><span>Ver mi terreno en 3D</span></button>
+    <button class="boton suave" id="ver-3d"><svg class="icono"><use id="icono-3d" href="#i-montana"/></svg><span>Ver mi terreno en 3D</span></button>
     <button class="boton suave" id="otro-terreno">Analizar otro terreno</button>
     <button class="boton suave" id="finalizar">Finalizar</button>
   </div>
@@ -328,23 +474,84 @@ body.con-ficha #ficha { transform: none; }
   <div class="cuerpo" id="ficha-cuerpo"></div>
 </aside>
 
+<!-- Cargador general: el sello del equipo girando. Arranca visible mientras llega el planeta -->
+<div id="cargador" class="visible" role="status">
+  <div class="sello" id="sello-cargador" aria-hidden="true"></div>
+  <p><span id="cargador-texto">Preparando la vista del planeta</span><span class="puntos"></span></p>
+</div>
+
 <script>
 "use strict";
 // ---------------------------------------------------------------------------------------------
 // Estado de la página
 // ---------------------------------------------------------------------------------------------
-const E = { paso: "portada", esquinas: [], config: { zonas: [], ecuador: [-81.1, -5.1, -75.1, 1.5], cultivos: [] },
+const E = { paso: "portada", esquinas: [], trazando: false, ultimoToque: null,
+            config: { zonas: [], ecuador: [-81.1, -5.1, -75.1, 1.5], cultivos: [] },
             opciones: { riego: false, anterior: "", preferencia: "pronto", ph: "" },
-            pedido: null, resultado: null, abierto: null, tresD: false, inicioCarga: 0 };
+            pedido: null, resultado: null, abierto: null, tresD: false, planta3D: 0, inicioCarga: 0 };
 const CENTRO_ECUADOR = [-78.6, -1.6];
-const ZOOM_PARA_MARCAR = 13;          // desde este acercamiento un toque ya marca una esquina
+const ZOOM_PARA_MARCAR = 13;          // desde este acercamiento ya se puede trazar el terreno
 const TIEMPO_MINIMO_CARGA = 3600;     // milisegundos: lo que dura como mínimo la pantalla de estudio
+const MENSAJE_CARGA = "Obteniendo datos satelitales y datos del terreno";
 const SIN_MOVIMIENTO = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (selector) => document.querySelector(selector);
 const icono = (nombre) => `<svg class="icono"><use href="#i-${nombre}"/></svg>`;
 const numero = (valor, decimales = 0) => Number(valor).toLocaleString("es-EC",
       { minimumFractionDigits: decimales, maximumFractionDigits: decimales });
 const texto = (cadena) => String(cadena ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const cuadro = () => new Promise((listo) => requestAnimationFrame(listo));
+const espera = (ms) => new Promise((listo) => setTimeout(listo, ms));
+
+// ---------------------------------------------------------------------------------------------
+// El sello del equipo (cóndor entre órbitas), dibujado aquí mismo para poder animarlo:
+// los puntos de luz recorren las órbitas y un satélite pequeño gira en sentido contrario.
+// ---------------------------------------------------------------------------------------------
+// Las formas del cóndor están calcadas de la imagen del sello (contornos medidos sobre la imagen de 1053 x 960).
+const EMBLEMA = `
+  <path d="M447 165h42l-15 143h-13z"/>
+  <path d="M443 194l-5-2-55 6-63 47v3l20-2 46-34 56-4z"/><path d="M492 192v16l57 4 46 34 20 2-63-50z"/>
+  <path d="M331 255v28l-9 69-36 83 182 236 181-236-38-83-10-78 4-18-55 49-36 47-45 92-3 1-50-100-29-38z"/>
+  <path d="M334 271l37 80 44 16 53 104 52-104 43-16 34-80M331 283v81l45 93 41-13 50 69 53-69 40 13 42-93v-64" fill="none"/>
+  <path d="M274 458l194 287 193-287 18 38-212 298-211-301z"/>`;
+let sellos = 0;
+function selloAnimado() {
+  const k = "sello" + (++sellos), elipse = "M23 478a445 195 0 1 0 890 0a445 195 0 1 0-890 0";
+  const camino = (giro) => `<path id="${k}-o${giro}" d="${elipse}" transform="rotate(${giro} 468 478)" fill="none"/>`;
+  const mover = (giro, segundos, extra = "") => `<animateMotion dur="${segundos}s" repeatCount="indefinite" ${extra}><mpath href="#${k}-o${giro}"/></animateMotion>`;
+  const linea = (giro) => `<use href="#${k}-o${giro}"/>`;
+  // estela del destello: copias cada vez más tenues que van un poco más atrás en la misma órbita
+  const estela = [1, 2, 3, 4, 5, 6, 7, 8].map((n) =>
+    `<circle r="${22 - n * 1.6}" fill="#8EC5FF" opacity="${(0.42 - n * 0.045).toFixed(2)}" filter="url(#${k}-bruma)">${mover(15, 7, `begin="-${(7 - n * 0.09).toFixed(2)}s"`)}</circle>`).join("");
+  return `<svg class="sello-svg" viewBox="0 0 936 960" aria-hidden="true">
+    <defs><filter id="${k}-bruma" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="9"/></filter>
+          <filter id="${k}-aura" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="22"/></filter>
+          <filter id="${k}-halo" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+          ${camino(15)}${camino(-39)}${camino(76)}</defs>
+    <g stroke="#8EC5FF" stroke-width="9" opacity=".3" filter="url(#${k}-halo)">${linea(15)}${linea(-39)}${linea(76)}</g>
+    <g fill="#5FA4EE" opacity=".45" filter="url(#${k}-aura)" stroke="none">${EMBLEMA}</g>
+    <g fill="#FFFFFF" stroke="#1C2B45" stroke-width="3" stroke-linejoin="miter">${EMBLEMA}</g>
+    <g stroke="#BBDCFA" stroke-width="2.2" opacity=".8">${linea(15)}${linea(-39)}${linea(76)}</g>
+    ${estela}
+    <g>${mover(15, 7)}<circle r="30" fill="#8EC5FF" opacity=".55" filter="url(#${k}-bruma)"/>
+       <path d="M0-17Q2-2 17 0Q2 2 0 17Q-2 2-17 0Q-2-2 0-17z" fill="#fff"/></g>
+    <circle r="6" fill="#fff">${mover(-39, 5.2)}</circle>
+    <circle r="18" fill="#8EC5FF" opacity=".4" filter="url(#${k}-bruma)">${mover(-39, 5.2)}</circle>
+    <g>${mover(76, 9, 'rotate="auto" keyPoints="1;0" keyTimes="0;1" calcMode="linear"')}
+       <g fill="#5B9BE6" stroke="#DCEBFB" stroke-width="1.6">
+         <rect x="-11" y="-38" width="22" height="26" rx="1.5"/><rect x="-11" y="12" width="22" height="26" rx="1.5"/>
+         <path d="M0-38v26M-11-25h22M0 12v26M-11 25h22" fill="none"/></g>
+       <rect x="-8" y="-9" width="16" height="18" rx="2" fill="#fff" stroke="#1C2B45" stroke-width="1.5"/></g>
+  </svg>`;
+}
+$("#sello-cargador").innerHTML = selloAnimado();
+$("#sello-estudio").innerHTML = selloAnimado();
+
+function mostrarCargador(mensaje) {          // devuelve una promesa que se cumple cuando ya tapa la pantalla
+  $("#cargador-texto").textContent = mensaje || MENSAJE_CARGA;
+  $("#cargador").classList.add("visible");
+  return espera(SIN_MOVIMIENTO ? 0 : 340);
+}
+function ocultarCargador() { $("#cargador").classList.remove("visible"); }
 
 // ---------------------------------------------------------------------------------------------
 // Conversación con Streamlit (protocolo de los componentes)
@@ -368,6 +575,7 @@ try { window.parent.addEventListener("resize", ajustarAlto); } catch (error) { /
 // ---------------------------------------------------------------------------------------------
 // Mapa: foto satelital sobre un globo; al acercarse se vuelve un mapa plano normal
 // ---------------------------------------------------------------------------------------------
+const VACIO = { type: "FeatureCollection", features: [] };
 const ESTILO = {
   version: 8,
   sources: {
@@ -380,7 +588,8 @@ const ESTILO = {
     marmol: { type: "raster", tileSize: 256, maxzoom: 8,
               tiles: ["https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/2004-08-01/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg"],
               attribution: "Blue Marble: NASA GIBS" },
-    terreno: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+    terreno: { type: "geojson", data: VACIO },
+    plantas: { type: "geojson", data: VACIO },
   },
   layers: [
     { id: "fondo", type: "background", paint: { "background-color": "#04060F" } },
@@ -389,30 +598,31 @@ const ESTILO = {
       paint: { "raster-opacity": ["interpolate", ["linear"], ["zoom"], 4.2, 1, 6.2, 0], "raster-saturation": 0.35, "raster-contrast": 0.05, "raster-brightness-min": 0.06 } },
     { id: "nombres", type: "raster", source: "nombres", minzoom: 4.5 },
     { id: "terreno-relleno", type: "fill", source: "terreno", filter: ["==", ["geometry-type"], "Polygon"],
-      paint: { "fill-color": "#99D503", "fill-opacity": 0.3 } },
-    // El borde lleva una línea oscura debajo: el verde solo se pierde sobre los sembríos
+      paint: { "fill-color": "#9CCBFF", "fill-opacity": 0.26 } },
+    // El borde lleva una línea oscura debajo, para que el blanco no se pierda sobre suelos claros
     { id: "terreno-borde-sombra", type: "line", source: "terreno", filter: ["!=", ["geometry-type"], "Point"],
       paint: { "line-color": "#04060F", "line-width": 7, "line-opacity": 0.55 }, layout: { "line-join": "round", "line-cap": "round" } },
     { id: "terreno-borde", type: "line", source: "terreno", filter: ["!=", ["geometry-type"], "Point"],
-      paint: { "line-color": "#C6F53A", "line-width": 3.5 }, layout: { "line-join": "round", "line-cap": "round" } },
+      paint: { "line-color": "#FFFFFF", "line-width": 3 }, layout: { "line-join": "round", "line-cap": "round" } },
     { id: "terreno-esquinas", type: "circle", source: "terreno", filter: ["==", ["geometry-type"], "Point"],
       paint: { "circle-radius": ["case", ["get", "primera"], 9, 6], "circle-color": "#FFFFFF",
                "circle-stroke-color": "#0D1B2E", "circle-stroke-width": 3 } },
+    // Plantas que se proyectan sobre el terreno en la vista 3D (dibujos propios, ver dibujarPlantas)
+    { id: "plantas", type: "symbol", source: "plantas",
+      layout: { "icon-image": ["get", "dibujo"], "icon-anchor": "bottom", "icon-allow-overlap": true, "icon-ignore-placement": true,
+                "icon-pitch-alignment": "viewport",
+                "icon-size": ["interpolate", ["exponential", 1.6], ["zoom"], 13, 0.22, 15, 0.5, 17, 1, 19, 1.5] } },
   ],
 };
 let mapa = null;
 const LON_PORTADA = -78, LAT_PORTADA = 2;      // el globo se abre mirando a las Américas, con el Ecuador al centro
-// OJO (error del 14 nov): nunca lanzar un movimiento de cámara (easeTo, flyTo, jumpTo) desde un evento del propio
-// mapa ("moveend", "move", "zoom"). El globo se mecía con un easeTo lanzado en "moveend": cada movimiento nuevo
-// cortaba al anterior y volvía a disparar "moveend", las animaciones se apilaban por miles y el mapa se congelaba.
-// Por eso el globo de la portada está quieto.
 
 // Dónde y de qué tamaño se quiere ver el globo en la portada: centrado, grande y arriba, para que
-// el letrero de abajo no tape el Ecuador.
+// el botón de abajo no tape el Ecuador.
 function vistaPortada() {
   const ancho = window.innerWidth, alto = window.innerHeight;
-  const radio = Math.max(110, Math.min(alto * 0.325, ancho * 0.40));
-  const y = alto * 0.39;                                        // altura del centro del globo en la pantalla
+  const radio = Math.max(110, Math.min(alto * 0.30, ancho * 0.40));
+  const y = alto * 0.37;                                        // altura del centro del globo en la pantalla
   // Primer cálculo del acercamiento; acomodarPortada lo afina midiendo el globo ya dibujado.
   const zoom = Math.log2(radio / 0.81 * 2 * Math.PI * Math.cos(LAT_PORTADA * Math.PI / 180) / 512);
   return { radio, zoom, x: ancho / 2, y, padding: { left: 0, right: 0, top: 0, bottom: alto - 2 * y } };
@@ -428,48 +638,237 @@ function radioDelGlobo() {
   return mayor;
 }
 
-// Cielo de estrellas, dibujado una vez por tamaño de ventana (siempre las mismas: no parpadean al redibujar)
+// Cielo de estrellas, dibujado una vez por tamaño de ventana (siempre las mismas: no parpadean al redibujar).
+// Como la Vía Láctea vista de canto: las estrellas se juntan en una franja horizontal que pasa por detrás
+// del planeta y se van perdiendo hacia arriba, hacia abajo y hacia los lados.
 function dibujarEstrellas() {
   const lienzo = $("#estrellas"), escala = Math.min(window.devicePixelRatio || 1, 2);
-  const ancho = window.innerWidth, alto = window.innerHeight;
+  const ancho = window.innerWidth, alto = window.innerHeight, centro = vistaPortada().y, grosor = alto * 0.085;
   lienzo.width = ancho * escala; lienzo.height = alto * escala;
   const c = lienzo.getContext("2d");
   c.scale(escala, escala);
-  let semilla = 20261114;
+  let semilla = 20261115;
   const azar = () => (semilla = (semilla * 1664525 + 1013904223) % 4294967296) / 4294967296;
-  // una franja tenue, como la Vía Láctea, cruzando en diagonal
-  const franja = c.createLinearGradient(0, alto * 0.75, ancho, alto * 0.25);
-  franja.addColorStop(0, "rgba(90,110,160,0)"); franja.addColorStop(0.5, "rgba(90,110,160,0.10)"); franja.addColorStop(1, "rgba(90,110,160,0)");
+  const campana = () => Math.sqrt(-2 * Math.log(1 - azar())) * Math.cos(2 * Math.PI * azar());      // azar con forma de campana
+  const lejos = (x) => Math.pow(Math.abs(x / ancho - 0.5) * 2, 2);                                  // 0 al centro, 1 en los lados
+  // resplandor de la franja
+  const franja = c.createLinearGradient(0, centro - alto * 0.3, 0, centro + alto * 0.3);
+  franja.addColorStop(0, "rgba(96,124,190,0)"); franja.addColorStop(0.5, "rgba(96,124,190,0.24)"); franja.addColorStop(1, "rgba(96,124,190,0)");
   c.fillStyle = franja; c.fillRect(0, 0, ancho, alto);
-  const cuantas = Math.round(ancho * alto / 1100);
+  // nubes de luz y vetas oscuras de polvo a lo largo de la franja
+  for (let i = 0; i < 46; i++) {
+    const x = azar() * ancho, y = centro + campana() * grosor * 0.55, radio = (60 + azar() * 170) * (1 - 0.4 * lejos(x));
+    const oscura = azar() > 0.72, fuerza = (oscura ? 0.2 : 0.055 + azar() * 0.05) * (1 - 0.7 * lejos(x));
+    const tinte = oscura ? "4,6,15" : azar() > 0.5 ? "150,175,235" : "205,190,230";
+    const nube = c.createRadialGradient(x, y, 0, x, y, radio);
+    nube.addColorStop(0, `rgba(${tinte},${fuerza.toFixed(3)})`); nube.addColorStop(1, `rgba(${tinte},0)`);
+    c.fillStyle = nube; c.fillRect(x - radio, y - radio, 2 * radio, 2 * radio);
+  }
+  const cuantas = Math.round(ancho * alto / 300);
   for (let i = 0; i < cuantas; i++) {
-    const x = azar() * ancho, y = azar() * alto, grande = azar();
-    const radio = grande > 0.985 ? 2.0 : grande > 0.9 ? 1.3 : 0.6 + azar() * 0.45;
-    const tono = azar();
-    c.fillStyle = tono > 0.9 ? "rgba(170,205,255," : tono > 0.82 ? "rgba(255,236,200," : "rgba(255,255,255,";
-    c.fillStyle += (0.35 + azar() * 0.65).toFixed(2) + ")";
+    const enFranja = azar() < 0.84, x = azar() * ancho;
+    const y = enFranja ? centro + campana() * grosor : azar() * alto;
+    if (enFranja && azar() < 0.75 * lejos(x)) continue;                 // hacia los lados la franja se apaga
+    const grande = azar(), tono = azar();
+    const radio = grande > 0.992 ? 1.9 : grande > 0.94 ? 1.2 : 0.35 + azar() * 0.5;
+    const brillo = (0.3 + azar() * 0.7) * (enFranja ? 1 : 0.6);
+    c.fillStyle = (tono > 0.9 ? "rgba(170,205,255," : tono > 0.82 ? "rgba(255,236,200," : "rgba(255,255,255,") + brillo.toFixed(2) + ")";
     c.beginPath(); c.arc(x, y, radio, 0, 2 * Math.PI); c.fill();
+    if (grande > 0.992) {                                               // destello en cruz de las más brillantes
+      c.strokeStyle = `rgba(255,255,255,${(brillo * 0.5).toFixed(2)})`; c.lineWidth = 0.6;
+      c.beginPath(); c.moveTo(x - 6, y); c.lineTo(x + 6, y); c.moveTo(x, y - 6); c.lineTo(x, y + 6); c.stroke();
+    }
   }
 }
+
+// --- Giro del planeta y satélite en órbita (solo en la portada) ---
+// La Tierra gira hacia el este: vista desde fuera, los continentes pasan de izquierda a derecha, o sea que
+// la longitud del centro va bajando. El satélite simula la órbita de NISAR: casi polar (98,4° de inclinación,
+// es decir retrógrada) y por eso cruza en sentido contrario al giro, subiendo hacia el noroeste.
+const SEGUNDOS_POR_VUELTA = 150, SEGUNDOS_POR_ORBITA = 17;      // tiempos de dibujo, no reales
+const ORBITA = { radio: 1.2, abertura: 26 * Math.PI / 180, inclinacion: 8.4 * Math.PI / 180 };
+const giro = { activo: false, id: 0, antes: 0, lon: LON_PORTADA, lat: LAT_PORTADA, fase: 2.2, radio: 0, arrastrando: false };
+function iniciarGiro() {
+  if (giro.activo || !mapa) return;
+  giro.activo = true; giro.antes = 0;
+  giro.id = requestAnimationFrame(cuadroDePortada);
+}
+function detenerGiro() { giro.activo = false; cancelAnimationFrame(giro.id); }
+function cuadroDePortada(ahora) {
+  if (!giro.activo) return;
+  const paso = giro.antes ? Math.min(0.05, (ahora - giro.antes) / 1000) : 0;
+  giro.antes = ahora;
+  if (E.paso === "portada" && !document.hidden) {
+    if (!SIN_MOVIMIENTO && !giro.arrastrando) {
+      giro.lon -= 360 / SEGUNDOS_POR_VUELTA * paso;
+      if (giro.lon < -180) giro.lon += 360;
+      mapa.jumpTo({ center: [giro.lon, giro.lat] });
+    }
+    if (!SIN_MOVIMIENTO) giro.fase += 2 * Math.PI / SEGUNDOS_POR_ORBITA * paso;
+    dibujarOrbita();
+  }
+  giro.id = requestAnimationFrame(cuadroDePortada);
+}
+function prepararOrbita(radioGlobo) {
+  const lienzo = $("#orbita"), escala = Math.min(window.devicePixelRatio || 1, 2);
+  const lado = Math.ceil(2 * (ORBITA.radio * radioGlobo + 30));
+  giro.radio = radioGlobo;
+  lienzo.style.width = lienzo.style.height = lado + "px";
+  lienzo.width = lienzo.height = lado * escala;
+  lienzo.getContext("2d").setTransform(escala, 0, 0, escala, lado / 2 * escala, lado / 2 * escala);      // origen al centro del globo
+}
+function puntoDeOrbita(angulo) {          // posición en pantalla (x a la derecha, y hacia abajo) y z hacia quien mira
+  const R = ORBITA.radio * giro.radio, a = ORBITA.abertura, i = ORBITA.inclinacion;
+  const x0 = -R * Math.sin(angulo) * Math.sin(a), y0 = R * Math.cos(angulo), z = R * Math.sin(angulo) * Math.cos(a);
+  return { x: x0 * Math.cos(i) - y0 * Math.sin(i), y: -(x0 * Math.sin(i) + y0 * Math.cos(i)), z };
+}
+function dibujarOrbita() {
+  const lienzo = $("#orbita"), c = lienzo.getContext("2d"), R = giro.radio;
+  if (!R) return;
+  const medio = lienzo.clientWidth / 2;
+  c.clearRect(-medio, -medio, 2 * medio, 2 * medio);
+  const tapado = (p) => p.z < 0 && Math.hypot(p.x, p.y) < R + 2;       // pasa por detrás del planeta
+  // la órbita completa, tenue; más clara por delante
+  c.lineWidth = 1.3;
+  for (let k = 0; k < 180; k++) {
+    const p = puntoDeOrbita(k / 180 * 2 * Math.PI), q = puntoDeOrbita((k + 1) / 180 * 2 * Math.PI);
+    if (tapado(p) || tapado(q)) continue;
+    c.strokeStyle = `rgba(156,203,255,${p.z < 0 ? 0.2 : 0.5})`;
+    c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(q.x, q.y); c.stroke();
+  }
+  // el satélite avanza con el ángulo bajando: por delante del planeta sube (pasada ascendente)
+  const angulo = -giro.fase;
+  for (let k = 26; k >= 1; k--) {                                        // estela
+    const p = puntoDeOrbita(angulo + k * 0.022), q = puntoDeOrbita(angulo + (k - 1) * 0.022);
+    if (tapado(p) || tapado(q)) continue;
+    c.strokeStyle = `rgba(200,228,255,${(0.55 * (1 - k / 26)).toFixed(3)})`; c.lineWidth = 2.2 * (1 - k / 30);
+    c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(q.x, q.y); c.stroke();
+  }
+  const s = puntoDeOrbita(angulo);
+  if (tapado(s) || !NISAR.lista) return;
+  const tamano = Math.max(0.32, R / 640) * (1 + 0.2 * s.z / (ORBITA.radio * R)), atras = s.z < 0 ? 0.6 : 1;
+  const brillo = c.createRadialGradient(s.x, s.y, 0, s.x, s.y, 150 * tamano);
+  brillo.addColorStop(0, `rgba(170,215,255,${0.22 * atras})`); brillo.addColorStop(1, "rgba(170,215,255,0)");
+  c.fillStyle = brillo; c.fillRect(s.x - 160 * tamano, s.y - 160 * tamano, 320 * tamano, 320 * tamano);
+  // El dibujo tiene la antena hacia arriba. Se gira para que la antena quede del lado contrario a la Tierra
+  // (en NISAR el alimentador mira hacia arriba, a la antena, y la antena devuelve la señal hacia el suelo).
+  c.save(); c.translate(s.x, s.y); c.rotate(Math.atan2(s.y, s.x) + Math.PI / 2); c.scale(tamano, tamano); c.globalAlpha = atras;
+  c.drawImage(NISAR.imagen, -NISAR.cx, -NISAR.cy, NISAR.ancho, NISAR.alto);
+  c.restore();
+}
+// NISAR, según la descripción pública de la NASA y la ISRO: plataforma I-3K (caja), estructura octogonal del
+// instrumento de radar envuelta en manta dorada, alimentador de bandas L y S mirando hacia arriba, brazo
+// desplegable de 9 m, antena reflectora de malla dorada de 12 m con forma de tambor, y dos paneles solares
+// de tres secciones a cada lado. Es un dibujo propio y simplificado, no un plano a escala.
+const NISAR = { lista: false, ancho: 360, alto: 400, cx: 180, cy: 300, imagen: new Image() };
+(function prepararNISAR() {
+  const celdas = (x, y, w, h, columnas, filas) => {          // cuadrícula de celdas de un panel solar
+    let lineas = "";
+    for (let i = 1; i < columnas; i++) lineas += `M${x + w * i / columnas} ${y}v${h}`;
+    for (let j = 1; j < filas; j++) lineas += `M${x} ${y + h * j / filas}h${w}`;
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1.5" fill="url(#celda)" stroke="#C9DBF2" stroke-width="1.2"/><path d="${lineas}" stroke="#7FA9E6" stroke-width=".5" fill="none" opacity=".8"/>`;
+  };
+  const ala = (lado) => {                                      // tres secciones por lado, con su horquilla
+    let piezas = `<path d="M${180 + lado * 26} 300h${lado * 16}M${180 + lado * 26} 292l${lado * 16} 8M${180 + lado * 26} 308l${lado * 16}-8" stroke="#DCE6F2" stroke-width="1.6" fill="none"/>`;
+    for (let k = 0; k < 3; k++) { const x = lado > 0 ? 222 + k * 40 : 100 - k * 40; piezas += celdas(x, 276, 38, 48, 4, 5); }
+    return piezas;
+  };
+  // tambor de la antena: dos aros (arriba y abajo) unidos por montantes en zigzag; la malla va tensada dentro
+  const cx = 150, cyArriba = 74, cyAbajo = 100, rx = 122, ry = 40;
+  let zigzag = "", malla = "";
+  for (let k = 0; k < 24; k++) {
+    const a = k * Math.PI / 12, b = (k + 1) * Math.PI / 12;
+    if (Math.sin(a) >= -0.05) zigzag += `M${cx + rx * Math.cos(a)} ${cyArriba + ry * Math.sin(a)}L${cx + rx * Math.cos(a)} ${cyAbajo + ry * Math.sin(a)}L${cx + rx * Math.cos(b)} ${cyArriba + ry * Math.sin(b)}`;
+    malla += `M${cx} ${cyArriba + 6}L${cx + rx * Math.cos(a)} ${cyArriba + ry * Math.sin(a)}`;
+  }
+  for (const f of [0.25, 0.5, 0.75]) malla += `M${cx - rx * f} ${cyArriba + 6 * (1 - f)}a${rx * f} ${ry * f} 0 1 0 ${2 * rx * f} 0a${rx * f} ${ry * f} 0 1 0 ${-2 * rx * f} 0`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="360" height="400" viewBox="0 0 360 400">
+    <defs>
+      <linearGradient id="oro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE9A8"/><stop offset=".5" stop-color="#E0AE3A"/><stop offset="1" stop-color="#9C7218"/></linearGradient>
+      <linearGradient id="oro2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B8891F"/><stop offset=".5" stop-color="#F3CF6C"/><stop offset="1" stop-color="#8F6814"/></linearGradient>
+      <linearGradient id="celda" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12306B"/><stop offset=".5" stop-color="#2F68C4"/><stop offset="1" stop-color="#0E2857"/></linearGradient>
+      <radialGradient id="malla" cx=".42" cy=".4" r=".7"><stop offset="0" stop-color="#FFF1BF" stop-opacity=".62"/><stop offset=".7" stop-color="#DDAA3A" stop-opacity=".42"/><stop offset="1" stop-color="#8F6814" stop-opacity=".36"/></radialGradient>
+      <linearGradient id="gris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F7FB"/><stop offset="1" stop-color="#9AA8BA"/></linearGradient>
+    </defs>
+    <!-- antena reflectora de 12 m: tambor con malla dorada -->
+    <g transform="rotate(-9 150 88)">
+      <ellipse cx="${cx}" cy="${cyAbajo}" rx="${rx}" ry="${ry}" fill="none" stroke="#B48A26" stroke-width="2"/>
+      <path d="${zigzag}" stroke="#E9D9A6" stroke-width="1.1" fill="none" opacity=".9"/>
+      <ellipse cx="${cx}" cy="${cyArriba}" rx="${rx}" ry="${ry}" fill="url(#malla)"/>
+      <path d="${malla}" stroke="#FFF4CF" stroke-width=".55" fill="none" opacity=".55"/>
+      <ellipse cx="${cx}" cy="${cyArriba}" rx="${rx}" ry="${ry}" fill="none" stroke="#FFF3CC" stroke-width="2.4"/>
+    </g>
+    <!-- brazo desplegable de 9 m, en tramos articulados -->
+    <g stroke="url(#gris)" stroke-width="5" stroke-linecap="round" fill="none">
+      <path d="M204 262L262 214L276 150L252 116"/>
+    </g>
+    <path d="M204 262L262 214L276 150L252 116" stroke="#5E6E84" stroke-width="1" fill="none" stroke-dasharray="7 5"/>
+    <g fill="#F4F7FB" stroke="#5E6E84" stroke-width="1.2"><circle cx="204" cy="262" r="5"/><circle cx="262" cy="214" r="5.5"/><circle cx="276" cy="150" r="5.5"/><circle cx="252" cy="116" r="5"/></g>
+    <!-- paneles solares: dos alas de tres secciones -->
+    ${ala(-1)}${ala(1)}
+    <!-- plataforma I-3K -->
+    <path d="M154 286l10-12h42l-10 12z" fill="#F6DB8E"/>
+    <path d="M196 286l10-12v46l-10 12z" fill="#93700F"/>
+    <rect x="154" y="286" width="42" height="46" fill="url(#oro)" stroke="#FFF3CC" stroke-width="1"/>
+    <path d="M154 301h42M154 316h42M168 286v46M182 286v46" stroke="#8F6814" stroke-width=".6" opacity=".7"/>
+    <path d="M160 332l-6 16M190 332l8 14" stroke="#DCE6F2" stroke-width="1.6"/><circle cx="154" cy="350" r="4.5" fill="#F4F7FB" stroke="#5E6E84"/><path d="M193 344l10 5-5 6z" fill="#F4F7FB" stroke="#5E6E84"/>
+    <!-- estructura octogonal del instrumento de radar, con el alimentador (bandas L y S) mirando a la antena -->
+    <path d="M142 250l14-9h38l14 9v24l-14 9h-38l-14-9z" fill="url(#oro2)" stroke="#FFF3CC" stroke-width="1"/>
+    <path d="M156 241v42M194 241v42M142 262h66" stroke="#8F6814" stroke-width=".7" opacity=".75"/>
+    <path d="M142 250l14-9h38l14 9-14 7h-38z" fill="#F9E3A0" stroke="#FFF3CC" stroke-width=".8"/>
+    <path d="M152 249l8-5h30l8 5-8 4h-30z" fill="#F4F7FB" stroke="#5E6E84" stroke-width=".8"/>
+    <path d="M160 246.500h30M157 249h36M160 251.500h30M168 244v9M175 244v9M182 244v9" stroke="#5E6E84" stroke-width=".5"/>
+  </svg>`;
+  NISAR.imagen.onload = () => { NISAR.lista = true; if (E.paso === "portada" && giro.radio) dibujarOrbita(); };
+  NISAR.imagen.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+})();
 
 function esperarTamanoEIniciar() {      // si el mapa nace cuando su caja todavía mide cero, se queda chico en una esquina
   const caja = $("#mapa");
   if (caja.clientWidth > 80 && caja.clientHeight > 80) iniciarMapa(); else setTimeout(esperarTamanoEIniciar, 80);
 }
+// Promesa que se cumple cuando el mapa terminó de moverse y de cargar sus imágenes (o al pasar el tiempo máximo).
+// Lo que sigue se ejecuta FUERA del evento del mapa (setTimeout), por la regla de arriba.
+function esperarMapaListo(maximo = 6000) {
+  return new Promise((listo) => {
+    let hecho = false;
+    const fin = () => { if (hecho) return; hecho = true; mapa.off("idle", fin); setTimeout(listo, 0); };
+    mapa.once("idle", fin);
+    setTimeout(fin, maximo);
+    mapa.triggerRepaint();
+  });
+}
 function iniciarMapa() {
-  if (!window.maplibregl) { $("#portada .apoyo").textContent = "No se pudo cargar el mapa. Revisa tu conexión a internet y vuelve a abrir la página."; return; }
+  if (!window.maplibregl) {
+    ocultarCargador();
+    $("#portada .apoyo").hidden = false;
+    $("#portada .apoyo").textContent = "No se pudo cargar el mapa. Revisa tu conexión a internet y vuelve a abrir la página.";
+    return;
+  }
   const vista = vistaPortada();
   mapa = new maplibregl.Map({ container: "mapa", style: ESTILO, center: [LON_PORTADA, LAT_PORTADA], zoom: vista.zoom, maxPitch: 80,
                               doubleClickZoom: false, attributionControl: { compact: true } });
+  mapa.scrollZoom.disable(); mapa.touchZoomRotate.disable();      // en la portada el globo solo se puede girar
   mapa.on("style.load", () => {
     mapa.setProjection({ type: "globe" });
     try { mapa.setSky(CIELO_GLOBO); } catch (error) { /* sin atmósfera */ }
   });
-  mapa.on("load", () => setTimeout(() => { if (E.paso === "portada") acomodarPortada(); }, 0));    // fuera del evento del mapa
-  mapa.on("dragstart", () => { E.movidoAMano = true; });       // si la persona ya movió el mapa, la ubicación automática no lo arrastra
-  mapa.on("wheel", () => { E.movidoAMano = true; });
+  mapa.on("load", () => setTimeout(async () => {                   // fuera del evento del mapa
+    dibujarPlantas();
+    cargarPlantas3D();
+    if (E.paso === "portada") acomodarPortada();
+    await esperarMapaListo(7000);
+    ocultarCargador();
+    iniciarGiro();
+  }, 0));
+  mapa.on("dragstart", () => { E.movidoAMano = true; giro.arrastrando = true; });       // si la persona ya movió el mapa, la ubicación automática no lo arrastra
+  mapa.on("dragend", () => { const c = mapa.getCenter(); giro.lon = c.lng; giro.lat = c.lat; giro.arrastrando = false; });
+  mapa.on("wheel", () => { E.movidoAMano = true; pausarOrbita3D(); });
+  mapa.on("mousedown", pausarOrbita3D);
+  mapa.on("touchstart", pausarOrbita3D);
   mapa.on("click", alTocarElMapa);
   mapa.on("zoom", actualizarInstruccion);
+  mapa.on("move", acomodarTarjetas);          // solo recoloca las tarjetas del 3D: no mueve la cámara
   // Cada vez que la caja del mapa cambia de tamaño (Streamlit ajusta el alto después de abrir), el mapa se reacomoda
   let tamanoVisto = "";
   new ResizeObserver(() => {
@@ -480,7 +879,7 @@ function iniciarMapa() {
     if (E.paso === "portada") acomodarPortada();
   }).observe($("#mapa"));
 }
-function margenIzquierdo() { return window.innerWidth > 900 ? 440 : 0; }
+function margenIzquierdo() { return window.innerWidth > 900 ? 470 : 0; }
 // Márgenes para encuadrar el terreno sin que lo tapen la fila de cultivos (abajo) ni la ficha (derecha)
 function margenes(derecha = 0) {
   const alto = window.innerHeight, ancho = window.innerWidth;
@@ -490,15 +889,17 @@ function acomodarPortada() {
   const vista = vistaPortada(), raiz = document.documentElement.style;
   dibujarEstrellas();
   mapa.stop();
-  mapa.jumpTo({ center: [LON_PORTADA, LAT_PORTADA], zoom: E.zoomPortada || vista.zoom, pitch: 0, bearing: 0, padding: vista.padding });
+  mapa.jumpTo({ center: [giro.lon, giro.lat], zoom: E.zoomPortada || vista.zoom, pitch: 0, bearing: 0, padding: vista.padding });
   for (let vuelta = 0; vuelta < 3; vuelta++) {          // afina el acercamiento hasta que el globo mida lo pedido
     const medido = radioDelGlobo();
     if (medido > 0 && Number.isFinite(medido)) mapa.setZoom(mapa.getZoom() + Math.log2(vista.radio / medido));
   }
   E.zoomPortada = mapa.getZoom();
-  const centro = mapa.project([LON_PORTADA, LAT_PORTADA]);
+  const centro = mapa.project([giro.lon, giro.lat]), radio = radioDelGlobo() || vista.radio;
   raiz.setProperty("--gx", centro.x + "px"); raiz.setProperty("--gy", centro.y + "px");
-  raiz.setProperty("--gr", (radioDelGlobo() || vista.radio) + "px");      // estrellas y brillo se ajustan al globo real
+  raiz.setProperty("--gr", radio + "px");               // estrellas, brillo y órbita se ajustan al globo real
+  prepararOrbita(radio);
+  dibujarOrbita();
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -508,6 +909,7 @@ function irA(paso) {
   E.paso = paso;
   document.body.dataset.paso = paso;
   if (paso !== "resultados") cerrarFicha();
+  if (mapa) mapa.getCanvas().style.cursor = "";
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -518,11 +920,15 @@ function enZonaDetallada(lat, lon) { return E.config.zonas.some(([o, s, e, n]) =
 function avisar(mensaje) { $("#aviso").textContent = mensaje || ""; }
 
 function empezar() {
+  if (!mapa) return;
+  detenerGiro();
   irA("marcar");
-  E.movidoAMano = false;
+  E.movidoAMano = false; E.trazando = false;
+  mapa.scrollZoom.enable(); mapa.touchZoomRotate.enable();
   mapa.stop();
   mapa.flyTo({ center: CENTRO_ECUADOR, zoom: 6.4, padding: { left: margenIzquierdo(), right: 0, top: 0, bottom: 0 },
-               duration: SIN_MOVIMIENTO ? 0 : 5200, curve: 1.5, essential: true });
+               duration: SIN_MOVIMIENTO ? 0 : 4200, curve: 1.3, essential: true });
+  actualizarInstruccion();
   irADondeEstoy(false);
 }
 function irADondeEstoy(avisarSiFalla) {
@@ -533,18 +939,29 @@ function irADondeEstoy(avisarSiFalla) {
     if (!avisarSiFalla && (E.movidoAMano || E.esquinas.length)) return;       // llegó tarde: la persona ya está en otra cosa
     if (!enEcuador(lat, lon)) { if (avisarSiFalla) avisar("Estás fuera del Ecuador. Busca tu pueblo o mueve el mapa."); return; }
     avisar("Te llevamos a donde estás. Mueve el mapa hasta ver tu terreno.");
-    mapa.flyTo({ center: [lon, lat], zoom: 15, duration: SIN_MOVIMIENTO ? 0 : 4200, essential: true });
+    saltarA([lon, lat], 15, "Buscando dónde estás");
   }, () => { if (avisarSiFalla) avisar("No pudimos saber dónde estás. Busca tu pueblo o mueve el mapa."); },
   { timeout: 9000, maximumAge: 600000 });
+}
+// Salto directo a un lugar, tapado por el cargador mientras llegan las imágenes: un vuelo largo
+// carga muchas imágenes por el camino y se ve a saltos.
+async function saltarA(centro, zoom, mensaje) {
+  await mostrarCargador(mensaje);
+  mapa.stop();
+  mapa.jumpTo({ center: centro, zoom, padding: { left: margenIzquierdo(), right: 0, top: 0, bottom: 0 } });
+  await esperarMapaListo(5000);
+  ocultarCargador();
+  actualizarInstruccion();
 }
 async function buscarLugar(evento) {
   evento.preventDefault();
   const lugar = $("#lugar").value.trim(), boton = $("#form-buscar button");
   if (!lugar || boton.disabled) return;
   E.movidoAMano = true;
-  avisar("Buscando " + lugar + "…");
+  avisar("");
   boton.disabled = true;
   const corte = new AbortController(), reloj = setTimeout(() => corte.abort(), 9000);      // 9 segundos como máximo
+  await mostrarCargador("Buscando " + lugar);
   try {
     const respuesta = await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=ec&accept-language=es&q="
                                   + encodeURIComponent(lugar), { signal: corte.signal });
@@ -552,28 +969,35 @@ async function buscarLugar(evento) {
     if (!hallados.length) { avisar("No encontramos ese lugar. Prueba con el nombre del cantón."); return; }
     avisar("Aquí está " + (hallados[0].display_name || lugar).split(",")[0] + ". Mueve el mapa hasta tu terreno.");
     mapa.stop();
-    // Salto directo (sin vuelo): un vuelo largo carga muchas imágenes por el camino y se siente trabado
     mapa.jumpTo({ center: [Number(hallados[0].lon), Number(hallados[0].lat)], zoom: 14.5 });
+    await esperarMapaListo(5000);
   } catch (error) {
     avisar(error.name === "AbortError" ? "La búsqueda tardó demasiado. Revisa tu internet o mueve el mapa a mano."
                                        : "No se pudo buscar. Revisa tu internet o mueve el mapa a mano.");
-  } finally { clearTimeout(reloj); boton.disabled = false; }
+  } finally { clearTimeout(reloj); boton.disabled = false; ocultarCargador(); actualizarInstruccion(); }
 }
 
 // ---------------------------------------------------------------------------------------------
-// Paso 2: marcar las esquinas del terreno
+// Paso 2: trazar el terreno. Se empieza con doble clic (pone la primera esquina) y después
+// cada clic agrega una esquina. Así un toque suelto al mover el mapa no marca nada por error.
 // ---------------------------------------------------------------------------------------------
 function actualizarInstruccion() {
-  if (E.paso !== "marcar") return;
+  if (E.paso !== "marcar" || !mapa) return;
   const cerca = mapa.getZoom() >= ZOOM_PARA_MARCAR, n = E.esquinas.length;
-  $("#instruccion").textContent = !cerca ? "Toca el mapa para acercarte, o busca tu pueblo. Cuando veas tu terreno, podrás marcarlo."
-    : n === 0 ? "Toca las esquinas de tu terreno, una por una. Con tres o más queda dibujado."
-    : n < 3 ? "Sigue tocando las esquinas. Si tu terreno es pequeño, también puedes analizar solo este punto."
-    : "Cuando el dibujo cubra tu terreno, toca el botón verde.";
+  const guia = !cerca ? ["1", "Acércate al mapa, o busca tu pueblo, hasta ver tu terreno"]
+    : !E.trazando ? ["2", "Haz primero doble clic para comenzar a trazar tu terreno"]
+    : n < 3 ? ["3", "Ahora toca, una por una, las demás esquinas de tu terreno"]
+    : ["4", "Cuando el dibujo cubra tu terreno, pulsa «Listo, este es mi terreno»"];
+  $("#guia-numero").textContent = guia[0]; $("#guia-texto").textContent = guia[1];
+  $("#instruccion").textContent = !cerca ? "Acerca el mapa hasta ver tu terreno: toca el mapa, usa la rueda del ratón o busca tu pueblo."
+    : !E.trazando ? "Ya puedes trazarlo. Haz primero doble clic sobre una esquina de tu terreno para comenzar."
+    : n < 3 ? "Sigue tocando las esquinas, una por una. Si tu terreno es pequeño, también puedes analizar solo este punto."
+    : "Con tres o más esquinas el terreno queda dibujado. Puedes seguir agregando esquinas.";
   $("#esquinas").textContent = n ? `${n} ${n === 1 ? "esquina marcada" : "esquinas marcadas"}` : "";
   $("#deshacer").hidden = $("#borrar").hidden = n === 0;
   $("#listo").disabled = n === 0;
   $("#listo").textContent = n > 0 && n < 3 ? "Analizar este punto" : "Listo, este es mi terreno";
+  mapa.getCanvas().style.cursor = cerca ? "crosshair" : "";
 }
 function dibujarTerreno() {
   const figuras = E.esquinas.map((c, i) => ({ type: "Feature", properties: { primera: i === 0 },
@@ -586,16 +1010,34 @@ function dibujarTerreno() {
   if (fuente) fuente.setData({ type: "FeatureCollection", features: E.paso === "marcar" ? figuras : figuras.filter((f) => f.geometry.type !== "Point" || E.esquinas.length < 3) });
   actualizarInstruccion();
 }
+function llamarLaAtencion() {
+  const guia = $("#guia");
+  guia.classList.remove("pulso"); void guia.offsetWidth; guia.classList.add("pulso");
+}
 function alTocarElMapa(evento) {
   if (E.paso !== "marcar") return;
-  if (mapa.getZoom() < ZOOM_PARA_MARCAR) {
-    mapa.flyTo({ center: evento.lngLat, zoom: Math.min(mapa.getZoom() + 3.2, 15.5), duration: SIN_MOVIMIENTO ? 0 : 1600, essential: true });
+  const ahora = performance.now(), p = evento.point, antes = E.ultimoToque;
+  const doble = !!antes && ahora - antes.t < 450 && Math.hypot(p.x - antes.x, p.y - antes.y) < 30;
+  E.ultimoToque = { t: ahora, x: p.x, y: p.y };
+  if (mapa.getZoom() < ZOOM_PARA_MARCAR) {          // de lejos, un toque solo acerca
+    if (!doble) mapa.flyTo({ center: evento.lngLat, zoom: Math.min(mapa.getZoom() + 3.2, 15.5), duration: SIN_MOVIMIENTO ? 0 : 1400, essential: true });
     return;
   }
   avisar("");
-  if (E.esquinas.length >= 3) {          // tocar otra vez la primera esquina cierra el dibujo
+  if (!E.trazando) {                                 // todavía no empieza el trazo: hace falta el doble clic
+    if (!doble) { llamarLaAtencion(); return; }
+    E.trazando = true; E.ultimoToque = null;
+    E.esquinas = [[evento.lngLat.lng, evento.lngLat.lat]];
+    dibujarTerreno();
+    return;
+  }
+  if (E.esquinas.length >= 3) {                      // tocar otra vez la primera esquina cierra el dibujo
     const primera = mapa.project(E.esquinas[0]);
-    if (Math.hypot(primera.x - evento.point.x, primera.y - evento.point.y) < 16) { terminarDeMarcar(); return; }
+    if (Math.hypot(primera.x - p.x, primera.y - p.y) < 16) { terminarDeMarcar(); return; }
+  }
+  if (E.esquinas.length) {                           // el segundo toque de un doble clic no repite la esquina
+    const ultima = mapa.project(E.esquinas[E.esquinas.length - 1]);
+    if (Math.hypot(ultima.x - p.x, ultima.y - p.y) < 8) return;
   }
   E.esquinas.push([evento.lngLat.lng, evento.lngLat.lat]);
   dibujarTerreno();
@@ -604,11 +1046,13 @@ function centroDelTerreno() {
   const n = E.esquinas.length;
   return [E.esquinas.reduce((s, c) => s + c[0], 0) / n, E.esquinas.reduce((s, c) => s + c[1], 0) / n];
 }
+function limitesDelTerreno() {
+  return E.esquinas.reduce((b, c) => b.extend(c), new maplibregl.LngLatBounds(E.esquinas[0], E.esquinas[0]));
+}
 function encuadrarTerreno(margenes, duracion = 1400) {
   if (!E.esquinas.length) return;
-  if (E.esquinas.length < 3) { mapa.easeTo({ center: E.esquinas[0], zoom: Math.max(mapa.getZoom(), 15.5), padding: margenes, duration: duracion }); return; }
-  const limites = E.esquinas.reduce((b, c) => b.extend(c), new maplibregl.LngLatBounds(E.esquinas[0], E.esquinas[0]));
-  mapa.fitBounds(limites, { padding: margenes, maxZoom: 17, duration: SIN_MOVIMIENTO ? 0 : duracion });
+  if (E.esquinas.length < 3) { mapa.easeTo({ center: E.esquinas[0], zoom: Math.max(mapa.getZoom(), 15.5), padding: margenes, duration: SIN_MOVIMIENTO ? 0 : duracion }); return; }
+  mapa.fitBounds(limitesDelTerreno(), { padding: margenes, maxZoom: 17, duration: SIN_MOVIMIENTO ? 0 : duracion });
 }
 function terminarDeMarcar() {
   if (!E.esquinas.length) return;
@@ -616,7 +1060,8 @@ function terminarDeMarcar() {
   dibujarTerreno();
   encuadrarTerreno({ left: margenIzquierdo() + 40, right: 60, top: 60, bottom: 60 });
 }
-function borrarTerreno() { E.esquinas = []; dibujarTerreno(); avisar(""); }
+function borrarTerreno() { E.esquinas = []; E.trazando = false; E.ultimoToque = null; dibujarTerreno(); avisar(""); }
+function quitarUltimaEsquina() { E.esquinas.pop(); if (!E.esquinas.length) E.trazando = false; dibujarTerreno(); }
 
 // ---------------------------------------------------------------------------------------------
 // Paso 3: preguntas opcionales
@@ -640,11 +1085,11 @@ function prepararDos(id, clave, aValor) {
 // ---------------------------------------------------------------------------------------------
 function pasosDelEstudio(detallado) {
   return detallado
-    ? ["Altura e inclinación de tu terreno (NASADEM)", "Humedad, agua y vegetación que vio el radar NISAR",
-       "Lluvia y temperatura del lugar (CHELSA y NASA POWER)", "Suelo: acidez y textura (SoilGrids)",
-       "Qué se siembra en tu provincia y cómo va el mercado (ESPAC y SIPA)", "Comparando con lo que necesita cada cultivo"]
-    : ["Altura, lluvia y temperatura del lugar (NASA POWER)",
-       "Qué se siembra en tu provincia y cómo va el mercado (ESPAC y SIPA)", "Comparando con lo que necesita cada cultivo"];
+    ? ["Radar NISAR: agua, humedad y vegetación de tu terreno", "NASADEM: altura e inclinación",
+       "NASA POWER y CHELSA: temperatura y lluvia", "SoilGrids: acidez y textura del suelo",
+       "ESPAC y SIPA: qué se siembra en tu provincia y cómo va el mercado", "Comparando con lo que necesita cada cultivo"]
+    : ["NASA POWER: altura, lluvia y temperatura del lugar",
+       "ESPAC y SIPA: qué se siembra en tu provincia y cómo va el mercado", "Comparando con lo que necesita cada cultivo"];
 }
 function analizar() {
   const [lon, lat] = centroDelTerreno();
@@ -698,21 +1143,23 @@ function mostrarResultados() {
   if (r.error) { irA("marcar"); dibujarTerreno(); avisar(r.error); return; }
   const t = r.terreno, hay = r.cultivos.length;
   E.titulo = hay ? "Esto es lo que más le conviene a tu terreno" : "Ningún cultivo de nuestra lista se da bien en este terreno";
+  E.planta3D = 0;
   $("#titulo-resultados").textContent = E.titulo;
-  const partes = [];
-  if (t.area) partes.push(t.area);
-  partes.push(`en ${t.provincia}`);
-  if (t.altura != null) partes.push(`a ${numero(t.altura)} m de altura`);
-  if (t.temp != null) partes.push(`${numero(t.temp, 1)} °C`);
-  if (t.lluvia != null) partes.push(`${numero(t.lluvia)} mm de lluvia al año`);
-  if (t.pendiente != null) partes.push(`pendiente de ${numero(t.pendiente)}°`);
-  $("#resumen-terreno").textContent = "Tu terreno: " + partes.join(", ") + ".";
+  const casillas = [["Tamaño", t.area ? t.area.replace(/\s*\(.*\)/, "") : "Un punto"]];
+  if (t.altura != null) casillas.push(["Altura", `${numero(t.altura)} m`]);
+  if (t.temp != null) casillas.push(["Temperatura", `${numero(t.temp, 1)} °C`]);
+  if (t.lluvia != null) casillas.push(["Lluvia al año", `${numero(t.lluvia)} mm`]);
+  if (t.pendiente != null) casillas.push(["Pendiente", `${numero(t.pendiente)}°`]);
+  const cuadras = t.area && /\((.*)\)/.exec(t.area);
+  $("#panel-terreno").innerHTML = `<h3>Tu terreno, en ${texto(t.provincia)}</h3><div class="rejilla">`
+    + casillas.map(([nombre, valor]) => `<div><small>${nombre}</small><b>${texto(valor)}</b></div>`).join("") + "</div>"
+    + `<p>${cuadras ? texto(cuadras[1].replace("≈ ", "Unas ")) + ". " : ""}${t.con_radar ? `Leído en ${t.cuadros} ${t.cuadros === 1 ? "cuadro" : "cuadros"} del radar NISAR, de 250 m cada uno.` : "Clima general del lugar (NASA POWER)."}</p>`;
   const nota = $("#nota-terreno");
   nota.classList.toggle("alerta", !!t.no_cultivable);
   nota.textContent = t.no_cultivable
     ? "Ojo: el radar ve este lugar como zona construida o agua, no como terreno de cultivo. Toma el resultado solo como referencia."
-    : t.con_radar ? "Análisis con detalle del radar NISAR, en cuadros de 250 m."
-    : "Aquí todavía no tenemos el detalle del radar: el análisis usa el clima general del lugar.";
+    : t.con_radar ? "Toca un cultivo para ver qué midió el radar NISAR en tu terreno y cuánto pesa en su puntaje."
+    : "Aquí todavía no tenemos el detalle del radar: el análisis usa el clima general del lugar. Toca un cultivo para ver sus datos.";
   $("#sobres").innerHTML = r.cultivos.map((c, i) => `
     <button class="sobre" role="listitem" data-i="${i}" aria-expanded="false" aria-label="${texto(c.nombre)}, aptitud ${c.puntaje} de 100. Ver la ficha">
       <div class="foto" id="foto-${i}"><span>${texto(c.nombre[0])}</span><span class="puesto">${c.puesto}</span></div>
@@ -727,17 +1174,146 @@ function mostrarResultados() {
   }));
   $("#otros").textContent = r.otros && r.otros.length
     ? "También pasan la aptitud mínima: " + r.otros.map((o) => `${o.nombre} (${o.puntaje})`).join(", ") + "." : "";
+  $("#ver-3d").hidden = !hay;
+  if (hay) { entrarPrimeroAl3D(); return; }      // el resumen en 3D va primero; la ficha técnica queda a un toque
   irA("resultados");
   dibujarTerreno();
   encuadrarTerreno(margenes());
 }
+async function entrarPrimeroAl3D() {
+  await mostrarCargador("Levantando el relieve de tu terreno");      // tapa mientras se cambia de pantalla
+  irA("resultados");
+  dibujarTerreno();
+  alternar3D(true, true);
+}
+function rotuloDel3D() {          // el mismo botón sirve para ir y volver
+  $("#ver-3d span").textContent = E.tresD ? "Ver ficha técnica" : "Ver mi terreno en 3D";
+  $("#icono-3d").setAttribute("href", E.tresD ? "#i-ficha" : "#i-montana");
+  $("#ver-3d").classList.toggle("suave", !E.tresD);
+}
+function verFichaTecnica() {       // del 3D a la vista de arriba, con la ficha del cultivo que se estaba mirando
+  const i = E.planta3D;
+  alternar3D(false);
+  if (E.resultado && E.resultado.cultivos[i]) abrirFicha(i);
+}
 
 // ---------------------------------------------------------------------------------------------
-// Ficha de un cultivo
+// Ficha de un cultivo. El centro de la ficha es la "lectura del terreno": cada dato va agrupado
+// por quién lo midió (radar NISAR, radar Sentinel-1, relieve y clima de la NASA, mapas de apoyo),
+// junto a lo que ese cultivo necesita y a si cuenta o no en el puntaje.
 // ---------------------------------------------------------------------------------------------
+const GRUPOS = {
+  nisar:    { titulo: "Radar NISAR", detalle: "NASA e ISRO · cuadros de 250 m" },
+  sentinel: { titulo: "Radar Sentinel-1", detalle: "época lluviosa, enero a mayo" },
+  nasa:     { titulo: "Relieve y clima", detalle: "NASADEM y NASA POWER" },
+  apoyo:    { titulo: "Lluvia y suelo", detalle: "CHELSA y SoilGrids: mapas de apoyo, no son de la NASA" },
+  general:  { titulo: "Clima general del lugar", detalle: "NASA POWER" },
+};
+const MEDIDAS = {          // primera palabra del factor que arma Python -> grupo y nombre que se muestra
+  Encharcamiento: ["nisar", "Agua sobre el terreno"], Alrededores: ["nisar", "Agua en los terrenos vecinos"],
+  Humedad: ["nisar", "Humedad del suelo"], Invierno: ["sentinel", "Agua en la época lluviosa"],
+  Altura: ["nasa", "Altura"], Pendiente: ["nasa", "Inclinación del terreno"], Temperatura: ["nasa", "Temperatura"],
+  Heladas: ["nasa", "Heladas"], Lluvia: ["apoyo", "Lluvia"], Suelo: ["apoyo", "Acidez del suelo (pH)"],
+};
+const claseDe = (nota) => (nota == null ? "aviso" : nota >= 1 ? "favor" : nota > 0 ? "medias" : "contra");
+// Cifra grande de cada medida: sale de los datos del terreno, no del texto (el texto queda como explicación)
+function cifraDe(clave, f, t) {
+  const porciento = (v) => numero(v * 100) + " %";
+  let m;
+  switch (clave) {
+    case "Encharcamiento": return t.encharcamiento != null ? [porciento(t.encharcamiento), "de las pasadas del radar con agua"] : null;
+    case "Alrededores": return t.vecinos_agua != null ? [porciento(t.vecinos_agua), "de los cuadros vecinos con agua"] : null;
+    case "Humedad": return t.humedad != null ? [porciento(t.humedad), "de saturación del suelo (0 = seco, 100 = saturado)"] : null;
+    case "Invierno": return (m = /(\d+)\s*%/.exec(f.texto)) ? [m[1] + " %", "del terreno con agua, de enero a mayo"] : null;
+    case "Altura": return t.altura != null ? [numero(t.altura) + " m", "sobre el nivel del mar"] : null;
+    case "Pendiente": return t.pendiente != null ? [numero(t.pendiente) + "°", "de inclinación"] : null;
+    case "Temperatura": return t.temp != null ? [numero(t.temp, 1) + " °C", "promedio del año"] : null;
+    case "Heladas": return t.helada != null ? [porciento(t.helada), "de riesgo en el mes más frío"] : null;
+    case "Lluvia": return t.lluvia != null ? [numero(t.lluvia) + " mm", "de lluvia al año"] : null;
+    case "Suelo": return (m = /pH\s*([\d.,]+)/.exec(f.texto)) ? ["pH " + m[1].replace(".", ","), "acidez del suelo"] : null;
+  }
+  return null;
+}
+// Rango que le va bien al cultivo, leído de la explicación del motor ("necesita 0–1200 m", "lo mejor es 21–30 °C",
+// "máximo 15°"). Si la frase no trae un rango, no se dibuja el gráfico (no se inventa nada).
+function rangoDe(clave, f, t) {
+  const entre = /\(([^)]*)\)/.exec(f.texto), n = (x) => Number(String(x).replace(",", "."));
+  if (!entre) return null;
+  let a, b, m, valor, unidad = "";
+  if ((m = /(\d+(?:[.,]\d+)?)\s*[–-]\s*(\d+(?:[.,]\d+)?)/.exec(entre[1]))) { a = n(m[1]); b = n(m[2]); }
+  else if ((m = /máximo\s*(\d+(?:[.,]\d+)?)/.exec(entre[1]))) { a = 0; b = n(m[1]); }
+  else return null;
+  if (clave === "Altura") { valor = t.altura; unidad = " m"; }
+  else if (clave === "Temperatura") { valor = t.temp; unidad = " °C"; }
+  else if (clave === "Pendiente") { valor = t.pendiente; unidad = "°"; }
+  else if (clave === "Suelo") { m = /pH\s*([\d.,]+)/.exec(f.texto); valor = m ? n(m[1]) : null; }
+  else if (clave === "Lluvia") {          // si el motor midió la lluvia del ciclo, el punto es esa lluvia y no la del año
+    if (/ciclo/.test(entre[1])) { m = /caen unos\s*([\d.]+)\s*mm/.exec(f.texto); valor = m ? n(m[1]) : null; } else valor = t.lluvia;
+    unidad = " mm";
+  }
+  if (valor == null || !Number.isFinite(valor) || !(b > a)) return null;
+  const margen = (Math.max(b, valor) - Math.min(a, valor)) * 0.22, desde = Math.max(0, Math.min(a, valor) - margen), hasta = Math.max(b, valor) + margen;
+  const en = (x) => ((x - desde) / (hasta - desde) * 100).toFixed(1);
+  return `<div class="rango"><div class="pista"><i class="ideal" style="left:${en(a)}%;width:${(en(b) - en(a)).toFixed(1)}%"></i></div>`
+    + `<i class="punto" style="left:${en(valor)}%"></i><span style="left:${en(a)}%">${numero(a, a % 1 ? 1 : 0)}</span><span style="left:${en(b)}%">${numero(b, b % 1 ? 1 : 0)}${unidad}</span></div>`;
+}
+function lecturaDelTerreno(c, t, pesoPeor) {
+  const grupos = { nisar: [], sentinel: [], nasa: [], apoyo: [], general: [] }, notas = [], avisos = [];
+  let deSatelite = 0;
+  for (const f of c.factores) {
+    const clave = String(f.factor || f.texto).split(/[ :]/)[0];
+    const [grupo, nombre] = MEDIDAS[clave] || ["apoyo", clave];
+    const donde = !t.detallado ? "general" : grupo;
+    let frase = f.texto.replace(/^(Humedad del suelo|Suelo|[A-Za-zÁÉÍÓÚáéíóúñ]+)\s*:?\s*/, "");
+    frase = frase.replace(/^(pH\s*)?[\d.,]+\s*(m|°C|°|mm\/año)?\s*:\s*/, "");          // la cifra ya va en grande
+    frase = frase.charAt(0).toUpperCase() + frase.slice(1);
+    if (f.nota != null) { notas.push({ nombre, nota: f.nota, fuente: GRUPOS[donde].titulo }); if (donde !== "apoyo") deSatelite++; }
+    else avisos.push(nombre);
+    const cifra = cifraDe(clave, f, t);
+    // gráfico: rango del cultivo si la frase lo trae; para el agua, una barra de 0 a 100 %
+    let grafico = rangoDe(clave, f, t) || "";
+    if (!grafico && cifra && /%$/.test(cifra[0]) && f.nota != null)
+      grafico = `<div class="barra" style="margin-top:9px"><i style="width:${Math.max(2, Math.min(100, parseFloat(cifra[0])))}%"></i></div>`;
+    grupos[donde].push({ nombre, frase, nota: f.nota, cifra, grafico });
+  }
+  if (t.con_radar && t.vegetacion != null) grupos.nisar.push({ nombre: "Vegetación que ve el radar", nota: null, describe: true,
+      cifra: [numero(t.vegetacion, 2), "índice de 0 a 1"], frase: "0 es suelo descubierto y 1 es vegetación densa.",
+      grafico: `<div class="barra" style="margin-top:9px"><i style="width:${Math.round(t.vegetacion * 100)}%;background:#8A99A8"></i></div>` });
+  if (t.detallado && t.tipos && t.tipos.length) grupos.nisar.push({ nombre: "Tipo de terreno", nota: null, describe: true, ancho: true,
+      cifra: [t.tipos.map((x) => `${x.nombre} (${numero(x.fraccion * 100)} %)`).join(", "), ""], frase: "Modelo entrenado con el radar y el mapa ESA WorldCover.", grafico: "" });
+  const fuentes = Object.keys(grupos).filter((g) => grupos[g].length).map((g) =>
+    `<section class="fuente"><header><b>${GRUPOS[g].titulo}</b><small>${GRUPOS[g].detalle}</small></header>` + grupos[g].map((d) => {
+      const clase = claseDe(d.nota), largo = d.cifra && d.cifra[0].length > 9;
+      const papel = d.nota != null ? `Cuenta en el puntaje · nota ${Math.round(d.nota * 100)} de 100` : d.describe ? "Describe el terreno: no cambia el puntaje" : "Aviso: no cambia el puntaje";
+      const cifra = d.cifra ? `<div class="cifra${largo ? " frase" : ""}"><b>${texto(d.cifra[0])}</b>${d.cifra[1] ? `<small>${texto(d.cifra[1])}</small>` : ""}</div>` : `<div class="cifra frase"><b>—</b></div>`;
+      const que = `<div class="que"><strong>${texto(d.nombre)}</strong>${d.frase ? `<p>${texto(d.frase)}</p>` : ""}${d.grafico}<em>${papel}</em></div>`;
+      return d.ancho ? `<div class="dato ${clase} ancho"><div class="que"><strong>${texto(d.nombre)}</strong><p><b>${texto(d.cifra[0])}</b></p><p>${texto(d.frase)}</p><em>${papel}</em></div></div>`
+                     : `<div class="dato ${clase}">${cifra}${que}</div>`;
+    }).join("") + "</section>").join("");
+  // Gráfico de notas (de la más baja a la más alta) y la cuenta del puntaje con los números de este cultivo
+  const ordenadas = [...notas].sort((x, y) => x.nota - y.nota);
+  const grafico = ordenadas.length ? `<div class="notas">` + ordenadas.map((n) =>
+    `<div class="nota-fila ${claseDe(n.nota)}"><span>${texto(n.nombre)}<small>${texto(n.fuente)}</small></span><div class="barra"><i style="width:${Math.max(3, Math.round(n.nota * 100))}%"></i></div><b>${Math.round(n.nota * 100)}</b></div>`).join("") + "</div>" : "";
+  let cuenta = "";
+  if (notas.length) {
+    const promedio = notas.reduce((s, n) => s + n.nota, 0) / notas.length, peor = ordenadas[0];
+    const total = 100 * (pesoPeor * peor.nota + (1 - pesoPeor) * promedio);
+    if (Math.abs(total - c.puntaje) <= 0.6) cuenta = `<div class="cuenta">
+      <div><small>Promedio de las notas</small><b>${Math.round(promedio * 100)}</b><span>pesa ${Math.round((1 - pesoPeor) * 100)} %</span></div><i>+</i>
+      <div><small>La nota más baja</small><b>${Math.round(peor.nota * 100)}</b><span>${texto(peor.nombre)} · pesa ${Math.round(pesoPeor * 100)} %</span></div><i>=</i>
+      <div class="total"><small>Aptitud</small><b>${c.puntaje}</b><span>de 100</span></div></div>`;
+  }
+  return { fuentes, grafico, cuenta, avisos, cuentan: notas.length, deSatelite };
+}
+function elegirPestana(cual) {
+  E.pestana = cual;
+  for (const b of document.querySelectorAll(".pestanas button")) b.setAttribute("aria-selected", String(b.dataset.p === cual));
+  for (const h of document.querySelectorAll(".hoja")) h.hidden = h.dataset.p !== cual;
+  $("#ficha").scrollTop = 0;
+}
 function abrirFicha(i) {
   const r = E.resultado, c = r.cultivos[i], t = r.terreno;
-  E.abierto = i;
+  E.abierto = i; E.planta3D = i;
   for (const s of document.querySelectorAll(".sobre")) s.setAttribute("aria-expanded", String(Number(s.dataset.i) === i));
   $("#ficha-nombre").textContent = c.nombre;
   $("#ficha-cientifico").textContent = [c.nombre_cientifico, c.tipo].filter(Boolean).join(", ");
@@ -750,19 +1326,19 @@ function abrirFicha(i) {
     if (pie && f.pagina) pie.innerHTML = `Foto: <a href="${texto(f.pagina)}" target="_blank" rel="noopener">Wikipedia</a>.`;
   });
 
-  const cond = c.condiciones, total = cond.a_favor + cond.a_medias + cond.en_contra;
-  const porque = [];
-  porque.push(`Tu terreno cumple ${cond.a_favor} de las ${total} condiciones que este cultivo necesita`
-              + (cond.a_medias ? `, y ${cond.a_medias} ${cond.a_medias === 1 ? "la cumple" : "las cumple"} a medias.` : "."));
-  if (c.mercado !== "sin_datos") porque.push(`<b>${texto(c.mercado_etiqueta)}.</b> ${texto(c.mercado_texto)}`);
-  else porque.push("Todavía no tenemos datos de mercado de este cultivo: la recomendación se apoya solo en tu terreno.");
-  if (c.evidencia && c.evidencia !== "sin_datos") porque.push(texto(c.evidencia_texto));
-  if (c.cosecha) porque.push(`Si siembras en ${texto(r.mes_siembra)}, la primera cosecha llegaría hacia <b>${texto(c.cosecha)}</b>. `
-                             + "Cómo estará el precio en ese mes todavía no lo podemos anticipar con estos datos.");
+  const lectura = lecturaDelTerreno(c, t, r.peso_peor != null ? r.peso_peor : 0.6), cond = c.condiciones;
+  const calculo = `Cada dato que cuenta se compara con lo que necesita ${texto(c.nombre.toLowerCase())} y recibe una nota de 0 a 100. `
+    + `La nota más baja pesa más que el promedio, para que una sola condición mala no quede escondida. `
+    + `Aquí cuentan ${lectura.cuentan} datos`
+    + (t.detallado ? `, ${lectura.deSatelite} de ellos de satélites y datos de la NASA` : " del clima general de NASA POWER")
+    + `: ${cond.a_favor} a favor` + (cond.a_medias ? `, ${cond.a_medias} a medias` : "") + (cond.en_contra ? `, ${cond.en_contra} en contra` : "") + ".";
 
-  const claseDe = (nota) => (nota == null ? ["aviso", "nota"] : nota >= 1 ? ["favor", "ok"] : nota > 0 ? ["medias", "medio"] : ["contra", "no"]);
-  const condiciones = c.factores.map((f) => { const [clase, dibujo] = claseDe(f.nota);
-    return `<li class="${clase}">${icono(dibujo)}<span>${texto(f.texto)}</span></li>`; }).join("");
+  const mercado = [];
+  if (c.mercado !== "sin_datos") mercado.push(`<b>${texto(c.mercado_etiqueta)}.</b> ${texto(c.mercado_texto)}`);
+  else mercado.push("Todavía no tenemos datos de mercado de este cultivo: la recomendación se apoya solo en tu terreno.");
+  if (c.evidencia && c.evidencia !== "sin_datos") mercado.push(texto(c.evidencia_texto));
+  if (c.cosecha) mercado.push(`Si siembras en ${texto(r.mes_siembra)}, la primera cosecha llegaría hacia <b>${texto(c.cosecha)}</b>. `
+                              + "Cómo estará el precio en ese mes todavía no lo podemos anticipar con estos datos.");
 
   const suelo = [];
   if (t.suelo) suelo.push(`<p>Tu terreno: ${texto(t.suelo)}${t.ph_propio != null ? " (usamos el pH de tu análisis: " + numero(t.ph_propio, 1) + ")" : ""}.</p>`);
@@ -774,21 +1350,40 @@ function abrirFicha(i) {
       <div><b>${c.quintales ? texto(c.quintales) : "—"}</b><span>quintales por cuadra${c.ambito ? ", promedio en " + texto(c.ambito) : ""}</span></div>
       <div><b>${c.meses != null ? numero(c.meses) : "—"}</b><span>meses hasta la primera cosecha</span></div>
     </div>
-    <h3>Por qué te conviene</h3>${porque.map((p) => `<p>${p}</p>`).join("")}
-    <h3>Tu terreno para este cultivo</h3><ul>${condiciones}</ul>
-    ${suelo.length ? "<h3>El suelo</h3>" + suelo.join("") : ""}
-    <h3>De dónde salen los datos</h3>
-    <p class="menor">${t.con_radar ? "Terreno: radar NISAR, NASADEM, CHELSA y SoilGrids. " : "Terreno: NASA POWER (clima general del lugar). "}
-       Requisitos del cultivo: FAO EcoCrop y catálogo del equipo.${c.mercado_fuente ? " Mercado: " + texto(c.mercado_fuente) + "." : ""}
-       ${c.suelo_fuente ? " Suelo que prefiere: " + texto(c.suelo_fuente) + "." : ""} <span id="credito-foto"></span></p>
+    <div class="pestanas" role="tablist">
+      <button role="tab" data-p="terreno">${t.detallado ? "Satélites y terreno" : "Datos del terreno"}</button><button role="tab" data-p="mercado">Suelo y mercado</button><button role="tab" data-p="resumen">Resumen</button>
+    </div>
+    <div class="hoja" data-p="resumen" hidden>
+      <h3>Cómo sale la aptitud</h3>
+      ${lectura.cuenta}
+      <h3>La nota de cada dato</h3>
+      <p class="menor">De la más baja a la más alta. La más baja es la que más limita a ${texto(c.nombre.toLowerCase())} en tu terreno.</p>
+      ${lectura.grafico}
+      ${lectura.avisos.length ? `<p class="avisos">Se muestran pero no cambian el puntaje: ${texto(lectura.avisos.join(", ").toLowerCase())}.</p>` : ""}
+      <p class="calculo">${calculo}</p>
+    </div>
+    <div class="hoja" data-p="terreno">
+      <h3>${t.detallado ? "Lo que midieron los satélites en tu terreno" : "Los datos de tu terreno"}</h3>
+      <div class="leyenda"><span><i></i>lo que le va bien a ${texto(c.nombre.toLowerCase())}</span><span><i class="p"></i>tu terreno</span></div>
+      ${lectura.fuentes}
+    </div>
+    <div class="hoja" data-p="mercado" hidden>
+      ${suelo.length ? "<h3>El suelo</h3>" + suelo.join("") : ""}
+      <h3>Mercado y siembra en tu provincia</h3>${mercado.map((p) => `<p>${p}</p>`).join("")}
+      <h3>De dónde salen los datos</h3>
+      <p class="menor">${t.con_radar ? "Terreno: radar NISAR (pasadas de junio a octubre de 2026), NASADEM, NASA POWER, CHELSA y SoilGrids. " : "Terreno: NASA POWER (clima general del lugar). "}
+         Requisitos del cultivo: FAO EcoCrop y catálogo del equipo.${c.mercado_fuente ? " Mercado: " + texto(c.mercado_fuente) + "." : ""}
+         ${c.suelo_fuente ? " Suelo que prefiere: " + texto(c.suelo_fuente) + "." : ""} <span id="credito-foto"></span></p>
+    </div>
     <div class="pie"><button class="boton" id="ficha-3d">${icono("montana")}Ver mi terreno en 3D</button>
       <button class="boton suave" id="ficha-cerrar">Ver los otros cultivos</button></div>`;
   $("#ficha-3d").addEventListener("click", () => alternar3D(true));     // cierra la ficha y muestra el relieve
   $("#ficha-cerrar").addEventListener("click", cerrarFicha);
+  $(".pestanas").addEventListener("click", (evento) => { const b = evento.target.closest("button"); if (b) elegirPestana(b.dataset.p); });
+  elegirPestana(E.pestana || "terreno");
   $("#ficha").setAttribute("aria-hidden", "false");
-  $("#ficha").scrollTop = 0;
   document.body.classList.add("con-ficha");
-  if (!E.tresD) encuadrarTerreno(margenes(470), 900);
+  if (!E.tresD) encuadrarTerreno(margenes(500), 900);
 }
 function cerrarFicha() {
   if (E.abierto === null) return;
@@ -800,63 +1395,250 @@ function cerrarFicha() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// El terreno en 3D: el mismo mapa, inclinado, con el relieve real (teselas de altura de AWS)
+// El terreno en 3D: el mismo mapa, inclinado, con el relieve real (teselas de altura de AWS).
+// La cámara se acerca al terreno y gira a su alrededor; encima se proyectan las plantas del cultivo
+// elegido y los datos del análisis salen "flotando" en tarjetas pequeñas.
 // ---------------------------------------------------------------------------------------------
 const EXAGERACION_RELIEVE = 1.4;      // el relieve se exagera un poco para que se note la inclinación
+const GRADOS_POR_SEGUNDO_3D = 6;      // velocidad con que la cámara rodea el terreno
 const CIELO_GLOBO = { "atmosphere-blend": ["interpolate", ["linear"], ["zoom"], 0, 1, 5, 1, 7, 0] };
 const CIELO_3D = { "sky-color": "#7FB6F0", "horizon-color": "#EFE6FF", "fog-color": "#EFE6FF",
                    "sky-horizon-blend": 0.6, "horizon-fog-blend": 0.6, "fog-ground-blend": 0.3 };
-function alternar3D(encender) {
-  E.tresD = encender === undefined ? !E.tresD : encender;
-  $("#ver-3d span").textContent = E.tresD ? "Volver a la vista desde arriba" : "Ver mi terreno en 3D";
-  document.body.classList.toggle("en-3d", E.tresD);
-  if (E.tresD) {
-    cerrarFicha();
-    $("#titulo-resultados").textContent = "Tu terreno en 3D";
-    if (!mapa.getSource("relieve")) mapa.addSource("relieve", { type: "raster-dem", tileSize: 256, maxzoom: 15, encoding: "terrarium",
-        tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"], attribution: "Relieve: Mapzen, AWS Terrain Tiles" });
-    mapa.setTerrain({ source: "relieve", exaggeration: EXAGERACION_RELIEVE });
-    try { mapa.setSky(CIELO_3D); } catch (error) { /* sin cielo */ }
-    // La cámara tiene que saber a qué altura está el terreno ANTES de inclinarse: si no, queda
-    // metida dentro de la montaña y el mapa sale negro. easeTo no acepta la altura; jumpTo sí.
-    const altura = (E.resultado && E.resultado.terreno && E.resultado.terreno.altura) || 0;
-    mapa.jumpTo({ elevation: altura * EXAGERACION_RELIEVE });
-    mapa.easeTo({ center: centroDelTerreno(), zoom: Math.min(mapa.getZoom(), 14.6), pitch: 64, bearing: mapa.getBearing() + 35,
-                  padding: { left: 0, right: 0, top: 0, bottom: Math.min(150, window.innerHeight * 0.2) },
-                  duration: SIN_MOVIMIENTO ? 0 : 2600, essential: true });
-  } else {
-    $("#titulo-resultados").textContent = E.titulo || "";
-    mapa.setTerrain(null);
-    try { mapa.setSky(CIELO_GLOBO); } catch (error) { /* sin cielo */ }
-    mapa.jumpTo({ elevation: 0 });
-    mapa.easeTo({ pitch: 0, bearing: 0, duration: SIN_MOVIMIENTO ? 0 : 1400, essential: true });
-    setTimeout(() => { if (E.paso === "resultados" && !E.tresD) encuadrarTerreno(margenes(E.abierto !== null ? 470 : 0), 900); }, 1500);
+const orbita3D = { activa: false, id: 0, antes: 0, pausaHasta: 0 };
+let flotantes = [];
+
+// Dibujos de las plantas (propios, hechos aquí): una mata para los cultivos de ciclo corto y un árbol para los de varios años
+function dibujarPlantas() {
+  const lienzo = document.createElement("canvas"); lienzo.width = 96; lienzo.height = 120;
+  const c = lienzo.getContext("2d", { willReadFrequently: true });
+  const base = () => { c.clearRect(0, 0, 96, 120); c.fillStyle = "rgba(4,6,15,.35)"; c.beginPath(); c.ellipse(48, 112, 26, 6, 0, 0, 2 * Math.PI); c.fill();
+                       c.lineJoin = c.lineCap = "round"; c.strokeStyle = "#0A1420"; c.lineWidth = 3; };
+  const hoja = (x, y, largo, giro, color) => { c.save(); c.translate(x, y); c.rotate(giro); c.fillStyle = color; c.beginPath();
+    c.moveTo(0, 0); c.quadraticCurveTo(largo * 0.5, -largo * 0.42, largo, 0); c.quadraticCurveTo(largo * 0.5, largo * 0.42, 0, 0); c.fill(); c.stroke(); c.restore(); };
+  const guardar = (nombre) => { if (!mapa.hasImage(nombre)) mapa.addImage(nombre, c.getImageData(0, 0, 96, 120), { pixelRatio: 2 }); };
+  base();                                             // mata
+  c.strokeStyle = "#0A1420"; c.lineWidth = 7; c.beginPath(); c.moveTo(48, 110); c.lineTo(48, 44); c.stroke();
+  c.strokeStyle = "#4E9A2A"; c.lineWidth = 4; c.beginPath(); c.moveTo(48, 110); c.lineTo(48, 44); c.stroke();
+  c.strokeStyle = "#0A1420"; c.lineWidth = 2.5;
+  hoja(48, 92, 34, -0.5, "#7BCB3E"); hoja(48, 92, 34, Math.PI + 0.5, "#62B531");
+  hoja(48, 70, 30, -0.75, "#8BD64A"); hoja(48, 70, 30, Math.PI + 0.75, "#7BCB3E");
+  hoja(48, 48, 26, -Math.PI / 2, "#A1E25E");
+  guardar("mata");
+  base();                                             // árbol
+  c.fillStyle = "#8A5A33"; c.beginPath(); c.moveTo(42, 112); c.lineTo(45, 62); c.lineTo(51, 62); c.lineTo(54, 112); c.closePath(); c.fill(); c.stroke();
+  for (const [x, y, r, color] of [[34, 56, 20, "#4E9A2A"], [62, 56, 20, "#62B531"], [48, 36, 25, "#7BCB3E"]]) {
+    c.fillStyle = color; c.beginPath(); c.arc(x, y, r, 0, 2 * Math.PI); c.fill(); c.stroke(); }
+  c.fillStyle = "#7BCB3E"; c.beginPath(); c.arc(48, 50, 20, 0, 2 * Math.PI); c.fill();
+  guardar("arbol");
+}
+// Modelos 3D de las plantas (uno por cultivo, en modelos/<clave>.glb). Si algo falla al cargarlos,
+// la promesa da null y se siguen viendo los dibujos planos de arriba.
+let plantas3D = Promise.resolve(null);
+const medidasDeModelos = {};          // clave -> { alto, ancho } en metros, del catálogo de modelos
+function cargarPlantas3D() {
+  plantas3D = import("./smartseeds-plantas3d.js")
+    .then(({ SmartSeedsPlants3D }) => { const p = new SmartSeedsPlants3D(mapa, { spriteLayer: "plantas" }); p.setVisible(false); return p; })
+    .catch((error) => { console.warn("SmartSeeds: los modelos 3D no cargaron; se usan los dibujos planos.", error); return null; });
+  fetch("modelos/catalogo_modelos.json").then((r) => r.json()).then((catalogo) => {
+    for (const m of catalogo.modelos || []) { const d = m.ligero || m.detalle;
+      medidasDeModelos[m.clave] = { alto: d.altura_m, ancho: Math.max(d.bounds_max[0] - d.bounds_min[0], d.bounds_max[2] - d.bounds_min[2]) }; }
+  }).catch(() => { /* sin catálogo las plantas van a tamaño real */ });
+}
+// Cuánto se agranda el modelo para que se vea en un terreno grande: que ocupe buena parte del
+// espacio entre plantas, sin pasarse. Nunca se achica. Es ilustrativo y la pantalla lo dice.
+function escalaDePlanta(clave, paso) {
+  const m = medidasDeModelos[clave];
+  return m ? Math.max(1, Math.min(0.85 * paso / m.ancho, 1.5 * paso / m.alto)) : 1;
+}
+function dentroDelTerreno(lon, lat) {          // ¿el punto cae dentro del contorno trazado?
+  let dentro = false;
+  for (let i = 0, j = E.esquinas.length - 1; i < E.esquinas.length; j = i++) {
+    const [xi, yi] = E.esquinas[i], [xj, yj] = E.esquinas[j];
+    if ((yi > lat) !== (yj > lat) && lon < (xj - xi) * (lat - yi) / (yj - yi) + xi) dentro = !dentro;
   }
+  return dentro;
+}
+// Tamaño del terreno en metros (ancho, alto y radio) alrededor de su centro; para un punto suelto, un círculo de 60 m
+function medidaDelTerreno() {
+  const [lon, lat] = centroDelTerreno(), mLat = 111320, mLon = 111320 * Math.cos(lat * Math.PI / 180);
+  if (E.esquinas.length < 3) return { lon, lat, mLat, mLon, ancho: 120, alto: 120, radio: 60, oeste: lon - 60 / mLon, sur: lat - 60 / mLat };
+  const b = limitesDelTerreno(), ancho = (b.getEast() - b.getWest()) * mLon, alto = (b.getNorth() - b.getSouth()) * mLat;
+  return { lon, lat, mLat, mLon, ancho, alto, radio: Math.hypot(ancho, alto) / 2, oeste: b.getWest(), sur: b.getSouth() };
+}
+function sembrarPlantas() {
+  const r = E.resultado, c = r && r.cultivos[E.planta3D];
+  if (!c) { mapa.getSource("plantas").setData(VACIO); plantas3D.then((p) => p && p.setCultivo("maiz_suave", [])); return; }
+  const m = medidaDelTerreno(), dibujo = c.tipo.includes("permanente") ? "arbol" : "mata";
+  const paso = Math.max(9, Math.sqrt(m.ancho * m.alto / 110)), puntos = [];      // en metros: unas 110 plantas en el recuadro
+  for (let fila = 0, y = paso / 2; y < m.alto; y += paso, fila++) {
+    for (let x = paso / 2 + (fila % 2 ? paso / 2 : 0); x < m.ancho; x += paso) {      // filas alternadas, como un sembrío
+      const lon = m.oeste + x / m.mLon, lat = m.sur + y / m.mLat;
+      const cabe = E.esquinas.length >= 3 ? dentroDelTerreno(lon, lat) : Math.hypot(x - m.ancho / 2, y - m.alto / 2) < m.radio;
+      if (cabe) puntos.push({ type: "Feature", properties: { dibujo }, geometry: { type: "Point", coordinates: [lon, lat] } });
+    }
+  }
+  puntos.sort((a, b) => b.geometry.coordinates[1] - a.geometry.coordinates[1]);
+  const datos = { type: "FeatureCollection", features: puntos.slice(0, 260) };
+  mapa.getSource("plantas").setData(datos);          // dibujos planos: respaldo mientras llega el modelo
+  plantas3D.then((p) => p && p.setCultivo(c.clave, datos, { escalaVisual: escalaDePlanta(c.clave, paso) }));
+}
+// Tarjetas flotantes: los mismos datos de la ficha, resumidos, cada una con su fuente
+function soltarDatos() {
+  for (const f of flotantes) f.remove();
+  flotantes = [];
+  const r = E.resultado, t = r.terreno, c = r.cultivos[E.planta3D], m = medidaDelTerreno();
+  const tarjetas = [];
+  if (t.altura != null) tarjetas.push(["Relieve · NASADEM", `${numero(t.altura)} m`, t.pendiente != null ? `inclinación de ${numero(t.pendiente)}°` : "de altura"]);
+  if (t.con_radar && t.encharcamiento != null) tarjetas.push(["Agua · radar NISAR",
+      t.encharcamiento >= 0.005 ? `${numero(t.encharcamiento * 100)} % de las pasadas` : "Sin agua acumulada",
+      t.humedad != null ? `suelo al ${numero(t.humedad * 100)} % de saturación` : "humedad del suelo: sin dato"]);
+  if (t.temp != null) tarjetas.push([t.detallado ? "Clima · POWER y CHELSA" : "Clima · NASA POWER", `${numero(t.temp, 1)} °C`, t.lluvia != null ? `${numero(t.lluvia)} mm de lluvia al año` : ""]);
+  if (t.con_radar && t.vegetacion != null) tarjetas.push(["Vegetación · radar NISAR", `Índice ${numero(t.vegetacion, 2)}`, "de 0 a 1"]);
+  else if (t.suelo) tarjetas.push(["Suelo · SoilGrids", t.suelo.replace(/^suelo /, ""), ""]);
+  // Cada tarjeta se ancla DENTRO del terreno: se camina desde el centro en su dirección hasta salir del
+  // contorno y se toma un punto a algo más de la mitad de ese camino.
+  const hastaElBorde = (angulo) => {
+    if (E.esquinas.length < 3) return m.radio;
+    const paso = Math.max(1, m.radio / 60);
+    let d = 0;
+    while (d < m.radio * 2 && dentroDelTerreno(m.lon + (d + paso) * Math.cos(angulo) / m.mLon, m.lat + (d + paso) * Math.sin(angulo) / m.mLat)) d += paso;
+    return d;
+  };
+  tarjetas.forEach(([fuente, valor, detalle], i) => {
+    const angulo = Math.PI / 4 + i * 2 * Math.PI / tarjetas.length, lejos = hastaElBorde(angulo) * 0.62;
+    const caja = document.createElement("div");
+    caja.className = "flota"; caja.style.setProperty("--i", i + 1);
+    caja.innerHTML = `<i class="linea"></i><i class="base"></i><div class="tarjeta"><small>${texto(fuente)}</small><b>${texto(valor)}</b>${detalle ? `<span>${texto(detalle)}</span>` : ""}</div>`;
+    flotantes.push(new maplibregl.Marker({ element: caja, anchor: "center" })
+      .setLngLat([m.lon + lejos * Math.cos(angulo) / m.mLon, m.lat + lejos * Math.sin(angulo) / m.mLat]).addTo(mapa));
+  });
+  if (c) {
+    const caja = document.createElement("div");
+    caja.className = "flota principal"; caja.style.setProperty("--i", 0);
+    caja.innerHTML = `<i class="linea"></i><i class="base"></i><div class="tarjeta"><b>${texto(c.nombre)}</b></div>`;      // solo el nombre: el detalle está en la ficha técnica
+    flotantes.push(new maplibregl.Marker({ element: caja, anchor: "center" }).setLngLat([m.lon, m.lat]).addTo(mapa));
+  }
+  acomodarTarjetas();
+}
+// Aparta cada tarjeta hacia afuera del terreno, en la misma dirección en que está su punto respecto del centro,
+// y ajusta su línea. Se repite al mover la cámara (solo cambia estilos: no mueve el mapa).
+function acomodarTarjetas() {
+  if (!flotantes.length || !E.tresD) return;
+  const [lon, lat] = centroDelTerreno(), centro = mapa.project([lon, lat]);
+  for (const f of flotantes) {
+    const caja = f.getElement(), principal = caja.classList.contains("principal"), p = mapa.project(f.getLngLat());
+    const rumbo = principal ? -Math.PI / 2 : Math.atan2(p.y - centro.y, p.x - centro.x);
+    // hacia los lados nunca menos de 200 px: así ninguna queda debajo de la tarjeta del cultivo, que va arriba al centro
+    const dx = principal ? 0 : (Math.cos(rumbo) < 0 ? -1 : 1) * Math.max(200, Math.abs(Math.cos(rumbo)) * 250), dy = principal ? -215 : Math.sin(rumbo) * 135 - 30;
+    caja.style.setProperty("--dx", dx.toFixed(0) + "px"); caja.style.setProperty("--dy", dy.toFixed(0) + "px");
+    caja.style.setProperty("--largo", Math.hypot(dx, dy).toFixed(0) + "px"); caja.style.setProperty("--giro", Math.atan2(dy, dx).toFixed(3) + "rad");
+  }
+}
+function elegirPlanta(i) {
+  E.planta3D = i;
+  $("#elige-planta").innerHTML = "<span>Así se vería sembrado con:</span>" + E.resultado.cultivos.map((c, k) =>
+    `<button data-i="${k}" aria-pressed="${k === i}">${texto(c.nombre)}</button>`).join("");
+  sembrarPlantas();
+  soltarDatos();
+}
+function pausarOrbita3D() { orbita3D.pausaHasta = performance.now() + 4500; }      // si la persona mueve la vista, la cámara espera
+function cuadroDeOrbita3D(ahora) {
+  if (!orbita3D.activa) return;
+  const paso = orbita3D.antes ? Math.min(0.05, (ahora - orbita3D.antes) / 1000) : 0;
+  orbita3D.antes = ahora;
+  if (ahora > orbita3D.pausaHasta && !document.hidden) mapa.jumpTo({ bearing: mapa.getBearing() + GRADOS_POR_SEGUNDO_3D * paso });
+  orbita3D.id = requestAnimationFrame(cuadroDeOrbita3D);
+}
+function detenerOrbita3D() { orbita3D.activa = false; cancelAnimationFrame(orbita3D.id); }
+function limpiar3D() {          // deja el mapa plano y sin plantas ni tarjetas
+  detenerOrbita3D();
+  for (const f of flotantes) f.remove();
+  flotantes = [];
+  if (mapa.getSource("plantas")) mapa.getSource("plantas").setData(VACIO);
+  plantas3D.then((p) => { if (p) { p.setVisible(false); p.setCultivo("maiz_suave", []); } });
+  E.tresD = false;
+  document.body.classList.remove("en-3d");
+  rotuloDel3D();
+  mapa.setPaintProperty("terreno-relleno", "fill-opacity", 0.26);
+  mapa.setTerrain(null);
+  try { mapa.setSky(CIELO_GLOBO); } catch (error) { /* sin cielo */ }
+  mapa.jumpTo({ elevation: 0 });
+}
+async function alternar3D(encender, yaTapado = false) {
+  const quiere = encender === undefined ? !E.tresD : encender;
+  if (quiere === E.tresD || !E.resultado) return;
+  if (!quiere) {
+    limpiar3D();
+    $("#titulo-resultados").textContent = E.titulo || "";
+    mapa.easeTo({ pitch: 0, bearing: 0, duration: SIN_MOVIMIENTO ? 0 : 1200, essential: true });
+    setTimeout(() => { if (E.paso === "resultados" && !E.tresD) encuadrarTerreno(margenes(E.abierto !== null ? 500 : 0), 900); }, 1300);
+    return;
+  }
+  const planta = E.abierto !== null ? E.abierto : E.planta3D;
+  if (!yaTapado) await mostrarCargador("Levantando el relieve de tu terreno");
+  cerrarFicha();
+  E.tresD = true;
+  document.body.classList.add("en-3d");
+  rotuloDel3D();
+  $("#titulo-resultados").textContent = "Tu terreno en 3D";
+  if (!mapa.getSource("relieve")) mapa.addSource("relieve", { type: "raster-dem", tileSize: 256, maxzoom: 15, encoding: "terrarium",
+      tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"], attribution: "Relieve: Mapzen, AWS Terrain Tiles" });
+  mapa.setTerrain({ source: "relieve", exaggeration: EXAGERACION_RELIEVE });
+  try { mapa.setSky(CIELO_3D); } catch (error) { /* sin cielo */ }
+  // Acercamiento: el que hace falta para que el terreno llene la pantalla, sin pasarse
+  const abajo = Math.min(170, window.innerHeight * 0.22), m = medidaDelTerreno();
+  mapa.stop();
+  mapa.setPadding({ left: 0, right: 0, top: 0, bottom: abajo });
+  const pixeles = 0.55 * Math.min(window.innerWidth, window.innerHeight);      // el terreno llena la pantalla (inclinado se ve más corto)
+  const zoom = Math.max(14.6, Math.min(18.5, Math.log2(40075016 * Math.cos(m.lat * Math.PI / 180) / (512 * m.radio / pixeles))));
+  // La cámara tiene que saber a qué altura está el terreno ANTES de inclinarse: si no, queda
+  // metida dentro de la montaña y el mapa sale negro. easeTo no acepta la altura; jumpTo sí.
+  const altura = (E.resultado.terreno.altura || 0) * EXAGERACION_RELIEVE, rumbo = mapa.getBearing();
+  mapa.jumpTo({ center: [m.lon, m.lat], zoom: zoom - 0.7, pitch: 48, bearing: rumbo, elevation: altura });
+  await esperarMapaListo(6000);
+  if (!E.tresD) { ocultarCargador(); return; }
+  ocultarCargador();
+  mapa.setPaintProperty("terreno-relleno", "fill-opacity", 0.07);      // en 3D el relleno claro casi se quita: las plantas contrastan con la foto
+  plantas3D.then((p) => p && E.tresD && p.setVisible(true));
+  elegirPlanta(planta);                     // plantas y tarjetas aparecen mientras la cámara termina de acercarse
+  mapa.easeTo({ zoom, pitch: 64, bearing: rumbo + 28, duration: SIN_MOVIMIENTO ? 0 : 2400, essential: true });
+  await espera(SIN_MOVIMIENTO ? 0 : 2450);
+  if (!E.tresD || SIN_MOVIMIENTO) return;
+  orbita3D.activa = true; orbita3D.antes = 0; orbita3D.pausaHasta = 0;
+  orbita3D.id = requestAnimationFrame(cuadroDeOrbita3D);
 }
 
 // ---------------------------------------------------------------------------------------------
 // Terminar o empezar otro terreno
 // ---------------------------------------------------------------------------------------------
 function otroTerreno() {
-  if (E.tresD) alternar3D(false);
+  if (E.tresD) { limpiar3D(); mapa.easeTo({ pitch: 0, bearing: 0, duration: 0 }); }
   cerrarFicha();
-  E.resultado = null; E.esquinas = [];
+  E.resultado = null; E.esquinas = []; E.trazando = false; E.ultimoToque = null;
   irA("marcar");
   dibujarTerreno();
-  avisar("Mueve el mapa hasta tu otro terreno y marca sus esquinas.");
-  mapa.easeTo({ padding: { left: margenIzquierdo(), right: 0, top: 0, bottom: 0 }, duration: 600 });
+  avisar("Mueve el mapa hasta tu otro terreno.");
+  mapa.easeTo({ padding: { left: margenIzquierdo(), right: 0, top: 0, bottom: 0 }, duration: SIN_MOVIMIENTO ? 0 : 600 });
 }
-function finalizar() {
-  if (E.tresD) { E.tresD = false; mapa.setTerrain(null); mapa.jumpTo({ elevation: 0 }); document.body.classList.remove("en-3d");
-                 $("#ver-3d span").textContent = "Ver mi terreno en 3D"; try { mapa.setSky(CIELO_GLOBO); } catch (error) { /* sin cielo */ } }
+// Volver al planeta: el cambio se hace tapado por el cargador (salto directo y espera a que lleguen las
+// imágenes del mundo). Un vuelo desde el terreno hasta el espacio cargaba el mapa cuadro a cuadro.
+async function finalizar() {
+  await mostrarCargador("Volviendo al planeta");
+  mapa.stop();
+  if (E.tresD) limpiar3D();
   cerrarFicha();
-  E.resultado = null; E.esquinas = [];
+  E.resultado = null; E.esquinas = []; E.trazando = false; E.ultimoToque = null;
   irA("portada");
   dibujarTerreno();
+  mapa.scrollZoom.disable(); mapa.touchZoomRotate.disable();
   mapa.setProjection({ type: "globe" });
-  const vista = vistaPortada();
-  mapa.flyTo({ center: [LON_PORTADA, LAT_PORTADA], zoom: E.zoomPortada || vista.zoom, pitch: 0, bearing: 0, padding: vista.padding,
-               duration: SIN_MOVIMIENTO ? 0 : 4200, essential: true });
+  giro.lon = LON_PORTADA; giro.lat = LAT_PORTADA; giro.arrastrando = false;
+  acomodarPortada();
+  await cuadro(); await cuadro();
+  acomodarPortada();                        // otra vez, ya con el globo dibujado
+  await esperarMapaListo(6000);
+  ocultarCargador();
+  iniciarGiro();
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -865,14 +1647,18 @@ function finalizar() {
 $("#empezar").addEventListener("click", empezar);
 $("#form-buscar").addEventListener("submit", buscarLugar);
 $("#mi-ubicacion").addEventListener("click", () => irADondeEstoy(true));
-$("#deshacer").addEventListener("click", () => { E.esquinas.pop(); dibujarTerreno(); });
+const cambiarZoom = (cuanto) => { E.movidoAMano = true; mapa.easeTo({ zoom: mapa.getZoom() + cuanto, duration: SIN_MOVIMIENTO ? 0 : 450 }); };
+$("#acercar").addEventListener("click", () => cambiarZoom(1.5));
+$("#alejar").addEventListener("click", () => cambiarZoom(-1.5));
+$("#deshacer").addEventListener("click", quitarUltimaEsquina);
 $("#borrar").addEventListener("click", borrarTerreno);
 $("#listo").addEventListener("click", terminarDeMarcar);
-$("#volver-marcar").addEventListener("click", () => { irA("marcar"); dibujarTerreno(); });
+$("#volver-marcar").addEventListener("click", () => { E.trazando = E.esquinas.length > 0; irA("marcar"); dibujarTerreno(); });
 $("#analizar").addEventListener("click", analizar);
 $("#sobres").addEventListener("click", (evento) => { const s = evento.target.closest(".sobre"); if (s) abrirFicha(Number(s.dataset.i)); });
+$("#elige-planta").addEventListener("click", (evento) => { const b = evento.target.closest("button"); if (b) elegirPlanta(Number(b.dataset.i)); });
 $("#cerrar-ficha").addEventListener("click", cerrarFicha);
-$("#ver-3d").addEventListener("click", () => alternar3D());
+$("#ver-3d").addEventListener("click", () => (E.tresD ? verFichaTecnica() : alternar3D(true)));
 $("#otro-terreno").addEventListener("click", otroTerreno);
 $("#finalizar").addEventListener("click", finalizar);
 document.addEventListener("keydown", (evento) => { if (evento.key === "Escape") cerrarFicha(); });

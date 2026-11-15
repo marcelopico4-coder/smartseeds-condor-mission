@@ -11,11 +11,17 @@ Cómo está hecha:
     `app/analisis.py` hace el cálculo con el motor de siempre (`src/`) y devuelve la respuesta.
   - `app/app.py` sigue existiendo: es la vista técnica, con las capas del radar y los gráficos.
 """
+import mimetypes
 import sys
 from pathlib import Path
 
 import streamlit as st
 import streamlit.components.v1 as components
+
+# En Windows, Python a veces sirve los .js como "texto" y el navegador se niega a cargarlos como
+# módulos (los modelos 3D de las plantas usan módulos). Se fija el tipo correcto antes de servir nada.
+mimetypes.add_type("text/javascript", ".js")
+mimetypes.add_type("model/gltf-binary", ".glb")
 
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent

@@ -1,0 +1,2 @@
+Copia de los programitas sueltos de la carpeta de trabajo (C:\condor en la primera computadora).
+Algunos tienen rutas fijas de esa computadora: revisarlas antes de usarlos en otra.

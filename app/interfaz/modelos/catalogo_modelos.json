@@ -1,0 +1,1052 @@
+{
+  "version": "1.0",
+  "fecha": "2026-11-15",
+  "formato": "GLB glTF 2.0",
+  "unidad": "metro",
+  "eje_vertical": "Y",
+  "origen": "base del tallo, suelo y=0",
+  "licencia_geometria": "CC0-1.0",
+  "uso": "Visualización ilustrativa de adulto representativo; no gemelo digital, no dato observado por satélite, sin cultivar validado",
+  "modelos": [
+    {
+      "clave": "cacao",
+      "nombre": "Cacao",
+      "nombre_cientifico": "Theobroma cacao",
+      "archivo": "modelos/cacao.glb",
+      "archivo_lod": "modelos/lod/cacao.glb",
+      "detalle": {
+        "triangulos": 6912,
+        "bytes": 248048,
+        "materiales": 3,
+        "bounds_min": [
+          -0.9460598263781991,
+          -0.0013527739012611061,
+          -0.930518603745909
+        ],
+        "bounds_max": [
+          0.9124643567794593,
+          2.2029442351220996,
+          0.9546713771603432
+        ],
+        "altura_m": 2.2042970090233607
+      },
+      "ligero": {
+        "triangulos": 1476,
+        "bytes": 56636,
+        "materiales": 3,
+        "bounds_min": [
+          -0.6907919759218034,
+          -0.0015620487520915998,
+          -0.6984756405339864
+        ],
+        "bounds_max": [
+          0.701043130831115,
+          2.0806007879815738,
+          0.7030158376417273
+        ],
+        "altura_m": 2.0821628367336653
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "banano",
+      "nombre": "Banano",
+      "nombre_cientifico": "Musa spp.",
+      "archivo": "modelos/banano.glb",
+      "archivo_lod": "modelos/lod/banano.glb",
+      "detalle": {
+        "triangulos": 1758,
+        "bytes": 69260,
+        "materiales": 3,
+        "bounds_min": [
+          -1.4088958854269282,
+          0.0,
+          -1.4447391345770961
+        ],
+        "bounds_max": [
+          1.47,
+          2.660061762786684,
+          1.4025863007259327
+        ],
+        "altura_m": 2.660061762786684
+      },
+      "ligero": {
+        "triangulos": 556,
+        "bytes": 25848,
+        "materiales": 3,
+        "bounds_min": [
+          -1.4088958854269282,
+          0.0,
+          -1.4447391345770961
+        ],
+        "bounds_max": [
+          1.47,
+          2.5352339796892314,
+          1.1485211228082641
+        ],
+        "altura_m": 2.5352339796892314
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "platano",
+      "nombre": "Plátano",
+      "nombre_cientifico": "Musa spp., grupo de plátanos",
+      "archivo": "modelos/platano.glb",
+      "archivo_lod": "modelos/lod/platano.glb",
+      "detalle": {
+        "triangulos": 1562,
+        "bytes": 61624,
+        "materiales": 3,
+        "bounds_min": [
+          -1.5567024779620071,
+          0.0,
+          -1.5941897767307214
+        ],
+        "bounds_max": [
+          1.62,
+          2.9424691701940913,
+          1.5476661941577308
+        ],
+        "altura_m": 2.9424691701940913
+      },
+      "ligero": {
+        "triangulos": 476,
+        "bytes": 22728,
+        "materiales": 3,
+        "bounds_min": [
+          -1.5567024779620071,
+          0.0,
+          -1.5941897767307214
+        ],
+        "bounds_max": [
+          1.62,
+          2.817633979689232,
+          1.2672970089793283
+        ],
+        "altura_m": 2.817633979689232
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "palma_aceitera",
+      "nombre": "Palma aceitera",
+      "nombre_cientifico": "Elaeis guineensis",
+      "archivo": "modelos/palma_aceitera.glb",
+      "archivo_lod": "modelos/lod/palma_aceitera.glb",
+      "detalle": {
+        "triangulos": 14148,
+        "bytes": 526588,
+        "materiales": 3,
+        "bounds_min": [
+          -1.9743190076669008,
+          0.0,
+          -1.9960189903279175
+        ],
+        "bounds_max": [
+          2.0030985904042686,
+          3.339230994608812,
+          1.9381575898310988
+        ],
+        "altura_m": 3.339230994608812
+      },
+      "ligero": {
+        "triangulos": 2640,
+        "bytes": 112436,
+        "materiales": 3,
+        "bounds_min": [
+          -1.974280191881767,
+          0.0,
+          -1.9962400689122624
+        ],
+        "bounds_max": [
+          2.0035779440080255,
+          3.2604893659056673,
+          1.9378591639932345
+        ],
+        "altura_m": 3.2604893659056673
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "cafe_robusta",
+      "nombre": "Café robusta",
+      "nombre_cientifico": "Coffea canephora",
+      "archivo": "modelos/cafe_robusta.glb",
+      "archivo_lod": "modelos/lod/cafe_robusta.glb",
+      "detalle": {
+        "triangulos": 10152,
+        "bytes": 373568,
+        "materiales": 3,
+        "bounds_min": [
+          -0.8058952412857815,
+          -0.0009015664802969702,
+          -0.8005238727010535
+        ],
+        "bounds_max": [
+          0.7916553962287025,
+          1.526205069127008,
+          0.8053636115484224
+        ],
+        "altura_m": 1.5271066356073049
+      },
+      "ligero": {
+        "triangulos": 2496,
+        "bytes": 98056,
+        "materiales": 3,
+        "bounds_min": [
+          -0.6904886505883149,
+          -0.0010410393001835986,
+          -0.6981689413191962
+        ],
+        "bounds_max": [
+          0.7007353042366248,
+          1.4408675327501532,
+          0.5567303871061929
+        ],
+        "altura_m": 1.4419085720503368
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "mora_de_castilla",
+      "nombre": "Mora de Castilla",
+      "nombre_cientifico": "Rubus glaucus",
+      "archivo": "modelos/mora_de_castilla.glb",
+      "archivo_lod": "modelos/lod/mora_de_castilla.glb",
+      "detalle": {
+        "triangulos": 9120,
+        "bytes": 344688,
+        "materiales": 3,
+        "bounds_min": [
+          -0.44336551061968904,
+          -0.0012615173742418198,
+          -0.6455005176519437
+        ],
+        "bounds_max": [
+          0.6439226031864511,
+          1.2349906487947369,
+          0.5511974560192554
+        ],
+        "altura_m": 1.2362521661689787
+      },
+      "ligero": {
+        "triangulos": 2640,
+        "bytes": 110804,
+        "materiales": 3,
+        "bounds_min": [
+          -0.44336551061968904,
+          -0.0012661029928641443,
+          -0.6455005176519437
+        ],
+        "bounds_max": [
+          0.6439226031864511,
+          1.2353759535041964,
+          0.5511974560192554
+        ],
+        "altura_m": 1.2366420564970606
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "aguacate",
+      "nombre": "Aguacate",
+      "nombre_cientifico": "Persea americana",
+      "archivo": "modelos/aguacate.glb",
+      "archivo_lod": "modelos/lod/aguacate.glb",
+      "detalle": {
+        "triangulos": 5928,
+        "bytes": 217024,
+        "materiales": 3,
+        "bounds_min": [
+          -1.1479416640965352,
+          -0.0011724883156455672,
+          -1.1405104197861515
+        ],
+        "bounds_max": [
+          1.1280598765040808,
+          2.541384481877116,
+          1.146964498268891
+        ],
+        "altura_m": 2.5425569701927615
+      },
+      "ligero": {
+        "triangulos": 660,
+        "bytes": 30868,
+        "materiales": 3,
+        "bounds_min": [
+          -1.0537467260273834,
+          -0.0013538728893193184,
+          -1.0647070568176924
+        ],
+        "bounds_max": [
+          1.0683694424601917,
+          2.400520720342046,
+          0.7942821594483211
+        ],
+        "altura_m": 2.4018745932313657
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "maracuya",
+      "nombre": "Maracuyá amarillo",
+      "nombre_cientifico": "Passiflora edulis",
+      "archivo": "modelos/maracuya.glb",
+      "archivo_lod": "modelos/lod/maracuya.glb",
+      "detalle": {
+        "triangulos": 4608,
+        "bytes": 172896,
+        "materiales": 4,
+        "bounds_min": [
+          -0.7190525588832576,
+          -0.0018189997724934602,
+          -0.1796334635637646
+        ],
+        "bounds_max": [
+          0.7190525588832576,
+          1.6,
+          0.17897882729524833
+        ],
+        "altura_m": 1.6018189997724936
+      },
+      "ligero": {
+        "triangulos": 1168,
+        "bytes": 52372,
+        "materiales": 4,
+        "bounds_min": [
+          -0.722,
+          -0.0021004000166099344,
+          -0.17934709806391097
+        ],
+        "bounds_max": [
+          0.722,
+          1.6,
+          0.17897882729524833
+        ],
+        "altura_m": 1.60210040001661
+      },
+      "detalle_distintivo": "Enredadera con tramo de espaldera"
+    },
+    {
+      "clave": "pina",
+      "nombre": "Piña",
+      "nombre_cientifico": "Ananas comosus",
+      "archivo": "modelos/pina.glb",
+      "archivo_lod": "modelos/lod/pina.glb",
+      "detalle": {
+        "triangulos": 4194,
+        "bytes": 155132,
+        "materiales": 3,
+        "bounds_min": [
+          -0.6405071613838729,
+          0.0,
+          -0.6055097168394882
+        ],
+        "bounds_max": [
+          0.65,
+          1.004,
+          0.5803373550409252
+        ],
+        "altura_m": 1.004
+      },
+      "ligero": {
+        "triangulos": 776,
+        "bytes": 35072,
+        "materiales": 3,
+        "bounds_min": [
+          -0.6405071613838729,
+          0.0,
+          -0.597808554068139
+        ],
+        "bounds_max": [
+          0.65,
+          1.004,
+          0.5803373550409252
+        ],
+        "altura_m": 1.004
+      },
+      "detalle_distintivo": "Roseta, fruto y corona; no árbol"
+    },
+    {
+      "clave": "tomate_de_arbol",
+      "nombre": "Tomate de árbol",
+      "nombre_cientifico": "Solanum betaceum",
+      "archivo": "modelos/tomate_de_arbol.glb",
+      "archivo_lod": "modelos/lod/tomate_de_arbol.glb",
+      "detalle": {
+        "triangulos": 6744,
+        "bytes": 245404,
+        "materiales": 3,
+        "bounds_min": [
+          -0.9947254458183257,
+          -0.001758255787601493,
+          -0.9862557055393164
+        ],
+        "bounds_max": [
+          0.9748423385905726,
+          1.7157651570471304,
+          0.9980000634244223
+        ],
+        "altura_m": 1.7175234128347319
+      },
+      "ligero": {
+        "triangulos": 924,
+        "bytes": 40752,
+        "materiales": 3,
+        "bounds_min": [
+          -0.737096789431013,
+          -0.0020302589045518788,
+          -0.7447690209842294
+        ],
+        "bounds_max": [
+          0.8223326909339789,
+          1.6007808688094431,
+          0.7521185905116455
+        ],
+        "altura_m": 1.602811127713995
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "uvilla",
+      "nombre": "Uvilla",
+      "nombre_cientifico": "Physalis peruviana",
+      "archivo": "modelos/uvilla.glb",
+      "archivo_lod": "modelos/lod/uvilla.glb",
+      "detalle": {
+        "triangulos": 3456,
+        "bytes": 132680,
+        "materiales": 3,
+        "bounds_min": [
+          -0.4080836947668942,
+          -0.0016561726764380705,
+          -0.6623373554992839
+        ],
+        "bounds_max": [
+          0.6493324656835493,
+          0.9377934688485989,
+          0.580315026271626
+        ],
+        "altura_m": 0.939449641525037
+      },
+      "ligero": {
+        "triangulos": 1512,
+        "bytes": 62684,
+        "materiales": 3,
+        "bounds_min": [
+          -0.41054152223610696,
+          -0.001662143926599194,
+          -0.6623373554992839
+        ],
+        "bounds_max": [
+          0.6482430912359475,
+          0.9382256199834229,
+          0.580315026271626
+        ],
+        "altura_m": 0.9398877639100222
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "maiz_duro",
+      "nombre": "Maíz duro",
+      "nombre_cientifico": "Zea mays",
+      "archivo": "modelos/maiz_duro.glb",
+      "archivo_lod": "modelos/lod/maiz_duro.glb",
+      "detalle": {
+        "triangulos": 2790,
+        "bytes": 111300,
+        "materiales": 4,
+        "bounds_min": [
+          -0.7094903866994039,
+          -0.0002217705032997603,
+          -0.8170062494860113
+        ],
+        "bounds_max": [
+          0.7724250981198415,
+          2.3191812672530587,
+          0.5996915015825363
+        ],
+        "altura_m": 2.3194030377563584
+      },
+      "ligero": {
+        "triangulos": 428,
+        "bytes": 21968,
+        "materiales": 3,
+        "bounds_min": [
+          -0.7094903866994039,
+          -0.0002560785195568708,
+          -0.8170062494860113
+        ],
+        "bounds_max": [
+          0.6898111432791649,
+          2.3195187104714563,
+          0.5996915015825363
+        ],
+        "altura_m": 2.319774788991013
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "arroz",
+      "nombre": "Arroz",
+      "nombre_cientifico": "Oryza sativa",
+      "archivo": "modelos/arroz.glb",
+      "archivo_lod": "modelos/lod/arroz.glb",
+      "detalle": {
+        "triangulos": 5670,
+        "bytes": 227716,
+        "materiales": 3,
+        "bounds_min": [
+          -0.35966679778152155,
+          0.0,
+          -0.39853709789853353
+        ],
+        "bounds_max": [
+          0.3364772017185417,
+          1.2046895266183688,
+          0.31918186200037835
+        ],
+        "altura_m": 1.2046895266183688
+      },
+      "ligero": {
+        "triangulos": 1576,
+        "bytes": 68632,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3214817062602158,
+          0.0,
+          -0.39853709789853353
+        ],
+        "bounds_max": [
+          0.33,
+          1.2046895266183688,
+          0.30007813837655206
+        ],
+        "altura_m": 1.2046895266183688
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "yuca",
+      "nombre": "Yuca",
+      "nombre_cientifico": "Manihot esculenta",
+      "archivo": "modelos/yuca.glb",
+      "archivo_lod": "modelos/lod/yuca.glb",
+      "detalle": {
+        "triangulos": 7998,
+        "bytes": 292492,
+        "materiales": 2,
+        "bounds_min": [
+          -0.4825536601378833,
+          -0.0004329261253239458,
+          -0.5081378267500418
+        ],
+        "bounds_max": [
+          0.53,
+          1.7502078045401555,
+          0.4932884029067759
+        ],
+        "altura_m": 1.7506407306654794
+      },
+      "ligero": {
+        "triangulos": 1044,
+        "bytes": 49388,
+        "materiales": 2,
+        "bounds_min": [
+          -0.4825536601378833,
+          -0.0004999000299900036,
+          -0.5081378267500418
+        ],
+        "bounds_max": [
+          0.53,
+          1.7502399520143952,
+          0.4932884029067759
+        ],
+        "altura_m": 1.750739852044385
+      },
+      "detalle_distintivo": "Planta aérea; raíces no expuestas"
+    },
+    {
+      "clave": "papa",
+      "nombre": "Papa",
+      "nombre_cientifico": "Solanum tuberosum",
+      "archivo": "modelos/papa.glb",
+      "archivo_lod": "modelos/lod/papa.glb",
+      "detalle": {
+        "triangulos": 5712,
+        "bytes": 213756,
+        "materiales": 3,
+        "bounds_min": [
+          -0.274479587133003,
+          -0.0024272143773284367,
+          -0.3586897497908333
+        ],
+        "bounds_max": [
+          0.38275061090993184,
+          0.6395145317483775,
+          0.38230823497429633
+        ],
+        "altura_m": 0.6419417461257059
+      },
+      "ligero": {
+        "triangulos": 1416,
+        "bytes": 63684,
+        "materiales": 3,
+        "bounds_min": [
+          -0.274479587133003,
+          -0.0024359860163381173,
+          -0.3586897497908333
+        ],
+        "bounds_max": [
+          0.36,
+          0.6395145317483775,
+          0.38230823497429633
+        ],
+        "altura_m": 0.6419505177647156
+      },
+      "detalle_distintivo": "Planta aérea; tubérculos no expuestos"
+    },
+    {
+      "clave": "maiz_suave",
+      "nombre": "Maíz suave",
+      "nombre_cientifico": "Zea mays",
+      "archivo": "modelos/maiz_suave.glb",
+      "archivo_lod": "modelos/lod/maiz_suave.glb",
+      "detalle": {
+        "triangulos": 2790,
+        "bytes": 111312,
+        "materiales": 4,
+        "bounds_min": [
+          -0.7094937944323177,
+          -0.00018943277997055663,
+          -0.8170079596156224
+        ],
+        "bounds_max": [
+          0.772431813925045,
+          2.669181267253059,
+          0.5996965819578887
+        ],
+        "altura_m": 2.6693707000330296
+      },
+      "ligero": {
+        "triangulos": 428,
+        "bytes": 21972,
+        "materiales": 3,
+        "bounds_min": [
+          -0.7094937944323177,
+          -0.00021873813301868006,
+          -0.8170079596156224
+        ],
+        "bounds_max": [
+          0.6898219589884262,
+          2.6695187104714564,
+          0.5996965819578887
+        ],
+        "altura_m": 2.669737448604475
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "haba",
+      "nombre": "Haba",
+      "nombre_cientifico": "Vicia faba",
+      "archivo": "modelos/haba.glb",
+      "archivo_lod": "modelos/lod/haba.glb",
+      "detalle": {
+        "triangulos": 12132,
+        "bytes": 443840,
+        "materiales": 4,
+        "bounds_min": [
+          -0.34291097529222153,
+          -0.02500000000000001,
+          -0.3709988629094507
+        ],
+        "bounds_max": [
+          0.3758524111903736,
+          1.0006976936761283,
+          0.32567580677618263
+        ],
+        "altura_m": 1.0256976936761282
+      },
+      "ligero": {
+        "triangulos": 1728,
+        "bytes": 75752,
+        "materiales": 4,
+        "bounds_min": [
+          -0.2767278174036858,
+          -0.02500000000000001,
+          -0.1866259812798439
+        ],
+        "bounds_max": [
+          0.29814930619840424,
+          1.000700118857426,
+          0.263985182683208
+        ],
+        "altura_m": 1.025700118857426
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "quinua",
+      "nombre": "Quinua",
+      "nombre_cientifico": "Chenopodium quinoa",
+      "archivo": "modelos/quinua.glb",
+      "archivo_lod": "modelos/lod/quinua.glb",
+      "detalle": {
+        "triangulos": 1890,
+        "bytes": 74252,
+        "materiales": 3,
+        "bounds_min": [
+          -0.1773934690389481,
+          0.0,
+          -0.17935359655643293
+        ],
+        "bounds_max": [
+          0.18,
+          1.476,
+          0.1741339749333005
+        ],
+        "altura_m": 1.476
+      },
+      "ligero": {
+        "triangulos": 560,
+        "bytes": 26128,
+        "materiales": 3,
+        "bounds_min": [
+          -0.1773934690389481,
+          0.0,
+          -0.17935359655643293
+        ],
+        "bounds_max": [
+          0.18,
+          1.35,
+          0.1460937368499668
+        ],
+        "altura_m": 1.35
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "arveja",
+      "nombre": "Arveja",
+      "nombre_cientifico": "Pisum sativum",
+      "archivo": "modelos/arveja.glb",
+      "archivo_lod": "modelos/lod/arveja.glb",
+      "detalle": {
+        "triangulos": 10332,
+        "bytes": 373116,
+        "materiales": 4,
+        "bounds_min": [
+          -0.2631076850749847,
+          -0.027499999999999997,
+          -0.29351814350237654
+        ],
+        "bounds_max": [
+          0.2968528830808404,
+          0.850812421001642,
+          0.24539169535754599
+        ],
+        "altura_m": 0.878312421001642
+      },
+      "ligero": {
+        "triangulos": 1488,
+        "bytes": 65108,
+        "materiales": 4,
+        "bounds_min": [
+          -0.2029521866261271,
+          -0.027499999999999997,
+          -0.10938103156995431
+        ],
+        "bounds_max": [
+          0.22478696828656666,
+          0.8508151872106684,
+          0.1931895472608146
+        ],
+        "altura_m": 0.8783151872106684
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "lenteja",
+      "nombre": "Lenteja",
+      "nombre_cientifico": "Lens culinaris",
+      "archivo": "modelos/lenteja.glb",
+      "archivo_lod": "modelos/lod/lenteja.glb",
+      "detalle": {
+        "triangulos": 11592,
+        "bytes": 433060,
+        "materiales": 4,
+        "bounds_min": [
+          -0.24310193935665506,
+          -0.044,
+          -0.27160083203256014
+        ],
+        "bounds_max": [
+          0.274872274923821,
+          0.42128900677327097,
+          0.2237307154563237
+        ],
+        "altura_m": 0.46528900677327095
+      },
+      "ligero": {
+        "triangulos": 1968,
+        "bytes": 86432,
+        "materiales": 4,
+        "bounds_min": [
+          -0.18148439708709468,
+          -0.044,
+          -0.08748344432369155
+        ],
+        "bounds_max": [
+          0.21377298795168098,
+          0.4214884168150705,
+          0.17220052785132095
+        ],
+        "altura_m": 0.46548841681507047
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "chocho",
+      "nombre": "Chocho",
+      "nombre_cientifico": "Lupinus mutabilis",
+      "archivo": "modelos/chocho.glb",
+      "archivo_lod": "modelos/lod/chocho.glb",
+      "detalle": {
+        "triangulos": 13428,
+        "bytes": 501840,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3082545365833797,
+          0.0,
+          -0.37163837649233644
+        ],
+        "bounds_max": [
+          0.373,
+          1.35,
+          0.304248618385549
+        ],
+        "altura_m": 1.35
+      },
+      "ligero": {
+        "triangulos": 1836,
+        "bytes": 82260,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3082545365833797,
+          0.0,
+          -0.21379776351497518
+        ],
+        "bounds_max": [
+          0.373,
+          1.35,
+          0.304248618385549
+        ],
+        "altura_m": 1.35
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "trigo",
+      "nombre": "Trigo",
+      "nombre_cientifico": "Triticum aestivum",
+      "archivo": "modelos/trigo.glb",
+      "archivo_lod": "modelos/lod/trigo.glb",
+      "detalle": {
+        "triangulos": 6104,
+        "bytes": 243508,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3596691831945612,
+          0.0,
+          -0.3985382949892613
+        ],
+        "bounds_max": [
+          0.33648477271502464,
+          1.1036750585941149,
+          0.319185418263125
+        ],
+        "altura_m": 1.1036750585941149
+      },
+      "ligero": {
+        "triangulos": 1904,
+        "bytes": 79472,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3214848676483419,
+          0.0,
+          -0.3985382949892613
+        ],
+        "bounds_max": [
+          0.33,
+          1.034492896925026,
+          0.30008396443226376
+        ],
+        "altura_m": 1.034492896925026
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "cebada",
+      "nombre": "Cebada",
+      "nombre_cientifico": "Hordeum vulgare",
+      "archivo": "modelos/cebada.glb",
+      "archivo_lod": "modelos/lod/cebada.glb",
+      "detalle": {
+        "triangulos": 6776,
+        "bytes": 275764,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3596691831945612,
+          0.0,
+          -0.3985382949892613
+        ],
+        "bounds_max": [
+          0.33648477271502464,
+          1.2103416685911328,
+          0.319185418263125
+        ],
+        "altura_m": 1.2103416685911328
+      },
+      "ligero": {
+        "triangulos": 2224,
+        "bytes": 94832,
+        "materiales": 3,
+        "bounds_min": [
+          -0.3214848676483419,
+          0.0,
+          -0.3985382949892613
+        ],
+        "bounds_max": [
+          0.33,
+          1.164395592325924,
+          0.30008396443226376
+        ],
+        "altura_m": 1.164395592325924
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "amaranto",
+      "nombre": "Amaranto",
+      "nombre_cientifico": "Amaranthus caudatus",
+      "archivo": "modelos/amaranto.glb",
+      "archivo_lod": "modelos/lod/amaranto.glb",
+      "detalle": {
+        "triangulos": 1890,
+        "bytes": 74244,
+        "materiales": 3,
+        "bounds_min": [
+          -0.24636647115573768,
+          0.0,
+          -0.24909551943184693
+        ],
+        "bounds_max": [
+          0.25,
+          1.476,
+          0.24183284482612047
+        ],
+        "altura_m": 1.476
+      },
+      "ligero": {
+        "triangulos": 560,
+        "bytes": 26116,
+        "materiales": 3,
+        "bounds_min": [
+          -0.24636647115573768,
+          0.0,
+          -0.24909551943184693
+        ],
+        "bounds_max": [
+          0.25,
+          1.35,
+          0.1980392051301134
+        ],
+        "altura_m": 1.35
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    },
+    {
+      "clave": "cebolla_blanca",
+      "nombre": "Cebolla blanca de rama",
+      "nombre_cientifico": "Allium fistulosum",
+      "archivo": "modelos/cebolla_blanca.glb",
+      "archivo_lod": "modelos/lod/cebolla_blanca.glb",
+      "detalle": {
+        "triangulos": 660,
+        "bytes": 30176,
+        "materiales": 2,
+        "bounds_min": [
+          -0.08225780525526637,
+          0.0,
+          -0.08370520734602811
+        ],
+        "bounds_max": [
+          0.0833830230377794,
+          0.7910814637053903,
+          0.0812761335401814
+        ],
+        "altura_m": 0.7910814637053903
+      },
+      "ligero": {
+        "triangulos": 324,
+        "bytes": 16200,
+        "materiales": 2,
+        "bounds_min": [
+          -0.08278806031218938,
+          0.0,
+          -0.08370520734602811
+        ],
+        "bounds_max": [
+          0.0839063785230733,
+          0.7910814637053903,
+          0.06730636331016845
+        ],
+        "altura_m": 0.7910814637053903
+      },
+      "detalle_distintivo": "Hojas tubulares; sin bulbo de Allium cepa"
+    },
+    {
+      "clave": "brocoli",
+      "nombre": "Brócoli",
+      "nombre_cientifico": "Brassica oleracea var. italica",
+      "archivo": "modelos/brocoli.glb",
+      "archivo_lod": "modelos/lod/brocoli.glb",
+      "detalle": {
+        "triangulos": 2382,
+        "bytes": 90252,
+        "materiales": 3,
+        "bounds_min": [
+          -0.4533178509687877,
+          0.0,
+          -0.4583375342893939
+        ],
+        "bounds_max": [
+          0.46,
+          0.6330000000000001,
+          0.4449777180704282
+        ],
+        "altura_m": 0.6330000000000001
+      },
+      "ligero": {
+        "triangulos": 768,
+        "bytes": 33040,
+        "materiales": 3,
+        "bounds_min": [
+          -0.4533178509687877,
+          0.0,
+          -0.4583375342893939
+        ],
+        "bounds_max": [
+          0.46,
+          0.6330000000000001,
+          0.3644048406146097
+        ],
+        "altura_m": 0.6330000000000001
+      },
+      "detalle_distintivo": "Arquitectura representativa; no reproducción de un cultivar concreto"
+    }
+  ]
+}

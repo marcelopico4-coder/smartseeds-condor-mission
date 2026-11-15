@@ -19,7 +19,7 @@ from datetime import date
 
 import pandas as pd
 
-from src.aptitud import cargar_requisitos
+from src.aptitud import PESO_PEOR_FACTOR, cargar_requisitos
 from src.clima_relieve import cargar_celdas, celda_mas_cercana, clima_power, ruta_celdas
 from src.cobertura import composicion, es_cultivable
 from src.config import en_ecuador, provincia_sugerida, zona_de_punto
@@ -76,7 +76,6 @@ def terreno_completo(lat: float, lon: float, contorno=None, clima=clima_power):
     está atado a la pantalla de Streamlit). `contorno` es una lista de vértices (lon, lat) o None.
     `clima` es la función que consulta NASA POWER (se puede cambiar por una con caché).
     """
-    c = clima(round(lat, 2), round(lon, 2))
     clave = zona_de_punto(lat, lon)
     if clave and ruta_celdas(clave).exists():
         tabla = cargar_celdas(clave)
@@ -97,6 +96,9 @@ def terreno_completo(lat: float, lon: float, contorno=None, clima=clima_power):
         celda["lluvia_mensual"] = lluvia_mensual_de(mensual, celda["celda"])
         return (celda, clave, None, composicion(pd.DataFrame([celda])),
                 resumen_vecinos(tabla, lat, lon))
+    # NASA POWER solo se consulta aquí, fuera de las zonas detalladas: dentro de ellas todo sale de
+    # la tabla ya procesada, y así el análisis no depende de que ese servidor conteste en el momento.
+    c = clima(round(lat, 2), round(lon, 2))
     celda = {"lat": lat, "lon": lon, "altura": c["altura_power"], "pendiente": None,
              "temp": c["temp"], "lluvia": c["lluvia"], "lluvia_mensual": c.get("lluvia_mensual"),
              "humedad": None, "encharcamiento": None, "vegetacion": None}
@@ -206,7 +208,7 @@ def analizar(pedido: dict, clima=clima_power, hoy: date | None = None) -> dict:
             "evidencia_etiqueta": ETIQUETAS_EVIDENCIA.get(x.get("evidencia")),
             "evidencia_texto": x.get("evidencia_texto"),
             "rendimiento_texto": x.get("rendimiento_texto"), "tiempo_texto": x.get("tiempo_texto"),
-            "factores": [{"nota": f["nota"], "texto": f["texto"]} for f in x["factores"]],
+            "factores": [{"factor": f.get("factor"), "nota": f["nota"], "texto": f["texto"]} for f in x["factores"]],
             "condiciones": _resumen_condiciones(x["factores"]),
             "suelo_prefiere": (x["suelo"] or {}).get("texto") if x.get("suelo") else None,
             "suelo_fuente": (x["suelo"] or {}).get("fuente") if x.get("suelo") else None,
@@ -235,7 +237,7 @@ def analizar(pedido: dict, clima=clima_power, hoy: date | None = None) -> dict:
     }
     return _limpio({
         "pedido": numero, "terreno": terreno, "cultivos": cultivos,
-        "banda": BANDA_PUNTOS, "minimo": PUNTAJE_MINIMO,
+        "banda": BANDA_PUNTOS, "minimo": PUNTAJE_MINIMO, "peso_peor": PESO_PEOR_FACTOR,
         "otros": [{"nombre": x["nombre"], "puntaje": round(float(x["puntaje"]))}
                   for x in todos if x["puntaje"] >= PUNTAJE_MINIMO][CUANTOS_MOSTRAR:],
         "anterior": nombres.get(anterior), "riego": celda["riego"], "preferencia": preferencia,

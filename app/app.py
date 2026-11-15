@@ -259,7 +259,6 @@ def datos_del_terreno(lat: float, lon: float, contorno=None):
     `vecinos` resume qué vio el radar alrededor del terreno, a menos de 1 km (o None).
     La celda lleva además `lluvia_mensual` (12 números) cuando hay ese dato.
     """
-    c = clima(round(lat, 2), round(lon, 2))
     clave = zona_de_punto(lat, lon)
     if clave and ruta_celdas(clave).exists():
         tabla = celdas(clave, ruta_celdas(clave).stat().st_mtime)
@@ -285,6 +284,9 @@ def datos_del_terreno(lat: float, lon: float, contorno=None):
         mag = resumen_mag(mapeados, seleccion) if mapeados is not None else None
         return (celda, c, clave, None, composicion(pd.DataFrame([celda])),
                 resumen_vecinos(tabla, lat, lon), mag)
+    # NASA POWER solo se consulta aquí, fuera de las zonas detalladas: dentro de ellas todo sale de
+    # la tabla ya procesada, y así el análisis no depende de que ese servidor conteste en el momento.
+    c = clima(round(lat, 2), round(lon, 2))
     celda = {"lat": lat, "lon": lon, "altura": c["altura_power"], "pendiente": None,
              "temp": c["temp"], "lluvia": c["lluvia"], "lluvia_mensual": c.get("lluvia_mensual"),
              "humedad": None, "encharcamiento": None, "vegetacion": None}

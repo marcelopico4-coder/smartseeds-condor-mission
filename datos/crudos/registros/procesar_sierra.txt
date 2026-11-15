@@ -1,0 +1,626 @@
+
+########## procesar_sierra · 2026-11-14 18:41:05 · C:\Users\marce\miniforge3\envs\condor\python.exe
+
+>>> [18:41:05] python -m src.clima_relieve tungurahua
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+      altura  pendiente  temp  lluvia
+min   1690.0        1.5  -5.9  1398.0
+mean  3276.0       16.8   9.3  1398.0
+max   5624.0       54.3  19.6  1398.0
+
+>>> [18:41:24] python -m src.heladas tungurahua
+Listo: mínima del mes más frío entre -16.0 y 9.4 °C; 84% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+
+>>> [18:41:27] python -m src.nisar tungurahua procesar
+  2026-06-19 frame 1: ventana (557, 560), 100% de las celdas, 25 s
+  2026-07-01 frame 1: ventana (557, 560), 100% de las celdas, 25 s
+  2026-07-13 frame 1: ventana (557, 560), 100% de las celdas, 23 s
+  2026-07-25 frame 1: ventana (557, 560), 100% de las celdas, 30 s
+  2026-08-18 frame 1: ventana (557, 560), 100% de las celdas, 26 s
+  2026-08-30 frame 1: ventana (557, 560), 100% de las celdas, 25 s
+  2026-09-11 frame 1: ventana (557, 560), 100% de las celdas, 23 s
+  2026-09-23 frame 1: ventana (557, 560), 100% de las celdas, 24 s
+  2026-10-05 frame 1: ventana (557, 560), 100% de las celdas, 23 s
+  2026-10-17 frame 1: ventana (557, 560), 100% de las celdas, 25 s
+  2026-10-29 frame 1: ventana (557, 560), 100% de las celdas, 22 s
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_tungurahua.npz
+
+>>> [18:46:48] python -m src.nisar tungurahua humedad
+  2026-06-19 frame 1: humedad en 97% de las celdas, 17 s
+  2026-07-01 frame 1: humedad en 97% de las celdas, 15 s
+  2026-07-13 frame 1: humedad en 97% de las celdas, 15 s
+  2026-07-25 frame 1: humedad en 97% de las celdas, 13 s
+  2026-08-18 frame 1: humedad en 97% de las celdas, 18 s
+  2026-08-30 frame 1: humedad en 97% de las celdas, 13 s
+  2026-09-11 frame 1: humedad en 97% de las celdas, 15 s
+  2026-09-23 frame 1: humedad en 97% de las celdas, 13 s
+  2026-10-05 frame 1: humedad en 97% de las celdas, 15 s
+  2026-10-17 frame 1: humedad en 97% de las celdas, 17 s
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_tungurahua.npz
+
+>>> [18:50:05] python -m src.nisar tungurahua capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000        32400.00  31408.000          31408.000
+mean        0.715            0.00      0.401              0.500
+std         0.213            0.00      0.069              0.475
+min         0.020            0.00      0.163              0.000
+25%         0.573            0.00      0.357              0.000
+50%         0.742            0.00      0.397              0.500
+75%         0.896            0.00      0.439              1.000
+max         1.000            0.02      1.000              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [18:50:06] python -m src.suelo_lluvia tungurahua
+Warning 3: Cannot find gdalvrt.xsd (GDAL_DATA is not defined)
+  SoilGrids phh2o: mediana 5.90, sin dato en 3.2% de las celdas
+  SoilGrids clay: mediana 20.98, sin dato en 3.2% de las celdas
+  SoilGrids sand: mediana 44.55, sin dato en 3.2% de las celdas
+  SoilGrids soc: mediana 7.77, sin dato en 3.2% de las celdas
+!!! terminó con error (código 3228369023)
+
+>>> [18:50:21] python -m src.clima_relieve cotopaxi
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+      altura  pendiente  temp  lluvia
+min   2521.0        1.5   0.1  1252.0
+mean  3370.9       12.7   8.8  1252.0
+max   4707.0       50.3  14.3  1252.0
+
+>>> [18:50:36] python -m src.heladas cotopaxi
+Listo: mínima del mes más frío entre -9.5 y 4.6 °C; 96% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+
+>>> [18:50:39] python -m src.nisar cotopaxi procesar
+  2026-06-19 frame 1: ventana (556, 560), 100% de las celdas, 33 s
+  2026-07-01 frame 1: ventana (556, 560), 100% de las celdas, 35 s
+  2026-07-13 frame 1: ventana (556, 560), 100% de las celdas, 41 s
+  2026-07-25 frame 1: ventana (556, 560), 100% de las celdas, 37 s
+  2026-08-18 frame 1: ventana (556, 560), 100% de las celdas, 36 s
+  2026-08-30 frame 1: ventana (556, 560), 100% de las celdas, 35 s
+  2026-09-11 frame 1: ventana (556, 560), 100% de las celdas, 36 s
+  2026-09-23 frame 1: ventana (556, 560), 100% de las celdas, 37 s
+  2026-10-05 frame 1: ventana (556, 560), 100% de las celdas, 36 s
+  2026-10-17 frame 1: ventana (556, 560), 100% de las celdas, 38 s
+  2026-10-29 frame 1: ventana (556, 560), 100% de las celdas, 34 s
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_cotopaxi.npz
+
+>>> [18:58:05] python -m src.nisar cotopaxi humedad
+  2026-06-19 frame 1: humedad en 98% de las celdas, 13 s
+  2026-07-01 frame 1: humedad en 98% de las celdas, 13 s
+  2026-07-13 frame 1: humedad en 98% de las celdas, 12 s
+  2026-07-25 frame 1: humedad en 98% de las celdas, 12 s
+  2026-08-18 frame 1: humedad en 98% de las celdas, 14 s
+  2026-08-30 frame 1: humedad en 98% de las celdas, 12 s
+  2026-09-11 frame 1: humedad en 98% de las celdas, 13 s
+  2026-09-23 frame 1: humedad en 98% de las celdas, 12 s
+  2026-10-05 frame 1: humedad en 98% de las celdas, 14 s
+  2026-10-17 frame 1: humedad en 98% de las celdas, 15 s
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_cotopaxi.npz
+
+>>> [19:01:01] python -m src.nisar cotopaxi capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000       32400.000  31728.000          31728.000
+mean        0.687           0.000      0.338              0.781
+std         0.215           0.001      0.067              0.392
+min         0.019           0.000      0.100              0.000
+25%         0.547           0.000      0.293              0.850
+50%         0.716           0.000      0.341              1.000
+75%         0.855           0.000      0.381              1.000
+max         1.000           0.061      0.743              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [19:01:02] python -m src.suelo_lluvia cotopaxi
+Warning 3: Cannot find gdalvrt.xsd (GDAL_DATA is not defined)
+  SoilGrids phh2o: mediana 6.08, sin dato en 3.1% de las celdas
+  SoilGrids clay: mediana 20.55, sin dato en 3.1% de las celdas
+  SoilGrids sand: mediana 43.63, sin dato en 3.1% de las celdas
+  SoilGrids soc: mediana 5.47, sin dato en 3.1% de las celdas
+!!! terminó con error (código 3228369023)
+
+>>> [19:01:18] python tests/prueba_rapida.py
+TODO BIEN: aptitud graduada, riego, lluvia del ciclo, orden, suelo, mercado, provincia, vecinos, clima/relieve, zonas, terreno dibujado, capas NISAR, tipo de terreno, heladas y cultivos de la Sierra.
+
+RESULTADO POR ZONA: {'tungurahua': 'FALLÓ en: -m src.suelo_lluvia tungurahua', 'cotopaxi': 'FALLÓ en: -m src.suelo_lluvia cotopaxi'}
+Tamaño en disco: datos/crudos 38 MB · datos/procesados 43 MB
+########## FIN · 19:01:22
+
+########## procesar_sierra · 2026-11-14 20:32:27 · C:\Users\marce\miniforge3\envs\condor\python.exe
+
+>>> [20:32:27] python -m src.clima_relieve tungurahua
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+      altura  pendiente  temp  lluvia
+min   1690.0        1.5  -5.9  1398.0
+mean  3276.0       16.8   9.3  1398.0
+max   5624.0       54.3  19.6  1398.0
+
+>>> [20:32:38] python -m src.heladas tungurahua
+Listo: mínima del mes más frío entre -16.0 y 9.4 °C; 84% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+
+>>> [20:32:39] python -m src.nisar tungurahua procesar
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_tungurahua.npz
+
+>>> [20:32:50] python -m src.nisar tungurahua humedad
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_tungurahua.npz
+
+>>> [20:32:57] python -m src.nisar tungurahua capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000        32400.00  31408.000          31408.000
+mean        0.715            0.00      0.401              0.500
+std         0.213            0.00      0.069              0.475
+min         0.020            0.00      0.163              0.000
+25%         0.573            0.00      0.357              0.000
+50%         0.742            0.00      0.397              0.500
+75%         0.896            0.00      0.439              1.000
+max         1.000            0.02      1.000              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [20:32:58] python -m src.suelo_lluvia tungurahua
+  SoilGrids phh2o: mediana 5.90, sin dato en 3.2% de las celdas
+  SoilGrids clay: mediana 20.98, sin dato en 3.2% de las celdas
+  SoilGrids sand: mediana 44.55, sin dato en 3.2% de las celdas
+  SoilGrids soc: mediana 7.77, sin dato en 3.2% de las celdas
+!!! terminó con error (código 3228369023)
+
+>>> [20:33:04] python -m src.clima_relieve cotopaxi
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+      altura  pendiente  temp  lluvia
+min   2521.0        1.5   0.1  1252.0
+mean  3370.9       12.7   8.8  1252.0
+max   4707.0       50.3  14.3  1252.0
+
+>>> [20:33:12] python -m src.heladas cotopaxi
+Listo: mínima del mes más frío entre -9.5 y 4.6 °C; 96% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+
+>>> [20:33:13] python -m src.nisar cotopaxi procesar
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_cotopaxi.npz
+
+>>> [20:33:22] python -m src.nisar cotopaxi humedad
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_cotopaxi.npz
+
+>>> [20:33:32] python -m src.nisar cotopaxi capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000       32400.000  31728.000          31728.000
+mean        0.687           0.000      0.338              0.781
+std         0.215           0.001      0.067              0.392
+min         0.019           0.000      0.100              0.000
+25%         0.547           0.000      0.293              0.850
+50%         0.716           0.000      0.341              1.000
+75%         0.855           0.000      0.381              1.000
+max         1.000           0.061      0.743              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [20:33:33] python -m src.suelo_lluvia cotopaxi
+  SoilGrids phh2o: mediana 6.08, sin dato en 3.1% de las celdas
+  SoilGrids clay: mediana 20.55, sin dato en 3.1% de las celdas
+  SoilGrids sand: mediana 43.63, sin dato en 3.1% de las celdas
+  SoilGrids soc: mediana 5.47, sin dato en 3.1% de las celdas
+!!! terminó con error (código 3228369023)
+
+>>> [20:33:35] python tests/prueba_rapida.py
+TODO BIEN: aptitud graduada, riego, lluvia del ciclo, orden, suelo, mercado, provincia, vecinos, clima/relieve, zonas, terreno dibujado, capas NISAR, tipo de terreno, heladas y cultivos de la Sierra.
+
+RESULTADO POR ZONA: {'tungurahua': 'FALLÓ en: -m src.suelo_lluvia tungurahua', 'cotopaxi': 'FALLÓ en: -m src.suelo_lluvia cotopaxi'}
+Tamaño en disco: datos/crudos 38 MB · datos/procesados 43 MB
+########## FIN · 20:33:36
+
+########## procesar_sierra · 2026-11-14 20:39:05 · C:\Users\marce\miniforge3\envs\condor\python.exe
+Prueba de lectura remota · python directo con el PATH del entorno: TimeoutExpired(['C:\\Users\\marce\\miniforge3\\envs\\condor\\python.exe', 'C:\\condor\\smartseeds-costa\\datos\\crudos\\registros\\_prueba_lectura.py'], 240)
+
+########## procesar_sierra · 2026-11-14 20:55:37 · C:\Users\marce\miniforge3\envs\condor\python.exe
+
+########## procesar_sierra · 2026-11-14 20:55:37 · C:\Users\marce\miniforge3\envs\condor\python.exe
+Prueba de lectura remota · pedazos bajados desde Python (src/lectura_remota.py): código 1 ·   File "C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\rasterio\io.py", line 230, in open |     return DatasetReader(mempath, driver=driver, sharing=sharing, **kwargs) |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ |   File "rasterio/_base.pyx", line 313, in rasterio._base.DatasetBase.__init__ | rasterio.errors.RasterioIOError: /vsipythonfilelike/a85cc81c-2e36-49b6-b033-80cdfd8bcfe7/a85cc81c-2e36-49b6-b033-80cdfd8bcfe7: No such file or directory
+Prueba de lectura remota · pedazos bajados desde Python (src/lectura_remota.py): código 1 ·   File "C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\rasterio\io.py", line 230, in open |     return DatasetReader(mempath, driver=driver, sharing=sharing, **kwargs) |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ |   File "rasterio/_base.pyx", line 313, in rasterio._base.DatasetBase.__init__ | rasterio.errors.RasterioIOError: /vsipythonfilelike/ebcd3133-8c4b-493d-b2b1-70438bd04b4c/ebcd3133-8c4b-493d-b2b1-70438bd04b4c: No such file or directory
+Prueba de lectura remota · lector de internet de GDAL (/vsicurl/): código 0 · rasterio 1.4.4 · GDAL 3.12.3 · forma: gdal | mapa de 43200 x 20880 · bloques (1, 43200) · Compression.deflate | lectura remota bien: (4, 4)
+Se usa: lector de internet de GDAL (/vsicurl/)
+
+>>> [20:55:46] python -m src.clima_relieve tungurahua
+Prueba de lectura remota · lector de internet de GDAL (/vsicurl/): código 0 · rasterio 1.4.4 · GDAL 3.12.3 · forma: gdal | mapa de 43200 x 20880 · bloques (1, 43200) · Compression.deflate | lectura remota bien: (4, 4)
+Se usa: lector de internet de GDAL (/vsicurl/)
+
+>>> [20:55:46] python -m src.clima_relieve tungurahua
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+      altura  pendiente  temp  lluvia
+min   1690.0        1.5  -5.9  1398.0
+mean  3276.0       16.8   9.3  1398.0
+max   5624.0       54.3  19.6  1398.0
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+      altura  pendiente  temp  lluvia
+min   1690.0        1.5  -5.9  1398.0
+mean  3276.0       16.8   9.3  1398.0
+max   5624.0       54.3  19.6  1398.0
+
+>>> [20:55:55] python -m src.heladas tungurahua
+
+>>> [20:55:55] python -m src.heladas tungurahua
+Listo: mínima del mes más frío entre -16.0 y 9.4 °C; 84% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+Listo: mínima del mes más frío entre -16.0 y 9.4 °C; 84% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+
+>>> [20:55:57] python -m src.nisar tungurahua procesar
+
+>>> [20:55:57] python -m src.nisar tungurahua procesar
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_tungurahua.npz
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_tungurahua.npz
+
+>>> [20:56:07] python -m src.nisar tungurahua humedad
+
+>>> [20:56:07] python -m src.nisar tungurahua humedad
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_tungurahua.npz
+
+>>> [20:56:16] python -m src.nisar tungurahua capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000        32400.00  31408.000          31408.000
+mean        0.715            0.00      0.401              0.500
+std         0.213            0.00      0.069              0.475
+min         0.020            0.00      0.163              0.000
+25%         0.573            0.00      0.357              0.000
+50%         0.742            0.00      0.397              0.500
+75%         0.896            0.00      0.439              1.000
+max         1.000            0.02      1.000              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [20:56:17] python -m src.suelo_lluvia tungurahua
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_tungurahua.npz
+
+>>> [20:56:17] python -m src.nisar tungurahua capas
+  SoilGrids phh2o: mediana 5.90, sin dato en 3.2% de las celdas
+  SoilGrids clay: mediana 20.98, sin dato en 3.2% de las celdas
+  SoilGrids sand: mediana 44.55, sin dato en 3.2% de las celdas
+  SoilGrids soc: mediana 7.77, sin dato en 3.2% de las celdas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000        32400.00  31408.000          31408.000
+mean        0.715            0.00      0.401              0.500
+std         0.213            0.00      0.069              0.475
+min         0.020            0.00      0.163              0.000
+25%         0.573            0.00      0.357              0.000
+50%         0.742            0.00      0.397              0.500
+75%         0.896            0.00      0.439              1.000
+max         1.000            0.02      1.000              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [20:56:18] python -m src.suelo_lluvia tungurahua
+  SoilGrids phh2o: mediana 5.90, sin dato en 3.2% de las celdas
+  SoilGrids clay: mediana 20.98, sin dato en 3.2% de las celdas
+  SoilGrids sand: mediana 44.55, sin dato en 3.2% de las celdas
+  SoilGrids soc: mediana 7.77, sin dato en 3.2% de las celdas
+!!! terminó con error (código 3228369023)
+
+>>> [20:56:20] python -m src.clima_relieve cotopaxi
+!!! terminó con error (código 3228369023)
+
+>>> [20:56:20] python -m src.clima_relieve cotopaxi
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+      altura  pendiente  temp  lluvia
+min   2521.0        1.5   0.1  1252.0
+mean  3370.9       12.7   8.8  1252.0
+max   4707.0       50.3  14.3  1252.0
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+      altura  pendiente  temp  lluvia
+min   2521.0        1.5   0.1  1252.0
+mean  3370.9       12.7   8.8  1252.0
+max   4707.0       50.3  14.3  1252.0
+
+>>> [20:56:29] python -m src.heladas cotopaxi
+
+>>> [20:56:29] python -m src.heladas cotopaxi
+Listo: mínima del mes más frío entre -9.5 y 4.6 °C; 96% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+
+>>> [20:56:31] python -m src.nisar cotopaxi procesar
+Listo: mínima del mes más frío entre -9.5 y 4.6 °C; 96% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+
+>>> [20:56:32] python -m src.nisar cotopaxi procesar
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_cotopaxi.npz
+
+>>> [20:56:41] python -m src.nisar cotopaxi humedad
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_cotopaxi.npz
+
+>>> [20:56:42] python -m src.nisar cotopaxi humedad
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_cotopaxi.npz
+
+>>> [20:56:51] python -m src.nisar cotopaxi capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000       32400.000  31728.000          31728.000
+mean        0.687           0.000      0.338              0.781
+std         0.215           0.001      0.067              0.392
+min         0.019           0.000      0.100              0.000
+25%         0.547           0.000      0.293              0.850
+50%         0.716           0.000      0.341              1.000
+75%         0.855           0.000      0.381              1.000
+max         1.000           0.061      0.743              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [20:56:52] python -m src.suelo_lluvia cotopaxi
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_cotopaxi.npz
+
+>>> [20:56:53] python -m src.nisar cotopaxi capas
+  SoilGrids phh2o: mediana 6.08, sin dato en 3.1% de las celdas
+  SoilGrids clay: mediana 20.55, sin dato en 3.1% de las celdas
+  SoilGrids sand: mediana 43.63, sin dato en 3.1% de las celdas
+  SoilGrids soc: mediana 5.47, sin dato en 3.1% de las celdas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000       32400.000  31728.000          31728.000
+mean        0.687           0.000      0.338              0.781
+std         0.215           0.001      0.067              0.392
+min         0.019           0.000      0.100              0.000
+25%         0.547           0.000      0.293              0.850
+50%         0.716           0.000      0.341              1.000
+75%         0.855           0.000      0.381              1.000
+max         1.000           0.061      0.743              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [20:56:54] python -m src.suelo_lluvia cotopaxi
+  SoilGrids phh2o: mediana 6.08, sin dato en 3.1% de las celdas
+  SoilGrids clay: mediana 20.55, sin dato en 3.1% de las celdas
+  SoilGrids sand: mediana 43.63, sin dato en 3.1% de las celdas
+  SoilGrids soc: mediana 5.47, sin dato en 3.1% de las celdas
+!!! terminó con error (código 3228369023)
+
+>>> [20:56:55] python tests/prueba_rapida.py
+!!! terminó con error (código 3228369023)
+
+>>> [20:56:56] python tests/prueba_rapida.py
+TODO BIEN: aptitud graduada, riego, lluvia del ciclo, orden, suelo, mercado, provincia, vecinos, clima/relieve, zonas, terreno dibujado, capas NISAR, tipo de terreno, heladas y cultivos de la Sierra.
+
+RESULTADO POR ZONA: {'tungurahua': 'FALLÓ en: -m src.suelo_lluvia tungurahua', 'cotopaxi': 'FALLÓ en: -m src.suelo_lluvia cotopaxi'}
+Tamaño en disco: datos/crudos 38 MB · datos/procesados 43 MB
+########## FIN · 20:56:57
+TODO BIEN: aptitud graduada, riego, lluvia del ciclo, orden, suelo, mercado, provincia, vecinos, clima/relieve, zonas, terreno dibujado, capas NISAR, tipo de terreno, heladas y cultivos de la Sierra.
+
+RESULTADO POR ZONA: {'tungurahua': 'FALLÓ en: -m src.suelo_lluvia tungurahua', 'cotopaxi': 'FALLÓ en: -m src.suelo_lluvia cotopaxi'}
+Tamaño en disco: datos/crudos 38 MB · datos/procesados 43 MB
+########## FIN · 20:56:58
+
+########## procesar_sierra · 2026-11-14 21:02:21 · C:\Users\marce\miniforge3\envs\condor\python.exe
+Prueba de lectura remota: código 1 ·   File "C:\condor\smartseeds-costa\src\lectura_remota.py", line 94, in leer_recuadro |     return _leer_aparte(origen, recuadro, relleno) |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ |   File "C:\condor\smartseeds-costa\src\lectura_remota.py", line 79, in _leer_aparte |     raise OSError(f"No se pudo leer {origen} en un proceso aparte (código {p.returncode}).\n" | OSError: No se pudo leer https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio12_1981-2010_V.2.1.tif en un proceso aparte (código 3228369023).
+No se pudo leer un mapa por internet: no se procesa nada.
+########## FIN · 21:02:25
+
+########## procesar_sierra · 2026-11-14 21:02:52 · C:\Users\marce\miniforge3\envs\condor\python.exe
+Prueba de lectura remota: código 1 ·   File "C:\condor\smartseeds-costa\src\lectura_remota.py", line 94, in leer_recuadro |     return _leer_aparte(origen, recuadro, relleno) |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ |   File "C:\condor\smartseeds-costa\src\lectura_remota.py", line 79, in _leer_aparte |     raise OSError(f"No se pudo leer {origen} en un proceso aparte (código {p.returncode}).\n" | OSError: No se pudo leer https://os.zhdk.cloud.switch.ch/chelsav2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio12_1981-2010_V.2.1.tif en un proceso aparte (código 3228369023).
+No se pudo leer un mapa por internet: no se procesa nada.
+########## FIN · 21:02:55
+
+########## procesar_sierra · 2026-11-14 21:16:40 · C:\Users\marce\miniforge3\envs\condor\python.exe
+Prueba de lectura remota: código 0 · forma: aparte · recuadro de (5, 5) · lluvia del año en Ambato: 932 mm
+
+>>> [21:16:44] python -m src.clima_relieve tungurahua
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+      altura  pendiente  temp  lluvia
+min   1690.0        1.5  -5.9  1398.0
+mean  3276.0       16.8   9.3  1398.0
+max   5624.0       54.3  19.6  1398.0
+
+>>> [21:16:54] python -m src.heladas tungurahua
+Listo: mínima del mes más frío entre -16.0 y 9.4 °C; 84% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+
+>>> [21:16:55] python -m src.nisar tungurahua procesar
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_tungurahua.npz
+
+>>> [21:17:07] python -m src.nisar tungurahua humedad
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_tungurahua.npz
+
+>>> [21:17:17] python -m src.nisar tungurahua capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000        32400.00  31408.000          31408.000
+mean        0.715            0.00      0.401              0.500
+std         0.213            0.00      0.069              0.475
+min         0.020            0.00      0.163              0.000
+25%         0.573            0.00      0.357              0.000
+50%         0.742            0.00      0.397              0.500
+75%         0.896            0.00      0.439              1.000
+max         1.000            0.02      1.000              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [21:17:18] python -m src.suelo_lluvia tungurahua
+  SoilGrids phh2o: mediana 5.90, sin dato en 3.2% de las celdas
+  SoilGrids clay: mediana 20.98, sin dato en 3.2% de las celdas
+  SoilGrids sand: mediana 44.55, sin dato en 3.2% de las celdas
+  SoilGrids soc: mediana 7.77, sin dato en 3.2% de las celdas
+  CHELSA lluvia del año: de 780 a 3519 mm (mediana 1307)
+Tabla actualizada: C:\condor\smartseeds-costa\datos\procesados\celdas_tungurahua.csv
+  CHELSA mes 01: de 53 a 238 mm (mediana 94)
+  CHELSA mes 02: de 66 a 269 mm (mediana 124)
+  CHELSA mes 03: de 85 a 303 mm (mediana 153)
+  CHELSA mes 04: de 90 a 353 mm (mediana 164)
+  CHELSA mes 05: de 73 a 336 mm (mediana 123)
+  CHELSA mes 06: de 58 a 370 mm (mediana 103)
+  CHELSA mes 07: de 44 a 315 mm (mediana 82)
+  CHELSA mes 08: de 34 a 269 mm (mediana 64)
+  CHELSA mes 09: de 41 a 248 mm (mediana 71)
+  CHELSA mes 10: de 62 a 270 mm (mediana 99)
+  CHELSA mes 11: de 68 a 264 mm (mediana 108)
+  CHELSA mes 12: de 63 a 284 mm (mediana 106)
+Lluvia mensual guardada: C:\condor\smartseeds-costa\datos\procesados\lluvia_mensual_tungurahua.npz (suma de los 12 meses, mediana 1307 mm; mapa del año, mediana 1307 mm)
+
+>>> [21:20:22] python -m src.vecindad tungurahua
+tungurahua: celdas con agua en algún vecino: 0.0%; con agua en más del 10 % de los vecinos: 0.0%; en más del 30 %: 0.0%
+
+>>> [21:20:23] python recolectar_referencia.py descargar worldcover tungurahua
+  tungurahua 2021: ESA_WorldCover_10m_2021_v200_S03W081_Map.tif, ventana de 4800 x 4800 píxeles
+tungurahua: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\referencia_worldcover_tungurahua.csv
+   clase principal por celda: pasto 45.6 %, arboles 26.5 %, cultivo 17.8 %, arbustos 5.8 %, construido 3.0 %, suelo_desnudo 0.9 %, nieve 0.4 %, agua 0.0 %, humedal 0.0 %
+
+>>> [21:20:33] python -m src.clima_relieve cotopaxi
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\results.py:343: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  self["size"] = self.size()
+C:\Users\marce\miniforge3\envs\condor\Lib\site-packages\earthaccess\store.py:832: FutureWarning: As of version 1.0, `DataGranule.size` will be accessed as an attribute; e.g. use `DataCollection.size` **not** `DataCollection.size()`
+  total_size = round(sum(granule.size() for granule in granules) / 1024, 2)
+Listo: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+      altura  pendiente  temp  lluvia
+min   2521.0        1.5   0.1  1252.0
+mean  3370.9       12.7   8.8  1252.0
+max   4707.0       50.3  14.3  1252.0
+
+>>> [21:20:48] python -m src.heladas cotopaxi
+Listo: mínima del mes más frío entre -9.5 y 4.6 °C; 96% de las celdas con riesgo de helada de 30 % o más -> C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+
+>>> [21:20:49] python -m src.nisar cotopaxi procesar
+Fechas en la serie GCOV: 11 de 11
+Guardado: C:\condor\smartseeds-costa\datos\procesados\nisar_cotopaxi.npz
+
+>>> [21:21:00] python -m src.nisar cotopaxi humedad
+Fechas en la serie SME2: 10 de 10
+Guardado: C:\condor\smartseeds-costa\datos\procesados\humedad_cotopaxi.npz
+
+>>> [21:21:08] python -m src.nisar cotopaxi capas
+       vegetacion  encharcamiento    humedad  humedad_confiable
+count   32400.000       32400.000  31728.000          31728.000
+mean        0.687           0.000      0.338              0.781
+std         0.215           0.001      0.067              0.392
+min         0.019           0.000      0.100              0.000
+25%         0.547           0.000      0.293              0.850
+50%         0.716           0.000      0.341              1.000
+75%         0.855           0.000      0.381              1.000
+max         1.000           0.061      0.743              1.000
+Celdas con dato de NISAR: 100%
+
+>>> [21:21:09] python -m src.suelo_lluvia cotopaxi
+  SoilGrids phh2o: mediana 6.08, sin dato en 3.1% de las celdas
+  SoilGrids clay: mediana 20.55, sin dato en 3.1% de las celdas
+  SoilGrids sand: mediana 43.63, sin dato en 3.1% de las celdas
+  SoilGrids soc: mediana 5.47, sin dato en 3.1% de las celdas
+  CHELSA lluvia del año: de 766 a 2440 mm (mediana 1459)
+Tabla actualizada: C:\condor\smartseeds-costa\datos\procesados\celdas_cotopaxi.csv
+  CHELSA mes 01: de 57 a 262 mm (mediana 122)
+  CHELSA mes 02: de 71 a 304 mm (mediana 145)
+  CHELSA mes 03: de 91 a 376 mm (mediana 188)
+  CHELSA mes 04: de 94 a 363 mm (mediana 189)
+  CHELSA mes 05: de 72 a 229 mm (mediana 137)
+  CHELSA mes 06: de 49 a 200 mm (mediana 85)
+  CHELSA mes 07: de 32 a 164 mm (mediana 55)
+  CHELSA mes 08: de 26 a 136 mm (mediana 49)
+  CHELSA mes 09: de 43 a 153 mm (mediana 83)
+  CHELSA mes 10: de 68 a 213 mm (mediana 120)
+  CHELSA mes 11: de 74 a 222 mm (mediana 129)
+  CHELSA mes 12: de 69 a 220 mm (mediana 135)
+Lluvia mensual guardada: C:\condor\smartseeds-costa\datos\procesados\lluvia_mensual_cotopaxi.npz (suma de los 12 meses, mediana 1459 mm; mapa del año, mediana 1459 mm)
+
+>>> [21:24:00] python -m src.vecindad cotopaxi
+cotopaxi: celdas con agua en algún vecino: 0.3%; con agua en más del 10 % de los vecinos: 0.0%; en más del 30 %: 0.0%
+
+>>> [21:24:01] python recolectar_referencia.py descargar worldcover cotopaxi
+  cotopaxi 2021: ESA_WorldCover_10m_2021_v200_S03W081_Map.tif, ventana de 4800 x 4800 píxeles
+cotopaxi: 32400 celdas -> C:\condor\smartseeds-costa\datos\procesados\referencia_worldcover_cotopaxi.csv
+   clase principal por celda: pasto 51.7 %, cultivo 33.2 %, arboles 8.7 %, arbustos 3.7 %, construido 2.4 %, suelo_desnudo 0.4 %, humedal 0.0 %, agua 0.0 %
+
+>>> [21:24:10] python C:\condor\smartseeds-costa\datos\crudos\registros\_paso_1280.py
+
+>>> [21:24:11] python -m src.cobertura entrenar
+Modelo entrenado con 86163 celdas de referencia (ESA WorldCover 2021 v200) de: santo_domingo, daule, cotopaxi, tungurahua
+Acierto en bloques que el modelo no vio: 76% (decir siempre la clase más común daría 35%); promedio por clase 70%
+   agua              encuentra el 44% de 459 celdas; cuando la dice, acierta el 32%
+   construcciones    encuentra el 75% de 1835 celdas; cuando la dice, acierta el 77%
+   cultivo_activo    encuentra el 67% de 21011 celdas; cuando la dice, acierta el 71%
+   inundable         encuentra el 77% de 3955 celdas; cuando la dice, acierta el 50%
+   vegetacion_baja   encuentra el 70% de 30244 celdas; cuando la dice, acierta el 75%
+   vegetacion_densa  encuentra el 89% de 28659 celdas; cuando la dice, acierta el 87%
+santo_domingo: vegetacion_densa 88.9 %, vegetacion_baja 7.4 %, construcciones 3.4 %, cultivo_activo 0.2 %, agua 0.1 %, inundable 0.0 %
+daule: cultivo_activo 39.7 %, inundable 25.6 %, vegetacion_baja 18.3 %, vegetacion_densa 12.4 %, agua 2.6 %, construcciones 1.4 %
+cotopaxi: vegetacion_baja 55.2 %, cultivo_activo 34.4 %, vegetacion_densa 7.6 %, construcciones 1.7 %, inundable 0.7 %, agua 0.3 %
+tungurahua: vegetacion_baja 56.2 %, vegetacion_densa 28.1 %, cultivo_activo 12.8 %, construcciones 2.6 %, inundable 0.2 %, agua 0.1 %
+
+>>> [21:24:30] python C:\condor\smartseeds-costa\datos\crudos\registros\_paso_5338.py
+santo_domingo | celdas cuyo tipo de terreno cambió al reentrenar: 33.5%
+daule | celdas cuyo tipo de terreno cambió al reentrenar: 19.2%
+tungurahua 32400 celdas | columnas: ['celda', 'lat', 'lon', 'altura', 'pendiente', 'temp', 'lluvia', 'humedad', 'encharcamiento', 'vegetacion', 'temp_minima', 'helada', 'humedad_confiable', 'ph', 'arcilla', 'arena', 'materia_organica', 'lluvia_power', 'agua_vecinos', 'cobertura']
+                       min       50%       max
+celda                 0.00  16199.50  32399.00
+lat                  -1.50     -1.30     -1.10
+lon                 -78.80    -78.60    -78.40
+altura             1690.00   3267.00   5624.00
+pendiente             1.50     15.30     54.30
+temp                 -5.90      9.40     19.60
+lluvia              780.00   1307.00   3519.00
+humedad               0.16      0.40      1.00
+encharcamiento        0.00      0.00      0.02
+vegetacion            0.02      0.74      1.00
+temp_minima         -16.00     -0.70      9.40
+helada                0.00      0.96      1.00
+humedad_confiable     0.00      0.50      1.00
+ph                    5.00      5.90      7.00
+arcilla               4.00     21.00     37.00
+arena                33.00     45.00     60.00
+materia_organica      4.00     13.40     29.70
+lluvia_power       1398.00   1398.00   1398.00
+agua_vecinos          0.00      0.00      0.00
+{'vegetacion_baja': 56.2, 'vegetacion_densa': 28.1, 'cultivo_activo': 12.8, 'construcciones': 2.6, 'inundable': 0.2, 'agua': 0.1}
+cotopaxi 32400 celdas | columnas: ['celda', 'lat', 'lon', 'altura', 'pendiente', 'temp', 'lluvia', 'humedad', 'encharcamiento', 'vegetacion', 'temp_minima', 'helada', 'humedad_confiable', 'ph', 'arcilla', 'arena', 'materia_organica', 'lluvia_power', 'agua_vecinos', 'cobertura']
+                       min       50%       max
+celda                 0.00  16199.50  32399.00
+lat                  -1.10     -0.90     -0.70
+lon                 -78.85    -78.65    -78.45
+altura             2521.00   3312.00   4707.00
+pendiente             1.50     11.40     50.30
+temp                  0.10      9.20     14.30
+lluvia              766.00   1459.00   2440.00
+humedad               0.10      0.34      0.74
+encharcamiento        0.00      0.00      0.06
+vegetacion            0.02      0.72      1.00
+temp_minima          -9.50     -0.40      4.60
+helada                0.07      0.91      1.00
+humedad_confiable     0.00      1.00      1.00
+ph                    5.00      6.10      7.20
+arcilla              10.00     21.00     32.00
+arena                35.00     44.00     54.00
+materia_organica      3.90      9.40     28.20
+lluvia_power       1252.00   1252.00   1252.00
+agua_vecinos          0.00      0.00      0.04
+{'vegetacion_baja': 55.2, 'cultivo_activo': 34.4, 'vegetacion_densa': 7.6, 'construcciones': 1.7, 'inundable': 0.7, 'agua': 0.3}
+
+>>> [21:24:31] python tests/prueba_rapida.py
+TODO BIEN: aptitud graduada, riego, lluvia del ciclo, orden, suelo, mercado, provincia, vecinos, clima/relieve, zonas, terreno dibujado, capas NISAR, tipo de terreno, heladas y cultivos de la Sierra.
+
+RESULTADO POR ZONA: {'tungurahua': 'completa', 'cotopaxi': 'completa'}
+Tamaño en disco: datos/crudos 39 MB · datos/procesados 51 MB
+########## FIN · 21:24:33

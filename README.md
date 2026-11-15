@@ -625,3 +625,18 @@ comandos, usando `daule` como nombre de zona.
 ### Uso de IA (declarar en la página del proyecto)
 La estructura y el código inicial se escribieron con ayuda de un asistente de IA (Claude, de Anthropic)
 y fueron revisados por el equipo.
+
+### Licencia
+El **código** de SmartSeeds escrito por el equipo Condor Mission se publica con la licencia **MIT**
+(archivo [`LICENSE`](LICENSE) en la raíz): se puede usar, copiar y modificar citando al equipo.
+
+Esa licencia **no cubre los datos ni los componentes de terceros**, que conservan sus propias condiciones:
+- **Capas del MAG:** Datos Abiertos Ecuador registra las de 2022 (banano, palma aceitera y caña de azúcar
+  industrial) como Creative Commons de uso **no comercial**. Las condiciones de las capas de 2025 y de
+  SIGTIERRAS están por confirmar con el MAG (ver la sección 3).
+- **ESA WorldCover, SoilGrids (ISRIC) y FAO EcoCrop:** CC BY 4.0; hay que citar la fuente.
+- **Datos de la NASA** (NISAR, NASADEM, NASA POWER): se usan como datos abiertos, citando la fuente.
+- **Modelos 3D y Three.js:** ver `app/interfaz/modelos/LICENCIA_MODELOS.txt` y
+  `app/interfaz/vendor/THREE-LICENSE.txt`.
+
+Quien reutilice las tablas de `datos/` debe revisar y respetar la licencia de cada fuente.

@@ -73,6 +73,17 @@ CULTIVOS = {
              "Solo haba tierna (la seca va aparte en la ESPAC)."),
     "quinua": ("Quinua (Grano Seco)", None, "grano seco", ""),
     "tomate_de_arbol": ("Tomate De Árbol (Fruta Fresca)", "Tomate De Árbol", "fruta fresca", ""),
+    # --- Sierra (agregados el 14 nov; SIN PROBAR con los Excel: los nombres se tomaron de
+    # tablas/siembra_provincias.csv y del catálogo de mercado del equipo. Producto None = no se
+    # encontró un precio AL PRODUCTOR; revisar el Excel de precios antes de darlo por cerrado) ---
+    "cebolla_blanca": ("Cebolla Blanca (Tallo Fresco)", "Cebolla En Rama Seca Y Limpia De Primera", "tallo fresco", ""),
+    "arveja": ("Arveja Tierna (En Vaina)", "Arveja Tierna En Vaina", "en vaina",
+               "Solo arveja tierna (la seca va aparte en la ESPAC)."),
+    "cebada": ("Cebada (Grano Seco)", None, "grano seco", ""),
+    "trigo": ("Trigo (Grano Seco)", None, "grano seco", ""),
+    "aguacate": ("Aguacate (Fruta Fresca)", None, "fruta fresca", ""),
+    # Agregado el 14 nov (tarde), también SIN PROBAR con los Excel: nombres tomados del catálogo de mercado v1.0
+    "brocoli": ("Brócoli (Repollo)", "Brócoli", "repollo", ""),
 }
 
 FUENTE = ("INEC, ESPAC 2024 y 2025, superficie y producción por provincia (base histórica publicada por el "

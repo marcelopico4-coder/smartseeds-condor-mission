@@ -3,58 +3,62 @@
  "fecha": "2026-11-14",
  "zonas": [
   "santo_domingo",
-  "daule"
+  "daule",
+  "cotopaxi",
+  "tungurahua"
  ],
- "celdas_para_aprender": 41568,
- "celdas_clasificadas": 57035,
- "acierto": 0.787,
+ "celdas_para_aprender": 86163,
+ "celdas_clasificadas": 121835,
+ "acierto": 0.761,
  "acierto_promedio_por_clase": 0.705,
- "acierto_diciendo_siempre_lo_mas_comun": 0.52,
+ "acierto_diciendo_siempre_lo_mas_comun": 0.351,
  "acierto_por_zona": {
-  "santo_domingo": 0.858,
-  "daule": 0.713
+  "santo_domingo": 0.87,
+  "daule": 0.692,
+  "cotopaxi": 0.722,
+  "tungurahua": 0.759
  },
  "por_clase": {
   "agua": {
-   "celdas_de_referencia": 454,
-   "las_encuentra": 0.474,
-   "acierta_cuando_la_dice": 0.439
+   "celdas_de_referencia": 459,
+   "las_encuentra": 0.44,
+   "acierta_cuando_la_dice": 0.321
   },
   "construcciones": {
-   "celdas_de_referencia": 859,
-   "las_encuentra": 0.756,
-   "acierta_cuando_la_dice": 0.767
+   "celdas_de_referencia": 1835,
+   "las_encuentra": 0.751,
+   "acierta_cuando_la_dice": 0.768
   },
   "cultivo_activo": {
-   "celdas_de_referencia": 8776,
-   "las_encuentra": 0.731,
-   "acierta_cuando_la_dice": 0.817
+   "celdas_de_referencia": 21011,
+   "las_encuentra": 0.674,
+   "acierta_cuando_la_dice": 0.708
   },
   "inundable": {
    "celdas_de_referencia": 3955,
-   "las_encuentra": 0.721,
-   "acierta_cuando_la_dice": 0.595
+   "las_encuentra": 0.774,
+   "acierta_cuando_la_dice": 0.501
   },
   "vegetacion_baja": {
-   "celdas_de_referencia": 5923,
-   "las_encuentra": 0.695,
-   "acierta_cuando_la_dice": 0.508
+   "celdas_de_referencia": 30244,
+   "las_encuentra": 0.702,
+   "acierta_cuando_la_dice": 0.754
   },
   "vegetacion_densa": {
-   "celdas_de_referencia": 21601,
-   "las_encuentra": 0.855,
-   "acierta_cuando_la_dice": 0.948
+   "celdas_de_referencia": 28659,
+   "las_encuentra": 0.89,
+   "acierta_cuando_la_dice": 0.866
   }
  },
- "cultivo_de_ciclo_corto_si_o_no": 0.908,
+ "cultivo_de_ciclo_corto_si_o_no": 0.853,
  "rasgos_que_mas_pesan": {
-  "hh_min": 0.184,
-  "hh_media": 0.176,
-  "hv_media": 0.165,
-  "hh_cambio": 0.119,
-  "hh_menos_hv": 0.118,
-  "pendiente": 0.106,
-  "hv_cambio": 0.076,
-  "agua": 0.056
+  "hh_min": 0.182,
+  "pendiente": 0.17,
+  "hv_media": 0.147,
+  "hh_media": 0.142,
+  "hh_cambio": 0.128,
+  "hh_menos_hv": 0.094,
+  "hv_cambio": 0.07,
+  "agua": 0.066
  }
 }

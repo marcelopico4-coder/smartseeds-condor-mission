@@ -35,7 +35,9 @@ sierra = {"altura": 3000, "pendiente": 8, "temp": 12.0, "lluvia": 900,
 
 assert aptitud(costa, req.loc["cacao"].to_dict()) == 100
 assert aptitud(costa, req.loc["papa"].to_dict()) < 40
-assert aptitud(sierra, req.loc["papa"].to_dict()) == 100
+# Papa con el rango del INIAP (9 a 11 °C, aplicado el 14 nov): a 12 °C pierde unos puntos, ya no saca 100
+assert 90 <= aptitud(sierra, req.loc["papa"].to_dict()) < 100
+assert aptitud(dict(sierra, altura=3400, temp=10.0), req.loc["papa"].to_dict()) == 100
 assert aptitud(sierra, req.loc["cacao"].to_dict()) < 40
 assert aptitud({}, req.loc["cacao"].to_dict()) is None            # sin datos -> sin puntaje
 
@@ -69,8 +71,9 @@ assert aptitud(dict(costa, agua_invierno=0.4, pendiente=1), req.loc["arroz"].to_
 assert aptitud(dict(costa, agua_invierno=0.0, agua_vecinos=0.3), cacao) == 100
 con_invierno = [f["factor"] for f in aptitud_detalle(dict(costa, agua_invierno=0.0, agua_vecinos=0.3), cacao)["factores"]]
 assert "Invierno" in con_invierno and "Alrededores" not in con_invierno
-# La papa no usa la temperatura mundial de EcoCrop (no hay rango del Ecuador): sigue con la tabla
-assert pd.isna(req.loc["papa", "temp_opt_min_C"]) and req.loc["haba", "temp_opt_max_C"] == 14
+# La papa no usa la temperatura mundial de EcoCrop (15 a 25 °C) sino la del INIAP para la franja andina
+assert (req.loc["papa", "temp_opt_min_C"], req.loc["papa", "temp_opt_max_C"]) == (9, 11)
+assert req.loc["haba", "temp_opt_max_C"] == 14
 
 top = recomendar(costa, "Santo Domingo de los Tsáchilas")
 assert len(top) == 3 and all(c["puntaje"] >= 40 for c in top)
@@ -332,6 +335,54 @@ assert set(cobertura.CLASE_DE_REFERENCIA.values()) <= set(cobertura.CLASES)
 assert "ESA WorldCover" in cobertura.texto_evaluacion({"referencia": "ESA WorldCover 2021 v200", "acierto": 0.79})
 assert "79%" in cobertura.texto_evaluacion({"referencia": "ESA WorldCover 2021 v200", "acierto": 0.79})
 
+# --- Sierra: zonas, heladas y cultivos del catálogo del equipo -----------------
+from src import catalogo_equipo, heladas  # noqa: E402
+
+assert zona_de_punto(-0.93, -78.62) == "cotopaxi" and zona_de_punto(-1.24, -78.63) == "tungurahua"
+assert provincia_sugerida(-1.17, -78.54) == "Tungurahua"                      # Píllaro
+# Heladas: riesgo según la mínima media del mes más frío
+assert list(heladas.riesgo_de_helada([5, 2, -1, -4])) == [0, 0.5, 1, 1]
+alturas = np.full((11, 11), 2900.0)
+alturas[5, 5] = 2840.0                                                        # un fondo plano 60 m más bajo
+hond = heladas.indice_hondonada(alturas, np.zeros((11, 11)))
+assert hond[5, 5] > 0.9 and hond[0, 0] == 0
+assert heladas.indice_hondonada(alturas, np.full((11, 11), 20.0))[5, 5] == 0  # en ladera el aire frío no se queda
+minima = heladas.minima_por_celda(4.0, 2900, np.array([2900, 3400]), np.array([0.0, 0.0]))
+assert abs(minima[0] - 4.0) < 1e-9 and abs(minima[1] - 0.75) < 1e-9           # 500 m más arriba: 3,25 °C menos
+assert heladas.minima_por_celda(4.0, 2900, 2900, 1.0) == 2.5                  # hondonada: 1,5 °C más frío
+# La helada solo cuenta si la celda trae el dato y la tabla dice cuánto aguanta el cultivo
+papa, quinua, haba = (req.loc[c].to_dict() for c in ("papa", "quinua", "haba"))
+fria = dict(sierra, helada=0.8, temp_minima=0.2)
+import src.aptitud as _apt  # noqa: E402
+# El factor está APAGADO (14 nov): la helada se muestra como aviso y no cambia ningún puntaje
+assert _apt.HELADAS_EN_PUNTAJE is False
+for _c in (papa, quinua, haba):
+    assert aptitud(fria, _c) == aptitud(sierra, _c)
+    _aviso = [f for f in aptitud_detalle(fria, _c)["factores"] if f["factor"] == "Heladas"][0]
+    assert _aviso["nota"] is None and "riesgo de 80%" in _aviso["texto"] and "no cuenta en el puntaje" in _aviso["texto"]
+assert "no las aguanta" in [f["texto"] for f in aptitud_detalle(fria, papa)["factores"] if f["factor"] == "Heladas"][0]
+# Encendido (para cuando haya fuente para todos): la helada solo cuenta si la tabla dice cuánto aguanta el cultivo
+_apt.HELADAS_EN_PUNTAJE = True
+assert aptitud(fria, papa) < aptitud(sierra, papa) and aptitud(fria, quinua) < aptitud(sierra, quinua)
+assert aptitud(sierra, papa) - aptitud(fria, papa) > aptitud(sierra, quinua) - aptitud(fria, quinua)  # la papa pierde más
+assert aptitud(fria, haba) == aptitud(sierra, haba)                           # haba: sin dato, no cuenta
+assert "no cuenta en el puntaje" in [f["texto"] for f in aptitud_detalle(fria, haba)["factores"] if f["factor"] == "Heladas"][0]
+assert aptitud(dict(sierra, helada=0.02), papa) == aptitud(sierra, papa)      # menos del 5 %: sin heladas
+_apt.HELADAS_EN_PUNTAJE = False
+assert not [f for f in aptitud_detalle(costa, papa)["factores"] if f["factor"] == "Heladas"]   # la Costa no cambia
+# Cultivos de la Sierra traídos del catálogo del equipo (v1.1): no cambian nada en la Costa
+nuevos = set(catalogo_equipo.CULTIVOS_NUEVOS)
+assert nuevos <= set(req.index) and "frejol" not in req.index
+assert all((aptitud(costa, req.loc[c].to_dict()) or 0) < 40 for c in nuevos)
+assert aptitud(sierra, req.loc["cebada"].to_dict()) > 80 and aptitud(sierra, req.loc["chocho"].to_dict()) > 80
+assert req.loc["cebada", "temp_opt_min_C"] == 8 and req.loc["cebada", "temp_abs_min_C"] <= 8   # rango andino del Ecuador
+assert pd.isna(req.loc["amaranto", "pendiente_max_grados"])                   # lo que el catálogo no trae queda vacío
+seca = dict(sierra, humedad=0.2, humedad_confiable=0.9)
+assert aptitud(seca, req.loc["amaranto"].to_dict()) == aptitud(sierra, req.loc["amaranto"].to_dict())  # sin dato de drenaje
+fila, fila_eco, _ = catalogo_equipo.filas_del_cultivo("chocho")
+assert (fila["altitud_min_m"], fila["altitud_max_m"], fila["ciclo_meses"], fila["tolera_heladas"]) == (2600, 3200, 6, "no")
+assert fila_eco["temp_opt_min_ecuador_C"] == 7 and "Basantes" in fila_eco["fuente_ecuador"]
+
 print("TODO BIEN: aptitud graduada, riego, lluvia del ciclo, orden, suelo, mercado, provincia, vecinos, "
       "clima/relieve, zonas, terreno dibujado, "
-      "capas NISAR y tipo de terreno.")
+      "capas NISAR, tipo de terreno, heladas y cultivos de la Sierra.")

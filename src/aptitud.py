@@ -5,7 +5,7 @@ Contrato:  aptitud(fila_celda, fila_cultivo) -> 0..100
 
 Cómo se calcula (regla inicial, fácil de explicar y de ajustar):
   - Cada factor (altura, temperatura, lluvia, pendiente, acidez del suelo, encharcamiento,
-    agua en invierno o en los terrenos vecinos, humedad) recibe una nota de 0 a 1.
+    agua en invierno o en los terrenos vecinos, heladas, humedad) recibe una nota de 0 a 1.
   - Temperatura, lluvia y acidez (pH) usan DOS rangos por cultivo (tablas/ecocrop_cultivos.csv):
     el IDEAL, donde la nota es 1, y el que el cultivo AGUANTA, donde la nota llega a 0.
     Entre uno y otro la nota baja en línea recta. Así dos terrenos parecidos ya no reciben
@@ -67,6 +67,20 @@ AGUA_VECINOS_MINIMA = 0.05    # menos del 5 % de vecinos con agua se cuenta como
 # enero y mayo según el radar Sentinel-1. Se evalúa con los mismos límites del encharcamiento.
 # Cuando la celda trae este dato, los vecinos NO cuentan en el puntaje: servían para suponer si el
 # terreno se moja en invierno, y aquí eso ya está medido.
+
+# Heladas (columna `helada`, de src/heladas.py; solo en las zonas de la Sierra): riesgo de 0 a 1 en el
+# mes más frío del año. Cuánto resta depende de lo que aguanta el cultivo (columna `tolera_heladas` de
+# requisitos_cultivos.csv: "no", "parcial" o "si"). Nota = 1 - riesgo x (1 - aguante).
+# Si el cultivo no tiene ese dato, la helada se muestra pero NO cuenta en el puntaje.
+# Los tres aguantes son valores iniciales sin calibrar (declararlo como limitación).
+AGUANTE_HELADA = {"no": 0.1, "parcial": 0.4, "si": 0.7}
+# APAGADO el 14 nov (decisión del equipo): solo 6 cultivos tienen dato de cuánto aguantan la helada
+# (papa, chocho, amaranto, trigo, cebada y quinua). Con el factor encendido la papa bajaba y el maíz
+# suave, el haba y la arveja no, solo porque les falta la fuente, y quedaban por encima sin merecerlo.
+# Mientras esté en False la helada se MUESTRA como aviso en cada cultivo pero no cambia ningún puntaje.
+# Volver a True cuando `tolera_heladas` tenga fuente para todos los cultivos de la Sierra.
+HELADAS_EN_PUNTAJE = False
+RIESGO_HELADA_MINIMO = 0.05   # menos del 5 % de riesgo se cuenta como "sin heladas"
 
 ALTURA_CULTIVO_ANDINO_M = 1500   # un cultivo cuya altura mínima es esta o más se trata como andino
 
@@ -373,6 +387,32 @@ def aptitud_detalle(celda: dict, cultivo: dict) -> dict:
                              "texto": f"Alrededores: el radar vio agua en {vecinos:.0%} de los terrenos vecinos "
                                       "(a menos de 1 km). En invierno tu terreno también puede mojarse"})
 
+    # Heladas (Sierra): riesgo en el mes más frío y lo que aguanta el cultivo
+    helada = _num(celda.get("helada"))
+    if helada is not None:
+        aguante = AGUANTE_HELADA.get(str(cultivo.get("tolera_heladas", "")).strip().lower())
+        minima = _num(celda.get("temp_minima"))
+        frio = "" if minima is None else f" (en el mes más frío la temperatura baja en promedio a {minima:.1f} °C)"
+        if helada < RIESGO_HELADA_MINIMO:
+            # sin nota: un "1" aquí subiría el promedio de los cultivos que no llegan a 100
+            factores.append({"factor": "Heladas", "nota": None,
+                             "texto": f"Heladas: casi no hay riesgo en este terreno{frio}"})
+        elif not HELADAS_EN_PUNTAJE:
+            sabe = {0.1: " Este cultivo no las aguanta.", 0.4: " Este cultivo las aguanta en parte.",
+                    0.7: " Este cultivo las aguanta bastante."}.get(aguante, "")
+            factores.append({"factor": "Heladas", "nota": None,
+                             "texto": f"Heladas: riesgo de {helada:.0%} en el mes más frío{frio}.{sabe} Es un aviso: "
+                                      "todavía no cuenta en el puntaje, porque falta ese dato para varios cultivos"})
+        elif aguante is None:
+            factores.append({"factor": "Heladas", "nota": None,
+                             "texto": f"Heladas: riesgo de {helada:.0%} en el mes más frío{frio}. No hay dato de cuánto "
+                                      "aguanta este cultivo: no cuenta en el puntaje"})
+        else:
+            como = {0.1: "este cultivo no las aguanta", 0.4: "este cultivo las aguanta en parte",
+                    0.7: "este cultivo las aguanta bastante"}[aguante]
+            factores.append({"factor": "Heladas", "nota": 1 - helada * (1 - aguante),
+                             "texto": f"Heladas: riesgo de {helada:.0%} en el mes más frío{frio}; {como}"})
+
     # Humedad del suelo (NISAR): 0 = seco, 1 = saturado
     # `humedad_confiable` = fracción de los datos que la NASA marca como recomendados.
     # En vegetación densa casi ninguno lo es: se muestra el dato pero NO cuenta en el puntaje.
@@ -385,6 +425,11 @@ def aptitud_detalle(celda: dict, cultivo: dict) -> dict:
         factores.append({"factor": "Humedad", "nota": None,
                          "texto": f"Humedad del suelo según NISAR: {hum:.0%} de saturación "
                                   "(poco confiable por la vegetación densa; no cuenta en el puntaje)"})
+    elif drenaje not in ("si", "no"):
+        # El cultivo no tiene dato de drenaje en la tabla: no se supone ni una cosa ni la otra
+        factores.append({"factor": "Humedad", "nota": None,
+                         "texto": f"Humedad del suelo según NISAR: {hum:.0%} de saturación (falta el dato de "
+                                  "drenaje de este cultivo; no cuenta en el puntaje)"})
     elif drenaje == "si":
         nota = 1.0 if hum <= 0.7 else max(0.0, 1 - (hum - 0.7) / 0.3)
         texto = ("Humedad del suelo: adecuada para un cultivo que necesita buen drenaje" if nota >= 1

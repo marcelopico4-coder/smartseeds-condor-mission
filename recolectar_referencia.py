@@ -145,23 +145,17 @@ def leer_ventana(url: str, recuadro):
     Devuelve (matriz de códigos, longitud del borde oeste, latitud del borde norte, ancho
     y alto del píxel en grados). La fila 0 de la matriz es el norte.
     """
-    import rasterio
-    from rasterio.windows import from_bounds
+    from src.lectura_remota import leer_recuadro   # lee solo la ventana (ver ahí la forma "aparte")
 
     local = CARPETA_LOCAL / url.rsplit("/", 1)[-1]
     origen = str(local) if local.exists() else url
-    opciones = {"GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
-                "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif"}
     try:
-        with rasterio.Env(**opciones), rasterio.open(origen) as archivo:
-            if archivo.crs is not None and not archivo.crs.is_geographic:
-                raise SystemExit(f"{origen} no está en grados (latitud y longitud): {archivo.crs}. "
-                                 "Avisa antes de seguir: hay que convertirlo.")
-            ventana = from_bounds(*recuadro, transform=archivo.transform)
-            ventana = ventana.round_offsets().round_lengths()
-            datos = archivo.read(1, window=ventana, boundless=True, fill_value=0)
-            t = archivo.window_transform(ventana)
-    except rasterio.errors.RasterioIOError as error:
+        leido = leer_recuadro(origen, recuadro, relleno=0)
+        if not leido["en_grados"]:
+            raise SystemExit(f"{origen} no está en grados (latitud y longitud). "
+                             "Avisa antes de seguir: hay que convertirlo.")
+        datos, t = leido["datos"], leido["transformacion"]
+    except OSError as error:      # incluye el error de lectura de rasterio (RasterioIOError)
         raise SystemExit(
             f"No se pudo leer {origen}\n   {error}\n"
             f"Baja el archivo con el navegador desde\n   {url}\n"

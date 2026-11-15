@@ -1,0 +1,4327 @@
+{
+  "fuentes": [
+    {
+      "id": "S01",
+      "referencia": "Basantes Morales, E. R. (2015). Manejo de cultivos andinos del Ecuador. ESPE.",
+      "archivo": "C:/Users/campy/OneDrive/SMARTSEEDS/ManejoCultivosEcuador.pdf",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "manual_tecnico",
+      "alcance": "Ecuador; conservar contexto original",
+      "url": null,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0001",
+          "E0002",
+          "E0003",
+          "E0004",
+          "E0005",
+          "E0017",
+          "E0018",
+          "E0019",
+          "E0031",
+          "E0032",
+          "E0033",
+          "E0045",
+          "E0046",
+          "E0058",
+          "E0059",
+          "E0060",
+          "E0072",
+          "E0073",
+          "E0074",
+          "E0075",
+          "E0087",
+          "E0088",
+          "E0089",
+          "E0090",
+          "E0102",
+          "E0103",
+          "E0104",
+          "E0112",
+          "E0113",
+          "E0114",
+          "E0115",
+          "E0127",
+          "E0128",
+          "E0129",
+          "E0130",
+          "E0131",
+          "E0132",
+          "E0133",
+          "E0265",
+          "E0266",
+          "E0267"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0052",
+          "CL-E0053",
+          "CL-E0054",
+          "CL-E0055",
+          "CL-E0056",
+          "CL-E0057",
+          "CL-E0058",
+          "CL-E0059",
+          "CL-E0060",
+          "CL-E0061",
+          "CL-E0062",
+          "CL-E0063",
+          "CL-E0064",
+          "CL-E0065",
+          "CL-E0066",
+          "CL-E0067",
+          "CL-E0068",
+          "CL-E0069",
+          "CL-E0070",
+          "CL-E0071",
+          "CL-E0072",
+          "CL-E0073",
+          "CL-E0074",
+          "CL-E0075",
+          "CL-E0076",
+          "CL-E0077",
+          "CL-E0078",
+          "CL-E0079",
+          "CL-E0085",
+          "CL-E0087",
+          "CL-E0088",
+          "CL-E0089",
+          "CL-E0090",
+          "CL-E0091",
+          "CL-E0092"
+        ],
+        "cultivos_ids": [
+          "C001",
+          "C002",
+          "C003",
+          "C004",
+          "C005",
+          "C006",
+          "C007",
+          "C008",
+          "C009",
+          "C010",
+          "C011"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0001",
+          "PR-E0002",
+          "PR-E0003",
+          "PR-E0004",
+          "PR-E0005",
+          "PR-E0006",
+          "PR-E0007",
+          "PR-E0008",
+          "PR-E0009",
+          "PR-E0010",
+          "PR-E0011",
+          "PR-E0012",
+          "PR-E0013",
+          "PR-E0014",
+          "PR-E0015",
+          "PR-E0016",
+          "PR-E0021",
+          "PR-E0022",
+          "PR-E0023",
+          "PR-E0024",
+          "PR-E0025",
+          "PR-E0026",
+          "PR-E0027",
+          "PR-E0028",
+          "PR-E0038",
+          "PR-E0039",
+          "PR-E0040",
+          "PR-E0041"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "S02",
+      "referencia": "Amores, F. (1992). Clima, suelos, nutrición y fertilización de cultivos en el litoral ecuatoriano (Manual Técnico No. 26). INIAP.",
+      "archivo": "C:/Users/campy/OneDrive/SMARTSEEDS/Manual Técnico No. 26.pdf",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "manual_tecnico",
+      "alcance": "Ecuador; conservar contexto original",
+      "url": null,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0160",
+          "E0161",
+          "E0162",
+          "E0163",
+          "E0175",
+          "E0176",
+          "E0177",
+          "E0189",
+          "E0190",
+          "E0191"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0093",
+          "CL-E0094",
+          "CL-E0095",
+          "CL-E0096",
+          "CL-E0097",
+          "CL-E0102",
+          "CL-E0103",
+          "CL-E0104",
+          "CL-E0107"
+        ],
+        "cultivos_ids": [
+          "C012",
+          "C013",
+          "C014",
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "S03",
+      "referencia": "Agrocalidad. Guía de buenas prácticas agrícolas para cacao. Resolución Técnica 0183, 20 de septiembre de 2012.",
+      "archivo": "C:/Users/campy/OneDrive/SMARTSEEDS/Guía-de-BPA-para-cacao-jul.pdf",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "manual_tecnico",
+      "alcance": "Ecuador; conservar contexto original",
+      "url": null,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0145",
+          "E0146",
+          "E0147",
+          "E0148",
+          "E0222"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C012"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "S04",
+      "referencia": "Peralta I., E. (2010). INIAP Alegría: Variedad mejorada de amaranto Amaranthus caudatus L. (Plegable Divulgativo 346). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/2640",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\amaranto_alegria.pdf",
+      "tipo": "manual_tecnico",
+      "alcance": "INIAP-Alegría; Sierra ecuatoriana",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "831aa889c17c766f7455fbceee54291322eeebc7b13fa94061566864eeff97f5",
+      "copias_recuperadas": [
+        {
+          "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\S04_INIAP_Alegria_2010_831aa889c17c.pdf",
+          "sha256": "831aa889c17c766f7455fbceee54291322eeebc7b13fa94061566864eeff97f5",
+          "paginas": 6,
+          "fecha": "2026-11-14",
+          "paginas_comprobadas": [
+            1,
+            3,
+            4
+          ],
+          "nota": "Identidad INIAP-Alegría confirmada; no se cambia cultivar de parcela ni se vuelve a contar como fuente."
+        }
+      ],
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0214",
+          "E0215",
+          "E0216"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C010"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0042",
+          "PR-E0043"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S05",
+      "referencia": "Ministerio de Agricultura y Ganadería. (s. f.). Manual de manejo productivo de aguacate. Tabla 3, fuente MAG–CGINA e INIAP (2022).",
+      "url": "https://sipa.agricultura.gob.ec/boletines/situacionales/2023/manual_manejo_productivo_aguacate.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\aguacate_mag.pdf",
+      "tipo": "manual_tecnico",
+      "alcance": "Tabla 3 específica para Hass; no se deduce año de edición de la URL",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "4f4f2c5a4cb1e6199986eb49adb1bd8a7b5d791164262a5009fcd8a9f3d9f14e",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0223",
+          "E0224",
+          "E0226",
+          "E0227",
+          "E0228",
+          "E0229",
+          "E0230",
+          "E0231"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0126",
+          "CL-E0127"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0063"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S06",
+      "referencia": "Sotomayor, A., Viera, W., Viteri, P., Posso, M., Racines, M., González, A., Cho, K., & Villavicencio, A. (2019). Manual técnico para la producción de plantas injertas de aguacate (Persea americana Mill.) de alta calidad (Manual No. 108). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/5344",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\aguacate_iniap2019.pdf",
+      "tipo": "manual_tecnico",
+      "alcance": "Introducción sobre campo; resto incluye fase de vivero. Autores cotejados con créditos del PDF, página 2",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "1a021869a9f69e3cce2a108b202e1a49176f423d06a1b7f40e25de576dde4a65",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0225"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0124",
+          "CL-E0125"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S07",
+      "referencia": "Valverde, F., González, A., Viteri, P., & Martínez, A. (2016). Nutrición del cultivo de la mora de Castilla. En El cultivo de la mora en Ecuador (pp. 79–102). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/4065",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\mora_iniap.pdf",
+      "tipo": "manual_tecnico",
+      "alcance": "Capítulo 5 y preliminares incluidos en el PDF",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "c50ae533ea40967fb32f5ec156d18e740beb962a3ebd04e42bb5a8e0d6b2fc61",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0232",
+          "E0233",
+          "E0234"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C019"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S08",
+      "referencia": "Cardona, W. A., & Bolaños-Benavides, M. M. (2019). Manual de nutrición del cultivo de mora de Castilla (Rubus glaucus Benth.) bajo un esquema de buenas prácticas en fertilización integrada. AGROSAVIA. https://doi.org/10.21930/agrosavia.manual-18",
+      "url": "https://doi.org/10.21930/agrosavia.manual-18",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\mora_agrosavia.pdf",
+      "tipo": "manual_tecnico",
+      "alcance": "Colombia; mora de Castilla con espinas; requisitos sintetizan estudios previos",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "efa9cd7a756f5f31dd790a33f3b0ef8c01f40de806d3cae9103af1ad0d588a8a",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0235",
+          "E0236",
+          "E0237",
+          "E0238",
+          "E0239"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0128",
+          "CL-E0129",
+          "CL-E0130",
+          "CL-E0131",
+          "CL-E0132",
+          "CL-E0133"
+        ],
+        "cultivos_ids": [
+          "C019"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0067"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S09",
+      "referencia": "Agrocalidad. (2016). Guía de buenas prácticas agrícolas para el cultivo de uvilla. Resolución Técnica 0073, 18 de abril de 2016.",
+      "url": "https://www.agrocalidad.gob.ec/wp-content/uploads/2023/04/Gu%C3%ADa-de-BPA-para-Uvilla-jul.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\uvilla_bpa.pdf",
+      "tipo": "manual_tecnico",
+      "alcance": "Ecuador; anexo 7 es síntesis de Zapata (2002), INIAP (2008) y Álvarez (2012)",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "ce8bfdcf95403a4cf072f2fc09cfbd4acf9fa6da602d3e251130bfb437a63358",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0241",
+          "E0242",
+          "E0243"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0134",
+          "CL-E0135",
+          "CL-E0136",
+          "CL-E0137"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S10",
+      "referencia": "Office of the Gene Technology Regulator. (2009). The biology of hybrid tea rose (Rosa × hybrida) (Version 2). Australian Government.",
+      "url": "https://www.ogtr.gov.au/sites/default/files/files/2021-07/the_biology_of_hybrid_tea_rose.pdf",
+      "archivo": null,
+      "tipo": "manual_tecnico",
+      "alcance": "Australia; sección 2.3.2; revisión técnica, no ensayo en Ecuador",
+      "fecha_consulta": "2026-11-14",
+      "estado_uso": "solo_historial; no evidencia activa",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0244",
+          "E0245",
+          "E0246"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C016"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S11",
+      "referencia": "University of Illinois Extension. (s. f.). Preparation. Roses.",
+      "url": "https://extension.illinois.edu/roses/preparation",
+      "archivo": null,
+      "tipo": "extension_universitaria",
+      "alcance": "Rosales de jardín en suelo; no extrapolar a flor de corte bajo invernadero",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0247"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C016"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S12",
+      "referencia": "Tamil Nadu Agricultural University. (s. f.). Organic cultivation of carnation.",
+      "url": "https://agritech.tnau.ac.in/org_farm/orgfarm_carnation.html",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\clavel_tnau.html",
+      "tipo": "extension_universitaria",
+      "alcance": "India; cultivo comercial protegido; apartado Soil",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "aef339de36406fbd4bc685bc3b09070dce35e773efad5f5999421b5e6bfa8bcd",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0249",
+          "E0250",
+          "E0251"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C017"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S13",
+      "referencia": "North Carolina State University Extension. (s. f.). Dianthus caryophyllus. Extension Gardener Plant Toolbox.",
+      "url": "https://plants.ces.ncsu.edu/plants/dianthus-caryophyllus/common-name/carnation/",
+      "archivo": null,
+      "tipo": "extension_universitaria",
+      "alcance": "Identidad y jardinería; categorías amplias de pH no son umbrales comerciales",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0248",
+          "E0252"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C017"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S14",
+      "referencia": "Camberato, D. M., Lopez, R. G., & Mickelbart, M. V. (s. f.). pH and electrical conductivity measurements in soilless substrates (HO-237). Purdue Extension.",
+      "url": "https://ag.purdue.edu/department/hla/extension/extension-publications-library/ext-pubs/ho-237-w.html",
+      "archivo": null,
+      "tipo": "extension_universitaria",
+      "alcance": "Sustratos sin suelo; tabla 1, SME y PourThru; no confundir con ECe del suelo",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0253",
+          "E0254",
+          "E0255",
+          "E0256"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C016",
+          "C017"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S15",
+      "referencia": "Ayers, R. S., & Westcot, D. W. (1985). Water quality for agriculture (FAO Irrigation and Drainage Paper 29, Rev. 1). FAO. Tabla 4 y sección 2.4.3.",
+      "url": "https://www.fao.org/4/t0234e/T0234E03.htm",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\fao_salinidad.html",
+      "tipo": "manual_tecnico",
+      "alcance": "Guía internacional principalmente de agricultura irrigada semiárida; no valida Ecuador",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "c328e831f653ed58db011b79d3fc086c04e87e9748591d043479d4068d8c64d6",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0257",
+          "E0258",
+          "E0259",
+          "E0260",
+          "E0261",
+          "E0262",
+          "E0263",
+          "E0264"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C001",
+          "C003",
+          "C006",
+          "C007",
+          "C008",
+          "C011",
+          "C014",
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S16",
+      "referencia": "Government of New Brunswick. (s. f.). Soil management. Potato production.",
+      "url": "https://www2.gnb.ca/content/gnb/en/departments/10/agriculture/content/crops/potatoes/soil_management.html",
+      "archivo": null,
+      "tipo": "extension_gubernamental",
+      "alcance": "Canadá; profundidad ideal y manejo de pH condicionado por tipo varietal y sarna",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0217",
+          "E0218",
+          "E0219",
+          "E0220"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C011"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S17",
+      "referencia": "Agriculture and Agri-Food Canada. (2025). Crop profile for potato in Canada, 2023 (6th ed.).",
+      "url": "https://agriculture.canada.ca/en/science/agriculture-and-agri-food-research-centres/pest-management-centre/pesticide-risk-reduction-pest-management-centre/crop-profiles/crop-profile-potato-canada-2023",
+      "archivo": null,
+      "tipo": "manual_tecnico",
+      "alcance": "Canadá; 2023 es año del perfil, edición 2025; no trasladar rangos sin contexto",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0221"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C011"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "ECO1668",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Phaseolus vulgaris. ECOCROP, ficha 1668.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1668.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "ef1bbf1e30ef63b3ac8389879d4e5ed0e971bc470c2a06bf56cd597835233562",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0006",
+          "E0007",
+          "E0008",
+          "E0009",
+          "E0010",
+          "E0011",
+          "E0012",
+          "E0013",
+          "E0014",
+          "E0015",
+          "E0016"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0001",
+          "CL-E0002",
+          "CL-E0003"
+        ],
+        "cultivos_ids": [
+          "C001"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1721",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Pisum sativum. ECOCROP, ficha 1721.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1721",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1721.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "39bf2b0c7cb90e4175934899cf560fa90bb43d4cc69c058006bd824ce550a040",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0020",
+          "E0021",
+          "E0022",
+          "E0023",
+          "E0024",
+          "E0025",
+          "E0026",
+          "E0027",
+          "E0028",
+          "E0029",
+          "E0030"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0004",
+          "CL-E0005",
+          "CL-E0006"
+        ],
+        "cultivos_ids": [
+          "C002"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO2146",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Vicia faba. ECOCROP, ficha 2146.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2146",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_2146.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "1d81f16dec07edcddb6bbf14148c0c69a9f3cc948d7236feea5e97522c7bf6f6",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0034",
+          "E0035",
+          "E0036",
+          "E0037",
+          "E0038",
+          "E0039",
+          "E0040",
+          "E0041",
+          "E0042",
+          "E0043",
+          "E0044"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0007",
+          "CL-E0008",
+          "CL-E0009"
+        ],
+        "cultivos_ids": [
+          "C003"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO7209",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Lens culinaris. ECOCROP, ficha 7209.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7209",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_7209.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "711676cbb4d7599a0fc82ea0ead58cfd571dad6670107d3333a462b5d4c27744",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0047",
+          "E0048",
+          "E0049",
+          "E0050",
+          "E0051",
+          "E0052",
+          "E0053",
+          "E0054",
+          "E0055",
+          "E0056",
+          "E0057"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0010",
+          "CL-E0011",
+          "CL-E0012"
+        ],
+        "cultivos_ids": [
+          "C004"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO7435",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Lupinus mutabilis. ECOCROP, ficha 7435.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7435",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_7435.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "6c74d312c7b546792c7b44c453e8115b97776b74cf34e7aed75302782ae754d3",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0061",
+          "E0062",
+          "E0063",
+          "E0064",
+          "E0065",
+          "E0066",
+          "E0067",
+          "E0068",
+          "E0069",
+          "E0070",
+          "E0071"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0013",
+          "CL-E0014",
+          "CL-E0015"
+        ],
+        "cultivos_ids": [
+          "C005"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO2114",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Triticum aestivum. ECOCROP, ficha 2114.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2114",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_2114.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "2a7d69d1d996d24dd6ba8dd702ffbe5e91e297281979fffa8d39e643b9ef4b1f",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0076",
+          "E0077",
+          "E0078",
+          "E0079",
+          "E0080",
+          "E0081",
+          "E0082",
+          "E0083",
+          "E0084",
+          "E0085",
+          "E0086"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0016",
+          "CL-E0017",
+          "CL-E0018"
+        ],
+        "cultivos_ids": [
+          "C006"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1232",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Hordeum vulgare. ECOCROP, ficha 1232.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1232",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1232.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "8988a7b5decd245f6cca9c4066b1b7f5f0fc80e78ea6040a64c0e00ac297fcd0",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0091",
+          "E0092",
+          "E0093",
+          "E0094",
+          "E0095",
+          "E0096",
+          "E0097",
+          "E0098",
+          "E0099",
+          "E0100",
+          "E0101"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0019",
+          "CL-E0020",
+          "CL-E0021"
+        ],
+        "cultivos_ids": [
+          "C007"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO2175",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Zea mays. ECOCROP, ficha 2175.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_2175.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "285c1b1cc3522c5e34ddc552ec46306a364a7c44897421e421e1657bb8194bb0",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0105",
+          "E0106",
+          "E0107",
+          "E0108",
+          "E0109",
+          "E0110",
+          "E0111"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0022",
+          "CL-E0023",
+          "CL-E0024"
+        ],
+        "cultivos_ids": [
+          "C008"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO2509",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Chenopodium quinoa. ECOCROP, ficha 2509.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2509",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_2509.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "58a6e67fcdc958d7c5bb2620f67535bffe619f27b1c0cbe695bc90f222cd596e",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0116",
+          "E0117",
+          "E0118",
+          "E0119",
+          "E0120",
+          "E0121",
+          "E0122",
+          "E0123",
+          "E0124",
+          "E0125",
+          "E0126"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0025",
+          "CL-E0026",
+          "CL-E0027"
+        ],
+        "cultivos_ids": [
+          "C009"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1971",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Solanum tuberosum. ECOCROP, ficha 1971.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1971",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1971.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "e5d2eb4ea6489de8e88488ec39d2a0038db828309d3c2b7b3fc8f56f410580a0",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0134",
+          "E0135",
+          "E0136",
+          "E0137",
+          "E0138",
+          "E0139",
+          "E0140",
+          "E0141",
+          "E0142",
+          "E0143",
+          "E0144"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0028",
+          "CL-E0029",
+          "CL-E0030"
+        ],
+        "cultivos_ids": [
+          "C011"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO2074",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Theobroma cacao. ECOCROP, ficha 2074.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2074",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_2074.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "b0203aeb76caf6ec1a9c15001b7bf89bb520509ef87fd5eb62e442b550e020b2",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0149",
+          "E0150",
+          "E0151",
+          "E0152",
+          "E0153",
+          "E0154",
+          "E0155",
+          "E0156",
+          "E0157",
+          "E0158",
+          "E0159"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0031",
+          "CL-E0032",
+          "CL-E0033"
+        ],
+        "cultivos_ids": [
+          "C012"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1420",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Manihot esculenta. ECOCROP, ficha 1420.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1420.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "e1a2578d133fffbb64fa38844cfd53ae9d3909aead708d07a0a4708e5fc35dd2",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0164",
+          "E0165",
+          "E0166",
+          "E0167",
+          "E0168",
+          "E0169",
+          "E0170",
+          "E0171",
+          "E0172",
+          "E0173",
+          "E0174"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0034",
+          "CL-E0035",
+          "CL-E0036"
+        ],
+        "cultivos_ids": [
+          "C013"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1379",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Lycopersicon esculentum (nombre de la ficha). ECOCROP, ficha 1379.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1379",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1379.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "d2502bb87e491bf5e4a09f96ae942b35f04454e5ac0664b3d6dfd8aa1052aa7d",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0178",
+          "E0179",
+          "E0180",
+          "E0181",
+          "E0182",
+          "E0183",
+          "E0184",
+          "E0185",
+          "E0186",
+          "E0187",
+          "E0188"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0037",
+          "CL-E0038",
+          "CL-E0039"
+        ],
+        "cultivos_ids": [
+          "C014"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1150",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Glycine max. ECOCROP, ficha 1150.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1150.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "a78789773709a0c3ba7789365bd399b8b84027b54bce17479535257d97bf8094",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0192",
+          "E0193",
+          "E0194",
+          "E0195",
+          "E0196",
+          "E0197",
+          "E0198",
+          "E0199",
+          "E0200",
+          "E0201",
+          "E0202"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0040",
+          "CL-E0041",
+          "CL-E0042"
+        ],
+        "cultivos_ids": [
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO1686",
+      "referencia": "Food and Agriculture Organization of the United Nations. (s. f.). Physalis peruviana. ECOCROP, ficha 1686.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1686",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v02\\ecocrop_1686.html",
+      "tipo": "base_datos_ecologica",
+      "alcance": "Global, sin cultivar; categorías y rangos ecológicos, no validación local",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "f002d01ac8d6998685f6f4c5a3f0bd0a8764755daae73bd7e1bdab9a66ff96e7",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0203",
+          "E0204",
+          "E0205",
+          "E0206",
+          "E0207",
+          "E0208",
+          "E0209",
+          "E0210",
+          "E0211",
+          "E0212",
+          "E0213",
+          "E0240"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0043",
+          "CL-E0044",
+          "CL-E0045"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S18",
+      "referencia": "Centro de Información de Recursos Naturales. (1989). Requerimientos de clima y suelo: Cereales, cultivos industriales y flores. CIREN-CORFO.",
+      "url": "https://bibliotecadigital.ciren.cl/server/api/core/bitstreams/58550d73-880d-49ab-9bff-51fc02cedaa0/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v03\\ciren.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Chile; síntesis histórica, no ensayo en Ecuador. Definiciones PDF 8–10; fichas 17, 21, 31 y 34. No asignar vigencia agronómica por fecha reciente de indexación.",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "a5d86f884c1d3ae7020fe460dddd272cc2884bcb8a43a9adb66aafff087f0941",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0268",
+          "E0269",
+          "E0270",
+          "E0271",
+          "E0272",
+          "E0273",
+          "E0274",
+          "E0275",
+          "E0276",
+          "E0277",
+          "E0278",
+          "E0279",
+          "E0280",
+          "E0281",
+          "E0282",
+          "E0283"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0108",
+          "CL-E0109",
+          "CL-E0110",
+          "CL-E0111",
+          "CL-E0112",
+          "CL-E0113",
+          "CL-E0114",
+          "CL-E0115",
+          "CL-E0116",
+          "CL-E0117",
+          "CL-E0118",
+          "CL-E0119",
+          "CL-E0120",
+          "CL-E0121",
+          "CL-E0122",
+          "CL-E0123"
+        ],
+        "cultivos_ids": [
+          "C006",
+          "C007",
+          "C016",
+          "C017"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S19",
+      "referencia": "Jawaharlal, M., Ganga, M., Padmadevi, K., Jegadeeswari, V., & Karthikeyan, S. (s. f.). A technical guide on carnation. Tamil Nadu Agricultural University.",
+      "url": "https://agritech.tnau.ac.in/horticulture/pdf/A%20Technical%20Guide%20On%20Carnation.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v03\\clavel_tnau.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "India; guía comercial. El archivo de composición menciona 2010, pero no se usa ese dato como año editorial confirmado. Suelo y grow-bags son apartados separados.",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "242c63c433c4a25167de64a04da6c8d221101346f23a3b3545cdde403d079038",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0284",
+          "E0285",
+          "E0286",
+          "E0287",
+          "E0288"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C017"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0061",
+          "PR-E0062"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S20",
+      "referencia": "Nieto Cabrera, C. (1989). El cultivo de amaranto Amaranthus spp.: Una alternativa agronómica para Ecuador (Publicación Miscelánea No. 52). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/2688",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v03\\amaranto_iniap1989.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Género y usos grano/verdura; no confirma umbral específico de INIAP-Alegría, liberada después de esta publicación.",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "dd3d88186b92f3aefa33a5abf9a93d1a9d813a26e3b696eed7de1170e3a12247",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0289",
+          "E0290"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C010"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S21",
+      "referencia": "Zambrano, J. L., Velásquez, J., Peñaherrera, D., Sangoquiza, C., Cartagena, Y., Villacrés, E., Garcés, S., Ortíz, R., León, J., Campaña, D., López, V., Asaquibay, C., Nieto, M., Sanmartín, G., Pintado, P., Yánez, C., & Racines, M. (2021). Guía para la producción sustentable de maíz en la Sierra ecuatoriana (Manual No. 122). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/5796",
+      "archivo": "C:/Users/campy/OneDrive/SMARTSEEDS/GUIA CULTIVO DE MAIZ 2021-1.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Anexo 3: maíz de altura/Sierra; matriz de zonificación referencial; no maíz tropical genérico.",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0291",
+          "E0292",
+          "E0293",
+          "E0294",
+          "E0295",
+          "E0296"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C008"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0029",
+          "PR-E0030",
+          "PR-E0031",
+          "PR-E0032",
+          "PR-E0033",
+          "PR-E0034"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S22",
+      "referencia": "Servicio Nacional de Sanidad Agraria. (s. f.). Guía para la implementación de buenas prácticas agrícolas (BPA) para el cultivo de haba. SENASA.",
+      "url": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-HABA.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v03\\haba_senasa.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Perú; fecha de carga web 2020 no equivale a fecha editorial confirmada.",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "0b7a01b05fd1f60c64f081e16e242576806d349fa4a0d608cc75b6107b4d2b56",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0297",
+          "E0298",
+          "E0299"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C003"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "S23",
+      "referencia": "Paredes, N., Monteros-Altamirano, Á., Lima, L., Caicedo, C., Bastidas, S., Tinoco, L., Fernández, F., Vargas, Y., Pico, J., Subía, C., Burbano, A., Chanaluiza, A., Sotomayor, D., Díaz, A., Intriago, J., Chancosa, C., Andrade, A., & Enríquez, G. (2022). Manual del cultivo de cacao sostenible para la Amazonía ecuatoriana (Manual No. 125, 1.ª ed.). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/server/api/core/bitstreams/b3224934-66ec-4100-ae5f-31c3ec76c5d3/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v03\\cacao_iniap.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Amazonía ecuatoriana; no transferir automáticamente a Santo Domingo. Fecha cotejada en créditos PDF 4.",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "107c69c7c3181824faaa401e87edcadc2b749ec1cde6da87f3e4cf2ed9511a45",
+      "autores": [
+        "Paredes, N.",
+        "Monteros-Altamirano, Á.",
+        "Lima, L.",
+        "Caicedo, C.",
+        "Bastidas, S.",
+        "Tinoco, L.",
+        "Fernández, F.",
+        "Vargas, Y.",
+        "Pico, J.",
+        "Subía, C.",
+        "Burbano, A.",
+        "Chanaluiza, A.",
+        "Sotomayor, D.",
+        "Díaz, A.",
+        "Intriago, J.",
+        "Chancosa, C.",
+        "Andrade, A.",
+        "Enríquez, G."
+      ],
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0300",
+          "E0301",
+          "E0302",
+          "E0303",
+          "E0304"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0098",
+          "CL-E0099",
+          "CL-E0100",
+          "CL-E0101"
+        ],
+        "cultivos_ids": [
+          "C012"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0049"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S24",
+      "referencia": "López, V., Rodríguez, M., Murillo, A., Vega, L., & Rodríguez, D. (2023). Guía para facilitar el aprendizaje en el manejo integrado del cultivo de chocho (Lupinus mutabilis Sweet) (Guía de aprendizaje No. 15). INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/server/api/core/bitstreams/3be31639-d691-4f0e-9b1b-0d8c6a70f5c4/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_v03\\chocho_iniap.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Sierra ecuatoriana; notas técnicas página impresa 29. Requisitos generales; no extrapolar ciclos de variedad a todas las variedades.",
+      "fecha_consulta": "2026-11-14",
+      "sha256": "8786c4631a5de53f32a8571b2e67b31bd7a108be6178107f1c923ed5138f4349",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0305",
+          "E0306",
+          "E0307"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0080",
+          "CL-E0081",
+          "CL-E0082",
+          "CL-E0083",
+          "CL-E0084"
+        ],
+        "cultivos_ids": [
+          "C005"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0017",
+          "PR-E0018",
+          "PR-E0019",
+          "PR-E0020"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "S25",
+      "referencia": "Idowu, J., & Angadi, S. (s. f.). Understanding and managing soil compaction in agricultural fields (Circular 672). New Mexico State University.",
+      "url": "https://pubs.nmsu.edu/_circulars/CR672/index.html",
+      "archivo": null,
+      "tipo": "documento_tecnico",
+      "alcance": "Diagnóstico de compactación, no tabla de umbrales por las 20 especies.",
+      "fecha_consulta": "2026-11-14",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC01",
+      "autor": "NASA / ASF / JPL",
+      "titulo": "NISAR Provisional Soil Moisture, Version 1",
+      "url": "https://data.nasa.gov/dataset/nisar-provisional-soil-moisture-version-1-9951e",
+      "referencia": "NASA / ASF / JPL. (s. f.). NISAR Provisional Soil Moisture, Version 1.",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC02",
+      "autor": "Climate Hazards Center, UCSB",
+      "titulo": "CHIRPS version 3",
+      "url": "https://www.chc.ucsb.edu/data/chirps3",
+      "referencia": "Climate Hazards Center, UCSB. (s. f.). CHIRPS version 3.",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC03",
+      "autor": "Copernicus Climate Change Service / ECMWF",
+      "titulo": "ERA5-Land hourly data from 1950 to present",
+      "url": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land?tab=overview",
+      "referencia": "Copernicus Climate Change Service / ECMWF. (s. f.). ERA5-Land hourly data from 1950 to present.",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC04",
+      "autor": "NASA MODIS",
+      "titulo": "MODIS Land Surface Temperature and Emissivity (MOD11)",
+      "url": "https://modis.gsfc.nasa.gov/data/dataprod/mod11.php",
+      "referencia": "NASA MODIS. (s. f.). MODIS Land Surface Temperature and Emissivity (MOD11).",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC05",
+      "autor": "USGS",
+      "titulo": "SRTM digital elevation archive",
+      "url": "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm",
+      "referencia": "USGS. (s. f.). SRTM digital elevation archive.",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC06",
+      "autor": "FAO",
+      "titulo": "Irrigation Water Management: Crop Water Needs, chapter 3",
+      "url": "https://www.fao.org/4/s2022e/s2022e07.htm",
+      "referencia": "FAO. (s. f.). Irrigation Water Management: Crop Water Needs, chapter 3.",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "AC07",
+      "autor": "NASA",
+      "titulo": "Landsat NDVI, Disasters Mapping Portal",
+      "url": "https://science.data.nasa.gov/disasters/data-gallery/landsat-ndvi",
+      "referencia": "NASA. (s. f.). Landsat NDVI, Disasters Mapping Portal.",
+      "referencia_formada_desde_metadatos": true,
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "referencia_metodologica_o_insumo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "ECO2187",
+      "referencia": "FAO. ECOCROP. Amaranthus caudatus, ficha 2187.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2187",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_clima_v01\\ecocrop_2187.html",
+      "sha256": "83736e27da6e3563bfb332c3981ce1b6084a23c507199286f886f7d69770c0ac",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0046",
+          "CL-E0047",
+          "CL-E0048"
+        ],
+        "cultivos_ids": [
+          "C010"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "ECO1659",
+      "referencia": "FAO. ECOCROP. Persea americana, ficha 1659.",
+      "url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1659",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_clima_v01\\ecocrop_1659.html",
+      "sha256": "aaaf3c596bc26a4669d8289cfbdea474fd86724f0bbaaaf018532b8d7996f9ab",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0049",
+          "CL-E0050",
+          "CL-E0051"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL01",
+      "referencia": "FAO. Irrigation Water Management: Irrigation Water Needs. Capítulo 2, tabla 5.",
+      "url": "https://www.fao.org/4/s2022e/s2022e02.htm",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_clima_v01\\fao_agua_cap2.html",
+      "sha256": "8a415afc75f3f9dbf2a6a7dea0d1009f1c89173ba5b96f7613365c7b00f819fa",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0138",
+          "CL-E0140",
+          "CL-E0142",
+          "CL-E0144",
+          "CL-E0146",
+          "CL-E0148",
+          "CL-E0150",
+          "CL-E0152"
+        ],
+        "cultivos_ids": [
+          "C001",
+          "C002",
+          "C006",
+          "C007",
+          "C008",
+          "C011",
+          "C014",
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL02",
+      "referencia": "FAO. Irrigation Water Management: Irrigation Water Needs. Capítulo 3, tabla 14.",
+      "url": "https://www.fao.org/4/s2022e/s2022e07.htm",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_clima_v01\\fao_agua_cap3.html",
+      "sha256": "86cecd0b1707e18116e6d68e986715e2d5f34d9b67c802fff029394b17cebc62",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0139",
+          "CL-E0141",
+          "CL-E0143",
+          "CL-E0145",
+          "CL-E0147",
+          "CL-E0149",
+          "CL-E0151",
+          "CL-E0153"
+        ],
+        "cultivos_ids": [
+          "C001",
+          "C002",
+          "C006",
+          "C007",
+          "C008",
+          "C011",
+          "C014",
+          "C015"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0053"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL03",
+      "referencia": "Kansas State University, Sunflower Extension District. Freeze Damage to Wheat. Tabla de daño tras dos horas.",
+      "url": "https://www.sunflower.k-state.edu/agronomy/wheat/freeze_damage.html",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_clima_v01\\trigo_kstate.html",
+      "sha256": "a2e33fa7263d8c3aabc12faebd1be123ac1ab3677f57ff531f7833757ff5a99d",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0154",
+          "CL-E0155",
+          "CL-E0156",
+          "CL-E0157",
+          "CL-E0158",
+          "CL-E0159",
+          "CL-E0160"
+        ],
+        "cultivos_ids": [
+          "C006"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL04",
+      "referencia": "University of Minnesota Extension. Flooded corn. Growth and development.",
+      "url": "https://extension.umn.edu/agriculture/crop-production/corn/flooded-corn",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0161",
+          "CL-E0162"
+        ],
+        "cultivos_ids": [
+          "C008"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL05",
+      "referencia": "University of Minnesota Extension. Flooded soybean. Duration of flooding.",
+      "url": "https://extension.umn.edu/agriculture/crop-production/soybean/flooded-soybean",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0163"
+        ],
+        "cultivos_ids": [
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL06",
+      "referencia": "Lerner, B. R. Purdue Extension. Tomatoes (HO-26). Environmental Stress Disorders: Blossom Drop.",
+      "url": "https://ag.purdue.edu/department/hla/extension/extension-publications-library/ext-pubs/ho-26-w.html",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0105",
+          "CL-E0106"
+        ],
+        "cultivos_ids": [
+          "C014"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL07",
+      "referencia": "Iowa State University Extension. Ponding Impacts on Corn Growth & Development.",
+      "url": "https://crops.extension.iastate.edu/encyclopedia/ponding-impacts-corn-growth-development",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL08",
+      "referencia": "South Dakota State University Extension. Low Temperature Effects on Winter Wheat. Tabla de exposiciones de dos horas; reproduce K-State.",
+      "url": "https://extension.sdstate.edu/low-temperature-effects-winter-wheat",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_clima_v01\\trigo_sdstate.html",
+      "sha256": "ed24198710720a517eecc8fb1dee87e508a45452e37cde33cc301599d626ef44",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL09",
+      "referencia": "Bois, J.-F., Winkel, T., Lhomme, J.-P., Raffaillac, J.-P., & Rocheteau, A. (2006). Response of some Andean cultivars of quinoa to temperature: effects on germination, phenology, growth and freezing. European Journal of Agronomy, 25(4), 299–308. Resumen del artículo depositado en IRD.",
+      "url": "https://www.documentation.ird.fr/hor/fdi:010037682",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "resumen_de_investigacion_primaria; texto_completo_no_revisado",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0086"
+        ],
+        "cultivos_ids": [
+          "C009"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "CL10",
+      "referencia": "Allen, R. G., Pereira, L. S., Raes, D., & Smith, M. (1998). Crop evapotranspiration: Guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56). Capítulo 8, tabla 22 y ecuaciones 82–83.",
+      "url": "https://www.fao.org/4/X0490E/x0490e0e.htm",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "fuente_agronomica",
+      "consulta": "contenido_web_revisado",
+      "doi": null,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0164",
+          "CL-E0165",
+          "CL-E0166",
+          "CL-E0167",
+          "CL-E0168",
+          "CL-E0169",
+          "CL-E0170",
+          "CL-E0171",
+          "CL-E0172",
+          "CL-E0173",
+          "CL-E0174",
+          "CL-E0175",
+          "CL-E0176",
+          "CL-E0177",
+          "CL-E0178",
+          "CL-E0179"
+        ],
+        "cultivos_ids": [
+          "C001",
+          "C002",
+          "C003",
+          "C004",
+          "C006",
+          "C007",
+          "C008",
+          "C011",
+          "C012",
+          "C013",
+          "C014",
+          "C015",
+          "C018"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB01",
+      "referencia": "Souza et al. (2026). Cytogenetic characterization of Physalis angulata, P. peruviana, and P. ixocarpa by CMA/DAPI banding and flow cytometry.",
+      "titulo": "Cytogenetic characterization of Physalis angulata, P. peruviana, and P. ixocarpa by CMA/DAPI banding and flow cytometry",
+      "doi": "10.1007/s10722-026-02968-5",
+      "url": "https://doi.org/10.1007/s10722-026-02968-5",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Cytogenetic_characterization_of_Physalis_angulata_.pdf",
+      "sha256": "b95c5180ecc8711fc00fe219450b6a47d31a82d4bc62a28f5fe0db4bc5300b15",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "complementario",
+      "criterio_inclusion": "Incluye P. peruviana, además de P. angulata y P. ixocarpa. No confundir especies ni convertir caracteres cromosómicos en tolerancias climáticas.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB02",
+      "referencia": "Gulisano et al. (2022). Diversity and Agronomic Performance of Lupinus mutabilis Germplasm in European and Andean Environments.",
+      "titulo": "Diversity and Agronomic Performance of Lupinus mutabilis Germplasm in European and Andean Environments",
+      "doi": "10.3389/fpls.2022.903661",
+      "url": "https://doi.org/10.3389/fpls.2022.903661",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\fpls-13-903661.pdf",
+      "sha256": "1f2ac3be9e48dc6df284b97e3aa82e8bf382c8bca9356866eef99b8e5eab8e8a",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "aporte_agroclimatico",
+      "criterio_inclusion": "Campo abierto en Cotopaxi y Europa. Condiciones observadas no son óptimos. GDD con base 4 °C; sin mediciones fenológicas en Ecuador por restricciones COVID-19.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0180",
+          "CL-E0181"
+        ],
+        "cultivos_ids": [
+          "C005"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB03",
+      "referencia": "Huamán Estrada et al. (2026). Integrated SERS and Chemometric Characterization of Ultrasound-Induced Quality Changes in Stevia-Sweetened Aguaymanto (Physalis peruviana L.) Nectar.",
+      "titulo": "Integrated SERS and Chemometric Characterization of Ultrasound-Induced Quality Changes in Stevia-Sweetened Aguaymanto (Physalis peruviana L.) Nectar",
+      "doi": "10.1155/ijfo/2312352",
+      "url": "https://doi.org/10.1155/ijfo/2312352",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Integrated_SERS_and_Chemometric_Characterization_o.pdf",
+      "sha256": "f8e8007bb7642409b748f0e047404cf230a902a702a8f88fe129925849ebbe26",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Ultrasonido y formulación alimentaria; las temperaturas o tiempos de procesamiento no son tolerancias de la planta.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB04",
+      "referencia": "Nolla et al. (2026). Nutritional Composition, Antinutritional Potential, Antioxidant Capacity, and Consumption Frequency of Physalis peruviana and Physalis angulata Fruits.",
+      "titulo": "Nutritional Composition, Antinutritional Potential, Antioxidant Capacity, and Consumption Frequency of Physalis peruviana and Physalis angulata Fruits",
+      "doi": "10.5539/jfr.v15n2p77",
+      "url": "https://doi.org/10.5539/jfr.v15n2p77",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Nutritional_Composition_Antinutritional_Potential_.pdf",
+      "sha256": "48fd3439f335002e5278a79fea381569d87cfd196fd7f25bb695f17120a01099",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Composición de frutos y consumo; no nutrientes disponibles en suelo ni tolerancia climática.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB05",
+      "referencia": "Patiño Rodríguez et al. (2026). Immunomodulatory Potential of Agro-Industrial Residues: Passiflora edulis and Rubus glaucus Seed Oils Promote MMP-9 Release from Human Neutrophils.",
+      "titulo": "Immunomodulatory Potential of Agro-Industrial Residues: Passiflora edulis and Rubus glaucus Seed Oils Promote MMP-9 Release from Human Neutrophils",
+      "doi": "10.3390/immuno6030043",
+      "url": "https://doi.org/10.3390/immuno6030043",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Immunomodulatory_Potential_of_Agro-Industrial_Resi.pdf",
+      "sha256": "815f6f6e96d89006bab196c90b23d60ca27016fec7386b675aaec13b429e3a0e",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Estudio en neutrófilos humanos; no mide adaptación del cultivo.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "nota_ruta": "La ruta indicada en Downloads no se encontró; se revisó copia con el mismo nombre en OneDrive/SMARTSEEDS. No se afirma igualdad con un archivo no accesible.",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB06",
+      "referencia": "Cardona-Hurtado et al. (2026). Valorization of agricultural byproducts from Rubus glaucus Benth (blackberry) as a natural source of high value-added ingredients.",
+      "titulo": "Valorization of agricultural byproducts from Rubus glaucus Benth (blackberry) as a natural source of high value-added ingredients",
+      "doi": "10.1007/s13399-025-06982-y",
+      "url": "https://doi.org/10.1007/s13399-025-06982-y",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Cardona-Hurtado_et_al-2026-Biomass_Conversion_and_Biorefinery.pdf",
+      "sha256": "33c1614b67c76e514681f6a38f08e49799af51f982ad3d723099465e1d23b085",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Caracterización química de residuos de mora. Las menciones generales de altitud en introducción no son un ensayo climático.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "nota_ruta": "La ruta indicada en Downloads no se encontró; se revisó copia con el mismo nombre en OneDrive/SMARTSEEDS. No se afirma igualdad con un archivo no accesible.",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB07",
+      "referencia": "Jamanca-Gonzales et al. (2026). Enriched bread with Lupinus mutabilis and Hordeum vulgare germinated flour: Physicochemical and sensory properties.",
+      "titulo": "Enriched bread with Lupinus mutabilis and Hordeum vulgare germinated flour: Physicochemical and sensory properties",
+      "doi": "10.15446/rfnam.v79.111540",
+      "url": "https://doi.org/10.15446/rfnam.v79.111540",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Enriched_bread_with_Lupinus_mutabilis_and_Hordeum_.pdf",
+      "sha256": "8a4a4d4280abca550e1440c1116eabc5dd72831f996cb722614e180db52f7dce",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Panificación y evaluación sensorial; versión aceptada según marca visible. Germinación para procesar harina no equivale a establecimiento de campo.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB08",
+      "referencia": "Espinosa Cunuhay et al. (2026). Evaluation of biorational insecticides as an IPM strategy to control pests of (Lupinus mutabilis).",
+      "titulo": "Evaluation of biorational insecticides as an IPM strategy to control pests of (Lupinus mutabilis)",
+      "doi": "10.31893/multiscience.2026603",
+      "url": "https://doi.org/10.31893/multiscience.2026603",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Evaluation_of_biorational_insecticides_as_an_IPM_s.pdf",
+      "sha256": "14afb227b309c6f688e5cc31cb37fcb4b534adf83ebbf77cbf1827c5c6b6e167",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "complementario",
+      "criterio_inclusion": "Útil para contexto local y posible módulo de plagas; el diseño evalúa tratamientos insecticidas, no límites climáticos. No se transfieren recomendaciones de productos a la app.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB09",
+      "referencia": "Zou, L. (2009). Tesis de maestría, University of Helsinki. Effects of gradual and sudden heat stress on seed quality of Andean lupin, Lupinus mutabilis.",
+      "titulo": "Effects of gradual and sudden heat stress on seed quality of Andean lupin, Lupinus mutabilis",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\MScPPSthesis_LingZou.pdf",
+      "sha256": "fde5119a20f75f515f3974c1472a9dc189e6e5b8d89af17c801684120426219f",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "tesis_maestria",
+      "rol_catalogo": "aporte_agroclimatico",
+      "criterio_inclusion": "Ensayo en cámaras, con riego y tres accesiones: condición experimental de daño, no inicio universal de daño ni validación para campo abierto.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0182"
+        ],
+        "cultivos_ids": [
+          "C005"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "BIB10",
+      "referencia": "Adeoso et al. (2026). Resumen de congreso. Food hygiene and metal exposure in cooked beans (Phaseolus vulgaris) sold within a college community in Nigeria.",
+      "titulo": "Food hygiene and metal exposure in cooked beans (Phaseolus vulgaris) sold within a college community in Nigeria",
+      "doi": "10.1017/S002966512610528X",
+      "url": "https://doi.org/10.1017/S002966512610528X",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Food_hygiene_and_metal_exposure_in_cooked_beans_Ph.pdf",
+      "sha256": "d68a91d33bf999e0d2c4a8fe4f4f02b4a2ab46b92e713d12e4c94fc7cac65069",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "resumen_congreso",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Resumen de una página sobre fréjol cocido; las concentraciones alimentarias no son requisitos del suelo.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB11",
+      "referencia": "Martínez-Barradas et al. (2026). Variable but Inheritable: Colchicine-Induced Polyploidy in Phaseolus vulgaris Generates Physiological Variability with Limited Inheritance.",
+      "titulo": "Variable but Inheritable: Colchicine-Induced Polyploidy in Phaseolus vulgaris Generates Physiological Variability with Limited Inheritance",
+      "doi": "10.3390/plants15162464",
+      "url": "https://doi.org/10.3390/plants15162464",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Variable_but_Inheritable_Colchicine-Induced_Polypl.pdf",
+      "sha256": "dae6c564f7f0ea4a7f7429a23fc685643d5fa572857437866d0fcad1e9aea6d7",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "complementario",
+      "criterio_inclusion": "Caracteres fisiológicos de líneas inducidas de cv. Zorzal; no demuestra un número de días de sequía tolerados por fréjol genérico.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB12",
+      "referencia": "Girgel, Çokkızgın y Çölkesen (2018). A Research on Determination of the Morphological and Agronomical Characteristics of Local Beans (Phaseolus vulgaris L.) Genotypes under Organic Farming System in Bayburt.",
+      "titulo": "A Research on Determination of the Morphological and Agronomical Characteristics of Local Beans (Phaseolus vulgaris L.) Genotypes under Organic Farming System in Bayburt",
+      "doi": "10.24925/turjaf.v6i5.530-535.1630",
+      "url": "https://doi.org/10.24925/turjaf.v6i5.530-535.1630",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\2018Turjaf6.5.bayburtkoullarndaorganikolarakyetitirilenfasulye...otbiyosem530-535.pdf",
+      "sha256": "79f00e840c7d19b8942954d1bcc3d462473ea1c736ff61f389d97fbaf204adfb",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "complementario",
+      "criterio_inclusion": "Datos de genotipos y ambiente de Bayburt. Las condiciones del sitio no son límites de adaptación para Ecuador.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB13",
+      "referencia": "Rahmallah, Diniatik y Djalil (2026). Antihypercholesterolemic potential of bioactive compounds in Phaseolus vulgaris: A narrative review.",
+      "titulo": "Antihypercholesterolemic potential of bioactive compounds in Phaseolus vulgaris: A narrative review",
+      "doi": "10.33024/minh.v9i5.1447",
+      "url": "https://doi.org/10.33024/minh.v9i5.1447",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Antihypercholesterolemic_potential_of_bioactive_co.pdf",
+      "sha256": "13cfe022b09e3ddd480cd37706c8f42d3a44326036377ce50234fd2e2b7d413d",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "No estudia estrés abiótico del cultivo.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "BIB14",
+      "referencia": "Alves et al. (2026). Gastroprotective potential of fatty compounds from Persea americana seed: an experimental report.",
+      "titulo": "Gastroprotective potential of fatty compounds from Persea americana seed: an experimental report",
+      "doi": "10.1007/s10787-026-02419-8",
+      "url": "https://doi.org/10.1007/s10787-026-02419-8",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\Gastroprotective_potential_of_fatty_compounds_from.pdf",
+      "sha256": "331368fa0b33bff49b01a12c4b3fd0a55a55d36b3dd42808999314f36cc38938",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "articulo",
+      "rol_catalogo": "fuera_alcance_umbrales",
+      "criterio_inclusion": "Extractos y modelo de lesión gástrica; no tolerancia del árbol a frío, calor o agua.",
+      "revision_visual": "portada; páginas relevantes adicionales para BIB02 y BIB09",
+      "alcance_revision": "cribado de titulo/resumen y texto; revisión detallada de métodos/resultados para los datos incorporados",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-01",
+      "referencia": "Bahrami, Arzani y Rahimmalek (2019). Photosynthetic and yield performance of wild barley (Hordeum vulgare ssp. spontaneum) under terminal heat stress.",
+      "titulo": "Photosynthetic and yield performance of wild barley (Hordeum vulgare ssp. spontaneum) under terminal heat stress",
+      "doi": "10.32615/ps.2019.009",
+      "url": "https://doi.org/10.32615/ps.2019.009",
+      "archivo": "C:\\Users\\campy\\Downloads\\Photosynthetica_phs-201901-0003.pdf",
+      "sha256": "0b55fe921369768b8771ba4a8328cd888e768c5a62662f4e98b001151b01ecef",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "contexto_campo",
+      "nota_aplicabilidad": "Incluye 45 genotipos silvestres y cuatro cultivares. Siembra tardía y riego para evitar sequía; temperaturas del sitio no son límites de tolerancia.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-02",
+      "referencia": "Aldana, García y Fischer (2014). Effect of waterlogging stress on the growth, development and symptomatology of cape gooseberry (Physalis peruviana L.) plants.",
+      "titulo": "Effect of waterlogging stress on the growth, development and symptomatology of cape gooseberry (Physalis peruviana L.) plants",
+      "doi": "10.18257/raccefyn.114",
+      "url": "https://doi.org/10.18257/raccefyn.114",
+      "archivo": "C:\\Users\\campy\\Downloads\\revista,+5.+Effect+of+waterlogging.pdf",
+      "sha256": "28193bfd3f5b112f02d2af87aaeb35e4f00d20bea0b499ec5a93cb79da6b9f07",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario",
+      "nota_aplicabilidad": "Ecotipo Colombia en macetas bajo invernadero; edad inconsistente entre resumen/tablas (2 meses) y métodos (90 días tras emergencia). Se conserva la discrepancia.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0183",
+          "CL-E0184",
+          "CL-E0185",
+          "CL-E0186"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-03",
+      "referencia": "Flores-Nimedez, Li y Shin (1993). Amelioration of Chilling Injury in Phaseolus vulgaris L. by GLK-8903.",
+      "titulo": "Amelioration of Chilling Injury in Phaseolus vulgaris L. by GLK-8903",
+      "doi": null,
+      "url": "https://journals.ashs.org/downloadpdf/journals/jashs/118/6/article-p825.pdf",
+      "archivo": null,
+      "sha256": "f289ee4cf68c4c3051e6aef75934c9d8be8fd28a5aa716c96161946e53475fb3",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario",
+      "nota_aplicabilidad": "Frío no congelante a 4 °C; separar control no protegido y tratamiento GLK-8903. No es recomendación de ese producto.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\descarga.pdf",
+      "incidencia_archivo": "La ruta genérica descarga.pdf fue reutilizada. Conservados DOI/URL, identidad y hash históricos; copia PDF original pendiente de recuperar. Extracción histórica no sustituye PDF.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0187",
+          "CL-E0188"
+        ],
+        "cultivos_ids": [
+          "C001"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-04",
+      "referencia": "Balasubramanian, P. M. (2002). Tesis doctoral, University of Saskatchewan. Selection for chilling and freezing resistance in common bean.",
+      "titulo": "Selection for chilling and freezing resistance in common bean",
+      "doi": null,
+      "url": "https://harvest.usask.ca/items/edd82c8c-8aac-436b-8c60-7aa3f8f37694",
+      "archivo": "C:\\Users\\campy\\Downloads\\NQ80920.pdf",
+      "sha256": "98c5bc5e12d07198015df01303ead94c4e7fbb3a13f54b9588af69aeccc7c829",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "tesis_con_version_repositorio",
+      "nota_aplicabilidad": "Adjunto escaneado sin capa de texto, 183 páginas. Se obtuvo versión del repositorio institucional, 179 páginas, para datos; paginación no intercambiable.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "archivo_consultado_para_datos": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda2\\Balasubramanian_2002_repositorio.pdf",
+      "sha256_version_consultada": "34bdcc25dc851b806eaf77064d84c6e5c17e814ba64478a965d56004ee6ab1eb",
+      "paginas_version_consultada": 179,
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0189"
+        ],
+        "cultivos_ids": [
+          "C001"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-05",
+      "referencia": "Srivastava, Soni y Sonam (2015). Analysis on Effect of Cold Stress in Bean Seeds (Phaseolus vulgaris L.).",
+      "titulo": "Analysis on Effect of Cold Stress in Bean Seeds (Phaseolus vulgaris L.)",
+      "doi": "10.11648/j.ajbio.20150304.15",
+      "url": "https://doi.org/10.11648/j.ajbio.20150304.15",
+      "archivo": "C:\\Users\\campy\\Downloads\\Analysis_on_Effect_of_Cold_Stress_in_Bea.pdf",
+      "sha256": "e61af5d1181b0a6c63d5fef67eaed0ca59c25aaf93e549eb9539e68238824b44",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "pendiente_control_metodologico",
+      "nota_aplicabilidad": "Semillas en germinación; cultivar y repetición requieren aclaración. No convertir tratamiento a -19 °C en resistencia de una planta de campo.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-06",
+      "referencia": "Omae, Kumar y Shono (2012). Adaptation to High Temperature and Water Deficit in the Common Bean (Phaseolus vulgaris L.) during the Reproductive Period.",
+      "titulo": "Adaptation to High Temperature and Water Deficit in the Common Bean (Phaseolus vulgaris L.) during the Reproductive Period",
+      "doi": "10.1155/2012/803413",
+      "url": "https://doi.org/10.1155/2012/803413",
+      "archivo": "C:\\Users\\campy\\Downloads\\Journal of Botany - 2012 - Omae - Adaptation to High Temperature and Water Deficit in the Common Bean  Phaseolus vulgaris L.pdf",
+      "sha256": "243ef1e399e1956b3e0055ef2bb8a08b6472840d1a1d16da4f361306793cbccd",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_secundaria",
+      "nota_aplicabilidad": "Revisión: los tratamientos resumidos necesitan recuperar los estudios primarios; se etiqueta como secundaria.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0192"
+        ],
+        "cultivos_ids": [
+          "C001"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-07",
+      "referencia": "Redden, Agtunong, George y Fukai (s. f.). Tolerence of temperature stress in phaseolus vulgaris.",
+      "titulo": "Tolerence of temperature stress in phaseolus vulgaris",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\Downloads\\p-03.pdf",
+      "sha256": "e54fdd21109bed587487161fa89b5607c6347f365cd03798356d96c43eccfae7",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_comunicacion",
+      "nota_aplicabilidad": "Comunicación de cuatro páginas, fecha y publicación no confirmadas. Genotipos y temperaturas día/noche explícitos; no extrapolar por especie.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0190",
+          "CL-E0191"
+        ],
+        "cultivos_ids": [
+          "C001"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI",
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "T2-08",
+      "referencia": "Bueckert, Wagenhoffer, Hnatowich y Warkentin (2015). Effect of heat and precipitation on pea yield and reproductive performance in the field.",
+      "titulo": "Effect of heat and precipitation on pea yield and reproductive performance in the field",
+      "doi": "10.4141/CJPS-2014-342",
+      "url": "https://doi.org/10.4141/CJPS-2014-342",
+      "archivo": "C:\\Users\\campy\\Downloads\\2015-effect-of-heat-and-precipitation-on-pea-yield-and-reproductive-performance-in-the-field.pdf",
+      "sha256": "3c0f164bce7ad070f5794907c07b36ea88cc1a7573a3739947b5a17e084f523d",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "asociacion_observacional_campo",
+      "nota_aplicabilidad": "Ensayos canadienses 2000–2009, secano y riego; asociación con días cálidos acumulados, no necesariamente consecutivos ni horas continuas.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0193"
+        ],
+        "cultivos_ids": [
+          "C002"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-09",
+      "referencia": "Devi et al. (2023). Heat stress tolerance in peas (Pisum sativum L.): Current status and way forward.",
+      "titulo": "Heat stress tolerance in peas (Pisum sativum L.): Current status and way forward",
+      "doi": "10.3389/fpls.2022.1108276",
+      "url": "https://doi.org/10.3389/fpls.2022.1108276",
+      "archivo": "C:\\Users\\campy\\Downloads\\fpls-13-1108276.pdf",
+      "sha256": "2580b0da83ec589e64bb40277de2ef1c2597f759050f43ec6b2113db66f29e56",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_secundaria",
+      "nota_aplicabilidad": "Revisión de arveja, útil para contraste y bibliografía; no contar como ensayo independiente de las fuentes que reproduce.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0194"
+        ],
+        "cultivos_ids": [
+          "C002"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-10",
+      "referencia": "Duc, G. (1997). Faba bean (Vicia faba L.).",
+      "titulo": "Faba bean (Vicia faba L.)",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\Downloads\\1-s2.0-S0378429097000257-main.pdf",
+      "sha256": "0423ba0a6eea95b42527ae5a04d563de4b4bd2d92bd4e6a28fbd4aa0d3acc8b1",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_contextual",
+      "nota_aplicabilidad": "Revisión genética y de mejoramiento de haba; contexto, sin incorporar un nuevo umbral numérico operativo.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "T2-11",
+      "referencia": "Maalouf et al. (2022). Genetic Dissection of Heat Stress Tolerance in Faba Bean (Vicia faba L.) Using GWAS.",
+      "titulo": "Genetic Dissection of Heat Stress Tolerance in Faba Bean (Vicia faba L.) Using GWAS",
+      "doi": "10.3390/plants11091108",
+      "url": "https://doi.org/10.3390/plants11091108",
+      "archivo": "C:\\Users\\campy\\Downloads\\plants-11-01108.pdf",
+      "sha256": "618066d275534ba2ef10936ba15cae96581558a6276262315083aba9c2651baa",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "contexto_campo",
+      "nota_aplicabilidad": "Ensayos de haba en tres localidades con irrigación. La exposición >35 °C describe un ambiente de selección, no el mínimo de daño.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0195"
+        ],
+        "cultivos_ids": [
+          "C003"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-12",
+      "referencia": "Maphosa, Preston y Richards (2023). Effect of Sowing Date and Environment on Phenology, Growth and Yield of Lentil (Lens culinaris Medikus.) Genotypes.",
+      "titulo": "Effect of Sowing Date and Environment on Phenology, Growth and Yield of Lentil (Lens culinaris Medikus.) Genotypes",
+      "doi": "10.3390/plants12030474",
+      "url": "https://doi.org/10.3390/plants12030474",
+      "archivo": "C:\\Users\\campy\\Downloads\\plants-12-00474.pdf",
+      "sha256": "9485dc2c9789f961a1326fcd0fe8a4feab3a3e681d022637190c56a10d9bf56c",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "campo_y_sintesis_secundaria",
+      "nota_aplicabilidad": "Experimentos australianos por fecha de siembra; límites térmicos de introducción son secundarios, no mediciones de inicio de daño del experimento.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0196"
+        ],
+        "cultivos_ids": [
+          "C004"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-13",
+      "referencia": "Choukri et al. (2020). Heat and Drought Stress Impact on Phenology, Grain Yield, and Nutritional Quality of Lentil (Lens culinaris Medikus).",
+      "titulo": "Heat and Drought Stress Impact on Phenology, Grain Yield, and Nutritional Quality of Lentil (Lens culinaris Medikus)",
+      "doi": "10.3389/fnut.2020.596307",
+      "url": "https://doi.org/10.3389/fnut.2020.596307",
+      "archivo": "C:\\Users\\campy\\Downloads\\fnut-07-596307.pdf",
+      "sha256": "c56bcd23f22c389ba4348b79aa066addbe2e23c52e39a3bcdaf86f1482127ebe",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario_campo",
+      "nota_aplicabilidad": "Aunque la revista es de nutrición, sí incluye experimentos de campo de calor y déficit hídrico. No confundir nutrientes en grano con requisitos del suelo.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0197",
+          "CL-E0198"
+        ],
+        "cultivos_ids": [
+          "C004"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-14",
+      "referencia": "Simioniuc et al. (2021). Assessment of Andean lupin (Lupinus mutabilis) Genotypes for Improved Frost Tolerance.",
+      "titulo": "Assessment of Andean lupin (Lupinus mutabilis) Genotypes for Improved Frost Tolerance",
+      "doi": "10.3390/agriculture11020155",
+      "url": "https://doi.org/10.3390/agriculture11020155",
+      "archivo": "C:\\Users\\campy\\Downloads\\1ff094f8823f889fcdd35c784f00c0298a75.pdf",
+      "sha256": "b07132342d4aadfe796810a1e6c9dd13ff24ebc018c27034e72a3877b58032b7",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario",
+      "nota_aplicabilidad": "Tres accesiones de L. mutabilis y un comparador L. albus. Endurecimiento previo y ensayo de ocho horas; separar las especies.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0199",
+          "CL-E0200"
+        ],
+        "cultivos_ids": [
+          "C005"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-16",
+      "referencia": "Martino y Abbate (2019). Frost damage on grain number in wheat at different spike developmental stages and its modelling.",
+      "titulo": "Frost damage on grain number in wheat at different spike developmental stages and its modelling",
+      "doi": "10.1016/j.eja.2018.10.010",
+      "url": "https://doi.org/10.1016/j.eja.2018.10.010",
+      "archivo": "C:\\Users\\campy\\Downloads\\1-s2.0-S1161030118306609-main.pdf",
+      "sha256": "8587abd2b21f1641634ceefefbe1a72f76b0ec5182fb804e5d2f6bc1ee5b1baf",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_y_modelo_campo",
+      "nota_aplicabilidad": "Dos cultivares de trigo en Balcarce. Tc y duración crítica son parámetros ajustados de modelo, no constantes universales de daño.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0201",
+          "CL-E0202"
+        ],
+        "cultivos_ids": [
+          "C006"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-17",
+      "referencia": "Farooq, Bramley, Palta y Siddique (2011). Heat Stress in Wheat during Reproductive and Grain-Filling Phases.",
+      "titulo": "Heat Stress in Wheat during Reproductive and Grain-Filling Phases",
+      "doi": "10.1080/07352689.2011.615687",
+      "url": "https://doi.org/10.1080/07352689.2011.615687",
+      "archivo": "C:\\Users\\campy\\Downloads\\Heat Stress in Wheat during Reproductive and Grain-Filling Phases.pdf",
+      "sha256": "b21ff84726188fb566e123f3261beaefdd5ada949bbb7ffca1c2d7d8a17130b2",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_secundaria",
+      "nota_aplicabilidad": "Síntesis térmica por etapa; medias entre estudios no equivalen a temperaturas instantáneas de muerte.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0203",
+          "CL-E0204"
+        ],
+        "cultivos_ids": [
+          "C006"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T2-18",
+      "referencia": "Frederiks, Christopher, Sutherland y Borrell (2015). Post-head-emergence frost in wheat and barley: defining the problem, assessing the damage, and identifying resistance.",
+      "titulo": "Post-head-emergence frost in wheat and barley: defining the problem, assessing the damage, and identifying resistance",
+      "doi": "10.1093/jxb/erv088",
+      "url": "https://doi.org/10.1093/jxb/erv088",
+      "archivo": "C:\\Users\\campy\\Downloads\\erv088.pdf",
+      "sha256": "ed8c80b4e412d20e6f826d5ef074f0700dcd5d4bd290c4e18268d93ff73ec44b",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_secundaria",
+      "nota_aplicabilidad": "Distingue temperatura de planta, aire del dosel y estación meteorológica; no usar diferencias como una corrección constante universal.",
+      "revision_visual": "portada_y_pasajes_utilizados; ver localizadores de evidencias",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0205",
+          "CL-E0206"
+        ],
+        "cultivos_ids": [
+          "C006",
+          "C007"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-01",
+      "referencia": "Otegui, Andrade y Suero (1995). Growth, water use, and kernel abortion of maize subjected to drought at silking.",
+      "titulo": "Growth, water use, and kernel abortion of maize subjected to drought at silking",
+      "doi": "10.1016/0378-4290(94)00093-X",
+      "url": "https://doi.org/10.1016/0378-4290(94)00093-X",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U01_7bcc17ddda0e.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1-s2.0-037842909400093R-main.pdf",
+      "sha256": "7bcc17ddda0ed6defe30f2bde2239f4f459bc937826f0852a379016851c92931",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Ensayo de campo en Balcarce con sequía en floración; fuente pertinente por etapa. Falta extracción detallada de métodos y respuesta antes de incorporar un umbral.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-02",
+      "referencia": "Topali, Antonopoulou y Chatzissavvidis (2024). Effect of Waterlogging on Growth and Productivity of Fruit Crops.",
+      "titulo": "Effect of Waterlogging on Growth and Productivity of Fruit Crops",
+      "doi": "10.3390/horticulturae10060623",
+      "url": "https://doi.org/10.3390/horticulturae10060623",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U02_521c300607ba.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\horticulturae-10-00623.pdf",
+      "sha256": "521c300607bab08f7f368c3589b641bf203e7312b678a55af9d8f490967869cf",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_o_contexto_secundario",
+      "nota_aplicabilidad": "Revisión secundaria. Recuperar experimentos originales de cada frutal; no contar como contraste experimental independiente de esos originales.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-03",
+      "referencia": "Lima et al. (2024). Morphological, physiological, and biochemical characteristics of Physalis peruviana L. plants under different water availabilities.",
+      "titulo": "Morphological, physiological, and biochemical characteristics of Physalis peruviana L. plants under different water availabilities",
+      "doi": "10.14295/CS.v15.3807",
+      "url": "https://doi.org/10.14295/CS.v15.3807",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U03_8a374a3d3252.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\document (1).pdf",
+      "sha256": "8a374a3d3252b4d5b96f4990d25cd2520d6526840ef6844c408c246149b89560",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Invernadero y macetas de 8 L. Porcentaje del agua retenida a capacidad de campo determinado por pesada; no equivale a porcentaje de agua disponible ni a humedad volumétrica.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0207"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-04",
+      "referencia": "Guerrero Álvarez, Contreras Coronel y Cardona Hurtado (2021). Physicochemical and antioxidant characterization of Andean blackberry with and without prickles cultivated in Risaralda, Colombia.",
+      "titulo": "Physicochemical and antioxidant characterization of Andean blackberry with and without prickles cultivated in Risaralda, Colombia",
+      "doi": "10.1590/0100-29452021918",
+      "url": "https://doi.org/10.1590/0100-29452021918",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U04_cca15f1a2e84.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\descarga.pdf",
+      "sha256": "cca15f1a2e8467c41dd959d305ba43ba87d8ff76bdaac1f009a7965ba429fc62",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "caracterizacion_no_requisito",
+      "nota_aplicabilidad": "Estudio de composición de frutos y caracterización de suelos de mora. Las propiedades observadas del suelo no son requisitos ni límites de tolerancia del cultivo.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-05",
+      "referencia": "Gil et al. (capítulo; presentado en congreso de 2007; fecha del documento por confirmar). Effect of waterlogging on plant water status, leaf gas exchange and biomass of avocado.",
+      "titulo": "Effect of waterlogging on plant water status, leaf gas exchange and biomass of avocado",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U05_4a8e9a15cb17.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\GilPilar2008_Chapter3.pdf",
+      "sha256": "4a8e9a15cb17020987d1269880d35b272334919b2cecf54d3f38abf8614763a7",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Beta y Hass sobre Waldin en sustrato y recinto protegido; inundación de 11 días. Respuestas a 8/10 días no son plazos seguros para suelo de campo.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0208",
+          "CL-E0209"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI",
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "T3-06",
+      "referencia": "Cataldo (2026). Drought Risk in Mango and Avocado Orchards: Insights Into Plant Water Relations and Irrigation-Related Agronomic Solutions.",
+      "titulo": "Drought Risk in Mango and Avocado Orchards: Insights Into Plant Water Relations and Irrigation-Related Agronomic Solutions",
+      "doi": "10.1002/ird.70132",
+      "url": "https://doi.org/10.1002/ird.70132",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U06_22d92f35b69e.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\Irrigation and Drainage - 2026 - Cataldo - Drought Risk in Mango and Avocado Orchards  Insights Into Plant Water Relations.pdf",
+      "sha256": "22d92f35b69e399b03fc4f958865b9dd373058e11dcc4e8ba417db8da159be0a",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_o_contexto_secundario",
+      "nota_aplicabilidad": "Revisión secundaria de mango y aguacate. Separar ambas especies y potencial de hoja, tallo y suelo; recuperar originales para datos operativos.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-07",
+      "referencia": "Harada et al. (2021). Comprehensive analysis of sucrolytic enzyme gene families in carnation (Dianthus caryophyllus L.).",
+      "titulo": "Comprehensive analysis of sucrolytic enzyme gene families in carnation (Dianthus caryophyllus L.)",
+      "doi": "10.1016/j.phytochem.2020.112607",
+      "url": "https://doi.org/10.1016/j.phytochem.2020.112607",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U07_b460ab4657b7.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1-s2.0-S003194222031222X-main.pdf",
+      "sha256": "b460ab4657b7635b0434222a8f9b4cf1fb410aac3f62b8743f3840e0d46825ef",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "molecular_poscosecha_no_umbral_campo",
+      "nota_aplicabilidad": "Estudio molecular y poscosecha de flores de clavel; hipoxia de pétalos no establece tolerancia de raíces al anegamiento.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-08",
+      "referencia": "Murthy et al. (2024). The Impact of Climate Change on Flowering Patterns and Productivity in Floriculture: A Comprehensive Review.",
+      "titulo": "The Impact of Climate Change on Flowering Patterns and Productivity in Floriculture: A Comprehensive Review",
+      "doi": "10.9734/jsrr/2024/v30i112586",
+      "url": "https://doi.org/10.9734/jsrr/2024/v30i112586",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U08_83fcf124c58d.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\Murthy30112024JSRR1254033.pdf",
+      "sha256": "83fcf124c58dfe3837b57e2ed535a333288d9756ed63ebeea44b5068ba79f815",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_o_contexto_secundario",
+      "nota_aplicabilidad": "Revisión general de floricultura. Útil para bibliografía, sin umbral nuevo de campo extraído.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-09",
+      "referencia": "Aydinsakir, Tuzel y Buyuktas (2011). The effects of different irrigation levels on flowering and flower quality of carnation (Dianthus caryophyllus L.) irrigated by drip irrigation.",
+      "titulo": "The effects of different irrigation levels on flowering and flower quality of carnation (Dianthus caryophyllus L.) irrigated by drip irrigation",
+      "doi": "10.5897/AJB10.2590",
+      "url": "https://doi.org/10.5897/AJB10.2590",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U09_c8b2ba67d27e.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\ajol-file-journals_82_articles_97212_submission_proof_97212-973-253444-1-10-20131118.pdf",
+      "sha256": "c8b2ba67d27e8b1696ead6dc327026a7dbf95b74dbc11002340198d3eea91511",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Clavel Judith en invernadero, coeficientes de evaporación de tanque para manejo del riego. No trasladar óptimo de manejo a límite de sequía ni a campo abierto.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-10",
+      "referencia": "Nezhad-yani, Sarmast y Zakizadeh (2026). Physiological and biochemical responses of Rosa chinensis Jacq. 'Old Blush' to waterlogging stress under a controlled greenhouse environment.",
+      "titulo": "Physiological and biochemical responses of Rosa chinensis Jacq. 'Old Blush' to waterlogging stress under a controlled greenhouse environment",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U10_6ecc6395777c.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\flowerjour-v11n1p55-en.pdf",
+      "sha256": "6ecc6395777c31dff4f0b2ff30a8b32905794950a64d62291a4fdf7d272c48b8",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Rosa chinensis Old Blush en invernadero. Perfil específico; no transferir a rosas híbridas de corte, a Rosa spp. ni a suelo de campo.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0210"
+        ],
+        "cultivos_ids": [
+          "C016"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "T3-11",
+      "referencia": "Aalam et al. (2024). Water Deficit Severity during the Preceding Year Determines Plant Tolerance to Subsequent Year Drought Stress Challenges: A Case Study in Damask Rose.",
+      "titulo": "Water Deficit Severity during the Preceding Year Determines Plant Tolerance to Subsequent Year Drought Stress Challenges: A Case Study in Damask Rose",
+      "doi": "10.3390/horticulturae10050462",
+      "url": "https://doi.org/10.3390/horticulturae10050462",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U11_0f042f325526.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\horticulturae-10-00462.pdf",
+      "sha256": "0f042f3255262b75f17e90d034de16ad57de9e56d123af1b1824877b29cbc0ec",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Rosa damascena, aceite esencial, estudio de dos años y memoria de estrés. Mantener separado de rosa de corte. Los niveles experimentales de agua disponible no son umbrales universales.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-12",
+      "referencia": "Demirtaş et al. (2010). Quality and yield response of soybean (Glycine max L. Merrill) to drought stress in sub-humid environment.",
+      "titulo": "Quality and yield response of soybean (Glycine max L. Merrill) to drought stress in sub-humid environment",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U12_b119800df0a5.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\Quality-and-yield-response-of-soybean-Glycine-max-L-Merrill-to-drought-stress-in-sub-humid-environment.pdf",
+      "sha256": "b119800df0a57289744478def7d6fe408fd6f08374a60956cd92011c4d836e24",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Nova en campo, exclusión de riego por etapa. La descripción de T7 del resumen y la tabla 1 requieren conciliarse; no convertir omisión de riego en días universales de sequía.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "T3-13",
+      "referencia": "Fletcher et al. (2023). Evaluating the Effects of Flooding Stress during Multiple Growth Stages in Soybean.",
+      "titulo": "Evaluating the Effects of Flooding Stress during Multiple Growth Stages in Soybean",
+      "doi": "10.3390/agronomy13051243",
+      "url": "https://doi.org/10.3390/agronomy13051243",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U13_e07302faa793.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\agronomy-13-01243.pdf",
+      "sha256": "e07302faa793018c5114b04df0981be2b06edec708f897f031f4dbf2178f00a3",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Ensayos de inundación de soya por etapa. Se incorpora protocolo y puntuación visual de V4 y R1; las dos etapas no constituyen dos fuentes independientes.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0211",
+          "CL-E0212"
+        ],
+        "cultivos_ids": [
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-14",
+      "referencia": "Prodjinoto et al. (2026). N2-induced hypoxia and waterlogging elicit distinct whole-plant transpiration and adventitious-root responses in tomato (Solanum lycopersicum).",
+      "titulo": "N2-induced hypoxia and waterlogging elicit distinct whole-plant transpiration and adventitious-root responses in tomato (Solanum lycopersicum)",
+      "doi": "10.1016/j.jplph.2026.154850",
+      "url": "https://doi.org/10.1016/j.jplph.2026.154850",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U14_d8fd6d8c215e.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1-s2.0-S017616172600163X-main (1).pdf",
+      "sha256": "d8fd6d8c215e4b730d83f469bed27b48d43fe0951f372a0d56021aac1a6c85a0",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Compara hipoxia inducida por N2 y anegamiento en tomate; no son tratamientos equivalentes. Texto completo idéntico a U15, aunque sus archivos tienen SHA distintos.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "archivos_alternativos": [
+        {
+          "id": "U15",
+          "archivo": "C:\\Users\\campy\\Downloads\\1-s2.0-S017616172600163X-main.pdf",
+          "paginas": 12,
+          "sha256": "27cfd873a0a5a5b8ed35172887d879e818c4d22207903c14958e7168bab1e765",
+          "duplicado_de": null,
+          "copia_estable": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U15_27cfd873a0a5.pdf"
+        }
+      ],
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-16",
+      "referencia": "Zheng et al. (2013). Responses of drip irrigated tomato (Solanum lycopersicum L.) yield, quality and water productivity to various soil matric potential thresholds in an arid region of Northwest China.",
+      "titulo": "Responses of drip irrigated tomato (Solanum lycopersicum L.) yield, quality and water productivity to various soil matric potential thresholds in an arid region of Northwest China",
+      "doi": "10.1016/j.agwat.2013.08.001",
+      "url": "https://doi.org/10.1016/j.agwat.2013.08.001",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U16_1a76544eaff2.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1-s2.0-S0378377413002047-main.pdf",
+      "sha256": "1a76544eaff256046ca760376887e81994c0190d6c7b06c407a5284538b8215a",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Tomate Shijihongguan en campo con goteo y acolchado. Potencial matricial medido a 25 cm; los valores son disparadores de riego del experimento, no límites letales.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0213"
+        ],
+        "cultivos_ids": [
+          "C014"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-17",
+      "referencia": "Kerddee, Kongsil y Nakasathien (2021). Waterlogging Tolerance and Recovery in Canopy Development Stage of Cassava (Manihot esculenta Crantz).",
+      "titulo": "Waterlogging Tolerance and Recovery in Canopy Development Stage of Cassava (Manihot esculenta Crantz)",
+      "doi": "10.17503/agrivita.v43i2.2615",
+      "url": "https://doi.org/10.17503/agrivita.v43i2.2615",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U17_96cd5147f543.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\2615-14682-1-PB.pdf",
+      "sha256": "96cd5147f5433147c2151bf0c1ba5c527e69998e00c04da6d427a8001a39b43c",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Yuca en macetas, grupos inundados a 105 o 165 días tras plantación por 12 días. Recuperación aérea no demuestra recuperación de raíces de reserva.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0214",
+          "CL-E0215"
+        ],
+        "cultivos_ids": [
+          "C013"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-18",
+      "referencia": "Bakayoko et al. (2009). Impact of water stress on fresh tuber yield and dry matter content of cassava (Manihot esculenta Crantz) in Côte d'Ivoire.",
+      "titulo": "Impact of water stress on fresh tuber yield and dry matter content of cassava (Manihot esculenta Crantz) in Côte d'Ivoire",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U18_d56266b739a6.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\Impact_of_water_stress_on_fresh_tuber_yi.pdf",
+      "sha256": "d56266b739a6750c5f47bd9dcfaea75113fa22e8ee12f34b5c921e544715b2d4",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Yuca en campo y respuesta al estrés por época/edad; falta cuantificar exposición y método antes de un umbral.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "T3-19",
+      "referencia": "Pinto et al. (2025; preprint). Effect of Flooding and Recovery Capacity After Stress Suspension of Theobroma cacao L. Rootstocks.",
+      "titulo": "Effect of Flooding and Recovery Capacity After Stress Suspension of Theobroma cacao L. Rootstocks",
+      "doi": "10.20944/preprints202511.0634.v1",
+      "url": "https://doi.org/10.20944/preprints202511.0634.v1",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U19_63ab8735c631.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\preprints202511.0634.v1.pdf",
+      "sha256": "63ab8735c6316106d3f29b47fd7420991b825cbaa2ff16ac4638dac1ff8388b6",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "preprint_no_revisado",
+      "nota_aplicabilidad": "Preprint de 2025, sin revisión por pares. Comparte sitio, periodo climático de 2019, injertos y protocolo con U20; no contar como confirmación independiente sin verificar origen de los datos.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "grupo_independencia": "cacao_Pinto_Lineares_2019_por_confirmar",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-20",
+      "referencia": "Pinto et al. (2023). Morphophysiological responses of Theobroma cacao L. rootstocks to flooding and post-flooding conditions.",
+      "titulo": "Morphophysiological responses of Theobroma cacao L. rootstocks to flooding and post-flooding conditions",
+      "doi": "10.32615/ps.2023.031",
+      "url": "https://doi.org/10.32615/ps.2023.031",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U20_b37533062c1e.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\PS-61-3-61377.pdf",
+      "sha256": "b37533062c1e028f4aca20a74a6b0acae77625cf46fb2b1e33bd03c5dd77e7d1",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Artículo revisado de 2023, no de 2026. Cacao PS-1319 con cinco portainjertos y 60 días de inundación. Vinculado a U19 por posible experimento compartido; no asegurar identidad completa de resultados.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "grupo_independencia": "cacao_Pinto_Lineares_2019_por_confirmar",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-21",
+      "referencia": "De Almeida, Tezara y Herrera (2016). Physiological responses to drought and experimental water deficit and waterlogging of four clones of cacao (Theobroma cacao L.) selected for cultivation in Venezuela.",
+      "titulo": "Physiological responses to drought and experimental water deficit and waterlogging of four clones of cacao (Theobroma cacao L.) selected for cultivation in Venezuela",
+      "doi": "10.1016/j.agwat.2016.03.012",
+      "url": "https://doi.org/10.1016/j.agwat.2016.03.012",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U21_ebf8233c9be0.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1-s2.0-S0378377416300968-main.pdf",
+      "sha256": "ebf8233c9be0a4d1d5e04c13245c64507f74336d1925801db666ce49084e5d7b",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Separar observación de árboles adultos en campo y ensayo de plantas jóvenes en invernadero. Datos de 35 días corresponden al ensayo protegido, no a campo.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0216",
+          "CL-E0217"
+        ],
+        "cultivos_ids": [
+          "C012"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-22",
+      "referencia": "Kumari (2012). Influence of Drip Irrigation and Mulch on Leaf Area Maximization, Water Use Efficiency and Yield of Potato (Solanum tuberosum L.).",
+      "titulo": "Influence of Drip Irrigation and Mulch on Leaf Area Maximization, Water Use Efficiency and Yield of Potato (Solanum tuberosum L.)",
+      "doi": "10.5539/jas.v4n1p71",
+      "url": "https://doi.org/10.5539/jas.v4n1p71",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U22_8309e85466f2.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\Influence_of_Drip_Irrigation_and_Mulch_on_Leaf_Are.pdf",
+      "sha256": "8309e85466f225e39e36975d1125e900a6dba4403f341ad5f2a62cfa5a6913ab",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Manejo de riego y acolchado en papa. Incremento térmico del suelo por acolchado no es tolerancia al calor.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-23",
+      "referencia": "Eggermont (sin fecha confirmada; propuesta estudiantil). Sink nor swim: Potato (Solanum tuberosum) root survival during waterlogging and hypoxia.",
+      "titulo": "Sink nor swim: Potato (Solanum tuberosum) root survival during waterlogging and hypoxia",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U23_716551462bbb.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\5735033 Writing Assignment Eline Eggermont.pdf",
+      "sha256": "716551462bbb325f9a8a611a9deee2db7b9c9d68f8e36ea6eaa0bfcac6fd0a84",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "propuesta_sin_resultados",
+      "nota_aplicabilidad": "Propuesta de investigación estudiantil, no experimento concluido. Excluir resultados esperados como evidencia de tolerancia.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI",
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "T3-24",
+      "referencia": "Ayas y Korukçu (2010). Water-Yield Relationships in Deficit Irrigated Potato.",
+      "titulo": "Water-Yield Relationships in Deficit Irrigated Potato",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U24_8a520ec5587e.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\Bursa_Kosullarinda_Kisintili_Sulanan_Pat.pdf",
+      "sha256": "8a520ec5587e0d9e559ca9aa825c74ba6f3a6af3609a5668f2bce6f160b2302d",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Papa Hermes, ensayo de campo de riego deficitario por etapas. Láminas aplicadas y Ky son parámetros de manejo/modelo, no límites universales de humedad.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "T3-25",
+      "referencia": "Ferreira y Gonçalves (2007). Crop-yield/water-use production functions of potatoes (Solanum tuberosum, L.) grown under differential nitrogen and irrigation treatments in a hot, dry climate.",
+      "titulo": "Crop-yield/water-use production functions of potatoes (Solanum tuberosum, L.) grown under differential nitrogen and irrigation treatments in a hot, dry climate",
+      "doi": "10.1016/j.agwat.2007.02.012",
+      "url": "https://doi.org/10.1016/j.agwat.2007.02.012",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U25_4407a97c446a.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1-s2.0-S0378377407000443-main.pdf",
+      "sha256": "4407a97c446af23bd9d8af0f2a1617da77efd31432352d1ae5b16b8ec829c2f1",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Papa, ensayo factorial de nitrógeno y riego. Ky anual es respuesta de rendimiento modelada; no equivale a umbral de sequía. Fertilización no es requisito de nutrientes disponibles.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-26",
+      "referencia": "Li y Siddique, eds. (2018). FAO. Future Smart Food: Rediscovering hidden treasures of neglected and underutilized species for Zero Hunger in Asia — extracto.",
+      "titulo": "Future Smart Food: Rediscovering hidden treasures of neglected and underutilized species for Zero Hunger in Asia — extracto",
+      "doi": null,
+      "url": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U26_c8a20b37c28a.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\1685430536_65.pdf",
+      "sha256": "c8a20b37c28a67faafdc8b025d6eb377a63bf3a713a08b148edc41cf49fa2ca5",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_o_contexto_secundario",
+      "nota_aplicabilidad": "Extracto de obra FAO de 2018, contextual. No atribuir al extracto contenido íntegro del libro ni convertir afirmaciones generales en límites de daño.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "URL o DOI"
+      ]
+    },
+    {
+      "id": "T3-27",
+      "referencia": "Silva et al. (2019). Amaranth Response to Water Stress.",
+      "titulo": "Amaranth Response to Water Stress",
+      "doi": "10.9734/JEAI/2019/v40i130356",
+      "url": "https://doi.org/10.9734/JEAI/2019/v40i130356",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U27_18b81ffaf3c7.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\document.pdf",
+      "sha256": "18b81ffaf3c7831ed0714c5dd1a7225980d58e85b62bd65279b633e4fe102696",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Incluye A. caudatus Inca y A. cruentus BRS Alegria. BRS Alegria no es INIAP-Alegría. Respuesta sin diferencia significativa no demuestra ausencia de daño universal.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "bibliografia_consultada_sin_evidencia_especifica_extraida",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-28",
+      "referencia": "Bai et al. (2026). Identification and functional validation of hub genes responding to waterlogging stress during the filling period in quinoa (Chenopodium Quinoa Willd.).",
+      "titulo": "Identification and functional validation of hub genes responding to waterlogging stress during the filling period in quinoa (Chenopodium Quinoa Willd.)",
+      "doi": "10.1186/s12870-026-08132-6",
+      "url": "https://doi.org/10.1186/s12870-026-08132-6",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U28_71510a199ebf.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\s12870-026-08132-6.pdf",
+      "sha256": "71510a199ebf454ae8abc17a52ac3e782a5be98aeeaa0326dd8060363b530593",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Quinua Dianli-1844 en macetas. Diferenciar 7/14 días de inundación y 14 días de recuperación. Validación genética en Arabidopsis no se atribuye a tolerancia de quinua en campo.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0218",
+          "CL-E0219"
+        ],
+        "cultivos_ids": [
+          "C009"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-29",
+      "referencia": "Valdivia-Cea et al. (2021). Effect of Soil Water Availability on Physiological Parameters, Yield, and Seed Quality in Four Quinoa Genotypes (Chenopodium quinoa Willd.).",
+      "titulo": "Effect of Soil Water Availability on Physiological Parameters, Yield, and Seed Quality in Four Quinoa Genotypes (Chenopodium quinoa Willd.)",
+      "doi": "10.3390/agronomy11051012",
+      "url": "https://doi.org/10.3390/agronomy11051012",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U29_e4917840f199.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\agronomy-11-01012.pdf",
+      "sha256": "e4917840f199eaa0632089afa13becf65966eccccb49f68e06354d9e041accbb",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Quinua de cuatro genotipos de fotoperiodo largo; agua disponible en 0–60 cm calculada con capacidad de campo y marchitez. No confundir con porcentaje de capacidad de campo.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0220",
+          "CL-E0221"
+        ],
+        "cultivos_ids": [
+          "C009"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "T3-30",
+      "referencia": "Neththasinghe, Sprunger y Lindsey (2026). Flooding temperature affected corn (Zea mays L.) emergence and root growth.",
+      "titulo": "Flooding temperature affected corn (Zea mays L.) emergence and root growth",
+      "doi": "10.1007/s11104-026-08943-4",
+      "url": "https://doi.org/10.1007/s11104-026-08943-4",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_tanda3\\U30_5c37bfd13139.pdf",
+      "archivo_original": "C:\\Users\\campy\\Downloads\\s11104-026-08943-4.pdf",
+      "sha256": "5c37bfd1313933522373a884d247da9bcc39e89aa5a20a598f7f8351fbba1a40",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_pendiente_extraccion_detallada",
+      "nota_aplicabilidad": "Maíz Pioneer P1164AM en cámaras: temperatura inicial y anegamiento combinados. Respuesta de emergencia, no de plantas adultas ni umbral universal de calor.",
+      "revision_visual": "portada; pasajes incorporados enumerados en revisión de tanda3",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0222",
+          "CL-E0223",
+          "CL-E0224",
+          "CL-E0225"
+        ],
+        "cultivos_ids": [
+          "C008"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB01",
+      "referencia": "Viteri D., P., Vásquez C., W., Viera, W., Sotomayor, A., y Mejía, P. (2016). Ecología para el desarrollo y crecimiento de la mora. En El cultivo de la mora en el Ecuador, pp. 19–24. INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/4051",
+      "doi": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB01_INIAP_mora_ecologia_2016_c82b977b64f3.pdf",
+      "sha256": "c82b977b64f3e1b0c25628707f410a35e52eb99b5e32a4e4051b685fd4ef4089",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "manual_tecnico_sintesis",
+      "nota_aplicabilidad": "Referencias originales de cada apartado pendientes. PDF de 13 páginas incluye preliminares; capítulo inicia en PDF 8. Datos del sitio no equivalen a requisitos.",
+      "url_descarga": "https://repositorio.iniap.gob.ec/server/api/core/bitstreams/22474781-aa8e-4f5e-8c1c-fb006cceb4df/content",
+      "formato_copia": "pdf",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0308",
+          "E0309",
+          "E0310",
+          "E0311",
+          "E0312",
+          "E0313",
+          "E0314"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0226",
+          "CL-E0227",
+          "CL-E0228",
+          "CL-E0229",
+          "CL-E0230",
+          "CL-E0231"
+        ],
+        "cultivos_ids": [
+          "C019"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB02",
+      "referencia": "Sharma, S., y Warren, J. (2024). Basics of Soil Bulk Density. PSS-2287. Oklahoma State University Extension.",
+      "url": "https://extension.okstate.edu/fact-sheets/basics-of-soil-bulk-density",
+      "doi": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB02_OSU_captura_navegador.json",
+      "sha256": "beef7b624b10a44adc82d178e8dda367d178c265918d2740ade343546df329d3",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "guia_tecnica_general_suelo",
+      "nota_aplicabilidad": "Tabla general por textura, derivada de USDA; no límite específico de cada cultivo. Recuperada mediante Chrome; captura HTML/JSON, no PDF.",
+      "url_descarga": "https://extension.okstate.edu/fact-sheets/basics-of-soil-bulk-density",
+      "formato_copia": "captura_html_json",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "criterio_general_suelo",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB03",
+      "referencia": "Crane, J. H., Schaffer, B., Her, Y. G., Bayabil, H., Wasielewski, J., y Fraisse, C. (2026). Quick Guide to Environmental Factors Impacting Subtropical and Tropical Fruit Crops in Florida. HS1499. UF/IFAS.",
+      "url": "https://ask.ifas.ufl.edu/publication/HS1499",
+      "doi": "10.32473/edis-hs1499-2026",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB03_UFIFAS_HS1499_0d444f174833.pdf",
+      "sha256": "0d444f174833b6c5724912fa30dac625fa4e0b18ab0593c06b7a092f4e9db70b",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "sintesis_tecnica_extension",
+      "nota_aplicabilidad": "Tabla por ecotipo e híbrido; no asigna cultivar a la parcela ni demuestra duración crítica de exposición. Contexto Florida.",
+      "url_descarga": "https://ask.ifas.ufl.edu/publication/HS1499.pdf",
+      "formato_copia": "pdf",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0232",
+          "CL-E0233",
+          "CL-E0234",
+          "CL-E0235",
+          "CL-E0236"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB04",
+      "referencia": "Fischer, G., y Melgarejo, L. M. (2020). The ecophysiology of cape gooseberry (Physalis peruviana L.) — an Andean fruit crop. A review. Revista Colombiana de Ciencias Hortícolas, 14(1), 76–89.",
+      "url": "https://doi.org/10.17584/rcch.2020v14i1.10893",
+      "doi": "10.17584/rcch.2020v14i1.10893",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB04_Physalis_ecophysiology_2020_12ebf1715589.pdf",
+      "sha256": "12ebf171558956f43793d0de316c11dc67d914b2875261333be9a61322fd4142",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "revision_secundaria",
+      "nota_aplicabilidad": "Revisión; rastrear originales. No contar como contraste independiente del ensayo de Aldana ya incluido. Temperatura base fenológica no es límite de supervivencia.",
+      "url_descarga": "https://revistas.uptc.edu.co/index.php/ciencias_horticolas/article/download/10893/9286",
+      "formato_copia": "pdf",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0238",
+          "CL-E0239",
+          "CL-E0240",
+          "CL-E0241",
+          "CL-E0242"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB05",
+      "referencia": "de Freitas, E. M., Gomes, C. N., da Silva, L. J., y da Cunha, F. F. (2024). Germination Performance of Physalis peruviana L. Seeds under Thermal and Water Stress Conditions. Agronomy, 14, 1213.",
+      "url": "https://doi.org/10.3390/agronomy14061213",
+      "doi": "10.3390/agronomy14061213",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB05_Physalis_germination_2024_613c84993ade.pdf",
+      "sha256": "613c84993ade118b47b09b106230d42171f152485c3d914d341f763c1d44d4a7",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario_laboratorio",
+      "nota_aplicabilidad": "Semillas, papel y PEG 6000. Potencial osmótico no equivale al potencial matricial del suelo. Tabla 3 contradice una lectura de 20 °C como mínimo absoluto en conclusiones.",
+      "url_descarga": "https://mdpi-res.com/d_attachment/agronomy/agronomy-14-01213/article_deploy/agronomy-14-01213.pdf",
+      "formato_copia": "pdf",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0243",
+          "CL-E0244",
+          "CL-E0245"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB06",
+      "referencia": "Tanji, K. K., y Kielen, N. C. (2002). Agricultural Drainage Water Management in Arid and Semi-Arid Areas. FAO Irrigation and Drainage Paper 61. Annex 1: Crop salt tolerance data.",
+      "url": "https://www.fao.org/4/y4263e/y4263e0e.htm",
+      "doi": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB06_FAO_salt_tolerance_annex_bec6d29b4841.html",
+      "sha256": "bec6d29b4841c6eed1a3b63ca1b9c3fd5abcf11a3aefe0eeab771bfada68d6ca",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "sintesis_tecnica_modelo_salinidad",
+      "nota_aplicabilidad": "Anexo basado en Maas y Grattan (1999), con experimentos originales por fila; comparte antecedentes con S15. No contar como ensayo independiente por ser otro documento FAO.",
+      "url_descarga": "https://www.fao.org/4/y4263e/y4263e0e.htm",
+      "formato_copia": "html",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0317",
+          "E0318",
+          "E0319",
+          "E0320",
+          "E0321",
+          "E0322",
+          "E0323",
+          "E0324",
+          "E0325"
+        ],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": [
+          "C001",
+          "C002",
+          "C003",
+          "C006",
+          "C007",
+          "C008",
+          "C011",
+          "C014",
+          "C015"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB07",
+      "referencia": "University of California Statewide IPM Program. (s. f.). Avocado — Site Selection.",
+      "url": "https://ipm.ucanr.edu/home-and-landscape/avocado-site-selection/",
+      "doi": null,
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB07_UCIPM_avocado_site_9e0ff0243bf4.html",
+      "sha256": "9e0ff0243bf431bbe8f18023df897d2e18f40f711de18cfec0bfc231e3868000",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "guia_tecnica_extension",
+      "nota_aplicabilidad": "Selección de sitio de huerto doméstico y paisaje; contraste contextual, no ensayo local comercial. Rangos de frío distintos de WEB03, mantener separados.",
+      "url_descarga": "https://ipm.ucanr.edu/home-and-landscape/avocado-site-selection/",
+      "formato_copia": "html",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0315",
+          "E0316"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0237"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "autoría, título o fecha completos"
+      ]
+    },
+    {
+      "id": "WEB09",
+      "referencia": "Malik, A. I., Ailewe, T. I., y Erskine, W. (2015). Tolerance of three grain legume species to transient waterlogging. AoB PLANTS, 7, plv040.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4455828/",
+      "doi": "10.1093/aobpla/plv040",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB09_legumes_waterlogging_2015_f1a391df0e98.html",
+      "sha256": "f1a391df0e98f756719c895dba803600b9197b7966c4e29cbadffe742233de0c",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario_invernadero",
+      "nota_aplicabilidad": "Artículo íntegro HTML consultado; PDF editorial no recuperado. Medio arena/mezcla comercial. No transferir ausencia de diferencia en biomasa a ausencia de daño en raíces.",
+      "url_descarga": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4455828/",
+      "formato_copia": "html",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0248",
+          "CL-E0249"
+        ],
+        "cultivos_ids": [
+          "C002",
+          "C004"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "WEB10",
+      "referencia": "Mollaali, E., Dadashi, M. R., Sheikh, F., Ajamnorozi, H., y Feyzbakhsh, M. T. (2023). Evaluating the Waterlogging Tolerance of Faba Bean Genotypes at Different Growth Stages under Field Conditions. Romanian Agricultural Research, 40.",
+      "url": "https://doi.org/10.59665/rar4023",
+      "doi": "10.59665/rar4023",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_web_v01\\WEB10_faba_waterlogging_field_2023_0a5009fa5622.pdf",
+      "sha256": "0a5009fa562237fff0f91e090644bd0ba540d8e09e2a5c61d8e0883f4e59a3df",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "experimento_primario_campo",
+      "nota_aplicabilidad": "21 genotipos, dos campañas, Irán. Métodos: 10 días de inundación; falta lámina cuantificada. La extracción de texto repite contenido entre páginas; localizadores comprobados por imagen.",
+      "url_descarga": "https://new.incda-fundulea.ro/images/rar/nr40/rar40.54.pdf",
+      "formato_copia": "pdf",
+      "revision_visual": "pasajes PDF citados; HTML contrastado en texto/DOM cuando corresponde",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0246",
+          "CL-E0247"
+        ],
+        "cultivos_ids": [
+          "C003"
+        ],
+        "evidencias_productivas_ids": []
+      },
+      "metadatos_bibliograficos_pendientes": []
+    },
+    {
+      "id": "PROD01",
+      "referencia": "Araujo, A., et al. (2021). Manual del cultivo de papa para pequeños productores, 3.ª edición. INIAP, ESPOCH y CIP. Editores: Racines, M., Cuesta, X. y Castillo, C.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/5672",
+      "archivo": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\MANUAL DE PAPA 2020 3era edición.pdf",
+      "sha256": "f904bfef4af6f2ca1913207e05b05c515fb7a149547917177d224e0a45499353",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0250"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0045",
+          "PR-E0047"
+        ],
+        "cultivos_ids": [
+          "C011"
+        ]
+      }
+    },
+    {
+      "id": "PROD02",
+      "referencia": "Instituto Nacional de Investigaciones Agropecuarias (2019). Acciones del INIAP respecto a la enfermedad Punta Morada de la Papa. INIAP, Estación Experimental Santa Catalina.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/5396",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD02_papa_andina_iniap_2019_45fef907f185.pdf",
+      "sha256": "45fef907f185749dcfe2c7c895004205d88d2f9567bc831b54257ba362ec6010",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0251",
+          "CL-E0252"
+        ],
+        "evidencias_productivas_ids": [],
+        "cultivos_ids": [
+          "C011"
+        ]
+      }
+    },
+    {
+      "id": "PROD03",
+      "referencia": "Valarezo, A., Valarezo, O., Mendoza, A., Álvarez, H. y Vásquez, W. (2014). El cultivo de maracuyá: manual técnico para su manejo en el Litoral ecuatoriano. INIAP, Manual técnico 100.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/1159",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD03_maracuya_iniap_2014_6f718118a5ee.pdf",
+      "sha256": "6f718118a5eedf3b98a48a52095cd76a1d304b36fd31c332fdd6d139146fe6db",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0338",
+          "E0339",
+          "E0340",
+          "E0341"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0259",
+          "CL-E0260",
+          "CL-E0261"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0085",
+          "PR-E0086"
+        ],
+        "cultivos_ids": [
+          "C026"
+        ]
+      }
+    },
+    {
+      "id": "PROD04",
+      "referencia": "Fernández, F., Pico, J. T. y Avellán Cedeño, B. A. (2021). Guía para la producción y manejo integrado del cultivo de plátano. INIAP, Estación Central de la Amazonía.",
+      "url": "https://repositorio.iniap.gob.ec/items/717618c7-e3c5-47b5-b204-33fdefdd90ea",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD04_platano_iniap_2021_2e1028e311ce.pdf",
+      "sha256": "2e1028e311ce7d0f1d45361fc6cd99195160d0c96a8b3c27714bb22325cc7c33",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0080",
+          "PR-E0081",
+          "PR-E0082"
+        ],
+        "cultivos_ids": [
+          "C024"
+        ]
+      }
+    },
+    {
+      "id": "PROD05",
+      "referencia": "Carrillo, M., et al. (2015). Manual del cultivo de la palma aceitera. INIAP, Estación Experimental Santo Domingo, Manual técnico 102.",
+      "url": "https://repositorio.iniap.gob.ec/items/397004a6-ed0a-41d1-aa63-d1fb02289511",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD05_palma_iniap_2015_0fe5853d9e22.pdf",
+      "sha256": "0fe5853d9e22cd5398fa9ded8917f9ef2e3cabfe8af4a91de86950692e8fd96b",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0331",
+          "E0332",
+          "E0333",
+          "E0334",
+          "E0335",
+          "E0336",
+          "E0337"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0256",
+          "CL-E0257",
+          "CL-E0258"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0084"
+        ],
+        "cultivos_ids": [
+          "C025"
+        ]
+      }
+    },
+    {
+      "id": "PROD06",
+      "referencia": "UTEPI / ONUDI (2006). Piña: estudio agroindustrial en el Ecuador.",
+      "url": "https://www.unido.org/sites/default/files/2009-04/Pina_estudio_agroindustrial_en_el_Ecuador_0.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD06_pina_unido_2006_b7a2a409e4af.pdf",
+      "sha256": "b7a2a409e4aff6cf96be4f73c315d042827c2aceef3b90b4d260d9cb29e0b401",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0342",
+          "E0343",
+          "E0344"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0262",
+          "CL-E0263",
+          "CL-E0264"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0087",
+          "PR-E0088"
+        ],
+        "cultivos_ids": [
+          "C027"
+        ]
+      }
+    },
+    {
+      "id": "PROD07",
+      "referencia": "Cornejo Calvachi, et al. (2024). Determinación de la dosis óptima de N, P y K en el cultivo de brócoli híbrido Avenger (Brassica oleracea itálica) en Ecuador. Siembra, 11(2), e6658. https://doi.org/10.29166/siembra.v11i2.6658",
+      "url": "https://revistadigital.uce.edu.ec/index.php/SIEMBRA/article/view/6658",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD07_brocoli_cotopaxi_2024_d57ec62303ae.pdf",
+      "sha256": "d57ec62303ae3599451d5ee9f3b839873eee156d6f1a20fbf677702fb52baa6c",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0073"
+        ],
+        "cultivos_ids": [
+          "C021"
+        ]
+      }
+    },
+    {
+      "id": "PROD08",
+      "referencia": "Segura, M., Lesmes, J. C., Galindo, J. R. y Sánchez, G. D. (2015). Modelo tecnológico para el cultivo de cebolla de rama (Allium fistulosum L.) en el departamento de Boyacá. Corpoica, Mosquera, Colombia.",
+      "url": "https://repository.agrosavia.co/server/api/core/bitstreams/9a816075-dfcc-4443-aab7-1fb53ca7c248/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD08_cebolla_rama_agrosavia_c2a0871ab1c9.pdf",
+      "sha256": "c2a0871ab1c9b09f8367a1a7d1480cacc928eef5a75bc0f5d6e5ebfe401e5abf",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [
+          "E0326",
+          "E0327",
+          "E0328",
+          "E0329",
+          "E0330"
+        ],
+        "evidencias_agroclimaticas_ids": [
+          "CL-E0253",
+          "CL-E0254",
+          "CL-E0255"
+        ],
+        "evidencias_productivas_ids": [
+          "PR-E0074",
+          "PR-E0075"
+        ],
+        "cultivos_ids": [
+          "C022"
+        ]
+      }
+    },
+    {
+      "id": "PROD10",
+      "referencia": "Guamán Jiménez, R. y Andrade Varela, C. (2009). INIAP 308: nueva variedad de soya de alto rendimiento y de buena calidad de semilla para el Litoral ecuatoriano. INIAP, Boletín divulgativo 364.",
+      "url": "https://repositorio.iniap.gob.ec/server/api/core/bitstreams/bcd5db67-870e-428e-9d48-682087954c89/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD10_soya_iniap308_4ef0353566b7.pdf",
+      "sha256": "4ef0353566b763846dd157aecab2edb0a05013930095a7acc1709037e729155c",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0056",
+          "PR-E0057"
+        ],
+        "cultivos_ids": [
+          "C015"
+        ]
+      }
+    },
+    {
+      "id": "PROD12",
+      "referencia": "Tamil Nadu Agricultural University (s. f.). Commercial rose. Agritech Portal; fecha de edición no indicada.",
+      "url": "https://agritech.tnau.ac.in/horticulture/horti_flower%20crops_commercial%20rose.html",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD12_rosa_campo_tnau_60f5a5ad31f1.html",
+      "sha256": "60f5a5ad31f12e64b645faafd0c6f6705e4fcde1dfb761b95d3ee122d1c7249f",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "pagina_institucional",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0058",
+          "PR-E0059",
+          "PR-E0060"
+        ],
+        "cultivos_ids": [
+          "C016"
+        ]
+      }
+    },
+    {
+      "id": "PROD13",
+      "referencia": "Velásquez, J., Araujo, A., Andrade, V., Rivadeneira, J., Cuesta, H., Racines, M. y Tinoco, K. (2022). Manual de producción de tubérculo-semilla de papa. 2.ª edición, Manual 124. INIAP.",
+      "url": "https://repositorio.iniap.gob.ec/server/api/core/bitstreams/3c890f1d-f36f-40cd-81cd-21fb18efe7b0/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD13_papa_guia_iniap124_a515ccfff741.pdf",
+      "sha256": "a515ccfff7411e4a21465f536002ea77c5741cc20038e6004dc7b6f1b84c52e2",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0044",
+          "PR-E0046"
+        ],
+        "cultivos_ids": [
+          "C011"
+        ]
+      }
+    },
+    {
+      "id": "PROD14",
+      "referencia": "Humana Pueblo a Pueblo Ecuador (s. f.). Manual de uvilla. Fecha editorial por confirmar; archivo alojado en 2021.",
+      "url": "https://humana-ecuador.org/wp-content/uploads/2021/09/Manual-de-Uvilla_Final.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD14_uvilla_humana_56b8bd0241fe.pdf",
+      "sha256": "56b8bd0241fea44116fa6c97aba32f0cfb24769e6809cb5c055dbb3de8cf7472",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0068"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "Completar datos editoriales indicados en referencia."
+      ]
+    },
+    {
+      "id": "PROD15",
+      "referencia": "Ministerio de Agricultura y Riego del Perú (2017). Cacao: el Perú centro de origen de la biodiversidad. Ficha técnica. Copia institucional alojada por ICCO.",
+      "url": "https://www.icco.org/wp-content/uploads/2019/07/Ficha-Cacao.pdf",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD15_cacao_midagri_16f1031cf998.pdf",
+      "sha256": "16f1031cf99839980953fb2ddd7332a81ea6a1082235ad00e31dbff831ec27e0",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0048"
+        ],
+        "cultivos_ids": [
+          "C012"
+        ]
+      }
+    },
+    {
+      "id": "PROD16",
+      "referencia": "López Villa, F. M. (2011). Evaluación de la aclimatación y rendimiento de 16 cultivares de zanahoria (Daucus carota L.) a campo abierto, en Macají, cantón Riobamba, provincia de Chimborazo. Tesis de Ingeniería Agronómica, ESPOCH.",
+      "url": "https://dspace.espoch.edu.ec/handle/123456789/1364",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD16_zanahoria_espoch_bd362127a8a9.pdf",
+      "sha256": "bd362127a8a912d896167d3f2789ab3c67e5418f7ccd887a63af96f7d501d534",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0076",
+          "PR-E0077",
+          "PR-E0078",
+          "PR-E0079"
+        ],
+        "cultivos_ids": [
+          "C023"
+        ]
+      }
+    },
+    {
+      "id": "PROD17",
+      "referencia": "INIAP (2021). Guía para la producción y manejo integrado del cultivo de yuca (Manihot esculenta Crantz), para la Amazonía ecuatoriana.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/5824",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD17_yuca_amazonia_2021_a51475c5f66d.pdf",
+      "sha256": "a51475c5f66d9806c17cfa28fc65542672bba1c913859b9f47be11238b0414b1",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0050"
+        ],
+        "cultivos_ids": [
+          "C013"
+        ]
+      }
+    },
+    {
+      "id": "PROD18",
+      "referencia": "Reyes, S., et al. (s. f.). INIAP H-601: híbrido de maíz para condiciones de ladera del trópico seco ecuatoriano. INIAP y ULEAM. Versión actualizada consultada; liberación original en 2004, fecha de actualización por precisar.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/1145",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD18_maiz_h601_a371bbb707fd.pdf",
+      "sha256": "a371bbb707fdc8b40855516814568a110574976379a75b7d894e124b19ccb663",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0035",
+          "PR-E0036",
+          "PR-E0037"
+        ],
+        "cultivos_ids": [
+          "C008"
+        ]
+      },
+      "metadatos_bibliograficos_pendientes": [
+        "Completar datos editoriales indicados en referencia."
+      ]
+    },
+    {
+      "id": "PROD19",
+      "referencia": "Varela, A. (2019, según registro del repositorio). Estudio de la producción y comercialización del tomate riñón (Lycopersicum esculentum) en el cantón Pimampiro, de la provincia de Imbabura. Universidad Técnica del Norte.",
+      "url": "https://repositorio.utn.edu.ec/handle/123456789/8810",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD19_tomate_pimampiro_01d330589e92.pdf",
+      "sha256": "01d330589e920b203b01d052e0d8bcadcac39b03071588cfa1e5982068c0a368",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0054",
+          "PR-E0055"
+        ],
+        "cultivos_ids": [
+          "C014"
+        ]
+      }
+    },
+    {
+      "id": "PROD20",
+      "referencia": "Crane, J. H., Balerdi, C. F. y Maguire, I. (s. f.; versión consultada en 2026). Avocado Growing in the Florida Home Landscape. UF/IFAS Extension, CIR1034/MG213. https://doi.org/10.32473/EDIS-mg213-1983",
+      "url": "https://ask.ifas.ufl.edu/publication/MG213",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD20_aguacate_ifas_e2474a5f2398.pdf",
+      "sha256": "e2474a5f23985229b7b0d88dd9c32be22e8c8dbe87846ef756b10f1a239646ab",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0064",
+          "PR-E0065"
+        ],
+        "cultivos_ids": [
+          "C018"
+        ]
+      }
+    },
+    {
+      "id": "PROD21",
+      "referencia": "Ganchozo, W. y Huaraca, H. (2017). Guía para facilitar el aprendizaje en el manejo integrado del cultivo de palma aceitera (Elaeis guineensis Jacq.). INIAP, Guía de aprendizaje 007.",
+      "url": "https://repositorio.iniap.gob.ec/handle/41000/4774",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD21_palma_aprendizaje_74681258b382.pdf",
+      "sha256": "74681258b3825b131ca8340f3a94e6fc07e8b52a095d8a7816b3449243205120",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0083"
+        ],
+        "cultivos_ids": [
+          "C025"
+        ]
+      }
+    },
+    {
+      "id": "PROD23",
+      "referencia": "Herrera Ramírez, C. D., Hidrobo Luna, J. R. y Basantes Morales, E. R. (2016). Evaluación del efecto de la asociación de coberturas vegetales vivas sobre el cultivo de uvilla (Physalis peruviana L.) en Huaca, provincia del Carchi, Ecuador. Siembra, 3(1), 91–100. https://doi.org/10.29166/siembra.v3i1.266",
+      "url": "https://revistadigital.uce.edu.ec/index.php/SIEMBRA/article/view/266",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD23_uvilla_carchi_articulo_674c02efcba9.pdf",
+      "sha256": "674c02efcba95c7f953ef61b001ccce939f5c01d8fff59dbcb797d5b63d6dc6e",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0069",
+          "PR-E0070"
+        ],
+        "cultivos_ids": [
+          "C020"
+        ]
+      }
+    },
+    {
+      "id": "PROD25",
+      "referencia": "Hinostroza García, F., Mendoza García, M. V., Navarrete Párraga, M. y Muñoz Conforme, X. (2014). Cultivo de yuca en el Ecuador. INIAP, Estación Experimental Portoviejo, Boletín divulgativo 436.",
+      "url": "https://repositorio.iniap.gob.ec/server/api/core/bitstreams/cb5102b0-62a6-46c5-8f64-00cd81ab2859/content",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD25_yuca_iniap436_ee7ec324a9fc.pdf",
+      "sha256": "ee7ec324a9fc671c923047706f923f872a821951d68fe65d1a87d6eef61f08fa",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "documento_tecnico_o_investigacion",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0051",
+          "PR-E0052"
+        ],
+        "cultivos_ids": [
+          "C013"
+        ]
+      }
+    },
+    {
+      "id": "PROD26",
+      "referencia": "Ministerio de Agricultura y Ganadería del Ecuador (2024, 28 de octubre). Tungurahua, líder en la producción de mora en Ecuador.",
+      "url": "https://www.agricultura.gob.ec/tungurahua-lider-en-la-produccion-de-mora-en-ecuador/",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD26_mora_mag2024_534b8abbf550.html",
+      "sha256": "534b8abbf5503c135e27694eae947879bc2d787cf537927de072fc90aad8b400",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "pagina_institucional",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0066"
+        ],
+        "cultivos_ids": [
+          "C019"
+        ]
+      }
+    },
+    {
+      "id": "PROD27",
+      "referencia": "Sakata Seed (s. f.). Avenger (Hybrid): Broccoli. Ficha del obtentor, referencia de madurez desde siembra directa en Salinas, California.",
+      "url": "https://sakatavegetables.com/vegetable/avenger/",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD27_brocoli_sakata_salinas_90deb13edcaa.html",
+      "sha256": "90deb13edcaa148913bbc2d36b73895d973529e57f50cac4a15e1cedc9dbca54",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "pagina_institucional",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0071"
+        ],
+        "cultivos_ids": [
+          "C021"
+        ]
+      }
+    },
+    {
+      "id": "PROD28",
+      "referencia": "Sakata Centroamérica (s. f.). Brócoli Avenger: especificaciones técnicas. Ficha comercial del obtentor.",
+      "url": "https://www.sakatacentroamerica.com/productos/avenger/",
+      "archivo": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\catalogo\\fuentes_productividad\\PROD28_brocoli_sakata_centroamerica_9c1d8e701675.html",
+      "sha256": "9c1d8e701675df257cfb4a559b8301509e9b9ce8b0abd6e774abc3cc9a8883ba",
+      "fecha_consulta": "2026-11-14",
+      "tipo": "pagina_institucional",
+      "alcance": "Conservar territorio, variedad, sistema y periodo por evidencia.",
+      "uso_en_catalogo": {
+        "categoria": "respaldo_de_evidencias",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "evidencias_productivas_ids": [
+          "PR-E0072"
+        ],
+        "cultivos_ids": [
+          "C021"
+        ]
+      }
+    }
+  ],
+  "referencias_pendientes": [
+    {
+      "id": "S28",
+      "referencia": "USDA Natural Resources Conservation Service. (2008/2023). Soil Quality Indicators: Bulk Density.",
+      "url": "https://www.nrcs.usda.gov/sites/default/files/2023-01/Soil%20Quality-Indicators-Bulk%20Density.pdf",
+      "tipo": "documento_tecnico",
+      "alcance": "Criterios generales por clase textural para densidad aparente que restringe crecimiento radicular. No son umbrales específicos por cultivo.",
+      "fecha_consulta": "2026-11-14",
+      "estado_documental": "referencia_identificada; recuperacion_directa_y_extraccion_pendientes",
+      "uso_en_catalogo": {
+        "categoria": "pendiente_sin_datos_incorporados",
+        "evidencias_suelo_ids": [],
+        "evidencias_agroclimaticas_ids": [],
+        "cultivos_ids": []
+      },
+      "nota_consolidacion": "No se incorpora como evidencia extraída ni como contraste independiente de WEB02. WEB02 reproduce criterios generales atribuidos a USDA desde una publicación de Oklahoma State University."
+    }
+  ],
+  "equivalencias_bibliograficas": [
+    {
+      "id_en_v072": "S26",
+      "id_canonico": "WEB01",
+      "motivo": "Mismo capítulo de mora INIAP; se mantiene un registro canónico."
+    },
+    {
+      "id_en_v072": "S27",
+      "id_canonico": "WEB05",
+      "motivo": "Mismo DOI del artículo de germinación de uvilla."
+    },
+    {
+      "id_en_v072": "S29",
+      "id_canonico": "WEB03",
+      "motivo": "Misma guía UF/IFAS HS1499."
+    },
+    {
+      "ids": [
+        "AC06",
+        "CL02"
+      ],
+      "motivo": "Misma URL FAO; IDs históricos preservados por trazabilidad. No contar como dos publicaciones independientes."
+    }
+  ]
+}

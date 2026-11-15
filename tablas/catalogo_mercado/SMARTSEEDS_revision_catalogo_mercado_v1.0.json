@@ -1,0 +1,389 @@
+{
+  "archivo_origen": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\CATALOGO PRODUCCIÓN.json",
+  "sha256": "08e20c7038e6c6e3357b00c1b2ba08e7d092fe788607eacd891107925b8d3793",
+  "registros": [
+    {
+      "cultivo_id": "C001",
+      "registro_original": {
+        "ID": "C001",
+        "Cultivo": "Fréjol",
+        "Superficie_Cosechada": "N/D (Cultivo asociado)",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno. Sin importaciones/exportaciones masivas registradas. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "Sí hay producción de fréjol solo y asociado en ESPAC 2025; también filas de comercio en Excel. Se incorporan separadas por estado."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C002",
+      "registro_original": {
+        "ID": "C002",
+        "Cultivo": "Arveja",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Insuficiente. Demanda supera producción con picos de tensión en Abril y Agosto. Se importaron 2,232.2 TM en 2026 para cubrir el déficit. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C003",
+      "registro_original": {
+        "ID": "C003",
+        "Cultivo": "Haba",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno. Sin importaciones/exportaciones masivas registradas. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C004",
+      "registro_original": {
+        "ID": "C004",
+        "Cultivo": "Lenteja",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Insuficiente. Demanda supera producción (déficit crítico). Se importaron 16,701.6 TM en 2026 para cubrir la falta de oferta local. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C005",
+      "registro_original": {
+        "ID": "C005",
+        "Cultivo": "Chocho",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno. Sin importaciones masivas registradas. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C006",
+      "registro_original": {
+        "ID": "C006",
+        "Cultivo": "Trigo",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Insuficiente. Demanda industrial supera ampliamente la producción, tensionando precios en Abril y Agosto. Se importaron 1,249,517.8 TM en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C007",
+      "registro_original": {
+        "ID": "C007",
+        "Cultivo": "Cebada",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno (consumo directo). Sin importaciones masivas registradas para el grano primario. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C008",
+      "registro_original": {
+        "ID": "C008",
+        "Cultivo": "Maíz Duro",
+        "Superficie_Cosechada": "53,107 ha (2021) - Fuente: BOLETIN AGROPECUARIO.pdf",
+        "Produccion_Nacional": "319,823 TM (2021) - Fuente: BOLETIN AGROPECUARIO.pdf",
+        "Balance_Mercado": "Insuficiente. Pese al volumen, la agroindustria supera la producción presionando precios en Abril y Agosto. Se importaron 36,949.5 TM en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo.",
+        "53 107 ha y 319 823 t corresponden a maíz duro DE VERANO, IV trimestre 2021 (MER05 PDF 10), no total anual.",
+        "36 949,5 t mezcla maíz duro seco, suave/mote/dulce y dulce procesado. Separar filas 27–29 del comercio.",
+        "C008 conserva maíz general como en catálogo agronómico: variantes duro/suave y choclo/seco."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C009",
+      "registro_original": {
+        "ID": "C009",
+        "Cultivo": "Quinua",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente (Superávit). La producción abastece el mercado y genera exportaciones por 230.4 TM frente a importaciones mínimas de 102.5 TM en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C010",
+      "registro_original": {
+        "ID": "C010",
+        "Cultivo": "Amaranto",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno. Sin importaciones/exportaciones masivas registradas. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C011",
+      "registro_original": {
+        "ID": "C011",
+        "Cultivo": "Papa",
+        "Superficie_Cosechada": "15,979 ha (2025) - Fuente: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+        "Produccion_Nacional": "200,000 TM (2025) - Fuente: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+        "Balance_Mercado": "Insuficiente. El consumo de procesados supera la producción local en Abril y Agosto. Obligó a importar 10,617.3 TM de congelados en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo.",
+        "200 000 t deriva de redondear 0,2 millones; tabulado MER07 T43 F12 reporta 229 370,8935 t. Se usa el tabulado.",
+        "Papa congelada/conserva se mantiene separada de tubérculo fresco."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C012",
+      "registro_original": {
+        "ID": "C012",
+        "Cultivo": "Cacao",
+        "Superficie_Cosechada": "611,242 ha (2025) - Fuentes: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf, Atlas Agroeconómico Ecuador 2026.pdf",
+        "Produccion_Nacional": "501,244 TM (2025) - Fuentes: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf, Atlas Agroeconómico Ecuador 2026.pdf",
+        "Balance_Mercado": "Suficiente (Superávit). Excedente de exportación masivo: se enviaron 232,613.2 TM al extranjero frente a apenas 36.7 TM de importación. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "611 242 ha es superficie cosechada (T14 E11), no plantada. El boletín contiene erratas; 501 244 corresponde a toneladas, no millones de toneladas."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C013",
+      "registro_original": {
+        "ID": "C013",
+        "Cultivo": "Yuca",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno. Sin importaciones/exportaciones masivas registradas. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C014",
+      "registro_original": {
+        "ID": "C014",
+        "Cultivo": "Tomate",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Insuficiente. El consumo industrial supera la producción de campo en Abril y Agosto. Se importaron 4,892.2 TM de derivados en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C015",
+      "registro_original": {
+        "ID": "C015",
+        "Cultivo": "Soya",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Insuficiente. Demanda pecuaria supera dramáticamente la producción en Noviembre y Diciembre. Se importaron 1,491,554.6 TM en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo.",
+        "1 491 554,6 t suma aceite y torta; importación de soya en grano en fila 45 es cero en enero–julio 2026. No atribuir derivados al grano."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C016",
+      "registro_original": {
+        "ID": "C016",
+        "Cultivo": "Rosa",
+        "Superficie_Cosechada": "3,911 ha (2025) - Fuente: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+        "Produccion_Nacional": "2,858 millones de tallos (2025) - Fuente: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+        "Balance_Mercado": "Suficiente (Superávit). Oferta dominada por la exportación (111,770.3 TM despachadas en 2026). - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Comercio fila 43 agrupa rosas Y OTRAS flores. No determina exportaciones ni ausencia de importaciones exclusivas de rosa o clavel."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C017",
+      "registro_original": {
+        "ID": "C017",
+        "Cultivo": "Clavel",
+        "Superficie_Cosechada": "183 ha (2025) - Fuente: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+        "Produccion_Nacional": "N/D - Fuente: Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+        "Balance_Mercado": "Suficiente. Producción florícola consolidada de exportación sin registro de importaciones. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "Comercio fila 43 agrupa rosas Y OTRAS flores. No determina exportaciones ni ausencia de importaciones exclusivas de rosa o clavel.",
+        "Hay producción de clavel en T9 F19:F20, por sistema; N/D del catálogo inicial era incompleto."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C018",
+      "registro_original": {
+        "ID": "C018",
+        "Cultivo": "Aguacate",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente para mercado interno. Demanda local cubierta sin importaciones masivas registradas. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C019",
+      "registro_original": {
+        "ID": "C019",
+        "Cultivo": "Mora",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Insuficiente (Leve). Demanda de pulpas genera un ligero déficit en Abril y Agosto, requiriendo importar 106.3 TM en 2026. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx, precios-productor-ponderado.xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo.",
+        "Los picos mensuales de demanda no están demostrados por precios; no se trasladan al catálogo operativo.",
+        "Comercio de mora incluye frambuesa y otras (nota 13); no es volumen exclusivo de mora de Castilla ni de pulpa."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C020",
+      "registro_original": {
+        "ID": "C020",
+        "Cultivo": "Uvilla",
+        "Superficie_Cosechada": "N/D",
+        "Produccion_Nacional": "N/D",
+        "Balance_Mercado": "Suficiente (Superávit). La producción satisface demanda local y generó exportaciones por 957.9 TM en 2026 sin registrar importaciones. - Fuentes: comercio-exterior-agropecuario-agroindustrial (1).xlsx"
+      },
+      "hallazgos": [
+        "Balance_Mercado no tiene medición de demanda, existencias ni metodología verificable; se retira como clasificación operativa.",
+        "Ausencia de una fila en canasta de principales productos no demuestra ausencia de comercio.",
+        "El archivo de comercio respalda enero–julio de 2026; no el año completo."
+      ],
+      "tratamiento": "original_preservado_solo_en_auditoria; reconstruccion_desde_fuentes"
+    },
+    {
+      "cultivo_id": "C021",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    },
+    {
+      "cultivo_id": "C022",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    },
+    {
+      "cultivo_id": "C023",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    },
+    {
+      "cultivo_id": "C024",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    },
+    {
+      "cultivo_id": "C025",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    },
+    {
+      "cultivo_id": "C026",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    },
+    {
+      "cultivo_id": "C027",
+      "hallazgos": [
+        "Ficha nueva integrada con ID compatible con catálogo agronómico. Disponibilidad de datos varía por dominio."
+      ]
+    }
+  ],
+  "incidencias_fuentes": [
+    {
+      "id": "INC-HBA-PAPA-2025",
+      "registros_ids": [
+        "HBA-0019",
+        "EP-00077"
+      ],
+      "descripcion": "Producción neta HBA 2025 supera producción bruta ESPAC 2025. Versiones/transformaciones no conciliadas. No combinarlas para calcular oferta o déficit.",
+      "estado": "pendiente_aclaracion_de_fuente"
+    }
+  ]
+}

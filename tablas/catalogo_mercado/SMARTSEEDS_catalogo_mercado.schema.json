@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SMARTSEEDS catálogo económico 1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalogo_version",
+    "fuentes",
+    "cultivos",
+    "productos",
+    "territorios",
+    "produccion",
+    "comercio_exterior",
+    "precios",
+    "suministro_HBA"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "catalogo_version": {
+      "type": "string"
+    },
+    "cultivos": {
+      "type": "array",
+      "minItems": 27,
+      "maxItems": 27,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "nombre",
+          "especie_cientifica",
+          "productos_ids",
+          "registros_ids",
+          "demanda",
+          "balance_oferta_demanda"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^C0(?:0[1-9]|1[0-9]|2[0-7])$"
+          },
+          "registros_ids": {
+            "type": "object",
+            "required": [
+              "produccion",
+              "comercio_exterior",
+              "precios",
+              "suministro_HBA"
+            ]
+          }
+        }
+      }
+    },
+    "productos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "nombre_fuente",
+          "cultivos_relacionados_ids",
+          "forma_producto"
+        ]
+      }
+    },
+    "produccion": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/registro"
+          },
+          {
+            "type": "object",
+            "required": [
+              "anio",
+              "territorio_id",
+              "produccion",
+              "superficie_cosechada"
+            ],
+            "properties": {
+              "produccion": {
+                "$ref": "#/$defs/medida"
+              },
+              "superficie_cosechada": {
+                "$ref": "#/$defs/medida"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "comercio_exterior": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/registro"
+          },
+          {
+            "required": [
+              "periodo_inicio",
+              "periodo_fin",
+              "exportacion_t",
+              "importacion_t",
+              "es_balance_oferta_demanda"
+            ],
+            "properties": {
+              "es_balance_oferta_demanda": {
+                "const": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "precios": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/registro"
+          },
+          {
+            "required": [
+              "periodo",
+              "canal",
+              "precio_promedio_presentacion_usd",
+              "precio_promedio_usd_kg_publicado"
+            ],
+            "properties": {
+              "canal": {
+                "enum": [
+                  "productor",
+                  "mayorista",
+                  "bodega"
+                ]
+              },
+              "periodo": {
+                "type": "string",
+                "pattern": "^20[0-9]{2}-(0[1-9]|1[0-2])$"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "suministro_HBA": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/registro"
+          },
+          {
+            "required": [
+              "anio",
+              "naturaleza",
+              "suministro_disponible_utilizacion_interna_t"
+            ]
+          }
+        ]
+      }
+    },
+    "fuentes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "titulo",
+          "tipo",
+          "fecha_consulta"
+        ]
+      }
+    },
+    "territorios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "nombre",
+          "nivel"
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "registro": {
+      "type": "object",
+      "required": [
+        "id",
+        "producto_id",
+        "procedencia"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "producto_id": {
+          "type": "string"
+        },
+        "procedencia": {
+          "type": "object",
+          "required": [
+            "fuente_id",
+            "hoja",
+            "fila",
+            "celdas"
+          ]
+        }
+      }
+    },
+    "medida": {
+      "type": "object",
+      "required": [
+        "valor",
+        "unidad",
+        "estado"
+      ],
+      "properties": {
+        "valor": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "estado": {
+          "enum": [
+            "reportado",
+            "no_reportado"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "cultivos": 27,
+  "productos_presentaciones": 118,
+  "registros": {
+    "produccion": 477,
+    "comercio_exterior": 84,
+    "precios": 2831,
+    "suministro_HBA": 24
+  },
+  "fuentes": 12,
+  "ids_unicos": true,
+  "referencias_resueltas": true,
+  "oferta_demanda_no_inventada": true,
+  "periodos_2026_comercio_parciales": true,
+  "faltantes_no_convertidos_a_cero": true,
+  "registro_con_nulo_produccion": 291,
+  "precios_sin_equivalencia_masa": 0,
+  "precio_kg_con_diferencia_material": 0,
+  "incidencias_HBA": 1,
+  "validacion": "integridad, coordenadas de extracción, fechas, unidades, conciliación de saldos comerciales y distinción de productos; no validación económica predictiva",
+  "exclusiones": {
+    "producto_fuera_catalogo_o_identidad_incompatible": 12336,
+    "precio_fuera_tres_provincias": 11234
+  }
+}

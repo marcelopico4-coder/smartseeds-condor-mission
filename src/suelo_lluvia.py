@@ -166,19 +166,13 @@ def leer_suelo(clave_zona: str, lat: np.ndarray, lon: np.ndarray) -> dict[str, n
 def leer_lluvia(clave_zona: str, lat: np.ndarray, lon: np.ndarray, url: str = URL_CHELSA,
                 nombre: str = "lluvia del año") -> np.ndarray:
     """Lee en remoto la ventana de la zona de un mapa de lluvia de CHELSA (mm)."""
-    import rasterio
-    from rasterio.windows import from_bounds
-    from rasterio.windows import transform as transformar
+    from src.lectura_remota import leer_recuadro   # lee solo la ventana (ver ahí la forma "aparte")
 
     lon_min, lat_min, lon_max, lat_max = ZONAS[clave_zona]["recuadro"]
-    with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif",
-                      GDAL_HTTP_TIMEOUT="120", GDAL_HTTP_MAX_RETRY="3"):
-        with rasterio.open("/vsicurl/" + url) as src:
-            ventana = from_bounds(lon_min - MARGEN_GRADOS, lat_min - MARGEN_GRADOS,
-                                  lon_max + MARGEN_GRADOS, lat_max + MARGEN_GRADOS,
-                                  src.transform).round_offsets().round_lengths()
-            banda = src.read(1, window=ventana).astype(float) * src.scales[0] + src.offsets[0]
-            origen = transformar(ventana, src.transform)
+    leido = leer_recuadro(url, (lon_min - MARGEN_GRADOS, lat_min - MARGEN_GRADOS,
+                                lon_max + MARGEN_GRADOS, lat_max + MARGEN_GRADOS))
+    banda = leido["datos"].astype(float) * leido["escala"] + leido["desfase"]
+    origen = leido["transformacion"]
     lluvia = _valor_mas_cercano(origen, banda, lat, lon)
     print(f"  CHELSA {nombre}: de {lluvia.min():.0f} a {lluvia.max():.0f} mm (mediana {np.median(lluvia):.0f})")
     return lluvia

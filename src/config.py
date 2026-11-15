@@ -32,7 +32,26 @@ ZONAS = {
         "nisar_path": 112,
         "nisar_direccion": "DESCENDING",
     },
-    # "sierra": {...}   # POR DEFINIR: agregar aquí la zona de la Sierra
+    # --- Sierra (agregadas el 14 nov al unir el trabajo de Cotopaxi y Tungurahua) ---
+    # Cuadros de 0,4° como los de la Costa, puestos sobre los valles agrícolas. El trabajo de la
+    # Sierra usaba recuadros más grandes (toda la provincia); se achicaron para que procesar el
+    # radar tarde lo mismo que en la Costa. Si se cambian, hay que volver a procesar la zona.
+    "cotopaxi": {
+        "nombre": "Latacunga – Salcedo – Pujilí – Saquisilí (Sierra, Cotopaxi)",
+        "recuadro": (-78.85, -1.10, -78.45, -0.70),
+        "provincia": "Cotopaxi",
+        # Misma órbita que Santo Domingo. En el trabajo de la Sierra se confirmaron 11 fechas GCOV
+        # (19 jun – 29 oct 2026) sobre la provincia; falta comprobarlo con este recuadro.
+        "nisar_path": 76,
+        "nisar_direccion": "ASCENDING",
+    },
+    "tungurahua": {
+        "nombre": "Ambato – Píllaro – Pelileo – Quero (Sierra, Tungurahua)",
+        "recuadro": (-78.80, -1.50, -78.40, -1.10),
+        "provincia": "Tungurahua",
+        "nisar_path": 76,
+        "nisar_direccion": "ASCENDING",
+    },
 }
 
 # --- Tabla por celda (contrato entre módulos) -------------------------------

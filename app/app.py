@@ -7,6 +7,7 @@ Ejecutar desde la raíz del repositorio (con el entorno `condor` activado):
 La app NO procesa radar en vivo: lee las tablas de `datos/procesados/` y solo
 consulta en línea el clima de NASA POWER (es una consulta liviana).
 """
+import re
 import sys
 from pathlib import Path
 
@@ -43,6 +44,12 @@ from src.terreno import centro as centro_terreno  # noqa: E402  (aquí `centro` 
 st.set_page_config(page_title="SmartSeeds", page_icon="🌱", layout="wide")
 
 CENTRO_ECUADOR, ZOOM_ECUADOR = (-1.4, -78.6), 7
+# Acercamiento del mapa cuando se marca un terreno: en una zona detallada se alcanza a ver el
+# cuadro de datos (~250 m); fuera de ellas el dato es de ~50 km y basta ver los alrededores.
+ZOOM_TERRENO, ZOOM_TERRENO_NACIONAL = 15, 12
+# Terrenos de ejemplo (un toque y se analizan): nombre del botón -> (latitud, longitud)
+EJEMPLOS = {"Santo Domingo": (-0.33, -79.12), "Daule (arrozal)": (-1.9356, -79.6511),
+            "Píllaro": (-1.18556, -78.54778), "Saquisilí": (-0.83889, -78.64)}
 ICONO_MERCADO = {"alta": "🟢", "media": "🟡", "saturado": "🔴", "sin_datos": "⚪"}
 EVIDENCIA_CORTA = {"fuerte": "Sí, y rinde bien", "presente": "Sí, pero rinde menos",
                    "poca": "Casi no", "sin_datos": "Sin datos"}
@@ -257,6 +264,57 @@ def tiene(valor) -> bool:
     return valor is not None and not pd.isna(valor)
 
 
+def cuadro_de_datos(lat: float, lon: float):
+    """Esquinas [(sur, oeste), (norte, este)] del cuadro de datos (~250 m) que contiene el punto.
+
+    None si el punto está fuera de las zonas detalladas. Es el mismo cuadro que elige
+    `celda_mas_cercana`: los centros de las celdas están en la mitad de cada cuadro.
+    """
+    clave = zona_de_punto(lat, lon)
+    if not clave:
+        return None
+    lon_min, _, _, lat_max = ZONAS[clave]["recuadro"]
+    filas, columnas, paso = forma_rejilla(ZONAS[clave]["recuadro"])
+    fila = min(max(int((lat_max - lat) / paso), 0), filas - 1)
+    columna = min(max(int((lon - lon_min) / paso), 0), columnas - 1)
+    norte, oeste = lat_max - fila * paso, lon_min + columna * paso
+    return [(norte - paso, oeste), (norte, oeste + paso)]
+
+
+def enfocar_terreno(lat: float, lon: float) -> None:
+    """Anota que el mapa debe centrarse en ese terreno y acercarse a él.
+
+    Nunca aleja el mapa: si ya estaba más cerca (por un terreno marcado antes), se queda así.
+    """
+    acercamiento = ZOOM_TERRENO if zona_de_punto(lat, lon) else ZOOM_TERRENO_NACIONAL
+    anterior = st.session_state.get("enfoque", (None, 0))[1]
+    st.session_state["enfoque"] = ((lat, lon), max(acercamiento, anterior))
+
+
+def rendimiento_corto(texto: str | None) -> tuple[str | None, str | None]:
+    """(quintales por cuadra, ámbito) sacados de la frase de rendimiento de `src.mercado`.
+
+    Esa frase dice "En el país rinde en promedio unas 1.4 toneladas ... (cerca de 21 quintales
+    por cuadra)." Devuelve ("21", "el país"), o (None, None) si no hay dato de rendimiento.
+    """
+    hallado = re.search(r"^En (.+?) rinde .*cerca de ([\d.,]+) quintales por cuadra", texto or "")
+    return (hallado.group(2), hallado.group(1)) if hallado else (None, None)
+
+
+def resumen_de_condiciones(factores: list[dict]) -> str:
+    """Una línea que cuenta las condiciones del terreno a favor, a medias y en contra del cultivo."""
+    notas = [f["nota"] for f in factores if f["nota"] is not None]
+    a_favor = sum(n >= 1 for n in notas)
+    a_medias = sum(0 < n < 1 for n in notas)
+    en_contra = sum(n <= 0 for n in notas)
+    partes = [f"✅ {a_favor} a favor"]
+    if a_medias:
+        partes.append(f"⚠️ {a_medias} a medias")
+    if en_contra:
+        partes.append(f"❌ {en_contra} en contra")
+    return "Condiciones de tu terreno para este cultivo: " + " · ".join(partes)
+
+
 # --- Barra lateral ----------------------------------------------------------
 with st.sidebar:
     st.title("🌱 SmartSeeds")
@@ -286,7 +344,13 @@ if opciones[vista]:
 else:
     centro, zoom = CENTRO_ECUADOR, ZOOM_ECUADOR
 
-col_mapa, col_resultado = st.columns([3, 2], gap="large")
+# Hacia dónde mira el mapa ("enfoque"): la vista elegida en "Ir a" o el terreno marcado, lo que
+# haya pasado de último. Así, al marcar un terreno el mapa se acerca a él en vez de quedarse lejos.
+if st.session_state.get("vista_mostrada") != vista:
+    st.session_state["vista_mostrada"] = vista
+    st.session_state["enfoque"] = (centro, zoom)
+
+col_mapa, col_resultado = st.columns([5, 4], gap="large")
 
 with col_mapa:
     modo = st.radio("¿Cómo quieres marcar tu terreno?", [MODO_PUNTO, MODO_DIBUJO], horizontal=True)
@@ -312,8 +376,11 @@ with col_mapa:
                 folium.raster_layers.ImageOverlay(
                     imagen, bounds=[[lat_min, lon_min], [lat_max, lon_max]], origin="upper",
                     pixelated=True, interactive=False, control=False).add_to(mapa)
+        # El letrero queda fijo en el centro de la zona (sticky=False): si siguiera al cursor
+        # taparía justo el lugar donde se va a tocar el terreno.
         folium.Rectangle([(lat_min, lon_min), (lat_max, lon_max)], color="#2e7d32", weight=2,
-                         fill=True, fill_opacity=0.05, tooltip=f"Zona detallada: {z['nombre']}",
+                         fill=True, fill_opacity=0.05,
+                         tooltip=folium.Tooltip(f"Zona detallada: {z['nombre']}", sticky=False),
                          interactive=False).add_to(mapa)
     punto, contorno = None, None
 
@@ -333,8 +400,9 @@ with col_mapa:
              # Ojo: NO pasar {"edit": True}. Con eso el botón de corregir se activa pero no
              # aparecen las esquinas para arrastrar (falla interna de Leaflet.draw 1.0).
              edit_options={"poly": {"allowIntersection": False}}).add_to(mapa)
-        salida = st_folium(mapa, height=560, use_container_width=True, center=centro, zoom=zoom,
-                           returned_objects=["all_drawings"], key="mapa_dibujo")
+        centro_mapa, zoom_mapa = st.session_state["enfoque"]
+        salida = st_folium(mapa, height=560, use_container_width=True, center=centro_mapa,
+                           zoom=zoom_mapa, returned_objects=["all_drawings"], key="mapa_dibujo")
         dibujos = [v for v in map(vertices_de_geojson, (salida or {}).get("all_drawings") or [])
                    if v]
         if dibujos:
@@ -348,28 +416,54 @@ with col_mapa:
             try:
                 st.session_state["punto"] = (float(st.query_params["lat"]),
                                              float(st.query_params["lon"]))
+                enfocar_terreno(*st.session_state["punto"])
             except ValueError:
                 pass
+        # Terrenos de ejemplo: un toque y se analiza (sirven para probar la app sin buscar en el mapa)
+        st.caption("Toca tu terreno en el mapa, o prueba con un terreno de ejemplo:")
+        anchos = [len(nombre) + 4 for nombre in EJEMPLOS]       # botón más ancho si el nombre es largo
+        for columna_boton, (nombre_ejemplo, lugar) in zip(st.columns(anchos), EJEMPLOS.items()):
+            if columna_boton.button(nombre_ejemplo, key=f"ejemplo_{nombre_ejemplo}",
+                                    use_container_width=True):
+                st.session_state["punto"] = lugar
+                enfocar_terreno(*lugar)
         punto = st.session_state.get("punto")
         if punto:
-            folium.Marker(punto, tooltip="Tu terreno").add_to(marcador)
-        salida = st_folium(mapa, height=560, use_container_width=True, center=centro, zoom=zoom,
-                           feature_group_to_add=marcador, returned_objects=["last_clicked"],
-                           key="mapa")
+            # Punto dibujado (no una imagen de alfiler): la imagen a veces no carga y sale un ícono roto
+            folium.CircleMarker(punto, radius=7, color="#ffffff", weight=2, fill=True,
+                                fill_color="#e65100", fill_opacity=1, tooltip="Tu terreno").add_to(marcador)
+            cuadro = cuadro_de_datos(*punto)
+            if cuadro:          # el cuadro de ~250 m cuyos datos se usan para este terreno
+                folium.Rectangle(cuadro, color="#e65100", weight=2, fill=False,
+                                 interactive=False).add_to(marcador)
+        centro_mapa, zoom_mapa = st.session_state["enfoque"]
+        salida = st_folium(mapa, height=560, use_container_width=True, center=centro_mapa,
+                           zoom=zoom_mapa, feature_group_to_add=marcador,
+                           returned_objects=["last_clicked"], key="mapa")
+        if punto and cuadro_de_datos(*punto):
+            st.caption("🟧 El cuadro naranja es la parte del mapa cuyos datos se analizan (~250 m de lado, "
+                       "unas 6 hectáreas). Si tu terreno es más grande, usa **Dibujar mi terreno**.")
         clic = (salida or {}).get("last_clicked")
         if clic:
             nuevo = (round(clic["lat"], 5), round(clic["lng"], 5))
-            if nuevo != punto:
-                st.session_state["punto"] = nuevo
-                st.rerun()
+            # El mapa sigue recordando el último toque: cada toque se atiende una sola vez, para
+            # que no le gane a un terreno de ejemplo elegido después.
+            if nuevo != st.session_state.get("clic_atendido"):
+                st.session_state["clic_atendido"] = nuevo
+                if nuevo != punto:
+                    st.session_state["punto"] = nuevo
+                    enfocar_terreno(*nuevo)
+                    st.rerun()
 
 # --- Resultados -------------------------------------------------------------
+# Orden en pantalla: primero la respuesta (qué sembrar) y después, plegado, el detalle del terreno.
 with col_resultado:
     if modo == MODO_DIBUJO and not contorno:
         st.info("👈 Dibuja el contorno de tu terreno en el mapa para analizarlo.")
         st.stop()
     if modo == MODO_PUNTO and not punto:
-        st.info("👈 Toca un punto del mapa para analizar ese terreno.")
+        st.info("👈 Toca un punto del mapa para analizar ese terreno, o prueba con uno de los "
+                "terrenos de ejemplo.")
         st.stop()
 
     lat, lon = centro_terreno(contorno) if contorno else punto
@@ -383,6 +477,7 @@ with col_resultado:
         st.error(f"No se pudo consultar el clima de NASA POWER. Revisa tu internet.\n\n{error}")
         st.stop()
 
+    # --- 1. Tu terreno, en pocas líneas ---
     st.subheader("Tu terreno")
     if contorno:
         st.caption(f"Terreno dibujado · centro en latitud {lat:.4f}, longitud {lon:.4f}")
@@ -405,25 +500,148 @@ with col_resultado:
     else:
         st.info("Nivel nacional: clima y altura aproximados (promedio de ~50 km).")
 
-    (m1, m2), (m3, m4) = st.columns(2), st.columns(2)
-    m1.metric("Altura", f"{celda['altura']:.0f} m" if tiene(celda["altura"]) else "—")
-    m2.metric("Temperatura", f"{celda['temp']:.1f} °C" if tiene(celda["temp"]) else "—")
-    m3.metric("Lluvia", f"{celda['lluvia']:.0f} mm" if tiene(celda["lluvia"]) else "—",
-              help="Milímetros de lluvia por año (promedio de muchos años)")
-    m4.metric("Pendiente", f"{celda['pendiente']:.0f}°" if tiene(celda["pendiente"]) else "—")
+    # Los cuatro datos principales en una sola línea (no se cortan en pantallas angostas)
+    resumen = [texto for texto in (
+        f"⛰️ **{celda['altura']:.0f} m** de altura" if tiene(celda["altura"]) else None,
+        f"🌡️ **{celda['temp']:.1f} °C**" if tiene(celda["temp"]) else None,
+        f"🌧️ **{celda['lluvia']:.0f} mm** de lluvia al año" if tiene(celda["lluvia"]) else None,
+        f"📐 pendiente de **{celda['pendiente']:.0f}°**" if tiene(celda["pendiente"]) else None) if texto]
+    if resumen:
+        st.markdown(" · ".join(resumen))
 
-    # Detalle local: lluvia a 1 km y suelo a 250 m (solo en las zonas detalladas)
-    if clave_zona and tiene(celda.get("lluvia_power")):
-        st.caption(f"Lluvia de tu terreno según el mapa CHELSA (cuadros de 1 km, promedio 1981–2010). "
-                   f"NASA POWER, que solo da un valor para toda la zona, marca {celda['lluvia_power']:.0f} mm.")
-    if clave_zona and suelo_texto(celda):
-        st.markdown(f"🧪 **Suelo de tu terreno:** {suelo_texto(celda)}.")
-        st.caption("Según el mapa mundial SoilGrids (cuadros de 250 m). Es una orientación: "
-                   "no reemplaza un análisis de suelo hecho en tu terreno.")
+    # Parte del terreno que el radar ve como construcciones o agua (no cultivable)
+    fuera = sum(t["fraccion"] for t in tipos if not t["cultivable"]) if tipos else 0.0
+    if fuera >= 0.995:
+        st.warning("El radar ve este lugar como zona construida o agua, no como "
+                   "terreno de cultivo. Toma la recomendación solo como referencia "
+                   "o marca otro lugar.")
 
-    if clave_zona:
-        st.markdown("**Lo que vio el radar NISAR** (pasadas cada 12 días, a través de las nubes)")
-        if tiene(celda.get("vegetacion")):
+    # --- 2. Dos preguntas sencillas al agricultor. No dependen del terreno elegido: se conservan ---
+    p1, p2 = st.columns(2)
+    riego = p1.radio("¿Tienes riego en tu terreno?", [RIEGO_NO, RIEGO_SI], horizontal=True,
+                     key="riego",
+                     help="Con riego, la falta de lluvia resta menos puntos, pero no desaparece: "
+                          "mientras más agua haya que regar, menos puntos. El riego no cambia "
+                          "el clima, la pendiente ni las inundaciones.") == RIEGO_SI
+    preferencia = PREFERENCIAS[p2.radio(
+        "¿Qué buscas?", list(PREFERENCIAS), horizontal=True, key="preferencia",
+        help="No cambia el puntaje. Solo decide el orden entre cultivos con aptitud parecida.")]
+    celda["riego"] = riego
+
+    provincias = sorted(CAPITALES)
+    sugerida = provincia_sugerida(lat, lon)
+    provincia = st.selectbox("Provincia (para el mercado)", provincias,
+                             index=provincias.index(sugerida), key=f"prov_{lat}_{lon}",
+                             help="Se sugiere la más cercana; corrígela si no es la tuya.")
+
+    todos = evaluar_todos(celda, provincia, preferencia=preferencia)
+    mejores = [x for x in todos if x["puntaje"] >= PUNTAJE_MINIMO][:3]
+
+    # --- 3. La respuesta: cultivos recomendados ---
+    st.subheader("Cultivos recomendados")
+    if not mejores:
+        st.warning("Ningún cultivo de la lista alcanza una aptitud suficiente en este terreno.")
+    for i, cultivo in enumerate(mejores, start=1):
+        with st.container(border=True):
+            a, b = st.columns([5, 2])
+            a.markdown(f"### {i}. {cultivo['nombre']}")
+            a.caption(f"*{cultivo['nombre_cientifico']}* · {str(cultivo['tipo']).replace('_', ' ')}")
+            # El puntaje en una sola línea que no se parte ni se corta en columnas angostas
+            b.markdown(f'<div style="text-align:right;white-space:nowrap;line-height:1.2">'
+                       f'<span style="font-size:0.85rem;opacity:0.7">Aptitud</span><br>'
+                       f'<span style="font-size:1.9rem;font-weight:700">{cultivo["puntaje"]:.0f}</span>'
+                       f'<span style="opacity:0.7"> /100</span></div>', unsafe_allow_html=True)
+            st.progress(min(1.0, cultivo["puntaje"] / 100))
+
+            # Lo que más le importa al agricultor, de un vistazo: cuánto rinde, cuándo cosecha y el mercado
+            d1, d2 = st.columns(2)
+            quintales, ambito = rendimiento_corto(cultivo.get("rendimiento_texto"))
+            if quintales:
+                d1.markdown(f"📦 **{quintales} quintales por cuadra**")
+                d1.caption(f"Lo que rinde en promedio en {ambito}")
+            else:
+                d1.markdown("📦 **Rendimiento: sin dato**")
+                d1.caption("Todavía no hay dato de cuánto rinde")
+            if tiene(cultivo.get("meses")):
+                d2.markdown(f"⏱️ **{cultivo['meses']:.0f} meses**")
+                d2.caption("hasta la primera cosecha")
+            linea = f"{ICONO_MERCADO[cultivo['mercado']]} **{ETIQUETAS[cultivo['mercado']]}**"
+            if cultivo.get("evidencia") and cultivo["evidencia"] != "sin_datos":
+                linea += f" · ¿Se siembra en tu provincia? **{EVIDENCIA_CORTA[cultivo['evidencia']]}**"
+            st.markdown(linea)
+            st.caption(resumen_de_condiciones(cultivo["factores"]))
+
+            with st.expander("¿Por qué? Ver el detalle"):
+                st.markdown(f"{ICONO_MERCADO[cultivo['mercado']]} **{ETIQUETAS[cultivo['mercado']]}** — "
+                            f"{cultivo['mercado_texto']}")
+                if cultivo.get("evidencia") and cultivo["evidencia"] != "sin_datos":
+                    st.markdown(f"🌾 **{ETIQUETAS_EVIDENCIA[cultivo['evidencia']]}** — "
+                                f"{cultivo['evidencia_texto']}")
+                if cultivo.get("rendimiento_texto"):
+                    st.markdown(f"📦 {cultivo['rendimiento_texto']}")
+                if cultivo.get("tiempo_texto"):
+                    st.markdown(f"⏱️ {cultivo['tiempo_texto']}")
+                st.markdown("**Condiciones de tu terreno para este cultivo**")
+                for f in cultivo["factores"]:
+                    icono = "•" if f["nota"] is None else "✅" if f["nota"] >= 1 else \
+                            "⚠️" if f["nota"] > 0 else "❌"
+                    st.markdown(f"{icono} {f['texto']}")
+                if cultivo.get("mercado_fuente"):
+                    st.caption(f"Mercado y rendimiento: se compara 2024 con 2025, con datos de tu provincia "
+                               f"si los hay y, si no, del país. Fuente: {cultivo['mercado_fuente']}")
+                if cultivo.get("suelo"):
+                    st.markdown(f"🧪 **Suelo que prefiere:** {cultivo['suelo']['texto']}")
+                    st.caption(f"Dato de referencia del catálogo del equipo. En el puntaje solo cuenta la "
+                               f"acidez (pH) de tu terreno, cuando el mapa de suelos la tiene. "
+                               f"Fuente: {cultivo['suelo']['fuente']}")
+
+    # Empates: se avisa cuáles otros cultivos tienen la misma aptitud que el tercero
+    iguales = empatados(todos) if len(mejores) == 3 else []
+    if iguales:
+        st.info(f"**Con una aptitud parecida (menos de {BANDA_PUNTOS} puntos de diferencia) también están:** "
+                + ", ".join(f"{x['nombre']} ({x['puntaje']:.0f})" for x in iguales)
+                + ". Entre cultivos de aptitud parecida van primero los que se siembran y rinden bien "
+                  "en tu provincia, luego los de mejor mercado y al final lo que elegiste en "
+                  "\"¿Qué buscas?\".")
+
+    siembras = mas_sembrados(provincia)
+    if siembras:
+        st.caption(f"Lo que más se siembra en {provincia} (INEC, ESPAC {siembras[0]['anio']}): "
+                   + ", ".join(f"{x['nombre'].lower()} ({x['superficie_ha']:,.0f} ha)".replace(",", ".")
+                               for x in siembras) + ".")
+
+    # Terreno grande: no todo el terreno es igual, se muestra qué conviene en cada parte
+    if celdas_contorno is not None and len(celdas_contorno) > 1:
+        reparto = reparto_mejor_cultivo(celdas_contorno, riego=riego, preferencia=preferencia)
+        if len(reparto) > 1:
+            st.subheader("Tu terreno no es igual en todas partes")
+            st.caption("Mejor cultivo en cada parte del terreno, mirando cuadro por cuadro:")
+            for r in reparto:
+                nombre = ("Ningún cultivo de la lista alcanza la aptitud mínima"
+                          if r["cultivo"] == "ninguno" else r["nombre"])
+                st.markdown(f"- **{r['fraccion']:.0%} del terreno:** {nombre}")
+
+    # --- 4. El detalle del terreno, plegado: clima, suelo, radar y vecinos ---
+    hay_radar = bool(clave_zona) and tiene(celda.get("vegetacion"))
+    with st.expander("🔎 Ver el detalle de tu terreno: clima, suelo, radar y vecinos"):
+        (m1, m2), (m3, m4) = st.columns(2), st.columns(2)
+        m1.metric("Altura", f"{celda['altura']:.0f} m" if tiene(celda["altura"]) else "—")
+        m2.metric("Temperatura", f"{celda['temp']:.1f} °C" if tiene(celda["temp"]) else "—")
+        m3.metric("Lluvia", f"{celda['lluvia']:.0f} mm" if tiene(celda["lluvia"]) else "—",
+                  help="Milímetros de lluvia por año (promedio de muchos años)")
+        m4.metric("Pendiente", f"{celda['pendiente']:.0f}°" if tiene(celda["pendiente"]) else "—")
+
+        # Detalle local: lluvia a 1 km y suelo a 250 m (solo en las zonas detalladas)
+        if clave_zona and tiene(celda.get("lluvia_power")):
+            st.caption(f"Lluvia de tu terreno según el mapa CHELSA (cuadros de 1 km, promedio 1981–2010). "
+                       f"NASA POWER, que solo da un valor para toda la zona, marca {celda['lluvia_power']:.0f} mm.")
+        if clave_zona and suelo_texto(celda):
+            st.markdown(f"🧪 **Suelo de tu terreno:** {suelo_texto(celda)}.")
+            st.caption("Según el mapa mundial SoilGrids (cuadros de 250 m). Es una orientación: "
+                       "no reemplaza un análisis de suelo hecho en tu terreno.")
+
+        if hay_radar:
+            st.markdown("**Lo que vio el radar NISAR** (pasadas cada 12 días, a través de las nubes)")
             n1, n2, n3 = st.columns(3)
             n1.metric("Vegetación", f"{celda['vegetacion']:.2f}",
                       help="Índice de vegetación del radar: 0 = suelo desnudo, 1 = vegetación densa")
@@ -449,12 +667,7 @@ with col_resultado:
                 for t in tipos:
                     parte = f"{t['fraccion']:.0%} · " if len(tipos) > 1 else ""
                     st.markdown(f"- {parte}**{t['nombre']}**. {t['explicacion']}")
-                fuera = sum(t["fraccion"] for t in tipos if not t["cultivable"])
-                if fuera >= 0.995:
-                    st.warning("El radar ve este lugar como zona construida o agua, no como "
-                               "terreno de cultivo. Toma la recomendación solo como referencia "
-                               "o marca otro lugar.")
-                elif fuera > 0:
+                if 0 < fuera < 0.995:
                     st.caption(f"El {fuera:.0%} que el radar ve como zona construida o agua "
                                "no entra en el análisis de tu terreno.")
                 st.caption(texto_evaluacion())
@@ -476,115 +689,39 @@ with col_resultado:
                 if diferencia is not None and abs(diferencia) >= 3:
                     st.markdown(f"- Tu terreno está unos **{abs(diferencia):.0f} m más "
                                 f"{'alto' if diferencia > 0 else 'bajo'}** que sus vecinos.")
-
-            # Serie del radar: lo que vio en cada pasada sobre este terreno
-            numeros = (celdas_contorno["celda"].tolist() if celdas_contorno is not None
-                       else [int(celda["celda"])])
-            series = (series_radar(clave_zona, ruta_serie(clave_zona).stat().st_mtime)
-                      if ruta_serie(clave_zona).exists() else None)
-            pesos = celdas_contorno["peso"].tolist() if celdas_contorno is not None else None
-            serie = serie_del_terreno(series, numeros, pesos) if series else None
-            if serie is not None:
-                with st.expander("📈 Ver lo que vio el radar en cada pasada"):
-                    tema = getattr(getattr(st.context, "theme", None), "type", None) or "light"
-                    for columna, (titulo, ayuda) in GRAFICOS_RADAR.items():
-                        datos = (serie[columna] * 100).dropna() if columna in serie else None
-                        if datos is None or datos.empty:
-                            continue
-                        st.markdown(f"**{titulo}**")
-                        st.line_chart(datos.rename("valor"), height=170,
-                                      x_label="Fecha de la pasada",
-                                      color=COLOR_LINEA.get(tema, COLOR_LINEA["light"]))
-                        st.caption(ayuda)
-                    invierno = (radar_de_invierno(clave_zona, ruta_invierno(clave_zona).stat().st_mtime)
-                                if ruta_invierno(clave_zona).exists() else None)
-                    if invierno:
-                        agua_inv = agua_del_terreno(invierno, numeros, pesos) * 100
-                        if not agua_inv.empty:
-                            st.markdown("**Agua sobre el terreno en la época lluviosa (% del terreno)**")
-                            st.line_chart(agua_inv.rename("valor"), height=170, x_label="Fecha de la pasada",
-                                          color=COLOR_LINEA.get(tema, COLOR_LINEA["light"]))
-                            st.caption("Pasadas de enero a mayo del radar Sentinel-1 (otro satélite, banda C). "
-                                       "Se muestra aparte porque no es NISAR.")
-        else:
+        elif clave_zona:
             st.caption("Este punto queda fuera de la franja que cubre el radar en esta órbita.")
 
-    provincias = sorted(CAPITALES)
-    sugerida = provincia_sugerida(lat, lon)
-    provincia = st.selectbox("Provincia (para el mercado)", provincias,
-                             index=provincias.index(sugerida), key=f"prov_{lat}_{lon}",
-                             help="Se sugiere la más cercana; corrígela si no es la tuya.")
-    siembras = mas_sembrados(provincia)
-    if siembras:
-        st.caption(f"Lo que más se siembra en {provincia} (INEC, ESPAC {siembras[0]['anio']}): "
-                   + ", ".join(f"{x['nombre'].lower()} ({x['superficie_ha']:,.0f} ha)".replace(",", ".")
-                               for x in siembras) + ".")
-
-    # Dos preguntas sencillas al agricultor. No dependen del terreno elegido: se conservan.
-    riego = st.radio("¿Tienes riego en tu terreno?", [RIEGO_NO, RIEGO_SI], horizontal=True,
-                     key="riego",
-                     help="Con riego, la falta de lluvia resta menos puntos, pero no desaparece: "
-                          "mientras más agua haya que regar, menos puntos. El riego no cambia "
-                          "el clima, la pendiente ni las inundaciones.") == RIEGO_SI
-    preferencia = PREFERENCIAS[st.radio(
-        "¿Qué buscas?", list(PREFERENCIAS), horizontal=True, key="preferencia",
-        help="No cambia el puntaje. Solo decide el orden entre cultivos con aptitud parecida.")]
-    celda["riego"] = riego
-
-    todos = evaluar_todos(celda, provincia, preferencia=preferencia)
-    mejores = [x for x in todos if x["puntaje"] >= PUNTAJE_MINIMO][:3]
-
-    st.subheader("Cultivos recomendados")
-    if not mejores:
-        st.warning("Ningún cultivo de la lista alcanza una aptitud suficiente en este terreno.")
-    for i, cultivo in enumerate(mejores, start=1):
-        with st.container(border=True):
-            a, b = st.columns([3, 1])
-            a.markdown(f"### {i}. {cultivo['nombre']}")
-            a.caption(f"*{cultivo['nombre_cientifico']}* · {str(cultivo['tipo']).replace('_', ' ')}")
-            b.metric("Aptitud", f"{cultivo['puntaje']:.0f}/100")
-            st.progress(min(1.0, cultivo["puntaje"] / 100))
-            st.markdown(f"{ICONO_MERCADO[cultivo['mercado']]} **{ETIQUETAS[cultivo['mercado']]}** — "
-                        f"{cultivo['mercado_texto']}")
-            if cultivo.get("evidencia") and cultivo["evidencia"] != "sin_datos":
-                st.markdown(f"🌾 **{ETIQUETAS_EVIDENCIA[cultivo['evidencia']]}** — {cultivo['evidencia_texto']}")
-            if cultivo.get("rendimiento_texto"):
-                st.markdown(f"📦 {cultivo['rendimiento_texto']}")
-            if cultivo.get("tiempo_texto"):
-                st.markdown(f"⏱️ {cultivo['tiempo_texto']}")
-            with st.expander("¿Por qué?", expanded=(i == 1)):
-                for f in cultivo["factores"]:
-                    icono = "•" if f["nota"] is None else "✅" if f["nota"] >= 1 else \
-                            "⚠️" if f["nota"] > 0 else "❌"
-                    st.markdown(f"{icono} {f['texto']}")
-                if cultivo.get("mercado_fuente"):
-                    st.caption(f"Mercado y rendimiento: se compara 2024 con 2025, con datos de tu provincia "
-                               f"si los hay y, si no, del país. Fuente: {cultivo['mercado_fuente']}")
-                if cultivo.get("suelo"):
-                    st.markdown(f"🧪 **Suelo que prefiere:** {cultivo['suelo']['texto']}")
-                    st.caption(f"Dato de referencia del catálogo del equipo. En el puntaje solo cuenta la "
-                               f"acidez (pH) de tu terreno, cuando el mapa de suelos la tiene. "
-                               f"Fuente: {cultivo['suelo']['fuente']}")
-
-    # Empates: se avisa cuáles otros cultivos tienen la misma aptitud que el tercero
-    iguales = empatados(todos) if len(mejores) == 3 else []
-    if iguales:
-        st.info(f"**Con una aptitud parecida (menos de {BANDA_PUNTOS} puntos de diferencia) también están:** "
-                + ", ".join(f"{x['nombre']} ({x['puntaje']:.0f})" for x in iguales)
-                + ". Entre cultivos de aptitud parecida van primero los que se siembran y rinden bien "
-                  "en tu provincia, luego los de mejor mercado y al final lo que elegiste en "
-                  "\"¿Qué buscas?\".")
-
-    # Terreno grande: no todo el terreno es igual, se muestra qué conviene en cada parte
-    if celdas_contorno is not None and len(celdas_contorno) > 1:
-        reparto = reparto_mejor_cultivo(celdas_contorno, riego=riego, preferencia=preferencia)
-        if len(reparto) > 1:
-            st.subheader("Tu terreno no es igual en todas partes")
-            st.caption("Mejor cultivo en cada parte del terreno, mirando cuadro por cuadro:")
-            for r in reparto:
-                nombre = ("Ningún cultivo de la lista alcanza la aptitud mínima"
-                          if r["cultivo"] == "ninguno" else r["nombre"])
-                st.markdown(f"- **{r['fraccion']:.0%} del terreno:** {nombre}")
+    # --- 5. Serie del radar: lo que vio en cada pasada sobre este terreno (otro desplegable) ---
+    if hay_radar:
+        numeros = (celdas_contorno["celda"].tolist() if celdas_contorno is not None
+                   else [int(celda["celda"])])
+        series = (series_radar(clave_zona, ruta_serie(clave_zona).stat().st_mtime)
+                  if ruta_serie(clave_zona).exists() else None)
+        pesos = celdas_contorno["peso"].tolist() if celdas_contorno is not None else None
+        serie = serie_del_terreno(series, numeros, pesos) if series else None
+        if serie is not None:
+            with st.expander("📈 Ver lo que vio el radar en cada pasada"):
+                tema = getattr(getattr(st.context, "theme", None), "type", None) or "light"
+                for columna, (titulo, ayuda) in GRAFICOS_RADAR.items():
+                    datos = (serie[columna] * 100).dropna() if columna in serie else None
+                    if datos is None or datos.empty:
+                        continue
+                    st.markdown(f"**{titulo}**")
+                    st.line_chart(datos.rename("valor"), height=170,
+                                  x_label="Fecha de la pasada",
+                                  color=COLOR_LINEA.get(tema, COLOR_LINEA["light"]))
+                    st.caption(ayuda)
+                invierno = (radar_de_invierno(clave_zona, ruta_invierno(clave_zona).stat().st_mtime)
+                            if ruta_invierno(clave_zona).exists() else None)
+                if invierno:
+                    agua_inv = agua_del_terreno(invierno, numeros, pesos) * 100
+                    if not agua_inv.empty:
+                        st.markdown("**Agua sobre el terreno en la época lluviosa (% del terreno)**")
+                        st.line_chart(agua_inv.rename("valor"), height=170, x_label="Fecha de la pasada",
+                                      color=COLOR_LINEA.get(tema, COLOR_LINEA["light"]))
+                        st.caption("Pasadas de enero a mayo del radar Sentinel-1 (otro satélite, banda C). "
+                                   "Se muestra aparte porque no es NISAR.")
 
 # --- Tabla completa ---------------------------------------------------------
 with st.expander("Ver todos los cultivos evaluados"):

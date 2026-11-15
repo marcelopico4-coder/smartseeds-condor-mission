@@ -1,0 +1,19 @@
+{
+  "catalogo_version": "1.1.0",
+  "schema_version": "2.1.0",
+  "cultivos": 27,
+  "evidencias_suelo": 344,
+  "evidencias_agroclimaticas": 264,
+  "evidencias_productivas": 88,
+  "fuentes_registradas": 152,
+  "filas_matriz": 870,
+  "tareas_cerradas": 0,
+  "ids_unicos": true,
+  "referencias_resueltas": true,
+  "valores_574_evidencias_anteriores_preservados": true,
+  "segunda_fuente_por_perfil_completa": false,
+  "umbrales_completos": false,
+  "catalogo_genera_sugerencias": false,
+  "cultivos_sin_registro_duracion": [],
+  "cultivos_sin_registro_rendimiento": []
+}

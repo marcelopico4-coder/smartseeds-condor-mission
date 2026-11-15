@@ -1,0 +1,136 @@
+[
+  {
+    "id": "MER00",
+    "titulo": "Catálogo económico inicial del equipo",
+    "tipo": "documento_aportado_no_fuente_primaria",
+    "url": null,
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\CATALOGO PRODUCCIÓN.json",
+    "sha256": "08e20c7038e6c6e3357b00c1b2ba08e7d092fe788607eacd891107925b8d3793",
+    "fecha_consulta": "2026-11-14",
+    "notas": []
+  },
+  {
+    "id": "MER01",
+    "titulo": "SIPA/BCE. Comercio exterior agropecuario y agroindustrial. Copia aportada",
+    "tipo": "estadistica_comercio",
+    "url": "https://sipa.agricultura.gob.ec/descargas/base-estadistica/modulo_economico/comercio-exterior-agropecuario-agroindustrial.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\NARVÁEZ\\comercio-exterior-agropecuario-agroindustrial (1).xlsx",
+    "sha256": "4aa90d8ae93ec597b463cc2a8383d2dfb470eae7ef2054182b4641fcec1b1ffa",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "Corte interno enero–julio 2026. No usar como año completo."
+    ]
+  },
+  {
+    "id": "MER02",
+    "titulo": "SIPA. Precios productor promedio, copia aportada",
+    "tipo": "estadistica_precios",
+    "url": "https://sipa.agricultura.gob.ec/descargas/base-estadistica/modulo_economico/precios-productor-ponderado.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\NARVÁEZ\\precios-productor-ponderado.xlsx",
+    "sha256": "1958b0ee79952112ac24e9eb997d3dc6c35833f84d2f069dbb275fe33691153f",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "Nacional: provincias del Ecuador continental. Nombre de archivo no acredita ponderación de un agregado calculado por la app.",
+      "Actualización: octubre 2026; último mes observado en hoja Nacional: septiembre 2026."
+    ]
+  },
+  {
+    "id": "MER03",
+    "titulo": "SIPA. Precios mensualizados mayoristas y bodegas, copia aportada",
+    "tipo": "estadistica_precios",
+    "url": "https://sipa.agricultura.gob.ec/descargas/base-estadistica/modulo_economico/precios-mercados-mayoristas-bodegas-comerciales.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\NARVÁEZ\\precios-mercados-mayoristas-bodegas-comerciales.xlsx",
+    "sha256": "007f3b44f16bdf06c5d3e472c7a6ee7129f2f827034fe68b05f5226a7b7bca7f",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "Mercado es lugar de cotización, no necesariamente lugar de origen del producto.",
+      "Actualización noviembre 2026; datos hasta octubre 2026."
+    ]
+  },
+  {
+    "id": "MER04",
+    "titulo": "INEC (2026). Boletín técnico ESPAC 2025",
+    "tipo": "boletin",
+    "url": "https://www.ecuadorencifras.gob.ec/documentos/web-inec/Estadisticas_agropecuarias/espac/2025/Boletin_tenico_ESPAC_2025.pdf",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\NARVÁEZ\\Boletin_tenico_ESPAC_2025 (Encuesta de Superficie y Producción Agropecuaria Continua).pdf",
+    "sha256": "e7ec39182c9f04c019a4e31df6a4a4bbe734f4a3cda3b9c1c9d3467d4900f1b0",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "Usado para auditar redondeos del catálogo inicial; para cifras precisas se usan tabulados MER07."
+    ]
+  },
+  {
+    "id": "MER05",
+    "titulo": "BCE (abril 2022). Boletín de Análisis Agropecuario 94, IV trimestre 2021",
+    "tipo": "boletin_historico",
+    "url": null,
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\NARVÁEZ\\BOLETIN AGROPECUARIO.pdf",
+    "sha256": "025ce89d4d2c1be304ad124a8608afb775dbc2e363f44387542b507f5c159382",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "Página PDF 10: maíz duro de verano IV trimestre, no total anual 2021."
+    ]
+  },
+  {
+    "id": "MER06",
+    "titulo": "Atlas Agroeconómico Ecuador, edición 2026",
+    "tipo": "publicacion_contextual",
+    "url": null,
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\SMARTSEEDS\\NARVÁEZ\\Atlas Agroeconómico Ecuador 2026.pdf",
+    "sha256": "435e0c2af7d7107a15410f8ee1a28242bb7dafcfa83762d193910a8089b1d00a",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "No se extraen pronósticos ni se confunde edición 2026 con año de cada estadística."
+    ]
+  },
+  {
+    "id": "MER07",
+    "titulo": "INEC (2026). Tabulados ESPAC 2025",
+    "tipo": "tabulados_produccion",
+    "url": "https://www.ecuadorencifras.gob.ec/documentos/web-inec/Estadisticas_agropecuarias/espac/2025/Tabulados_excel_2025.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\mercado\\fuentes\\MER07.xlsx",
+    "sha256": "58405ea2aedd7957269baf1b795c5a02137f261417335e71b56b900a3ffd22a6",
+    "fecha_consulta": "2026-11-14",
+    "notas": []
+  },
+  {
+    "id": "MER09",
+    "titulo": "SIPA (julio 2026). Hoja de Balance de Alimentos, datos 2025",
+    "tipo": "balance_alimentario",
+    "url": "https://sipa.agricultura.gob.ec/descargas/base-estadistica/modulo_productivo/hoja-balance-alimentos.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\mercado\\fuentes\\MER09.xlsx",
+    "sha256": "1341c3cf1433e4cd0c151a21bdbe96a0f39df5c95c06927c22c7927510f1c9b3",
+    "fecha_consulta": "2026-11-14",
+    "notas": []
+  },
+  {
+    "id": "MER10",
+    "titulo": "SIPA/INEC (mayo 2026). Superficie y producción histórica, 2002–2025",
+    "tipo": "estadistica_produccion",
+    "url": "https://sipa.agricultura.gob.ec/descargas/base-estadistica/modulo_productivo/superficie-produccion.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\mercado\\fuentes\\MER10.xlsx",
+    "sha256": "e2930d94d3c610b9488f3eda72d7a1d27942bc85d87e141c84990515e8f0ce81",
+    "fecha_consulta": "2026-11-14",
+    "notas": []
+  },
+  {
+    "id": "MER11",
+    "titulo": "SIPA/BCE. Comercio exterior, descarga del 14 de noviembre de 2026",
+    "tipo": "estadistica_comercio",
+    "url": "https://sipa.agricultura.gob.ec/descargas/base-estadistica/modulo_economico/comercio-exterior-agropecuario-agroindustrial.xlsx",
+    "archivo_local": "C:\\Users\\campy\\OneDrive\\Documentos\\ChatGPT\\SMARTSEEDS\\output\\mercado\\fuentes\\MER11.xlsx",
+    "sha256": "814dfb95825bf93d0645fb51ac70608c00eaa1492c98ec287a84effce1e337fd",
+    "fecha_consulta": "2026-11-14",
+    "notas": []
+  },
+  {
+    "id": "MET01",
+    "titulo": "FAO (2001). Food Balance Sheets: A Handbook. Concepts and definitions",
+    "tipo": "referencia_metodologica",
+    "url": "https://www.fao.org/4/x9892e/x9892e02.htm",
+    "fecha_consulta": "2026-11-14",
+    "notas": [
+      "Suministro, usos internos y consumo no son demanda insatisfecha. Considerar existencias, pérdidas y transformación."
+    ]
+  }
+]

@@ -47,7 +47,7 @@ TEXTO_TIPO = {
 # Nombres para mostrar (con tildes). Si un cultivo no está aquí, se usa su clave.
 NOMBRES = {"platano": "Plátano", "cafe_robusta": "Café robusta", "maracuya": "Maracuyá",
            "maiz_duro": "Maíz duro", "maiz_suave": "Maíz suave", "pina": "Piña",
-           "tomate_de_arbol": "Tomate de árbol"}
+           "tomate_de_arbol": "Tomate de árbol", "brocoli": "Brócoli"}
 
 
 COLUMNAS_SUELO = ["cultivo", "nombre_catalogo", "ph_min", "ph_max", "textura", "drenaje",

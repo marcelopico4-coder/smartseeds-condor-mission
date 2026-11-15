@@ -1,0 +1,433 @@
+[
+  {
+    "cultivo_id": "C001",
+    "nombre": "Fréjol",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C002",
+    "nombre": "Arveja",
+    "faltantes": [
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C003",
+    "nombre": "Haba",
+    "faltantes": [
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C004",
+    "nombre": "Lenteja",
+    "faltantes": [
+      {
+        "dominio": "produccion",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C005",
+    "nombre": "Chocho",
+    "faltantes": [
+      {
+        "dominio": "produccion",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C006",
+    "nombre": "Trigo",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C007",
+    "nombre": "Cebada",
+    "faltantes": [
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C008",
+    "nombre": "Maíz",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C009",
+    "nombre": "Quinua",
+    "faltantes": [
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C010",
+    "nombre": "Amaranto",
+    "faltantes": [
+      {
+        "dominio": "produccion",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "precios",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C011",
+    "nombre": "Papa",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C012",
+    "nombre": "Cacao",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C013",
+    "nombre": "Yuca",
+    "faltantes": [
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C014",
+    "nombre": "Tomate",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C015",
+    "nombre": "Soya",
+    "faltantes": [
+      {
+        "dominio": "precios",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C016",
+    "nombre": "Rosa",
+    "faltantes": [
+      {
+        "dominio": "precios",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C017",
+    "nombre": "Clavel",
+    "faltantes": [
+      {
+        "dominio": "precios",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C018",
+    "nombre": "Aguacate",
+    "faltantes": [
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C019",
+    "nombre": "Mora de Castilla",
+    "faltantes": [
+      {
+        "dominio": "produccion",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C020",
+    "nombre": "Uvilla",
+    "faltantes": [
+      {
+        "dominio": "produccion",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "precios",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C021",
+    "nombre": "Brócoli",
+    "faltantes": [
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C022",
+    "nombre": "Cebolla blanca de rama",
+    "faltantes": [
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C023",
+    "nombre": "Zanahoria",
+    "faltantes": [
+      {
+        "dominio": "produccion",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "comercio_exterior",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      },
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C024",
+    "nombre": "Plátano",
+    "faltantes": [],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C025",
+    "nombre": "Palma africana",
+    "faltantes": [
+      {
+        "dominio": "precios",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C026",
+    "nombre": "Maracuyá amarillo",
+    "faltantes": [
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  },
+  {
+    "cultivo_id": "C027",
+    "nombre": "Piña",
+    "faltantes": [
+      {
+        "dominio": "suministro_HBA",
+        "estado": "sin_dato_especifico_localizado",
+        "nota": "No equivale a producción, oferta, demanda o comercio cero."
+      }
+    ],
+    "demanda": "sin_medicion_directa",
+    "oferta_actual": "sin_inventarios_y_cosechas_actuales",
+    "balance": "no_determinable_con_estos_insumos"
+  }
+]

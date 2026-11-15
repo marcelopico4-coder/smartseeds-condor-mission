@@ -7,8 +7,8 @@ tener con qué comparar y con qué entrenar. Hay dos fuentes:
 
   mapbiomas   MapBiomas Ecuador, Colección 3.0 (Fundación EcoCiencia y red MapBiomas).
               Mapas anuales 1985-2024 hechos para el Ecuador con imágenes Landsat.
-              Separa lo AGROPECUARIO (cultivos y pastos, banano, plantaciones) del bosque
-              natural, de los herbazales y páramos, de lo urbano y del agua.
+              Separa lo AGROPECUARIO (cultivos y pastos) del bosque natural, de los herbazales
+              y páramos, de lo urbano y del agua. Se deja fuera la clase beta de banano.
               Se leen 2022, 2023 y 2024: la referencia es 2024 y se marca como "estable"
               la celda que no cambió de clase en esos tres años.
               https://ecuador.mapbiomas.org/en/mapas-de-cobertura-y-uso/
@@ -66,7 +66,7 @@ FUENTES = {
                 "collection_3/coverage/ecuador_coverage_{anio}.tif"),
         "anios": [2022, 2023, 2024],            # el último es la referencia; los tres dan la estabilidad
         "clases": {
-            "agropecuario": [14, 21, 74],        # mosaico de agricultura y/o pastos, banano (beta)
+            "agropecuario": [14, 21],            # mosaico de agricultura y/o pastos; excluye banano beta (74)
             "plantacion_forestal": [9],          # silvicultura
             "bosque": [1, 3, 4, 5, 6],           # bosque, bosque abierto, manglar, bosque inundable
             "natural_abierto": [10, 11, 12, 13, 29, 81, 82],   # herbazales, páramo, roca
@@ -149,6 +149,8 @@ def leer_ventana(url: str, recuadro):
 
     local = CARPETA_LOCAL / url.rsplit("/", 1)[-1]
     origen = str(local) if local.exists() else url
+    # Unión del 14 nov: GitHub ponía aquí GDAL_HTTP_TIMEOUT=30 y un solo reintento. La lectura ahora pasa por
+    # `leer_recuadro`, que trae sus propios límites (ver OPCIONES_GDAL y ESPERA_APARTE en src/lectura_remota.py).
     try:
         leido = leer_recuadro(origen, recuadro, relleno=0)
         if not leido["en_grados"]:

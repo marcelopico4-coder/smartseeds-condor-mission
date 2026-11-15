@@ -1,0 +1,87 @@
+{
+ "santo_domingo": {
+  "cacao": {
+   "celdas_puras": 1757,
+   "muestra": 250,
+   "con_riego_mapeado": 0.004,
+   "puntaje_mediano_sin_riego": 97.8,
+   "top3_sin_riego": 0.912,
+   "puntaje_mediano_con_riego_del_mapa": 97.8,
+   "top3_con_riego_del_mapa": 0.912
+  },
+  "platano": {
+   "celdas_puras": 1787,
+   "muestra": 250,
+   "con_riego_mapeado": 0.004,
+   "puntaje_mediano_sin_riego": 87.1,
+   "top3_sin_riego": 0.004,
+   "puntaje_mediano_con_riego_del_mapa": 87.1,
+   "top3_con_riego_del_mapa": 0.004
+  },
+  "banano": {
+   "celdas_puras": 166,
+   "muestra": 166,
+   "con_riego_mapeado": 0.259,
+   "puntaje_mediano_sin_riego": 91.0,
+   "top3_sin_riego": 0.0,
+   "puntaje_mediano_con_riego_del_mapa": 91.0,
+   "top3_con_riego_del_mapa": 0.0
+  },
+  "palma_aceitera": {
+   "celdas_puras": 1000,
+   "muestra": 250,
+   "con_riego_mapeado": 0.032,
+   "puntaje_mediano_sin_riego": 98.7,
+   "top3_sin_riego": 0.952,
+   "puntaje_mediano_con_riego_del_mapa": 98.7,
+   "top3_con_riego_del_mapa": 0.952
+  },
+  "yuca": {
+   "celdas_puras": 120,
+   "muestra": 120,
+   "con_riego_mapeado": 0.0,
+   "puntaje_mediano_sin_riego": 87.6,
+   "top3_sin_riego": 0.0,
+   "puntaje_mediano_con_riego_del_mapa": 87.6,
+   "top3_con_riego_del_mapa": 0.0
+  },
+  "pina": {
+   "celdas_puras": 316,
+   "muestra": 250,
+   "con_riego_mapeado": 0.968,
+   "puntaje_mediano_sin_riego": 76.4,
+   "top3_sin_riego": 0.0,
+   "puntaje_mediano_con_riego_del_mapa": 76.4,
+   "top3_con_riego_del_mapa": 0.0
+  }
+ },
+ "daule": {
+  "cacao": {
+   "celdas_puras": 541,
+   "muestra": 250,
+   "con_riego_mapeado": 0.232,
+   "puntaje_mediano_sin_riego": 100.0,
+   "top3_sin_riego": 0.108,
+   "puntaje_mediano_con_riego_del_mapa": 100.0,
+   "top3_con_riego_del_mapa": 0.108
+  },
+  "arroz": {
+   "celdas_puras": 20778,
+   "muestra": 250,
+   "con_riego_mapeado": 0.984,
+   "puntaje_mediano_sin_riego": 53.2,
+   "top3_sin_riego": 0.228,
+   "puntaje_mediano_con_riego_del_mapa": 91.9,
+   "top3_con_riego_del_mapa": 0.344
+  },
+  "banano": {
+   "celdas_puras": 633,
+   "muestra": 250,
+   "con_riego_mapeado": 0.936,
+   "puntaje_mediano_sin_riego": 100.0,
+   "top3_sin_riego": 0.992,
+   "puntaje_mediano_con_riego_del_mapa": 100.0,
+   "top3_con_riego_del_mapa": 0.776
+  }
+ }
+}

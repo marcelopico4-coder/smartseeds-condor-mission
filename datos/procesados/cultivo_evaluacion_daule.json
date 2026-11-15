@@ -1,0 +1,106 @@
+{
+ "zona": "daule",
+ "etiquetas": "MAG, Estimaciones de cultivos 1:25.000 (2022 y 2025)",
+ "solo_nisar": {
+  "celdas": 22866,
+  "acierto": 0.885,
+  "acierto_promedio_por_clase": 0.759,
+  "acierto_diciendo_siempre_lo_mas_comun": 0.679,
+  "por_clase": {
+   "arroz": {
+    "celdas": 15533,
+    "las_encuentra": 0.913,
+    "acierta_cuando_la_dice": 0.94,
+    "se_confunde_con": {
+     "otro": 0.85,
+     "maiz_duro": 0.15
+    }
+   },
+   "banano": {
+    "celdas": 734,
+    "las_encuentra": 0.924,
+    "acierta_cuando_la_dice": 0.772,
+    "se_confunde_con": {
+     "otro": 1.0
+    }
+   },
+   "maiz_duro": {
+    "celdas": 147,
+    "las_encuentra": 0.374,
+    "acierta_cuando_la_dice": 0.158,
+    "se_confunde_con": {
+     "arroz": 0.63,
+     "otro": 0.36
+    }
+   },
+   "otro": {
+    "celdas": 6452,
+    "las_encuentra": 0.824,
+    "acierta_cuando_la_dice": 0.812,
+    "se_confunde_con": {
+     "arroz": 0.75,
+     "banano": 0.17
+    }
+   }
+  },
+  "rasgos_que_mas_pesan": {
+   "hv_media": 0.254,
+   "hh_menos_hv": 0.153,
+   "hh_min": 0.146,
+   "hh_media": 0.142,
+   "hh_cambio": 0.128,
+   "hv_cambio": 0.092
+  }
+ },
+ "nisar_y_sentinel1": {
+  "celdas": 22866,
+  "acierto": 0.919,
+  "acierto_promedio_por_clase": 0.765,
+  "acierto_diciendo_siempre_lo_mas_comun": 0.679,
+  "por_clase": {
+   "arroz": {
+    "celdas": 15533,
+    "las_encuentra": 0.943,
+    "acierta_cuando_la_dice": 0.947,
+    "se_confunde_con": {
+     "otro": 0.94,
+     "maiz_duro": 0.06
+    }
+   },
+   "banano": {
+    "celdas": 734,
+    "las_encuentra": 0.96,
+    "acierta_cuando_la_dice": 0.919,
+    "se_confunde_con": {
+     "otro": 1.0
+    }
+   },
+   "maiz_duro": {
+    "celdas": 147,
+    "las_encuentra": 0.286,
+    "acierta_cuando_la_dice": 0.359,
+    "se_confunde_con": {
+     "arroz": 0.73,
+     "otro": 0.27
+    }
+   },
+   "otro": {
+    "celdas": 6452,
+    "las_encuentra": 0.872,
+    "acierta_cuando_la_dice": 0.863,
+    "se_confunde_con": {
+     "arroz": 0.9,
+     "banano": 0.07
+    }
+   }
+  },
+  "rasgos_que_mas_pesan": {
+   "hv_media": 0.142,
+   "hh_menos_hv": 0.1,
+   "vv_mes_02": 0.094,
+   "vv_mes_01": 0.094,
+   "vv_mes_03": 0.093,
+   "vv_mes_05": 0.092
+  }
+ }
+}

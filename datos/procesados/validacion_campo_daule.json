@@ -1,0 +1,60 @@
+{
+ "zona": "daule",
+ "fuente": "MAG – SIGTIERRAS, datos de campo 2014–2015",
+ "todos": {
+  "puntos": 543,
+  "puntaje_mediano": 69.6,
+  "apto_para_la_app": 1.0,
+  "puntaje_70_o_mas": 0.497,
+  "entre_los_3_primeros": 0.247,
+  "es_el_primero": 0.169
+ },
+ "por_cultivo": {
+  "arroz": {
+   "puntos": 376,
+   "puntaje_mediano": 56.5,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 0.274,
+   "entre_los_3_primeros": 0.202,
+   "es_el_primero": 0.191
+  },
+  "banano": {
+   "puntos": 15,
+   "puntaje_mediano": 100.0,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 1.0,
+   "es_el_primero": 0.0
+  },
+  "cacao": {
+   "puntos": 111,
+   "puntaje_mediano": 100.0,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.09,
+   "es_el_primero": 0.0
+  },
+  "maiz_duro": {
+   "puntos": 14,
+   "puntaje_mediano": 100.0,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.643,
+   "es_el_primero": 0.0
+  },
+  "platano": {
+   "puntos": 23,
+   "puntaje_mediano": 100.0,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.87,
+   "es_el_primero": 0.87
+  }
+ },
+ "lo_que_la_app_pone_primero": {
+  "platano": 297,
+  "banano": 154,
+  "arroz": 72,
+  "palma_aceitera": 20
+ }
+}

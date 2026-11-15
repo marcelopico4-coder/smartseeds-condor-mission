@@ -215,7 +215,8 @@ def texto_evaluacion(evaluacion: dict | None = None) -> str:
     return (f"Lo calcula un modelo que aprendió, con el mapa {evaluacion['referencia']} de la Agencia "
             "Espacial Europea, cómo se ve cada tipo de terreno en las pasadas del radar NISAR de 2026. "
             f"En zonas que no vio al aprender coincide con ese mapa en el {evaluacion['acierto']:.0%} de "
-            "los cuadros. No se comprobó en el campo y no distingue qué cultivo es.")
+            "los cuadros con un tipo dominante incluidos en la evaluación. "
+            "No se comprobó en el campo y no distingue qué cultivo es.")
 
 
 def aplicar_reglas(probabilidad: pd.DataFrame, agua: np.ndarray, pendiente: np.ndarray) -> np.ndarray:

@@ -29,6 +29,8 @@ from src.config import (CAPITALES, ZONAS, en_ecuador, forma_rejilla, provincia_s
                         zona_de_punto)
 from src.nisar import cargar_series, ruta_serie, serie_del_terreno  # noqa: E402
 from src.cobertura import CLASES, composicion, es_cultivable, texto_evaluacion  # noqa: E402
+from src.cultivos_mapeados import (NOMBRES as NOMBRES_MAG, cargar as cargar_mag, ruta_tabla as ruta_mag,
+                                  resumen_del_terreno as resumen_mag, texto_del_terreno as texto_mag)
 from src.mercado import ETIQUETAS, ETIQUETAS_EVIDENCIA, mas_sembrados  # noqa: E402
 from src.aptitud import AGUA_VISIBLE  # noqa: E402
 from src.recomendar import (BANDA_PUNTOS, PUNTAJE_MINIMO, empatados, evaluar_todos,  # noqa: E402
@@ -75,6 +77,7 @@ CREDITO_NASA = "NASA EOSDIS GIBS · VIIRS (Suomi NPP)"
 # Capas del radar que se pueden pintar sobre el mapa: nombre -> columna de la tabla por celda.
 # Cada capa usa UN solo color, de claro (poco) a oscuro (mucho).
 CAPAS_RADAR = {"Nada": None, "Tipo de terreno (modelo del radar)": "cobertura",
+               "Cultivo mapeado (MAG)": "cultivo_mapeado",
                "Agua en la época seca (NISAR)": "encharcamiento",
                "Agua en invierno (Sentinel-1)": "agua_invierno",
                "Vegetación": "vegetacion", "Humedad del suelo": "humedad"}
@@ -82,6 +85,8 @@ CAPAS_RADAR = {"Nada": None, "Tipo de terreno (modelo del radar)": "cobertura",
 COLOR_TIPO = {"agua": (0x2A, 0x78, 0xD6), "construcciones": (0xEB, 0x68, 0x34),
               "inundable": (0x1B, 0xAF, 0x7A), "cultivo_activo": (0xED, 0xA1, 0x00),
               "vegetacion_baja": (0xE8, 0x7B, 0xA4), "vegetacion_densa": (0x00, 0x83, 0x00)}
+COLOR_MAG = {"arroz": (46, 125, 50), "maiz_duro": (244, 160, 20), "soya": (119, 71, 153),
+             "banano": (247, 214, 59), "palma_aceitera": (38, 153, 166), "cana_azucar": (221, 94, 123)}
 RAMPA_AZUL = ((0x86, 0xB6, 0xEF), (0x0D, 0x36, 0x6B))
 RAMPA_VERDE = ((0xC8, 0xE6, 0xC0), (0x00, 0x63, 0x00))
 RAMPAS = {"encharcamiento": RAMPA_AZUL, "agua_invierno": RAMPA_AZUL, "humedad": RAMPA_AZUL,
@@ -169,12 +174,27 @@ def series_radar(clave_zona: str, modificado: float) -> dict | None:
 
 
 @st.cache_data(show_spinner=False)
+def cultivos_mag(clave_zona: str, modificado: float) -> pd.DataFrame | None:
+    return cargar_mag(clave_zona)
+
+
+@st.cache_data(show_spinner=False)
 def imagen_capa(clave_zona: str, columna: str, modificado: float) -> np.ndarray | None:
-    """Imagen (fila, columna, RGBA) de una capa del radar, lista para ponerla sobre el mapa."""
+    """Imagen (fila, columna, RGBA) de una capa para el mapa."""
+    filas, columnas, _ = forma_rejilla(ZONAS[clave_zona]["recuadro"])
+    if columna == "cultivo_mapeado":
+        tabla_mag = cultivos_mag(clave_zona, modificado)
+        if tabla_mag is None:
+            return None
+        tipos = tabla_mag.set_index("celda")[columna].reindex(range(filas * columnas))
+        tipos = tipos.to_numpy().reshape(filas, columnas)
+        imagen = np.zeros((filas, columnas, 4), dtype="uint8")
+        for clave, color in COLOR_MAG.items():
+            imagen[tipos == clave] = (*color, OPACIDAD_CAPA)
+        return imagen
     tabla = cargar_celdas(clave_zona)
     if tabla is None or columna not in tabla:
         return None
-    filas, columnas, _ = forma_rejilla(ZONAS[clave_zona]["recuadro"])
     sin_radar = tabla["vegetacion"].isna().to_numpy().reshape(filas, columnas)
     if columna == "cobertura":                # categorías: un color fijo por tipo de terreno
         tipo = tabla[columna].to_numpy(dtype=object).reshape(filas, columnas)
@@ -202,12 +222,18 @@ def imagen_capa(clave_zona: str, columna: str, modificado: float) -> np.ndarray 
 
 def leyenda_capa(columna: str) -> str:
     """Explica los colores de la capa pintada en el mapa (barrita o lista de categorías)."""
-    if columna == "cobertura":
+    if columna in ("cobertura", "cultivo_mapeado"):
+        es_mag = columna == "cultivo_mapeado"
+        colores = COLOR_MAG if es_mag else COLOR_TIPO
+        nombres = NOMBRES_MAG if es_mag else {clave: clase[0] for clave, clase in CLASES.items()}
         cuadros = "".join(
             f'<span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px">'
             f'<span style="width:12px;height:12px;border-radius:3px;'
-            f'background:rgb{COLOR_TIPO[clase]}"></span>{CLASES[clase][0]}</span>'
-            for clase in COLOR_TIPO)
+            f'background:rgb{color}"></span>{nombres[clase]}</span>'
+            for clase, color in colores.items())
+        if es_mag:
+            return (f'<div style="font-size:0.85rem;line-height:1.9">{cuadros}'
+                    '<div>MAG, 2022 y 2025 · Sin color: sin clasificación para esta capa.</div></div>')
         return (f'<div style="font-size:0.85rem;line-height:1.9">{cuadros}'
                 f'<span style="display:inline-flex;align-items:center;gap:5px">'
                 f'<span style="width:12px;height:12px;border-radius:3px;'
@@ -222,7 +248,7 @@ def leyenda_capa(columna: str) -> str:
 
 
 def datos_del_terreno(lat: float, lon: float, contorno=None):
-    """Devuelve (celda, clima, clave_zona, celdas_del_contorno, tipos_de_terreno, vecinos).
+    """Devuelve los datos para la ficha del terreno, incluido el resumen del MAG si existe.
 
     La celda sigue el formato acordado. Si se dibujó un contorno dentro de una zona
     detallada, la celda es el PROMEDIO de las celdas que el terreno toca y
@@ -237,10 +263,13 @@ def datos_del_terreno(lat: float, lon: float, contorno=None):
     clave = zona_de_punto(lat, lon)
     if clave and ruta_celdas(clave).exists():
         tabla = celdas(clave, ruta_celdas(clave).stat().st_mtime)
+        ruta_mapeada = ruta_mag(clave)
+        mapeados = cultivos_mag(clave, ruta_mapeada.stat().st_mtime) if ruta_mapeada.exists() else None
         mensual = (lluvia_de_cada_mes(clave, ruta_lluvia_mensual(clave).stat().st_mtime)
                    if ruta_lluvia_mensual(clave).exists() else None)
         if contorno:
             dentro = celdas_del_terreno(tabla, contorno)
+            mag = resumen_mag(mapeados, dentro) if mapeados is not None else None
             tipos = composicion(dentro)
             vecinos = resumen_vecinos(tabla, lat, lon, dentro["celda"].tolist())
             if "cobertura" in dentro and es_cultivable(dentro["cobertura"]).any():
@@ -249,15 +278,17 @@ def datos_del_terreno(lat: float, lon: float, contorno=None):
             celda = celda_promedio(dentro, contorno)
             celda["lluvia_mensual"] = lluvia_mensual_de(mensual, dentro["celda"].tolist(),
                                                         dentro["peso"].tolist())
-            return celda, c, clave, dentro, tipos, vecinos
+            return celda, c, clave, dentro, tipos, vecinos, mag
         celda = celda_mas_cercana(tabla, lat, lon)
         celda["lluvia_mensual"] = lluvia_mensual_de(mensual, celda["celda"])
+        seleccion = pd.DataFrame({"celda": [celda["celda"]], "peso": [1.0]})
+        mag = resumen_mag(mapeados, seleccion) if mapeados is not None else None
         return (celda, c, clave, None, composicion(pd.DataFrame([celda])),
-                resumen_vecinos(tabla, lat, lon))
+                resumen_vecinos(tabla, lat, lon), mag)
     celda = {"lat": lat, "lon": lon, "altura": c["altura_power"], "pendiente": None,
              "temp": c["temp"], "lluvia": c["lluvia"], "lluvia_mensual": c.get("lluvia_mensual"),
              "humedad": None, "encharcamiento": None, "vegetacion": None}
-    return celda, c, None, None, None, None
+    return celda, c, None, None, None, None, None
 
 
 def tiene(valor) -> bool:
@@ -355,9 +386,8 @@ col_mapa, col_resultado = st.columns([5, 4], gap="large")
 with col_mapa:
     modo = st.radio("¿Cómo quieres marcar tu terreno?", [MODO_PUNTO, MODO_DIBUJO], horizontal=True)
     capa = CAPAS_RADAR[st.selectbox(
-        "Pintar sobre el mapa lo que vio el radar", list(CAPAS_RADAR),
-        help="Pinta las zonas detalladas (recuadros verdes) con lo que midió el radar "
-             "entre junio y octubre de 2026.")]
+        "Capa del mapa", list(CAPAS_RADAR),
+        help="Muestra datos del radar o los cultivos históricos mapeados por el MAG.")]
     if capa:
         st.markdown(leyenda_capa(capa), unsafe_allow_html=True)
     mapa = folium.Map(location=centro, zoom_start=zoom, control_scale=True, tiles=None,
@@ -370,8 +400,9 @@ with col_mapa:
     folium.LayerControl(collapsed=False, position="topright").add_to(mapa)
     for clave, z in ZONAS.items():
         lon_min, lat_min, lon_max, lat_max = z["recuadro"]
-        if capa and ruta_celdas(clave).exists():
-            imagen = imagen_capa(clave, capa, ruta_celdas(clave).stat().st_mtime)
+        ruta_capa = ruta_mag(clave) if capa == "cultivo_mapeado" else ruta_celdas(clave)
+        if capa and ruta_capa.exists():
+            imagen = imagen_capa(clave, capa, ruta_capa.stat().st_mtime)
             if imagen is not None:
                 folium.raster_layers.ImageOverlay(
                     imagen, bounds=[[lat_min, lon_min], [lat_max, lon_max]], origin="upper",
@@ -472,7 +503,7 @@ with col_resultado:
         st.stop()
 
     try:
-        celda, c, clave_zona, celdas_contorno, tipos, vecinos = datos_del_terreno(lat, lon, contorno)
+        celda, c, clave_zona, celdas_contorno, tipos, vecinos, mag = datos_del_terreno(lat, lon, contorno)
     except Exception as error:  # noqa: BLE001
         st.error(f"No se pudo consultar el clima de NASA POWER. Revisa tu internet.\n\n{error}")
         st.stop()
@@ -623,7 +654,23 @@ with col_resultado:
 
     # --- 4. El detalle del terreno, plegado: clima, suelo, radar y vecinos ---
     hay_radar = bool(clave_zona) and tiene(celda.get("vegetacion"))
-    with st.expander("🔎 Ver el detalle de tu terreno: clima, suelo, radar y vecinos"):
+    with st.expander("🔎 Ver el detalle de tu terreno: clima, suelo, radar, cultivos mapeados y vecinos"):
+        # Cultivo mapeado por el MAG (bloque del equipo de la Costa, 14 nov): va aquí, dentro del detalle,
+        # porque la respuesta al agricultor quedó arriba y los datos del terreno se pliegan.
+        st.markdown("**Cultivo mapeado (MAG)**")
+        if mag is None:
+            st.caption("Sin datos del MAG para este terreno en SmartSeeds.")
+        else:
+            superficie = "del área analizada" if contorno else "del cuadro de ~250 m"
+            frases_mag = texto_mag(mag, superficie=superficie)
+            if frases_mag:
+                for frase in frases_mag:
+                    st.markdown(f"- {frase}")
+            else:
+                st.caption("Ninguno de los cultivos consultados alcanza el 5 % del área analizada.")
+            st.caption("Fuente: MAG, Estimaciones de cultivos a escala 1:25.000. La consulta cubre seis "
+                       "cultivos en 2022 o 2025. Puede haber otros cultivos o cambios desde ese año.")
+
         (m1, m2), (m3, m4) = st.columns(2), st.columns(2)
         m1.metric("Altura", f"{celda['altura']:.0f} m" if tiene(celda["altura"]) else "—")
         m2.metric("Temperatura", f"{celda['temp']:.1f} °C" if tiene(celda["temp"]) else "—")

@@ -3,7 +3,7 @@ Radar de la época lluviosa: Sentinel-1 (producto OPERA RTC-S1 de la NASA).
 
 NISAR solo tiene pasadas desde junio de 2026 (época seca). Para ver dónde se acumula el agua en
 invierno se usa otro radar, Sentinel-1 de la ESA, en el producto OPERA RTC-S1 que procesa el
-JPL de la NASA y distribuye ASF: banda C, polarización VV, 30 m, un archivo por ráfaga.
+JPL de la NASA y distribuye ASF: banda C, polarizaciones VV y VH, 30 m.
 
     Es banda C, no banda L: ve el agua abierta igual de bien, pero atraviesa menos la vegetación.
     Por eso se guarda como una serie APARTE y no se mezcla con los rasgos de NISAR.
@@ -11,6 +11,7 @@ JPL de la NASA y distribuye ASF: banda C, polarización VV, 30 m, un archivo por
 
 Uso (pide el login de Earthdata ya guardado, igual que NISAR):
     python -m src.sentinel daule procesar     # enero a mayo -> datos/procesados/_s1_tmp/ (se puede repetir)
+    python -m src.sentinel daule procesar --vh  # además lee VH de las ráfagas que la ofrecen
     python -m src.sentinel daule calibrar     # elige el umbral de agua comparando con NISAR
     python -m src.sentinel daule tabla        # invierno_daule.npz y columna `agua_invierno`
 
@@ -21,7 +22,8 @@ parecida a la que vio NISAR. Como cada fecha guarda el agua para varios umbrales
 umbral no obliga a leer otra vez.
 
 `agua_invierno` = parte de los píxeles de la celda con agua, promediada en las pasadas de enero
-a mayo. Es la misma definición de `encharcamiento` (NISAR, época seca).
+a mayo. Es la misma definición de `encharcamiento` (NISAR, época seca). VH se conserva como rasgo
+opcional en potencia lineal; la detección de agua sigue usando VV.
 """
 from __future__ import annotations
 
@@ -58,7 +60,7 @@ def buscar(clave_zona: str, inicio: str, fin: str) -> list:
 
 
 def _url(producto, sufijo: str) -> str | None:
-    """Dirección del archivo `..._VV.tif` o `..._mask.tif` de un producto."""
+    """Dirección del archivo VV, VH o de máscara de un producto."""
     for url in producto.properties.get("additionalUrls") or []:
         if url.endswith(sufijo):
             return url
@@ -88,8 +90,8 @@ def _suavizar(potencia: np.ndarray, tam: int = VENTANA_SUAVIZADO) -> np.ndarray:
         return np.where(valido & (cuenta > 0), suma / cuenta, np.nan)
 
 
-def leer_rafaga(fs, producto, recuadro):
-    """VV de una ráfaga, solo en la ventana de la zona: (potencia, x, y, epsg) o None si no la toca."""
+def _leer_bandas_rafaga(fs, producto, recuadro, incluir_vh: bool):
+    """Potencias VV y VH opcional, coordenadas y EPSG de la ventana de una ráfaga."""
     from pyproj import Transformer
     from rasterio.io import MemoryFile
     from rasterio.windows import Window, from_bounds
@@ -109,13 +111,30 @@ def leer_rafaga(fs, producto, recuadro):
             return None
         vv = src.read(1, window=ventana).astype("float32")
         t = src.window_transform(ventana)
-    valido = np.isfinite(vv) & (vv > 0)
+    mascara = np.ones(vv.shape, dtype=bool)
     if url_mascara is not None:     # 0 = dato bueno; 1 a 3 = sombra o inversión del relieve; 255 = sin dato
         with MemoryFile(_bajar(fs, url_mascara)) as memoria, memoria.open() as src:
-            valido &= src.read(1, window=ventana) == 0
-    vv[~valido] = np.nan
+            mascara = src.read(1, window=ventana) == 0
+    vv[~(mascara & np.isfinite(vv) & (vv > 0))] = np.nan
+    vh = None
+    url_vh = _url(producto, "_VH.tif") if incluir_vh else None
+    if url_vh is not None:
+        with MemoryFile(_bajar(fs, url_vh)) as memoria, memoria.open() as src:
+            vh = src.read(1, window=ventana).astype("float32")
+            if vh.shape != vv.shape or src.crs.to_epsg() != epsg or src.window_transform(ventana) != t:
+                raise ValueError("Las bandas VV y VH de la ráfaga tienen rejillas distintas.")
+        vh[~(mascara & np.isfinite(vh) & (vh > 0))] = np.nan
     x = t.c + (np.arange(vv.shape[1]) + 0.5) * t.a
     y = t.f + (np.arange(vv.shape[0]) + 0.5) * t.e
+    return vv, vh, x, y, epsg
+
+
+def leer_rafaga(fs, producto, recuadro):
+    """VV de una ráfaga, solo en la ventana de la zona: (potencia, x, y, epsg) o None."""
+    rafaga = _leer_bandas_rafaga(fs, producto, recuadro, incluir_vh=False)
+    if rafaga is None:
+        return None
+    vv, _, x, y, epsg = rafaga
     return vv, x, y, epsg
 
 
@@ -137,8 +156,8 @@ def _celda_de_cada_pixel(x, y, epsg, recuadro):
     return np.where(dentro, i * columnas + j, -1)
 
 
-def procesar_fecha(clave_zona: str, fecha: str) -> Path | None:
-    """Lee todas las ráfagas de UNA fecha y guarda, por celda, VV promedio y el agua con cada umbral."""
+def procesar_fecha(clave_zona: str, fecha: str, incluir_vh: bool = False) -> Path | None:
+    """Guarda por celda el promedio de VV, el agua por umbral y, si se solicita, el promedio de VH."""
     recuadro = ZONAS[clave_zona]["recuadro"]
     filas, columnas, _ = forma_rejilla(recuadro)
     n_celdas = filas * columnas
@@ -148,18 +167,24 @@ def procesar_fecha(clave_zona: str, fecha: str) -> Path | None:
     fs = sesion_remota()
     suma_vv, cuenta = np.zeros(n_celdas), np.zeros(n_celdas)
     suma_agua = np.zeros((len(UMBRALES_DB), n_celdas))
+    suma_vh, cuenta_vh = np.zeros(n_celdas), np.zeros(n_celdas)
     for p in productos:
         t0 = time.time()
-        rafaga = leer_rafaga(fs, p, recuadro)
+        rafaga = _leer_bandas_rafaga(fs, p, recuadro, incluir_vh)
         if rafaga is None:
             continue
-        vv, x, y, epsg = rafaga
+        vv, vh, x, y, epsg = rafaga
         vv = _suavizar(vv)
         celda = _celda_de_cada_pixel(x, y, epsg, recuadro)
         ok = (celda >= 0) & np.isfinite(vv.ravel())
         k, valores = celda[ok], vv.ravel()[ok]
         suma_vv += np.bincount(k, weights=valores, minlength=n_celdas)
         cuenta += np.bincount(k, minlength=n_celdas)
+        if vh is not None:
+            vh = _suavizar(vh).ravel()
+            ok_vh = (celda >= 0) & np.isfinite(vh)
+            suma_vh += np.bincount(celda[ok_vh], weights=vh[ok_vh], minlength=n_celdas)
+            cuenta_vh += np.bincount(celda[ok_vh], minlength=n_celdas)
         en_db = a_db(valores)
         for n, umbral in enumerate(UMBRALES_DB):
             suma_agua[n] += np.bincount(k, weights=(en_db < umbral).astype("float64"), minlength=n_celdas)
@@ -173,27 +198,44 @@ def procesar_fecha(clave_zona: str, fecha: str) -> Path | None:
         agua = np.where(cuenta > 0, suma_agua / cuenta, np.nan).astype("float32").reshape(-1, filas, columnas)
     parcial = _ruta_parcial(clave_zona, fecha)
     parcial.parent.mkdir(parents=True, exist_ok=True)
-    np.savez_compressed(parcial, vv=vv_medio, agua=agua, umbrales=np.array(UMBRALES_DB),
-                        orbita=int(productos[0].properties["pathNumber"]))
+    bandas = {"vv": vv_medio}
+    if incluir_vh:
+        vh_medio = np.full(n_celdas, np.nan, dtype="float32")
+        np.divide(suma_vh, cuenta_vh, out=vh_medio, where=cuenta_vh > 0)
+        bandas["vh"] = vh_medio.reshape(filas, columnas)
+    np.savez_compressed(parcial, agua=agua, umbrales=np.array(UMBRALES_DB),
+                        orbita=int(productos[0].properties["pathNumber"]), **bandas)
     return parcial
 
 
-def procesar_fechas(clave_zona: str, fechas: list[str], segundos_por_fecha: int = 420, intentos: int = 3):
-    """Procesa cada fecha en un proceso aparte, con límite de tiempo. Las ya leídas se conservan."""
+def _parcial_listo(parcial: Path, incluir_vh: bool) -> bool:
+    if not parcial.exists():
+        return False
+    if not incluir_vh:
+        return True
+    with np.load(parcial) as datos:
+        return "vh" in datos.files
+
+
+def procesar_fechas(clave_zona: str, fechas: list[str], segundos_por_fecha: int = 420, intentos: int = 3,
+                    incluir_vh: bool = False):
+    """Procesa cada fecha por separado. Con VH, repite las fechas guardadas solo con VV."""
     import subprocess
 
     from .config import RAIZ
     for numero, fecha in enumerate(fechas, start=1):
         parcial = _ruta_parcial(clave_zona, fecha)
+        comando = [sys.executable, "-W", "ignore", "-m", "src.sentinel", clave_zona, "fecha", fecha]
+        if incluir_vh:
+            comando.append("--vh")
         for intento in range(1, intentos + 1):
-            if parcial.exists():
+            if _parcial_listo(parcial, incluir_vh):
                 break
             try:
-                subprocess.run([sys.executable, "-W", "ignore", "-m", "src.sentinel", clave_zona, "fecha", fecha],
-                               cwd=RAIZ, timeout=segundos_por_fecha)
+                subprocess.run(comando, cwd=RAIZ, timeout=segundos_por_fecha)
             except subprocess.TimeoutExpired:
                 print(f"  {fecha}: se colgó (intento {intento} de {intentos})", flush=True)
-        estado = "lista" if parcial.exists() else "NO se pudo leer"
+        estado = "lista" if _parcial_listo(parcial, incluir_vh) else "NO se pudo leer"
         print(f"[{numero}/{len(fechas)}] {fecha}: {estado}", flush=True)
 
 
@@ -276,14 +318,18 @@ def serie_y_tabla(clave_zona: str, umbral_db: float = UMBRAL_AGUA_VV_DB, inicio:
     fechas = [f for f in fechas if inicio <= f <= fin]
     if not fechas:
         raise RuntimeError(f"No hay fechas leídas de {clave_zona}. Ejecuta antes `procesar`.")
-    agua, vv = [], []
+    agua, vv, vh = [], [], []
     for f in fechas:
         with np.load(_ruta_parcial(clave_zona, f)) as p:
             agua.append(p["agua"][n])
             vv.append(p["vv"])
+            vh.append(p["vh"] if "vh" in p.files else None)
     agua, vv = np.array(agua, dtype="float32"), np.array(vv, dtype="float32")
-    np.savez_compressed(ruta_invierno(clave_zona), fechas=np.array(fechas), agua=agua, vv=vv,
-                        umbral_db=float(umbral_db))
+    bandas = {"vv": vv}
+    if any(v is not None for v in vh):
+        bandas["vh"] = np.array([v if v is not None else np.full_like(vv[0], np.nan) for v in vh])
+    np.savez_compressed(ruta_invierno(clave_zona), fechas=np.array(fechas), agua=agua,
+                        umbral_db=float(umbral_db), **bandas)
     tabla = pd.read_csv(ruta_celdas(clave_zona))
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", RuntimeWarning)          # celdas sin ningún dato
@@ -300,12 +346,15 @@ def serie_y_tabla(clave_zona: str, umbral_db: float = UMBRAL_AGUA_VV_DB, inicio:
 
 
 def cargar_invierno(clave_zona: str) -> dict | None:
-    """Serie de la época lluviosa ya procesada: {"fechas", "agua", "vv", "umbral_db"} o None."""
+    """Serie ya procesada con fechas, agua, vv, umbral_db y vh cuando está disponible."""
     if not ruta_invierno(clave_zona).exists():
         return None
     with np.load(ruta_invierno(clave_zona)) as s:
-        return {"fechas": [str(f) for f in s["fechas"]], "agua": s["agua"], "vv": s["vv"],
-                "umbral_db": float(s["umbral_db"])}
+        serie = {"fechas": [str(f) for f in s["fechas"]], "agua": s["agua"], "vv": s["vv"],
+                 "umbral_db": float(s["umbral_db"])}
+        if "vh" in s.files:
+            serie["vh"] = s["vh"]
+        return serie
 
 
 def agua_del_terreno(invierno: dict, celdas, pesos=None):
@@ -321,16 +370,17 @@ def agua_del_terreno(invierno: dict, celdas, pesos=None):
 
 
 if __name__ == "__main__":
+    uso = "Uso: python -m src.sentinel ZONA [procesar [--vh] | calibrar | tabla [UMBRAL]]"
     if len(sys.argv) < 3 or sys.argv[1] not in ZONAS:
-        raise SystemExit("Uso: python -m src.sentinel ZONA [procesar | calibrar | tabla [UMBRAL]]")
+        raise SystemExit(uso)
     zona, accion = sys.argv[1], sys.argv[2]
     if accion == "fecha":                       # uso interno: una fecha en su propio proceso
-        procesar_fecha(zona, sys.argv[3])
+        procesar_fecha(zona, sys.argv[3], incluir_vh="--vh" in sys.argv[4:])
     elif accion == "procesar":
-        procesar_fechas(zona, fechas_de(zona, *INVIERNO))
+        procesar_fechas(zona, fechas_de(zona, *INVIERNO), incluir_vh="--vh" in sys.argv[3:])
     elif accion == "calibrar":
         calibrar(zona)
     elif accion == "tabla":
         serie_y_tabla(zona, float(sys.argv[3]) if len(sys.argv) > 3 else UMBRAL_AGUA_VV_DB)
     else:
-        raise SystemExit("Uso: python -m src.sentinel ZONA [procesar | calibrar | tabla [UMBRAL]]")
+        raise SystemExit(uso)

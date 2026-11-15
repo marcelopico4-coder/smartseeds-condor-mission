@@ -1,0 +1,36 @@
+{
+ "zona": "santo_domingo",
+ "etiquetas": "MAG, Estimaciones de cultivos 1:25.000 (2022 y 2025)",
+ "solo_nisar": {
+  "celdas": 24323,
+  "acierto": 0.986,
+  "acierto_promedio_por_clase": 0.496,
+  "acierto_diciendo_siempre_lo_mas_comun": 0.994,
+  "por_clase": {
+   "otro": {
+    "celdas": 24171,
+    "las_encuentra": 0.992,
+    "acierta_cuando_la_dice": 0.994,
+    "se_confunde_con": {
+     "palma_aceitera": 1.0
+    }
+   },
+   "palma_aceitera": {
+    "celdas": 152,
+    "las_encuentra": 0.0,
+    "acierta_cuando_la_dice": 0.0,
+    "se_confunde_con": {
+     "otro": 1.0
+    }
+   }
+  },
+  "rasgos_que_mas_pesan": {
+   "pendiente": 0.218,
+   "hh_media": 0.179,
+   "hh_min": 0.176,
+   "hv_media": 0.137,
+   "hh_menos_hv": 0.114,
+   "hv_cambio": 0.089
+  }
+ }
+}

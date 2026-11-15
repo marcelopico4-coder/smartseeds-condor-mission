@@ -1,0 +1,84 @@
+{
+ "zona": "santo_domingo",
+ "fuente": "MAG – SIGTIERRAS, datos de campo 2014–2015",
+ "todos": {
+  "puntos": 374,
+  "puntaje_mediano": 87.9,
+  "apto_para_la_app": 1.0,
+  "puntaje_70_o_mas": 0.981,
+  "entre_los_3_primeros": 0.342,
+  "es_el_primero": 0.107
+ },
+ "por_cultivo": {
+  "banano": {
+   "puntos": 23,
+   "puntaje_mediano": 90.7,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.043,
+   "es_el_primero": 0.0
+  },
+  "cacao": {
+   "puntos": 103,
+   "puntaje_mediano": 95.6,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.922,
+   "es_el_primero": 0.214
+  },
+  "maiz_duro": {
+   "puntos": 19,
+   "puntaje_mediano": 100.0,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 1.0,
+   "es_el_primero": 0.842
+  },
+  "maracuya": {
+   "puntos": 15,
+   "puntaje_mediano": 75.9,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.0,
+   "es_el_primero": 0.0
+  },
+  "palma_aceitera": {
+   "puntos": 13,
+   "puntaje_mediano": 96.8,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.923,
+   "es_el_primero": 0.154
+  },
+  "pina": {
+   "puntos": 13,
+   "puntaje_mediano": 69.7,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 0.462,
+   "entre_los_3_primeros": 0.0,
+   "es_el_primero": 0.0
+  },
+  "platano": {
+   "puntos": 154,
+   "puntaje_mediano": 86.1,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.006,
+   "es_el_primero": 0.0
+  },
+  "yuca": {
+   "puntos": 34,
+   "puntaje_mediano": 87.2,
+   "apto_para_la_app": 1.0,
+   "puntaje_70_o_mas": 1.0,
+   "entre_los_3_primeros": 0.0,
+   "es_el_primero": 0.0
+  }
+ },
+ "lo_que_la_app_pone_primero": {
+  "maiz_duro": 215,
+  "cacao": 122,
+  "palma_aceitera": 35,
+  "cafe_robusta": 2
+ }
+}

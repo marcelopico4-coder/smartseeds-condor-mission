@@ -64,6 +64,12 @@ datos BETA de la época lluviosa (ene–may): cambiar `INICIO` en `verificar_ins
 
 ## 3. Recursos
 
+### Cultivos mapeados y observaciones de campo
+
+- **Ministerio de Agricultura y Ganadería del Ecuador (MAG), Dirección de Análisis de Información Agropecuaria.** [Estimaciones de superficie sembrada y plantada a escala 1:25.000](http://geoportal.agricultura.gob.ec/geoservicios/cartografia.html), [geoservicio WFS E25k](http://geoportal.agricultura.gob.ec/cobertura/E25k/wfs). SmartSeeds convirtió polígonos de arroz, maíz amarillo duro y soya de 2025 y de banano, palma aceitera y caña de azúcar industrial de 2022 en proporciones por cuadro. Es un registro histórico de los cultivos consultados.
+- **MAG–SIGTIERRAS.** Puntos de campo de cobertura y uso de la tierra (2014–2015), empleados como contraste histórico. [Geoservicio de cobertura de la tierra](http://geoportal.agricultura.gob.ec/sigtierras/cobertura_tierra/wfs).
+- Datos Abiertos Ecuador registra las capas de [banano](https://www.datosabiertos.gob.ec/dataset/mapa-de-estimacion-de-superficie-plantada-del-cultivo-de-banano-2022), [palma aceitera](https://www.datosabiertos.gob.ec/dataset/mapa-de-estimacion-de-superficie-plantada-del-cultivo-de-palma-aceitera-2022) y [caña de azúcar industrial](https://www.datosabiertos.gob.ec/dataset/mapa-de-estimacion-de-superficie-plantada-del-cultivo-de-cana-de-azucar-industrial-2022) de 2022 como «Creative Commons Non-Commercial (Any)». Queda por confirmar con el MAG la variante exacta y los términos específicos de reutilización de las capas de 2025 y de SIGTIERRAS.
+
 ### NASA (recursos oficiales del reto)
 | Recurso | Para qué |
 |---|---|
